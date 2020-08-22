@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.PermissionDao">
+
+    <resultMap id="MyResultMap" type="java.util.Map">
+        <id column="id" jdbcType="NUMERIC" property="id"></id>
+        <result column="menupid" jdbcType="NUMERIC" property="menupid"></result>
+        <result column="childid" jdbcType="VARCHAR" property="childid"></result>
+        <result column="menuname" jdbcType="VARCHAR" property="menuname"></result>
+        <result column="path" jdbcType="VARCHAR" property="path"></result>
+        <result column="routename" jdbcType="VARCHAR" property="routename"></result>
+        <result column="componentname" jdbcType="VARCHAR" property="componentname"></result>
+        <result column="icon" jdbcType="VARCHAR" property="icon"></result>
+    </resultMap>
+
+    <select id="findParentId" resultMap="MyResultMap">
+        select * FROM sys_menu s where s.id
+        in(select pid FROM sys_role_menu where rid in(select sr.id FROM sys_role sr
+        LEFT JOIN sys_account_role sc on sr.id = sc.roleid
+        LEFT JOIN sys_account on sc.accountid = sys_account.id
+        where sys_account.id = #{param1})) and s.menupid = #{param2}
+    </select>
+
+    <select id="findByAccount" resultType="com.aaa.entity.SysAccount">
+        select sys_account.* from sys_user
+        LEFT JOIN sys_account on sys_user.cid = sys_account.id
+        where account = #{value}
+    </select>
+
+    <select id="findRoleByAccount" resultType="java.lang.String">
+        select sr.rolecode FROM sys_role sr
+        LEFT JOIN sys_account_role sc on sr.id = sc.roleid
+        LEFT JOIN sys_account on sc.accountid = sys_account.id
+        where sys_account.account = #{value}
+    </select>
+
+    <select id="findPathUrlByAccount" resultType="java.lang.String">
+        SELECT sm.pathurl from sys_menu s
+        LEFT JOIN sys_menu_path sm on sm.menuid = s.id
+        where s.id in(select s.id from sys_menu s
+        LEFT JOIN sys_role_menu sr on s.id = sr.pid
+        LEFT JOIN sys_role on sr.rid = sys_role.id
+        where sys_role.rolecode in(select sr.rolecode FROM sys_role sr
+        LEFT JOIN sys_account_role sc on sr.id = sc.roleid
+        LEFT JOIN sys_account on sc.accountid = sys_account.id
+        where sys_account.account = #{value})) and sm.pathurl != ''
+    </select>
+
+</mapper>
