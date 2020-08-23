@@ -19,6 +19,8 @@ public class SysAccount implements UserDetails {
     private Date createtime;
     
     private Integer enable;
+
+    private Integer uid;
     
     private Integer isaccountnonexpired;
     

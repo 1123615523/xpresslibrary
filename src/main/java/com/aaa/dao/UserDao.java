@@ -12,7 +12,14 @@ import java.util.List;
 
 public interface UserDao {
 
-    @Select("select * from sys_user")
     List<SysUser> findUserInfo();
+
+    /**添加员工*/
+    Integer add(SysUser sysUser);
+
+    /**修改员工*/
+    Integer update(SysUser sysUser);
+
+
 
 }

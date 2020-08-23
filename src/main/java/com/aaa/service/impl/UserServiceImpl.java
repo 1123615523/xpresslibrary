@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
     @Resource
     UserDao userDao;
 
+
     @Override
     public PageModel<SysUser> findUserInfo(PageModel<SysUser> pm) {
         PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
@@ -36,4 +37,18 @@ public class UserServiceImpl implements UserService {
         pm.setLastPage(pages);
         return pm;
     }
+
+    /**添加员工*/
+    @Override
+    public Integer add(SysUser sysUser) {
+        sysUser.setState(1);
+        return userDao.add(sysUser);
+    }
+
+    /**修改员工*/
+    @Override
+    public Integer update(SysUser sysUser) {
+        return userDao.update(sysUser);
+    }
+
 }

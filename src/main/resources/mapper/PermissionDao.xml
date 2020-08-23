@@ -22,8 +22,8 @@
     </select>
 
     <select id="findByAccount" resultType="com.aaa.entity.SysAccount">
-        select sys_account.* from sys_user
-        LEFT JOIN sys_account on sys_user.cid = sys_account.id
+        select sys_account.* from sys_user LEFT JOIN
+        sys_account on sys_user.id = sys_account.uid
         where account = #{value} and sys_user.state = 1
     </select>
 
