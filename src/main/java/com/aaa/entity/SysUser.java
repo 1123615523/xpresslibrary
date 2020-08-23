@@ -28,7 +28,5 @@ public class SysUser{
     private String email;
     
     private Integer state;
-    
-    private Integer cid;
 
 }
