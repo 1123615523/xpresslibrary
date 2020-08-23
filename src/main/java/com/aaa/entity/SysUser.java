@@ -2,8 +2,6 @@ package com.aaa.entity;
 
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
  * (SysUser)实体类
  *
@@ -28,7 +26,4 @@ public class SysUser{
     private String email;
     
     private Integer state;
-    
-    private Integer cid;
-
 }
