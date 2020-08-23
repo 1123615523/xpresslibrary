@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.SysMenuPathDao">
+
+    <resultMap id="SysMenuMap" type="com.aaa.entity.SysMenuPath" autoMapping="true">
+        <id column="id" property="id"></id>
+        <association property="sysMenu" javaType="com.aaa.entity.SysMenu" autoMapping="true">
+            <id column="id" property="id"></id>
+        </association>
+    </resultMap>
+
+    <insert id="addPath">
+        insert into sys_menu_path value(null,#{pathurl},#{meno},#{menuid})
+    </insert>
+
+    <update id="updPath">
+        update sys_menu_path set pathurl=#{pathurl},meno=#{meno},menuid=#{menuid} where id=#{id}
+    </update>
+
+    <delete id="deletePath">
+        delete from sys_menu_path where id = #{value}
+    </delete>
+
+    <select id="findSysMenu" resultMap="SysMenuMap">
+        select * from sys_menu_path s
+        LEFT JOIN sys_menu sm on s.menuid = sm.id
+        where sm.childid != ''
+    </select>
+
+    <select id="findMenuPathByUrl" resultType="com.aaa.entity.SysMenuPath">
+        select * from sys_menu_path where pathurl = #{param2} and id != #{param1}
+    </select>
+
+
+</mapper>
