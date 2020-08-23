@@ -2,8 +2,6 @@ package com.aaa.entity;
 
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
  * (SysMenuPath)实体类
  *
@@ -20,5 +18,7 @@ public class SysMenuPath{
     private String meno;
     
     private Integer menuid;
+
+    private SysMenu sysMenu;
 
 }

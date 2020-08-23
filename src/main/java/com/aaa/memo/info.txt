@@ -2,7 +2,20 @@
     <script src="./ShowModel/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="./ShowModel/js/xadmin.js"></script>
 
-------------------------------------------------------------------
+    一对多
+    <resultMap id="res" type="com.wdk.entity.Classes" autoMapping="true">
+            <id column="classid" property="classid"></id>
+            <collection property="teachers" ofType="com.wdk.entity.Teacher" autoMapping="true">
+                <id column="tid" property="tid"></id>
+            </collection>
+        </resultMap>
+
+        一对一
+
+       mybatis转译比较字符：<![CDATA[>]]>
+
+
+-----------------------------------------------------------------
 1. 目的
 为了使软件开发过程顺畅，保证软件质量，于是有了这份开发规范文档。
 

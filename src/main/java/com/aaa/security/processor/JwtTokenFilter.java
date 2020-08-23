@@ -22,11 +22,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
         HashMap<Object, Object> map = new HashMap<>();
-
         String token = request.getHeader("token");
-
-        System.out.println("传来的token："+token);
-
         if(null == token || "".equals(token)){
             //第一次未带token
             chain.doFilter(request,response);
@@ -34,7 +30,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
         }else{
             try {
                 JwtUtils.verify(token.toString()); //验证令牌
-                System.out.println("令牌验证成功");
                 chain.doFilter(request,response);
                 return;
             }catch (SignatureVerificationException e){
