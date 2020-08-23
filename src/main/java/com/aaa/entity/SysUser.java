@@ -1,7 +1,6 @@
 package com.aaa.entity;
 
 import lombok.Data;
-
 /**
  * (SysUser)实体类
  *
@@ -26,4 +25,5 @@ public class SysUser{
     private String email;
     
     private Integer state;
+
 }
