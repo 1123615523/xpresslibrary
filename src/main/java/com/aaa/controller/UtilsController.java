@@ -1,7 +1,6 @@
 package com.aaa.controller;/*
  */
 
-import com.aaa.entity.SysAccount;
 import com.aaa.entity.SysUser;
 import com.aaa.service.AccountService;
 import com.aaa.service.PermissionService;
@@ -46,9 +45,7 @@ public class UtilsController {
         String token = request.getHeader("token");
         DecodedJWT verify = JwtUtils.verify(token);
         String id = verify.getClaim("id").asString();
-        System.out.println(id);
         SysUser byId = accountService.findById(Integer.parseInt(id));
-        System.out.println(byId);
         return byId;
     }
 
