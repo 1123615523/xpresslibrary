@@ -16,5 +16,9 @@
         <!--update sys_user set  name=#{name},sex=#{sex},phone=#{phone},address=#{address},idcard=#{idcard},email=#{email},state = #{state}  where id = #{id}-->
     <!--</update>-->
 
+    <update id="updateByPwd">
+        update sys_account set password = #{password} where id = #{id}
+    </update>
+
 
 </mapper>
