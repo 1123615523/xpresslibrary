@@ -20,4 +20,10 @@ public interface PermissionService {
 
     List<String> findPathUrlByAccount(String account);
 
+    //查询系统权限
+    List<Map<String,Object>> findPermissionInfo();
+
+
+
+
 }

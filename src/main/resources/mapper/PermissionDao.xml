@@ -46,4 +46,17 @@
         where sys_account.account = #{value})) and sm.pathurl != ''
     </select>
 
+    <select id="findPermissionInfo" resultMap="MyResultMap">
+        select * from sys_menu
+        <where>
+            <if test="value == null">
+                menupid = 0
+            </if>
+            <if test="value != null">
+                menupid = #{value}
+            </if>
+        </where>
+    </select>
+
+
 </mapper>

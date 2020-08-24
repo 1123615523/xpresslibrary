@@ -22,6 +22,11 @@ public interface PermissionDao {
     List<String> findPathUrlByAccount(String account);
 
     //跟据登录的角色拿出桥梁表中的权限
-    List<Map<String,Object>> findParentId(Integer account,Integer menupid);
+    List<Map<String, Object>> findParentId(Integer account, Integer menupid);
+
+    //查询系统一级权限
+    List<Map<String, Object>> findPermissionInfo(Integer menupid);
+
+
 
 }
