@@ -7,6 +7,7 @@ import com.aaa.service.PermissionService;
 import com.aaa.service.UserService;
 import com.aaa.utils.JwtUtils;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -54,5 +55,20 @@ public class UtilsController {
         sysUser.setState(1);
         Integer update = userService.update(sysUser);
         return update;
+    }
+    
+    @RequestMapping("editpassword")
+    public Object editpassword(HttpServletRequest request,@RequestBody SysAccount  sysAccount){
+        String token = request.getHeader("token");
+        DecodedJWT verify = JwtUtils.verify(token);
+        String id = verify.getClaim("id").asString();
+        String password = sysAccount.getPassword();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encode = passwordEncoder.encode(password);
+        sysAccount.setPassword(encode);
+        sysAccount.setId(Integer.parseInt(id));
+        Integer integer = accountService.updateByPwd(sysAccount);
+        return integer;
+
     }
 }
