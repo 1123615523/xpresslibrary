@@ -18,6 +18,16 @@ public class SysMenuServiceImpl implements SysMenuService {
     SysMenuDao sysMenuDao;
 
     @Override
+    public Integer updMenu(SysMenu sysMenu) {
+        return sysMenuDao.updMenu(sysMenu);
+    }
+
+    @Override
+    public SysMenu findMenuById(SysMenu sysMenu) {
+        return sysMenuDao.findMenuById(sysMenu);
+    }
+
+    @Override
     public List<SysMenu> findMenu() {
         return sysMenuDao.findMenu();
     }

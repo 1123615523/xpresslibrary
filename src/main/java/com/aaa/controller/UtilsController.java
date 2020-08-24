@@ -1,6 +1,7 @@
 package com.aaa.controller;/*
  */
 
+import com.aaa.entity.SysAccount;
 import com.aaa.entity.SysUser;
 import com.aaa.service.AccountService;
 import com.aaa.service.PermissionService;
@@ -58,7 +59,7 @@ public class UtilsController {
     }
     
     @RequestMapping("editpassword")
-    public Object editpassword(HttpServletRequest request,@RequestBody SysAccount  sysAccount){
+    public Object editpassword(HttpServletRequest request,@RequestBody SysAccount sysAccount){
         String token = request.getHeader("token");
         DecodedJWT verify = JwtUtils.verify(token);
         String id = verify.getClaim("id").asString();

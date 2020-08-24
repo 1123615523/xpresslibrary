@@ -2,9 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aaa.dao.SysMenuDao">
 
+    <update id="updMenu">
+        update sys_menu set menuname=#{menuname},routename=#{routename},componentname=#{componentname},icon=#{icon} where id = #{id}
+    </update>
+
 
     <select id="findMenu" resultType="com.aaa.entity.SysMenu">
         select * from sys_menu where menupid != 0
     </select>
+
+    <select id="findMenuById" resultType="com.aaa.entity.SysMenu">
+        select * from sys_menu where menuname = #{menuname} and id != #{id}
+    </select>
+
 
 </mapper>
