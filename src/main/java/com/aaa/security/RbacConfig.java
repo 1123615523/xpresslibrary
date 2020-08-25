@@ -21,6 +21,10 @@ public class RbacConfig {
 
     public boolean isForbidden(HttpServletRequest request, Authentication authentication){
         Object principal = authentication.getPrincipal();
+        String requestURI = request.getRequestURI();
+        if("/favicon.ico".equals(requestURI)){
+            return true;
+        }
         if(principal instanceof UserDetails){
             SysAccount sysAccount = (SysAccount)authentication.getPrincipal();
             List<String> DatabaseUrl = permissionService.findPathUrlByAccount(sysAccount.getAccount());

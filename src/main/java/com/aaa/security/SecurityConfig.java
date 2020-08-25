@@ -42,6 +42,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
+                //配置static的所有静态资源不拦截
+                .antMatchers("/static/**","/templates/**").permitAll()
             .and()
                 .addFilterBefore(userJwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
@@ -62,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
                 .authorizeRequests()
-                .antMatchers("/utils/**").permitAll()
+                .antMatchers("/utils/**","/Home/**").permitAll()
                 .anyRequest()
                 .access("@rbacConfig.isForbidden(request,authentication)")
             .and()
