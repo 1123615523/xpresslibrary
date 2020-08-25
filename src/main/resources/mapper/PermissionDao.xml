@@ -58,5 +58,14 @@
         </where>
     </select>
 
-
+    <select id="findByRoleId" resultMap="MyResultMap">
+        select m.id from sys_menu m
+        left join sys_role_menu rm on m.id = rm.pid
+        left join sys_role r on rm.rid = r.id
+        where r.rolecode in
+        (select r.rolecode from sys_role r
+        left join sys_account_role rm on r.id = rm.roleid
+        left join sys_account a on rm.accountid = a.id
+        where r.id = #{id})
+    </select>
 </mapper>

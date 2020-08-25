@@ -27,6 +27,9 @@ public interface PermissionDao {
     //查询系统一级权限
     List<Map<String, Object>> findPermissionInfo(Integer menupid);
 
+    /**根据角色id查询所拥有权限*/
+    List<Map<String,Object>> findByRoleId(Integer id);
+
 
 
 }

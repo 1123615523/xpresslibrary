@@ -23,6 +23,9 @@ public interface PermissionService {
     //查询系统权限
     List<Map<String,Object>> findPermissionInfo();
 
+    /**根据角色id查询所拥有权限*/
+    List<Map<String,Object>> findByRoleId(Integer id);
+
 
 
 

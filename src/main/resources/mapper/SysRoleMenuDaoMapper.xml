@@ -4,7 +4,7 @@
 <mapper namespace="com.aaa.dao.SysRoleMenuDao">
 
     <insert id="add">
-        insert into sys_role_menu values(#{rid},#{pid})
+        insert into sys_role_menu values(#{param1},#{param2})
     </insert>
     <delete id="del">
         delete from sys_role_menu where rid = #{rid}

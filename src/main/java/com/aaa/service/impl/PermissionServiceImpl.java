@@ -63,4 +63,10 @@ public class PermissionServiceImpl implements PermissionService {
         return list;
     }
 
+    /**根据角色id查询所拥有权限*/
+    @Override
+    public List<Map<String, Object>> findByRoleId(Integer id) {
+        return permissionDao.findByRoleId(id);
+    }
+
 }
