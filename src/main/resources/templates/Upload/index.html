@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>用户中心</title>
+    <link rel="stylesheet" href="/static/js/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/js/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="/static/js/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/js/ionicons.min.css">
+    <link rel="stylesheet" href="/static/js/switchery.min.css">
+    <link rel="stylesheet" href="/static/js/toastr.min.css">
+    <link rel="stylesheet" href="/static/js/AdminLTE.min.css">
+    <link rel="stylesheet" href="/static/js/skin-black-light.min.css">
+    <link rel="stylesheet" href="/static/js/qidongucenter.css">
+
+    <script>
+        var qidong = {
+            cpath: ''
+        }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/static/js/dropzone.css">
+    <style>
+        .upload-notice {
+            background-color: #fef6a9;
+            font-size: 14px;
+            color: #ff4400;
+            line-height: 25px;
+            padding: 7px 15px;
+            margin-bottom: 10px;
+            margin-right: 0px;
+            border: solid 1px #e10074;
+        }
+
+        .col-position {
+            margin-top: 5px;
+        }
+
+        .tip-font {
+            font-size: 12px;
+        }
+
+        .editor {
+            height: 230px;
+            width: 100%;
+            background-color: white
+        }
+    </style>
+
+    <link rel="stylesheet" href="/static/js/layer.css" id="layuicss-layer">
+    <style>.cke {
+        visibility: hidden;
+    }</style>
+    <script type="text/javascript" src="/static/js/config.js"></script>
+    <link rel="stylesheet" href="/static/js/style.css" id="layuicss-themejpressstylecss">
+    <link rel="stylesheet" type="text/css" href="/static/js/editor.css">
+    <script type="text/javascript" src="/static/js/zh-cn.js"></script>
+    <script type="text/javascript" src="/static/js/styles.js"></script>
+    <script type="text/javascript" src="/static/js/plugin.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/js/scayt.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/dialog.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/tableselection.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/wsc.css">
+    <script type="text/javascript" src="/static/js/zh-cn.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/js/default.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/balloontoolbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/copyformatting.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/imagebase.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/balloonpanel.css">
+    <script type="text/javascript" src="/static/js/highlight.pack.js"></script>
+
+</head>
+<body class="sidebar-mini wysihtml5-supported skin-black-light layout-boxed" style="height: auto; min-height: 100%;">
+<div class="wrapper" style="overflow: hidden; height: auto; min-height: 100%;">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="http://upload.wenku365.com:18889/ucenter" class="logo">
+            <span class="logo-mini"><b>JPr</b></span>
+            <span class="logo-lg"><b>随心文库</b></span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload" class="sidebar-toggle"
+               data-toggle="push-menu" role="button">
+                <span class="sr-only">切换</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="http://upload.wenku365.com:18889/ucenter/index">
+                            <img src="/static/js/avatar.png" class="user-image">
+                            <span class="hidden-xs">您好 wdk1123615523 , 欢迎回来</span>
+                        </a>
+                    </li>
+
+
+                    <li class="dropdown messages-menu" style="border-left: 1px solid #ccc;">
+                        <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#" class="dropdown-toggle"
+                           data-toggle="dropdown" aria-expanded="false">
+                            购物车</i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">购物车列表</li>
+                            <li>
+                                <ul class="menu" style="background-color: #f7f7f7">
+
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="http://upload.wenku365.com:18889/ucenter/cart"
+                                                  style="color: #3c8dbc !important;" target="_blank">查看全部</a></li>
+                        </ul>
+                    </li>
+
+                    <li style="border-left: 1px solid #ccc;">
+                        <a href="http://upload.wenku365.com:18889/" target="_blank">
+                            首页
+                        </a>
+                    </li>
+
+                    <li style="border-left: 1px solid #ccc;">
+                        <a href="http://upload.wenku365.com:18889/ucenter/doLogout?csrf_token=75656035378d403ba04aaae8a48271be">
+                            退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu tree" data-widget="tree" id="sidebar-menu">
+                <li class="block"></li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/index">
+                        <span>首页</span></a>
+                </li>
+
+                <li class="header">我的内容</li>
+                <li class="treeview active">
+                    <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#">
+                        <span>我的文档</span>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li class="active"><a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload"
+                                              target="">上传文档</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/authentication" target="">用户认证</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/user/resource" target="">我的资源</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/user/statistical/pBookHostView" target="">热门文档</a>
+                        </li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/user/statistical/pBookHostDownload"
+                               target="">热门下载</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/priceChangeRecord" target="">价格修改记录</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#">
+                        <span>我的专题</span>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/wenku/pbookgroup" target="">添加/修改专题</a>
+                        </li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/wenku/pbookgroup/page" target="">专题管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#">
+                        <span>我的收藏</span>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/article/favorite" target="">文章收藏</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/product/favorite" target="">产品收藏</a></li>
+                    </ul>
+                </li>
+
+                <li class="header">财务信息</li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/order">
+                        <span>我的订单</span></a>
+                </li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/finance/amount">
+                        <span>我的余额</span></a>
+                </li>
+
+
+                <li class="header">个人信息</li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/member"> <span>会员信息</span></a>
+                </li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/address">
+                        <span>我的地址</span></a>
+                </li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/info">
+                        <span>基本信息</span></a>
+                </li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/signature"> <span>个人签名</span></a>
+                </li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/avatar">
+                        <span>头像设置</span></a>
+                </li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/pwd">
+                        <span>账号密码</span></a>
+                </li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/bind"> <span>账号绑定</span></a>
+                </li>
+
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <div class="content-wrapper" style="min-height: 693px;">
+
+        <section class="content-header">
+            <h1>
+                上传资源
+                <small>Upload Resource</small>
+            </h1>
+        </section>
+
+        <section class="content">
+
+            <div class="row">
+                <div class="col-xs-16">
+                    <div class="box box-primary">
+                        <div class="upload-notice">
+                       <span>本站禁止上传：
+                           1、标题不全资源；
+                           2、采集器采集的网页文章；
+                           3、明显过期资源；
+                           4、广告软文；
+                           5、各类侵权资源；
+                           6、违反国家关于互联网相关规定的内容。请各位上传用户严格遵守,违者取消上传权限！【上传客服QQ：1290478887】</span>
+                        </div>
+                    </div>
+                    <table width="100%">
+                        <tbody>
+                        <tr>
+                            <td valign="top" width="80%">
+                                <!-- /.box-header -->
+                                <!-- form start -->
+                                <form class="form-horizontal" autocomplete="off" id="form1" method="post"
+                                      action="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/doSave">
+                                    <input type="hidden" id="uploadFileIds" name="uploadFileIds">
+                                    <div class="box-body">
+                                        <div class="form-group ">
+                                            <label class="col-sm-2 control-label">上传方式</label>
+                                            <div class="col-sm-7 col-position" onchange="uploadTypeChange()">
+                                                <input type="radio" id="single-upload" name="uploadType" value="0"
+                                                       required="" checked="checked">
+                                                <label for="single-upload">单个上传</label>
+                                                <input type="radio" id="multi-upload" name="uploadType" value="1">
+                                                <label for="multi-upload">批量上传</label>
+                                                <span class="tip-font" style="color: red;margin-left: 10px"><span>(今日剩余可上传资源数量:  <b>10</b>)</span></span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group ">
+                                            <label class="col-sm-2 control-label">资源文件</label>
+                                            <div class="col-sm-8">
+                                                <div id="dropzoneDiv" class="dropzone dz-clickable">
+                                                    <div class="dz-default dz-message"><span><img src="/static/js/upload.png"
+                                                                                                  width="50px"
+                                                                                                  height="40px"
+                                                                                                  alt="拖动文件至此或者点击上传"> <div>拖动文件至此或者点击上传</div></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group" id="resourceTitle">
+                                            <label class="col-sm-2 control-label">资源标题</label>
+                                            <div class="col-sm-8">
+                                                <input type="input" class="form-control" id="meBookTempTitle"
+                                                       name="meBookTemp.title" value="" required="required">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group " id="resourceKeyWord">
+                                            <label class="col-sm-2 control-label">资源关键字</label>
+                                            <div class="col-sm-8">
+                                                <textarea type="input" class="form-control" id="meta_keywords"
+                                                          name="meBookTemp.meta_keywords" value=""></textarea>
+                                                <div class="tip-font">
+                                                    <span>多个关键字以","分割；</span><span style="color: red">批量上传如果不填写，则自动按标题获取关键字</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">资源分类</label>
+
+                                            <div class="col-sm-7">
+                                                <select id="firstCategory" onchange="findSecondCategory()"
+                                                        style="width: 30%;height: 30px;" name="firstCategory">
+                                                    <option value="">请选择</option>
+                                                    <option value="532">学术论文</option>
+                                                    <option value="574">应用文档</option>
+                                                    <option value="784">教育资源</option>
+                                                    <option value="787">行业资料</option>
+                                                    <option value="814">其他资料</option>
+                                                </select>
+                                                <select id="secondCategory" onchange="findThirdCategory()"
+                                                        style="width: 30%;height: 30px;">
+                                                </select>
+                                                <select id="thirdCategory" required="required"
+                                                        name="meBookTemp.category_id" style="width: 30%;height: 30px;">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">加入专题</label>
+                                            <div class="col-sm-7">
+                                                <select id="book-group" onchange="findGroupMuLu()"
+                                                        style="width: 30%;height: 30px;" name="group_id">
+                                                    <option value="">请选择</option>
+                                                </select>
+                                                <span class="glyphicon glyphicon-menu-right"></span>
+                                                <select id="book-group-mulu" name="group_mulu_id"
+                                                        style="width: 30%;height: 30px;">
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="box-header"
+                                             style="background-color: #efefef; padding: 5px 5px; font-weight: bold; margin: 5px 0px;">
+                                            <h3 class="box-title">资源发布信息</h3>
+                                        </div>
+
+                                        <div class="form-group" onchange="viewPageChange()">
+                                            <label class="col-sm-2 control-label">预览页数</label>
+                                            <div class="col-sm-9 col-position">
+                                                <input type="radio" id="sysViewPageSet" name="meBookTemp.freepage"
+                                                       value="0" checked="">
+                                                <label for="sysViewPageSet">系统默认</label>
+                                                <input type="radio" id="preViewPageSet" name="meBookTemp.freepage"
+                                                       value="1">
+                                                <label for="preViewPageSet">预览页数设定</label>
+                                                <input type="radio" id="noViewPageSet" name="meBookTemp.freepage"
+                                                       value="-1">
+                                                <label for="noViewPageSet">不能预览</label>
+                                                <div style="padding: 5px 5px; background-color: #f9f9f9; line-height: 28px; display: none"
+                                                     id="preViewPageSetting">
+                                                    预览页数/秒数：<input name="freepageValue" type="number" value="0"
+                                                                   maxlength="100" id="freepageValue" alt="p4c3p2s"
+                                                                   onblur="show();"
+                                                                   style="width: 80px; background-color: #fff;">
+                                                    <span class="tip-font" style="color: #ff1100">(资源最大可预览页数：1 页，视频资源请设置预览秒数！)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group" onchange="uploadStatusChange()">
+                                            <label class="col-sm-2 control-label">允许下载</label>
+                                            <div class="col-sm-9 col-position">
+                                                <input type="radio" id="down" name="meBookTemp.flag" value="1"
+                                                       checked="">
+                                                <label for="down">允许</label>
+                                                <input type="radio" id="unDown" name="meBookTemp.flag" value="0">
+                                                <label for="unDown">不允许</label>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">是否原创</label>
+                                            <div class="col-sm-9 col-position">
+                                                <input type="radio" id="isOriginal" name="original" value="0"
+                                                       checked="">
+                                                <label for="down">否</label>
+                                                <input type="radio" id="isNotOriginal" name="original" value="1">
+                                                <label for="unDown">是</label>(请严格按实选择)
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">售价设置</label>
+                                            <div class="col-sm-9 col-position">
+                                                <input type="number" value="0" maxlength="100" name="meBookTemp.cost"
+                                                       style="width: 70px;background-color: #fff;">
+                                                <span style="color: #eb0064;"
+                                                      id="spanscorename"><strong>积分</strong></span>
+                                                <span id="spanrate" style="color:blue;">【1积分=1元人民币】</span>
+                                                <span class="tip-font" style="color: red">(最高售价：500.0，0为免费下载 )</span>
+                                            </div>
+                                            <span id="Content_rav1" style="visibility:hidden;">请输入2.0-500.0之间的价格！</span>
+                                        </div>
+
+                                        <div class="box-footer" style="background-color: #f7f7f7">
+                                            <div class="col-sm-offset-2 col-sm-20 submit-block">
+                                                <div class="box-submit">
+                                                    <button type="submit" id="btn-submit" class="btn btn-primary">
+                                                        提交
+                                                    </button>
+                                                    <div style="margin-top: 10px">
+                                                        <div>
+                                                            <input type="checkbox" checked="checked"
+                                                                   id="termsOfService">
+                                                            <a href="http://www.wenku365.com/n-2.html" target="_blank">用户服务条款</a>
+
+                                                            <input type="checkbox" checked="checked" id="disclaimer">
+                                                            <a href="http://www.wenku365.com/n-3.html" target="_blank">免责声明</a>
+
+                                                            <input type="checkbox" checked="checked"
+                                                                   id="copyrightNotice">
+                                                            <a href="http://www.wenku365.com/h-37.html" target="_blank">版权申明</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="csrf_token" value="75656035378d403ba04aaae8a48271be">
+                                </form>
+                            </td>
+                            <td valign="top" width="20%">
+                                <div style="background-color: #f7f7f7; padding: 10px 10px; float: right">
+                                    <div style="line-height: 20px; color: #666; font-size: 12px;">
+                                        <b style="color: #444; line-height: 30px;">温馨小贴示：</b><br>
+                                        <span style="color: #ff1100">1、请勿上传已设置加密或只读的资源，不支持此类资源在线阅读。<br></span>2、在线浏览文件格式：<br>
+                                        <table style="font-size: 12px; color: #336699">
+                                            <tbody>
+                                            <tr>
+                                                <td style="width: 95px"><b>MS Office资源:</b></td>
+                                                <td>doc,docx ppt,pptx xls,xlsx pot,potx pps,ppsx rtf;</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>WPS office系列:</b></td>
+                                                <td>wps et dps</td>
+                                            </tr>
+                                            <!--                                        <tr>-->
+                                            <!--                                            <td><b>图片:</b></td>-->
+                                            <!--                                            <td>jpg png gif bmp</td>-->
+                                            <!--                                        </tr>-->
+                                            <tr>
+                                                <td><b>PDF:</b></td>
+                                                <td>pdf</td>
+                                            </tr>
+                                            <tr>
+                                                <td><b>纯文本:</b></td>
+                                                <td>txt</td>
+                                            </tr>
+                                            <!--                                        <tr>-->
+                                            <!--                                            <td><b>视频:</b></td>-->
+                                            <!--                                            <td>.mp4 .mpg .wmv .avi .mpeg .flv;</td>-->
+                                            <!--                                        </tr>-->
+                                            <!--                                        <tr>-->
+                                            <!--                                            <td><b>音频:</b></td>-->
+                                            <!--                                            <td>.mp3 .wav;</td>-->
+                                            <!--                                        </tr>-->
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <p style="line-height: 20px; color: #666; font-size: 12px;">
+                                        3、文件需要后台自动转换成播放格式，请耐心等候几分钟再刷新页面查看。</p>
+                                    <p style="line-height: 20px; color: #666; font-size: 12px;">
+                                        4、上传支持的文件最大容量：6MB</p>
+                                    <p style="line-height: 20px; color: #666; font-size: 12px;">
+                                        5、禁止上传违反国家关于互联网相关规定的内容。
+                                    </p>
+                                    <p style="line-height: 20px; font-size: 12px;">
+                                        6、不需要在线预览的资源，格式不受上述格式的限制。
+                                    </p>
+                                    <p style="line-height: 20px; font-size: 12px;">
+                                        7、视频和音频采用H5播放格式，PC端需要使用Chrome，Firefox，Safari，IE10及以上版本浏览器浏览！。
+                                    </p>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        version v3.0.0-rc.1
+    </div>
+    Copyright © 2016-2020 <a href="http://www.qidong.com/" target="_blank">Qidong Studio</a>. All rights
+    reserved.
+</footer>
+
+
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.form.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-datepicker.min.js"></script>
+<script src="/static/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="/static/js/fastclick.js"></script>
+<script src="/static/js/switchery.min.js"></script>
+<script src="/static/js/toastr.min.js"></script>
+<script src="/static/js/layer.js"></script>
+<script src="/static/js/adminlte.min.js"></script>
+<script src="/static/js/qidongucenter.js"></script>
+<script src="/static/js/qidongcommons.js"></script>
+<script src="/static/js/qidongcsrf.js"></script>
+
+<script>
+    $('#form').on('submit', function () {
+
+        ajaxSubmit('#form', function () {
+            toastr.success('修改成功');
+        });
+
+        return false;
+    });
+</script>
+
+<script src="/static/js/ckeditor.js"></script>
+<script type="text/javascript" src="/static/js/dropzone.js"></script>
+<script>
+    initEditor('editor', 400, "html");
+    $("#editor1").show()
+    $("#editor2").hide();
+
+    function showdesc(type) {
+        // 纯文本
+        if (type == 1) {
+            $("#editor1").hide();
+            $("#editor2").show();
+            $("#simple-editor").attr("name", "meBookTemp.content");
+            $("#editor").removeAttr("name");
+            $("#editMode").val("1");
+        }
+        // 富文本
+        else if (type == 2) {
+            $("#editor1").show();
+            $("#editor2").hide();
+            $("#editor").attr("name", "meBookTemp.content");
+            $("#simple-editor").removeAttr("name");
+            $("#editMode").val("2");
+        } else {
+            $("#editor1").hide();
+            $("#editor2").hide();
+            $("#simple-editor").removeAttr("name", "meBookTemp.content");
+
+        }
+    }
+
+    /**
+     * 查找第二分类
+     */
+    function findSecondCategory() {
+        var categoryId = document.getElementById("firstCategory").value;
+
+        var second_category = $("#secondCategory");
+        second_category.empty();
+        var third_category = $("#thirdCategory");
+        third_category.empty();
+
+        if (categoryId) {
+            $.ajax({
+                    type: 'get',
+                    url: 'http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/getCategoryByPid',
+                    contentType: "application/json; charset=utf-8",
+                    data: {
+                        pid: categoryId
+                    },
+                    success: function (data) {
+                        if (data) {
+                            $("#secondCategory option").empty();
+                            var optionStr = "<option value=''>请选择</option>";
+                            for (var index in data) {
+                                optionStr += "<option value=" + data[index].id + ">" + data[index].title + "</option>"
+                            }
+                            $("#secondCategory").append(optionStr)
+                        }
+                    }
+                }
+            )
+        }
+    }
+
+    /**
+     * 查找第三分类
+     */
+    function findThirdCategory() {
+        var categoryId = document.getElementById("secondCategory").value;
+        var third_category = $("#thirdCategory");
+        third_category.empty();
+        if (categoryId) {
+            $.ajax({
+                    type: 'get',
+                    url: 'http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/getCategoryByPid',
+                    contentType: "application/json; charset=utf-8",
+                    data: {
+                        pid: categoryId
+                    },
+                    success: function (data) {
+                        if (data) {
+                            $("#thirdCategory option").empty();
+                            var optionStr = "<option value= " + categoryId + ">全部</option>";
+                            for (var index in data) {
+                                optionStr += "<option value=" + data[index].id + ">" + data[index].title + "</option>"
+                            }
+                            $("#thirdCategory").append(optionStr)
+                        }
+                    }
+                }
+            )
+        }
+    }
+
+    /**
+     * 查找目录
+     */
+    function findGroupMuLu() {
+        var groupId = document.getElementById("book-group").value;
+        var bookGroupMuluList = $("#book-group-mulu");
+        bookGroupMuluList.empty()
+        bookGroupMuluList.val(groupId)
+        if (groupId) {
+            $.ajax({
+                    type: 'get',
+                    url: 'http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/listGroupMuluByGroupId',
+                    contentType: "application/json; charset=utf-8",
+                    data: {
+                        groupId: groupId
+                    },
+                    success: function (data) {
+                        if (data) {
+                            $("#bookGroupMuluList option").empty();
+                            var optionStr = ''
+                            for (var index in data) {
+                                optionStr += "<option value=" + data[index].id + ">" + data[index].name + "</option>"
+                            }
+                            $("#book-group-mulu").append(optionStr)
+                        }
+                    }
+                }
+            )
+        }
+    }
+</script>
+<script>
+    var maxFileNum = '1';  // 上传总个数
+    var parallelUploadNum = 1; // 一次上传文件数量
+    var maxFileSize = 6; // 最大上传文件大小
+    var enClick = true; // 是否可以点击
+    var fileIds = [];
+    Dropzone.options.dropzoneDiv = {
+        url: "http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/uploadResource",
+        method: "post",
+        paramName: "dropzFile",
+        maxFiles: maxFileNum, // 上传次数
+        maxFilesize: maxFileSize, // 文件大小
+        parallelUploads: parallelUploadNum,// 一次上传的文件数量
+        // previewsContainer:"#preview", // 上传图片的预览窗口
+        acceptedFiles: ".doc,.docx,.ppt,.pptx,.xls,.xlsx,.pot,.potx,.pps,.ppsx,.rtf,.wps,.et,.dps,.pdf,.txt,.rar,.zip,.dwg,.DWG", // 支持文件上传
+        addRemoveLinks: true,
+        clickable: enClick,
+        dictDefaultMessage: '<img src="/static/wenku/img/upload.png" width="50px" height="40px" alt="拖动文件至此或者点击上传"> <div>拖动文件至此或者点击上传</div>',
+        dictMaxFilesExceeded: "您最多只能上传" + maxFileNum + "个文件！",
+        dictResponseError: '文件上传失败,请稍后重试!',
+        dictInvalidFileType: "此类文件暂时不能上传",
+        dictFallbackMessage: "浏览器不受支持",
+        dictFileTooBig: "文件过大上传文件最大支持.",
+        dictRemoveLinks: "删除",
+        dictRemoveFile: "<span style='color: grey'>移除文件</span>",
+        dictCancelUpload: "取消",
+        /* 上传缩略图预览模板 */
+        // previewTemplate: document.getElementById('preview-template').innerHTML,
+        init: function () {
+            this.on("addedfile", function (file) {
+                // 上传文件时触发的事件
+            });
+            this.on("success", function (file, data) {
+                // 上传成功触发的事件
+                if (data && data.state === 'ok') {
+                    file.responseData = data
+                    fileIds.push(data.resultMap.attachmentIds[0])
+                    $("#uploadFileIds").val(JSON.stringify(fileIds))
+                    var title = $("#meBookTempTitle").val()
+                    $("#meBookTempTitle").val(title + file.name.substring(0, file.name.lastIndexOf('.')))
+                    $("#meta_keywords").val(data.resultMap.keywordStr)
+                } else {
+                    toastr.error("文件上传失败：" + data.message);
+                    this.removeFile(file)
+                }
+            });
+            this.on("error", function (file, data) {
+                // 上传失败触发的事件
+            });
+
+            this.on("removedfile", function (file) {
+                // 删除文件时触发的方法
+                if (file.responseData && file.responseData.state === "ok") {
+                    var delId = file.responseData.resultMap.attachmentIds[0];
+                    $.ajax({
+                        type: "DELETE",
+                        url: "http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/delFile",
+                        data: {
+                            "fileId": delId
+                        },
+                        dataType: 'json',
+                        success: function (result) {
+                            fileIds.splice(fileIds.indexOf(delId), 1)
+                            $("#uploadFileIds").val(JSON.stringify(fileIds))
+                            $("#meta_keywords").val("")
+                        }
+                    });
+                }
+            });
+        }
+
+    }
+
+    //上传方式改变
+    function uploadTypeChange() {
+        var radioValue = $('input:radio[name="uploadType"]:checked').val();
+        if ('0' === radioValue) {
+            window.location.href = "http://upload.wenku365.com:18889/ucenter/wenku/bookUpload"
+        } else if ('1' === radioValue) {
+            window.location.href = "http://upload.wenku365.com:18889/ucenter/wenku/bookUpload?uploadType=batch"
+        }
+    };
+
+    $("#resourceKeyWord").show();
+    $("#resourceTitle").show();
+    $("#meBookTempTitle").attr('required', 'true');
+    $("#single-upload").attr("checked", "checked")
+
+    // 免费与收费切换
+    function uploadStatusChange() {
+        var radioValue = $('input:radio[name="meBookTemp.flag"]:checked').val();
+        if ('1' == radioValue) {
+            $("#free-down").show();
+        } else if ('0' == radioValue) {
+            $("#free-down").hide();
+        }
+    }
+
+    // 预览页数的变化
+    function viewPageChange() {
+        var radioValue = $('input:radio[name="meBookTemp.freepage"]:checked').val();
+        if ('1' === radioValue) {
+            $("#preViewPageSetting").show();
+        } else {
+            $("#preViewPageSetting").hide();
+        }
+    }
+
+    $('#form1').on('submit', function () {
+        // 校验上传方式
+        var verify = verifyTermsService();
+        if (!verify) {
+            return false;
+        }
+        ajaxSubmit('#form1', function () {
+            $("#btn-submit").attr("disabled", true)
+            toastr.success('保存成功');
+            setTimeout(function () {
+                location.reload();
+            }, 2000);
+        });
+
+        return false;
+    });
+
+    /**
+     * 校验是否选中服务条款
+     */
+    function verifyTermsService() {
+        var termsOfServiceChecked = $("#termsOfService").is(":checked");
+        if (!termsOfServiceChecked) {
+            alert("上传服务需同意《用户服务条款》");
+            return false;
+        }
+        var disclaimerChecked = $("#disclaimer").is(":checked");
+        if (!disclaimerChecked) {
+            alert("上传服务需同意《免责声明》");
+            return false;
+        }
+        var copyrightNoticeCheck = $("#copyrightNotice").is(":checked");
+        if (!copyrightNoticeCheck) {
+            alert("上传服务需同意《版权申明》");
+            return false;
+        }
+        return true;
+    }
+</script>
+
+
+<input type="file" class="dz-hidden-input"
+       accept=".doc,.docx,.ppt,.pptx,.xls,.xlsx,.pot,.potx,.pps,.ppsx,.rtf,.wps,.et,.dps,.pdf,.txt,.rar,.zip,.dwg,.DWG"
+       style="visibility: hidden; position: absolute; top: 0px; left: 0px; height: 0px; width: 0px;">
+<div class="cke_screen_reader_only cke_copyformatting_notification">
+    <div aria-live="polite"></div>
+</div>
+</body>
+</html>

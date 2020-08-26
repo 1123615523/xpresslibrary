@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head id="Head1">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+    <title>登陆_随心文库</title>
+    <meta name="keywords" content="上传文档赚钱的网站,文档赚钱网,文档投稿赚钱网,上传文档赚钱,文档投稿赚钱,文档分享赚钱,文档赚钱,文档上传赚钱,利用文档赚钱,上传文档挣钱,投稿赚钱网站">
+    <meta name="description" content="随心文库，上传档档赚钱的网站，专注于毕业论文，毕业设计，可行性研究报告，策划书，可研报告，课后习题答案，项目建议书，商业计划书，策划方案，设计方案范文！">
+    <script src="/static/js/push.js"></script>
+    <script src="/static/js/hm.js"></script>
+    <script type="text/javascript" src="/static/js/CheckLogin.js"></script>
+    <style type="text/css">
+        .fix:after {
+            content: ".";
+            display: block;
+            height: 0;
+            clear: both;
+            visibility: hidden;
+        }
+
+        .fix {
+            display: inline-block;
+            min-height: 1%;
+        }
+
+        /*\*/
+        * html .fix {
+            zoom: 1;
+        }
+
+        .fix {
+            display: block;
+        }
+
+        .sina_ico, .tweibo_ico, .qq_ico, .xn_ico, .msn_ico, .kaixin_ico, .feixin_ico, .youku_ico {
+            background: url(https://static.wenku365.com/images/site2_v1.png) 0 0 no-repeat;
+            width: 0;
+            height: 33px;
+            display: inline-block;
+            padding-left: 33px;
+            overflow: hidden;
+        }
+
+        .tweibo_ico {
+            background-position: -50px 0;
+        }
+
+        .qq_ico {
+            background-position: -100px 0;
+        }
+
+        .xn_ico {
+            background-position: -150px 0;
+        }
+
+        .msn_ico {
+            background-position: 0 -50px;
+        }
+
+        .kaixin_ico {
+            background-position: -50px -50px;
+        }
+
+        .feixin_ico {
+            background-position: -100px -50px;
+        }
+
+        .youku_ico {
+            background-position: -150px -50px;
+        }
+
+        .side {
+            float: right;
+            width: 350px;
+            display: inline;
+        }
+
+        .reg .side {
+            margin-right: 0px;
+        }
+
+        .reg .other {
+            padding: 10px 20px 20px;
+            width: 299px;
+            color: #808080;
+            line-height: 2;
+            border: 5px solid #f5f5f5;
+        }
+
+        .reg .other .login {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .reg .other .login a {
+            display: inline-block;
+            width: 65px;
+            height: 26px;
+        }
+
+        .reg .other .outer_sites {
+            line-height: 1.5;
+        }
+
+        .reg .other .outer_sites li {
+            float: left;
+            width: 148px;
+            height: 34px;
+            overflow: hidden;
+            line-height: 34px;
+            margin-top: 18px;
+        }
+
+        .reg .outer_sites a {
+            outline: none;
+            cursor: pointer;
+        }
+
+        .reg .outer_sites b {
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        .ps-main {
+            position: relative;
+            margin: 0 auto;
+            width: 1000px;
+            height: 550px
+        }
+
+        .ps-main .a-bg {
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: 0;
+            width: 1000px;
+            height: 450px;
+            text-indent: -999em;
+            overflow: hidden
+        }
+
+        .ps-main .ps-loca {
+            position: absolute;
+            z-index: 1;
+            top: 72px;
+            right: 70px;
+            width: 300px;
+            height: 300px;
+            background: #FFF;
+            box-shadow: 3px 4px 0 1px rgba(210, 228, 235, 0.86);
+            border-radius: 4px
+        }
+
+        .ps-loginarea .loginbtn, .ps-loginarea .ps-login-wait {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            vertical-align: middle
+        }
+
+        .ps-loadingtxt {
+            height: 300px;
+            background: url(https://static.wenku365.com/images/hr-loading_32x32.gif) no-repeat center center
+        }
+
+        .ps-loginarea {
+            padding-top: 28px;
+            padding-left: 26px;
+            line-height: 1.5
+        }
+
+        .ps-loginarea .ps-username, .ps-loginarea .ps-passwd {
+            position: relative;
+            width: 190px;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 40px;
+            margin: 10px 0 10px 10px;
+            background: url(https://static.wenku365.com/images/home-bg-a.png) no-repeat -260px -314px;
+            border-radius: 2px 0 0 2px;
+            zoom: 1
+        }
+
+        .ps-loginarea {
+            _padding-top: 38px
+        }
+
+        .ps-loginarea .ps-passwd {
+            background-position: -260px -382px
+        }
+
+        .ps-loginarea .ps-username-txt,
+        .ps-loginarea .ps-passwd-txt {
+            position: absolute;
+            width: 189px;
+            padding: 0px 0px;
+            text-indent: 10px;
+            height: 38px;
+            line-height: 38px;
+            border: 1px solid #EEE;
+            border-left: none;
+            color: #666;
+            border-radius: 0 2px 2px 0;
+            font-size: 14px
+        }
+
+        .ps-loginarea .placeholder {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 50px;
+            font-size: 14px;
+            color: #CCC;
+            height: 38px;
+            line-height: 38px;
+            zoom: 1;
+            cursor: text
+        }
+
+        .ps-loginarea .ps-txtfunc {
+            padding: 4px 33px 0 11px;
+            *padding: 4px 16px 0 7px;
+            height: 24px;
+            line-height: 24px
+        }
+
+        .ps-loginarea .ps-loginfunc {
+            position: relative;
+            height: 72px;
+            padding-left: 11px;
+            line-height: 72px
+        }
+
+        .ps-loginarea .ps-loginbtn {
+            float: left;
+            margin-top: 16px;
+            width: 230px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 18px;
+            font-family: 'Microsoft Yahei';
+            background: #189ae4;
+            color: #FFF;
+            letter-spacing: .25em;
+            border-radius: 3px
+        }
+
+        .ps-loginarea .ps-loginbtn:hover {
+            text-decoration: none;
+            background: #1ea5da
+        }
+
+        .ps-loginarea .ps-login-wait {
+            margin-top: 4px;
+            height: 32px;
+            line-height: 32px;
+            padding-left: 36px;
+            color: #666;
+            background: url(https://static.wenku365.com/images/hr-loading_32x32.gif) no-repeat left center
+        }
+
+        .ps-loginarea .ps-login-wait {
+            _margin: 20px 0
+        }
+
+        .ps-loginarea .ps-subtxt {
+            height: 24px;
+            padding: 0 33px 12px 11px;
+            line-height: 24px
+        }
+
+        .ps-loginarea .lgn-icon {
+            display: inline-block;
+            *display: inline;
+            zoom: 1;
+            vertical-align: middle;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-indent: -999em;
+            background: url(/static/js/icon-login-wx-qq.png) no-repeat
+        }
+
+        .ps-loginarea .lgn-icon.lgn-qq {
+            background-position: 0 0
+        }
+
+        .ps-loginarea .lgn-icon.lgn-wx {
+            background-position: 0 -20px
+        }
+
+        .ps-loginarea .lgn-icon.lgn-sms {
+            background-position: 0 -40px
+        }
+
+        .ps-loginarea .bgline, .ps-loginareainfo .bgline {
+            display: block;
+            margin-left: 10px;
+            width: 234px;
+            height: 0;
+            line-height: 0;
+            font-size: 0;
+            border-top: 1px solid #EEE;
+            overflow: hidden
+        }
+
+        body, .main_bg {
+            background-color: #fff;
+        }
+
+        .nav_uis {
+            width: 1000px;
+            margin: 0px auto;
+            margin-bottom: 10px;
+        }
+
+        .ps-subtxt img {
+            border-radius: 24px 24px;
+        }
+    </style>
+    <link href="https://static.wenku365.com/fileupload/images/f1209499-d7aa-4090-8b19-9acb3f311b52.png"
+          rel="shortcut icon" type="image/x-icon">
+    <link href="/static/js/base.css" rel="stylesheet" type="text/css">
+    <link href="/static/js/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/static/js/Prototype.js"></script>
+    <link href="/static/js/slides.css" rel="stylesheet" type="text/css">
+    <meta name="copyright" content="https://www.wenku365.com">
+    <meta name="applicable-device" content="pc">
+
+    <!--[if lte IE 8]>
+    <script src="https://static.wenku365.com/js/jquery1.9.0.min.js"></script>
+    <![endif]-->
+    <style>.xxxk_top img {
+        height: 55px;
+        margin-top: 10px;
+    }
+
+    .cmn_search_box {
+        margin-left: 130px;
+    }
+
+    .cmn_search_box .border {
+        border: 1px solid #00a2ca;
+        border-radius: 0px;
+    }
+
+    .cmn_search_box .border input[type='submit'] {
+        background-color: #00a2ca;
+    }
+
+    .cmn_search_box .border input[type='submit']:hover {
+        background-color: #00a2ca;
+    }
+
+    .hr-wrap {
+        border-bottom: 1px solid #00a2ca;
+        background: #00a2ca;
+    }
+
+    .home_menu {
+        border-bottom: 2px solid #00a2ca;
+    }
+
+    .home_menu .feilei {
+        font-size: 16px;
+        background-color: #00a2ca;
+        color: #fff;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .nav_bg, .nav li.over a, .nav li a, .nav #conAll0.over a {
+        background: #00a2ca;
+    }
+
+    .nav li a {
+        display: block;
+        padding: 0px 40px;
+    }
+
+    .j_menu .hottip {
+        right: -3px;
+        top: 5px;
+    }
+
+    .hottip {
+        right: 16px;
+        top: 5px;
+    }
+
+    .nav li a:Hover, .nav li.over a, .nav #conAll0:hover a:hover, .nav #conz0:hover a:hover {
+        background-color: #00a2ca;
+        color: #ff4400
+    }
+
+    .home_menu .j_menu li.home a {
+        color: #ff4400
+    }
+
+    .nav #conAll0.over a, .nav #conz0.over a, .nav #conAll0:hover a, .nav #conz0:hover a {
+        background-color: #00a2ca;;
+        color: #ff4400
+    }
+
+    .cmn_top_r .inner a.upload {
+    }
+
+    .camTitle {
+        background-color: #f9f9f9;
+    }
+
+    .camNavA a {
+        font-size: 14px;
+        color: #2d2d2d
+    }
+
+    .camNavA a.selected {
+        background: #fff;
+        border-top: 3px solid #00a2ca;
+        font-weight: bold;
+        border-left: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5
+    }
+
+    .camTitles {
+        background-color: #f5f5f5;
+    }
+
+    .camNavAs a {
+        font-size: 16px;
+        color: #2d2d2d
+    }
+
+    .camNavAs a.selected {
+        font-weight: bold;
+        border-top: 3px solid #00a2ca;
+        background: #fff;
+    }
+
+    .cate {
+        background: #5c5c5c;
+        border-top: solid 1px #00a2ca;
+    }
+
+    .cate li:hover .category-title {
+        background: #fff
+    }
+
+    .cate li:hover .category-title a {
+        color: #ff6600
+    }
+
+    .cate .category-sub {
+        border-color: #00a2ca;
+        filter: alpha(opacity=100); /*IE滤镜，透明度50%*/
+        -moz-opacity: 1; /*Firefox私有，透明度50%*/
+        opacity: 1; /*其他，透明度50%*/
+    }
+
+    .shop1 a.searchbtn0 {
+        background-color: #ff491f;
+    }
+
+    .shop1 a.searchbtn0:hover {
+        background-color: #e5411c;
+    }
+
+    footer, .foot_nav_bg {
+        background: #111111;
+    }
+
+    .camZpSmall .camZpBox dd span, .camZpSmall .camZpBox dd a.selected, .camZpBox dd span, .camZpBox dd a.selected, .farea dd span, .farea dd a.selected, .fareas dd span, .fareas dd a.selected {
+        color: #fff;
+        background-color: #00a2ca;
+    }
+
+    .farea dt, .fareas dt {
+        color: #666
+    }
+
+    .h-list #conAll, .h-list #conAll2, .dorpmenu2 {
+        border: 1px solid #00a2ca;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .catesBox a:hover, .catesBox a.cur {
+        background: #00a2ca;
+        border: 1px solid #00a2ca;
+    }
+
+    .bannerbox .searchbox .searchbtn1 {
+        background-color: #189ae5;
+    }
+
+    .bannerbox .searchbox .searchbtn1:hover {
+        background-color: #0B8DD6;
+    }</style>
+
+    <script type="text/javascript" src="/static/js/jquery.lazyload.js"></script>
+    <script type="text/javascript">
+        function browserRedirect() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            var MobileRootUrl = "https://m.wenku365.com/user/loginReturn";
+            var UrlRoot = "https://www.wenku365.com/user/loginReturn";
+
+        }
+
+        browserRedirect();
+    </script>
+    <script>
+        var limitlogin = 3;
+        var havelogin = 0;
+    </script>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/js/jquery.form.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/qidongcommons.js"></script>
+
+    <link href="/static/js/recentBrowse.css" rel="stylesheet">
+    <script src="/static/js/recentBrowse.js"></script>
+
+</head>
+<body>
+
+<div id="headerplace" style="height: 39px; background-color:#fff; overflow: hidden; width: 100%; min-width:1200px;">
+
+</div>
+
+<div style="background-color:#fff; z-index:1; position:relative; min-width:1200px;">
+    <div class="xxxk_top cf">
+        <a title="首页" class="fl" href="https://www.wenku365.com/" style="height:81px; position:relative; ">
+            <img src="/static/js/8eb1828a-c1c9-4706-a869-a4ae5ccd6232.jpg" title="随心文库-上传文档赚钱的网站"
+                 alt="随心文库-上传文档赚钱的网站" style="border: 0; "></a>
+        <div class="cmn_search_box">
+            <div class="border">
+                <form>
+                    <input id="keyword" type="text" value="" name="searchCon" placeholder="在这里搜索">
+                    <input type="submit" name="searchBtn" value="" title="点击搜索"
+                           onclick="searchWord($(&#39;#keyword&#39;).val()); return false;">
+                </form>
+            </div>
+            <script>
+                function getcheckedKeyword(s) {
+                    if (!s) return "";
+                    var pattern = new RegExp("[`~%!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
+                    var rs = "";
+                    for (var i = 0; i < s.length; i++) {
+                        rs = rs + s.substr(i, 1).replace(pattern, '');
+                    }
+                    return rs;
+                }
+
+                function searchWord(keyword, aElement) {
+                    keyword = getcheckedKeyword(keyword);
+                    if (keyword == "在这里搜索") keyword = "";
+
+                    var url = "https://www.wenku365.com/s?keyword=" + encodeURIComponent(keyword);
+                    if (!aElement) {
+                        location.href = url;
+                    } else {
+                        aElement.href = url;
+                        return true;
+                    }
+                }
+            </script>
+        </div>
+        <div class="topr">
+            <a class="block upload-link" href="https://www.wenku365.com/ucenter/wenku/bookUpload"
+               rel="nofollow"><span></span>上传我的文档</a>
+        </div>
+    </div>
+
+
+    <div class="home_menu">
+        <div class="mcenter">
+            <div class="feilei">
+                <a href="https://www.wenku365.com/list.html" class="fen">
+                    <div class="h3">全部分类<span></span></div>
+                </a>
+
+                <div class="home_cate hide" id="menuhomecate">
+                    <div class="cate" id="wk-all-cate" style="top:0px; *top:0px;height: 351px;">
+                        <div id="qwe">
+                            <li v-for="res in result">
+                                <dl class="category-title ">
+                                    <dt>
+                                        <a href="/c-00012.html" >{{res.name}}<b class="li-aw n-ic"></b></a>
+                                        <span class="right-arrow">&gt;</span>
+                                    </dt>
+                                    <dd>
+                                        <a href="/c-0001200007.html"  rel="nofollow">
+                                            <nobr>毕业论文</nobr>
+                                        </a>
+                                        <a href="/c-0001200024.html"  rel="nofollow">
+                                            <nobr>毕业设计</nobr>
+                                        </a>
+                                        <a href="/c-0001200015.html"  rel="nofollow">
+                                            <nobr>临时分类</nobr>
+                                        </a>
+                                    </dd>
+                                </dl>
+                                <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
+                                    <dt><a href="/c-00012.html" >学术论文</a></dt>
+                                    <dd>
+                                    <span v-for="chid in res.resourcesdetails">
+                                        <a  href=""  rel="nofollow">
+                                            <nobr>{{chid.dname}}</nobr>
+                                        </a>
+                                    </span>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </div>
+                    </div>
+                    <script src="/static/vue/vue.js"></script>
+                    <script src="/static/vue/axios.min.js"></script>
+                    <script>
+                        var v = new Vue({
+                            el:'#qwe',
+                            data:{
+                                result:[]
+                            },
+                            created:function(){
+                                this.find();
+                            },
+                            methods:{
+                                "find":function () {
+                                    var url = "/Resource/findResource";
+                                    var that = this;
+                                    axios.get(url).then(function (value) {
+                                        that.result = value.data;
+                                    }).catch(function (reason) {
+                                        layer.alert("出错了");
+                                    });
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="j_menu">
+                <li class="">
+                    <a href="https://www.wenku365.com/" target="_self">
+                        首页</a></li>
+                <li class=""><a href="https://www.wenku365.com/c-00012.html">学术论文</a></li>
+                <li class=""><a href="https://www.wenku365.com/c-00015.html">应用文档</a></li>
+                <li class=""><a href="https://www.wenku365.com/c-00017.html">行业资料</a></li>
+                <li class=""><a href="https://www.wenku365.com/c-00016.html">教育资源</a></li>
+                <li class=""><a href="https://www.wenku365.com/c-00018.html">其他资料</a></li>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form action="*" method="post" class="autoAjaxSubmit"
+      data-ok-href="https://www.wenku365.com/">
+    <div class="bg_100 main_bg clearfix">
+        <div class="nav_uis" style="width:1200px; margin:auto auto; margin-bottom:10px;">
+
+        </div>
+        <div class="ps-main clearfix" style="height: 550px; width:1200px; margin:auto auto;">
+            <div onclick="adv_addClick(5020)" class="gg_global_3">
+                <a href="#" class="a-bg" style="height: 450px; width:1200px;
+background:url(https://static.wenku365.com/images/loginbg.jpg) no-repeat center center;background-size:cover;"></a>
+            </div>
+            <div id="loginArea" class="ps-loca fst">
+                <div class="ps-loginarea clearfix">
+                    <p class="ps-username">
+                        <input name="user" type="text" id="Content_txtUserName" class="ps-username-txt"
+                               placeholder="账号">
+                    </p>
+                    <p class="ps-passwd">
+                        <input name="pwd" type="password" id="Content_txtPassword" class="ps-passwd-txt"
+                               placeholder="密码">
+                    </p>
+                    <p class="ps-txtfunc">
+                        <!-- <span class="r"><a target="_blank" title="点此找回密码" href="getpwd.aspx">忘记密码？</a></span> -->
+                        <span class="ckbox">
+<input id="Content_autologin" type="checkbox" name="ctl00$Content$autologin"><label for="Content_autologin">记住密码</label>
+</span>
+                    </p>
+                    <div class="ps-loginfunc">
+                        <input type="button" name="ctl00$Content$btnLogin" value="登录" id="Content_btnLogin"
+                               class="ps-loginbtn">
+                    </div>
+                    <p class="ps-subtxt">
+                        <span class="l"><a class="fb orange" title="注册随心文库通行证"
+                                           href="/Home/registered">注册随心文库通行证</a></span>
+                        <span class="r">
+</span>
+                    </p>
+                </div>
+                <div class="ps-loadingtxt dn"></div>
+            </div>
+        </div>
+    </div>
+</form>
+</body>
+</html>

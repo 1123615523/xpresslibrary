@@ -5,9 +5,9 @@
     <title>随心文库</title>
     <meta name="keywords" content="上传文档赚钱的网站,文档赚钱网,文档投稿赚钱网,上传文档赚钱,文档投稿赚钱,文档分享赚钱,文档赚钱,文档上传赚钱,利用文档赚钱,上传文档挣钱,投稿赚钱网站">
     <meta name="description" content="随心文库，上传档档赚钱的网站，专注于毕业论文，毕业设计，可行性研究报告，策划书，可研报告，课后习题答案，项目建议书，商业计划书，策划方案，设计方案范文！">
-    <link rel="Bookmark" type="image/x-icon" href="/static/images/favicon.ico"/>
-    <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico"/>
-    <link rel="shortcut icon" type="image/x-icon" href="/static/images/favicon.ico"/>
+    <link rel="Bookmark" type="image/x-icon" href="/static/js/favicon.ico"/>
+    <link rel="icon" type="image/x-icon" href="/static/js/favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/js/favicon.ico"/>
     <link rel="alternate" media="only screen and (max-width: 640px)" href="https://m.wenku365.com">
     <script type="application/ld+json">
         {
@@ -19,17 +19,17 @@
 
 
     </script>
-    <link href="/static/css/default.css" rel="stylesheet" type="text/css">
+    <link href="/static/js/default.css" rel="stylesheet" type="text/css">
     <script type="text/javascript">
         var uid = "0";
     </script>
-    <link href="/static/images/f1209499-d7aa-4090-8b19-9acb3f311b52.png"
+    <link href="/static/js/f1209499-d7aa-4090-8b19-9acb3f311b52.png"
           rel="shortcut icon" type="image/x-icon">
-    <link href="/static/css/base.css" rel="stylesheet" type="text/css">
-    <link href="/static/css/qweqwe.css" rel="stylesheet" type="text/css">
+    <link href="/static/js/base.css" rel="stylesheet" type="text/css">
+    <link href="/static/js/qweqwe.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/static/js/Prototype.js"></script>
-    <link href="/static/css/slides.css" rel="stylesheet" type="text/css">
+    <link href="/static/js/slides.css" rel="stylesheet" type="text/css">
     <meta name="copyright" content="https://www.wenku365.com">
     <meta name="applicable-device" content="pc">
     <!--[if lte IE 8]>
@@ -268,7 +268,7 @@
             border-bottom: solid 0px #eaeaea;
             margin: -10px auto 10px auto;
             padding-left: 10px;
-            background: url(/static/images/favicon.ico) no-repeat 10px 25px;
+            background: url(/static/js/favicon.ico) no-repeat 10px 25px;
         }
 
         .tbtjs {
@@ -319,10 +319,11 @@
             height: 450px;
         }
     </style>
-    <link href="/static/css/recentBrowse.css" rel="stylesheet">
+    <link href="/static/js/recentBrowse.css" rel="stylesheet">
     <script src="/static/js/recentBrowse.js"></script>
 </head>
 <body>
+<div id="app">
 <div id="headerplace" style="height: 39px; background-color:#fff; overflow: hidden; width: 100%; min-width:1200px;">
     <div class="bg_100 top_bg">
         <div class="top">
@@ -341,7 +342,7 @@
 <div style="background-color:#fff; z-index:1; position:relative; min-width:1200px;">
     <div class="xxxk_top cf">
         <a title="首页" class="fl" href="/Home/index" style="height:81px; position:relative; ">
-            <img src="/static/images/8eb1828a-c1c9-4706-a869-a4ae5ccd6232.jpg"
+            <img src="/static/js/8eb1828a-c1c9-4706-a869-a4ae5ccd6232.jpg"
                  title="随心文库-上传文档赚钱的网站" alt="随心文库-上传文档赚钱的网站" style="border: 0; "></a>
         <div class="cmn_search_box">
             <div class="border">
@@ -381,18 +382,23 @@
                rel="nofollow"><span></span>上传我的文档</a>
         </div>
     </div>
+
     <div class="home_menu">
         <div class="mcenter">
             <div class="feilei">
                 <a href="https://www.wenku365.com/list.html" class="fen">
                     <div class="h3">全部分类<span></span></div>
                 </a>
+
                 <div class="home_cate hide" id="menuhomecate">
                     <div class="cate" id="wk-all-cate" style="top:0px; *top:0px;height: 351px;">
-                        <li>
+                        <div id="qwe">
+                        <li v-for="res in result">
                             <dl class="category-title ">
-                                <dt><a href="/c-00012.html" >学术论文<b class="li-aw n-ic"></b></a><span
-                                        class="right-arrow">&gt;</span></dt>
+                                <dt>
+                                    <a href="/c-00012.html" >{{res.name}}<b class="li-aw n-ic"></b></a>
+                                    <span class="right-arrow">&gt;</span>
+                                </dt>
                                 <dd>
                                     <a href="/c-0001200007.html"  rel="nofollow">
                                         <nobr>毕业论文</nobr>
@@ -408,377 +414,40 @@
                             <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
                                 <dt><a href="/c-00012.html" >学术论文</a></dt>
                                 <dd>
-                                    <a href="/c-0001200007.html"  rel="nofollow">
-                                        <nobr>毕业论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200024.html"  rel="nofollow">
-                                        <nobr>毕业设计</nobr>
-                                    </a>
-                                    <a href="/c-0001200015.html"  rel="nofollow">
-                                        <nobr>临时分类</nobr>
-                                    </a>
-                                    <a href="/c-0001200052.html"  rel="nofollow">
-                                        <nobr>土木工程毕业设计</nobr>
-                                    </a>
-                                    <a href="/c-0001200055.html"  rel="nofollow">
-                                        <nobr>php毕业设计</nobr>
-                                    </a>
-                                    <a href="/c-0001200054.html"  rel="nofollow">
-                                        <nobr>安卓毕业设计</nobr>
-                                    </a>
-                                    <a href="/c-0001200053.html"  rel="nofollow">
-                                        <nobr>asp毕业设计</nobr>
-                                    </a>
-                                    <a href="/c-0001200035.html"  rel="nofollow">
-                                        <nobr>行政管理毕业论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200034.html"  rel="nofollow">
-                                        <nobr>汉语言文学毕业论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200033.html"  rel="nofollow">
-                                        <nobr>工商管理毕业论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200032.html"  rel="nofollow">
-                                        <nobr>法学专业毕业论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200031.html"  rel="nofollow">
-                                        <nobr>船舶工程毕业论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200030.html"  rel="nofollow">
-                                        <nobr>机械毕业设计</nobr>
-                                    </a>
-                                    <a href="/c-0001200029.html"  rel="nofollow">
-                                        <nobr>英语论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200028.html"  rel="nofollow">
-                                        <nobr>asp.net论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200027.html"  rel="nofollow">
-                                        <nobr>Java毕业设计</nobr>
-                                    </a>
-                                    <a href="/c-0001200026.html"  rel="nofollow">
-                                        <nobr>文献综述</nobr>
-                                    </a>
-                                    <a href="/c-0001200023.html"  rel="nofollow">
-                                        <nobr>其他论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200022.html"  rel="nofollow">
-                                        <nobr>外文翻译</nobr>
-                                    </a>
-                                    <a href="/c-0001200036.html"  rel="nofollow">
-                                        <nobr>护理学毕业论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200037.html"  rel="nofollow">
-                                        <nobr>化学专业毕业论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200038.html"  rel="nofollow">
-                                        <nobr>会计学毕业论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200039.html"  rel="nofollow">
-                                        <nobr>计算机论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200040.html"  rel="nofollow">
-                                        <nobr>教育学论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200041.html"  rel="nofollow">
-                                        <nobr>金融管理论文</nobr>
-                                    </a>
-                                    <a href="/c-0001200042.html"  rel="nofollow">
-                                        <nobr>景观设计毕业论文</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>旅游管理毕业论文</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>文秘秘书毕业论文</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>人力资源管理毕业论文</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>期刊论文</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>数学专业毕业论文</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>心理学毕业论文</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>平面艺术设计论文</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>开题报告</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>音乐专业毕业论文</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>市场营销论文</nobr>
-                                    </a>
-                                    <a href=""  rel="nofollow">
-                                        <nobr>装修毕业论文</nobr>
-                                    </a>
+                                    <span v-for="chid in res.resourcesdetails">
+                                        <a  href=""  rel="nofollow">
+                                            <nobr>{{chid.dname}}</nobr>
+                                        </a>
+                                    </span>
                                 </dd>
                             </dl>
                         </li>
-                        <li>
-                            <dl class="category-title ">
-                                <dt><a href="" >应用文档<b class="li-aw n-ic"></b></a><span
-                                        class="right-arrow">&gt;</span></dt>
-                                <dd>
-                                    <a href="/c-0001500030.html"  rel="nofollow">
-                                        <nobr>事迹材料</nobr>
-                                    </a>
-                                    <a href="/c-0001500028.html"  rel="nofollow">
-                                        <nobr>施工方案</nobr>
-                                    </a>
-                                    <a href="/c-0001500020.html"  rel="nofollow">
-                                        <nobr>设计方案</nobr>
-                                    </a>
-                                </dd>
-                            </dl>
-                            <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
-                                <dt><a href="/c-00015.html" >应用文档</a></dt>
-                                <dd>
-                                    <a href="/c-0001500030.html"  rel="nofollow">
-                                        <nobr>事迹材料</nobr>
-                                    </a>
-                                    <a href="/c-0001500028.html"  rel="nofollow">
-                                        <nobr>施工方案</nobr>
-                                    </a>
-                                    <a href="/c-0001500020.html"  rel="nofollow">
-                                        <nobr>设计方案</nobr>
-                                    </a>
-                                    <a href="/c-0001500019.html"  rel="nofollow">
-                                        <nobr>商业计划</nobr>
-                                    </a>
-                                    <a href="/c-0001600020.html"  rel="nofollow">
-                                        <nobr>PDF书籍</nobr>
-                                    </a>
-                                    <a href="/c-0001600019.html"  rel="nofollow">
-                                        <nobr>优质公开课课件</nobr>
-                                    </a>
-                                    <a href="/c-0001600017.html"  rel="nofollow">
-                                        <nobr>医学课件</nobr>
-                                    </a>
-                                    <a href="/c-0001600016.html"  rel="nofollow">
-                                        <nobr>主题班会</nobr>
-                                    </a>
-                                    <a href="/c-0001600015.html"  rel="nofollow">
-                                        <nobr>笔记讲义</nobr>
-                                    </a>
-                                    <a href="/c-0001500031.html"  rel="nofollow">
-                                        <nobr>使用与维护手册</nobr>
-                                    </a>
-                                    <a href="/c-0001500029.html"  rel="nofollow">
-                                        <nobr>工作思想汇报</nobr>
-                                    </a>
-                                    <a href="/c-0001500026.html"  rel="nofollow">
-                                        <nobr>应急预案</nobr>
-                                    </a>
-                                    <a href="/c-0001500025.html"  rel="nofollow">
-                                        <nobr>表格清单</nobr>
-                                    </a>
-                                    <a href="/c-0001600018.html"  rel="nofollow">
-                                        <nobr>职业培训课件</nobr>
-                                    </a>
-                                    <a href="/c-0001500023.html"  rel="nofollow">
-                                        <nobr>调研报告</nobr>
-                                    </a>
-                                    <a href="/c-0001500018.html"  rel="nofollow">
-                                        <nobr>策划书</nobr>
-                                    </a>
-                                    <a href="/c-0001500027.html"  rel="nofollow">
-                                        <nobr>技术措施与指南</nobr>
-                                    </a>
-                                    <a href="/c-0001500016.html"  rel="nofollow">
-                                        <nobr>项目建议书</nobr>
-                                    </a>
-                                    <a href="/c-0001500015.html"  rel="nofollow">
-                                        <nobr>可行性研究报告</nobr>
-                                    </a>
-                                    <a href="/c-0001500017.html"  rel="nofollow">
-                                        <nobr>分析报告</nobr>
-                                    </a>
-                                    <a href="/c-0001500007.html"  rel="nofollow">
-                                        <nobr>演讲稿</nobr>
-                                    </a>
-                                    <a href="/c-0001500010.html"  rel="nofollow">
-                                        <nobr>党校课件</nobr>
-                                    </a>
-                                    <a href="/c-0001500011.html"  rel="nofollow">
-                                        <nobr>党校讲课稿</nobr>
-                                    </a>
-                                    <a href="/c-0001500001.html"  rel="nofollow">
-                                        <nobr>合同协议范本</nobr>
-                                    </a>
-                                    <a href="/c-0001500013.html"  rel="nofollow">
-                                        <nobr>ppt模板</nobr>
-                                    </a>
-                                    <a href="/c-0001500002.html"  rel="nofollow">
-                                        <nobr>工作总结</nobr>
-                                    </a>
-                                    <a href="/c-0001500009.html"  rel="nofollow">
-                                        <nobr>工作计划</nobr>
-                                    </a>
-                                    <a href="/c-0001500004.html"  rel="nofollow">
-                                        <nobr>工作报告</nobr>
-                                    </a>
-                                    <a href="/c-0001500014.html"  rel="nofollow">
-                                        <nobr>心得体会</nobr>
-                                    </a>
-                                    <a href="/c-0001500021.html"  rel="nofollow">
-                                        <nobr>活动方案</nobr>
-                                    </a>
-                                    <a href="/c-0001500022.html"  rel="nofollow">
-                                        <nobr>规章制度</nobr>
-                                    </a>
-                                    <a href="/c-0001500024.html"  rel="nofollow">
-                                        <nobr>读后感</nobr>
-                                    </a>
-                                    <a href="/c-0001500003.html"  rel="nofollow">
-                                        <nobr>汇报材料</nobr>
-                                    </a>
-                                    <a href="/c-0001500012.html"  rel="nofollow">
-                                        <nobr>其他办公文档</nobr>
-                                    </a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl class="category-title ">
-                                <dt><a href="/c-00017.html" >行业资料<b class="li-aw n-ic"></b></a><span
-                                        class="right-arrow">&gt;</span></dt>
-                                <dd>
-                                    <a href="/c-0001700008.html"  rel="nofollow">
-                                        <nobr>组织施工设计</nobr>
-                                    </a>
-                                    <a href="/c-0001700007.html"  rel="nofollow">
-                                        <nobr>指导说明书</nobr>
-                                    </a>
-                                    <a href="/c-0001700006.html"  rel="nofollow">
-                                        <nobr>解决措施</nobr>
-                                    </a>
-                                </dd>
-                            </dl>
-                            <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
-                                <dt><a href="/c-00017.html" >行业资料</a></dt>
-                                <dd>
-                                    <a href="/c-0001700008.html"  rel="nofollow">
-                                        <nobr>组织施工设计</nobr>
-                                    </a>
-                                    <a href="/c-0001700007.html"  rel="nofollow">
-                                        <nobr>指导说明书</nobr>
-                                    </a>
-                                    <a href="/c-0001700006.html"  rel="nofollow">
-                                        <nobr>解决措施</nobr>
-                                    </a>
-                                    <a href="/c-0001700005.html"  rel="nofollow">
-                                        <nobr>专业技术</nobr>
-                                    </a>
-                                    <a href="/c-0001700004.html"  rel="nofollow">
-                                        <nobr>技术规范</nobr>
-                                    </a>
-                                    <a href="/c-0001700001.html"  rel="nofollow">
-                                        <nobr>国家标准</nobr>
-                                    </a>
-                                    <a href="/c-0001700002.html"  rel="nofollow">
-                                        <nobr>行业标准</nobr>
-                                    </a>
-                                    <a href="/c-0001700003.html"  rel="nofollow">
-                                        <nobr>经营营销</nobr>
-                                    </a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl class="category-title ">
-                                <dt><a href="/c-00016.html" >教育资源<b class="li-aw n-ic"></b></a><span
-                                        class="right-arrow">&gt;</span></dt>
-                                <dd>
-                                    <a href="/c-0001600011.html"  rel="nofollow">
-                                        <nobr>课后答案</nobr>
-                                    </a>
-                                    <a href="/c-0001600013.html"  rel="nofollow">
-                                        <nobr>商业培训</nobr>
-                                    </a>
-                                    <a href="/c-0001600004.html"  rel="nofollow">
-                                        <nobr>考试资料</nobr>
-                                    </a>
-                                </dd>
-                            </dl>
-                            <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
-                                <dt><a href="/c-00016.html" >教育资源</a></dt>
-                                <dd>
-                                    <a href="/c-0001600011.html"  rel="nofollow">
-                                        <nobr>课后答案</nobr>
-                                    </a>
-                                    <a href="/c-0001600013.html"  rel="nofollow">
-                                        <nobr>商业培训</nobr>
-                                    </a>
-                                    <a href="/c-0001600004.html"  rel="nofollow">
-                                        <nobr>考试资料</nobr>
-                                    </a>
-                                    <a href="/c-0001600001.html"  rel="nofollow">
-                                        <nobr>教学课件</nobr>
-                                    </a>
-                                    <a href="/c-0001600007.html"  rel="nofollow">
-                                        <nobr>大学学习资料</nobr>
-                                    </a>
-                                    <a href="/c-0001600009.html"  rel="nofollow">
-                                        <nobr>高中学习资料</nobr>
-                                    </a>
-                                    <a href="/c-0001600008.html"  rel="nofollow">
-                                        <nobr>初中学习资料</nobr>
-                                    </a>
-                                    <a href="/c-0001600014.html"  rel="nofollow">
-                                        <nobr>小学学习资料</nobr>
-                                    </a>
-                                    <a href="/c-0001600003.html"  rel="nofollow">
-                                        <nobr>其他学习资料</nobr>
-                                    </a>
-                                    <a href="/c-0001600005.html"  rel="nofollow">
-                                        <nobr>练习与试题</nobr>
-                                    </a>
-                                    <a href="/c-0001600006.html"  rel="nofollow">
-                                        <nobr>英语资料</nobr>
-                                    </a>
-                                    <a href="/c-0001600010.html"  rel="nofollow">
-                                        <nobr>课程设计</nobr>
-                                    </a>
-                                    <a href="/c-0001600012.html"  rel="nofollow">
-                                        <nobr>临时分类</nobr>
-                                    </a>
-                                </dd>
-                            </dl>
-                        </li>
-                        <li>
-                            <dl class="category-title ">
-                                <dt><a href="/c-00018.html" >其他资料<b class="li-aw n-ic"></b></a><span
-                                        class="right-arrow">&gt;</span></dt>
-                                <dd>
-                                    <a href="/c-0001800001.html"  rel="nofollow">
-                                        <nobr>其他文档</nobr>
-                                    </a>
-                                    <a href="/c-0001800002.html"  rel="nofollow">
-                                        <nobr>免费文档</nobr>
-                                    </a>
-                                </dd>
-                            </dl>
-                            <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
-                                <dt><a href="/c-00018.html" >其他资料</a></dt>
-                                <dd>
-                                    <a href="/c-0001800001.html"  rel="nofollow">
-                                        <nobr>其他文档</nobr>
-                                    </a>
-                                    <a href="/c-0001800002.html"  rel="nofollow">
-                                        <nobr>免费文档</nobr>
-                                    </a>
-                                </dd>
-                            </dl>
-                        </li>
+                        </div>
                     </div>
+                    <script src="/static/vue/vue.js"></script>
+                    <script src="/static/vue/axios.min.js"></script>
+                    <script>
+                        var v = new Vue({
+                            el:'#qwe',
+                            data:{
+                                result:[]
+                            },
+                            created:function(){
+                                this.find();
+                            },
+                            methods:{
+                                "find":function () {
+                                    var url = "/Resource/findResource";
+                                    var that = this;
+                                    axios.get(url).then(function (value) {
+                                        that.result = value.data;
+                                    }).catch(function (reason) {
+                                        layer.alert("出错了");
+                                    });
+                                }
+                            }
+                        });
+                    </script>
                 </div>
             </div>
             <div class="j_menu">
@@ -799,7 +468,7 @@
         <div class="slides" style="height: 350px;  width:100%; margin:auto auto;">
             <ul class="picbox">
                 <li class="current"
-                    style="height: 350px;background:url(/static/images/2f7d401d-7788-4fb8-b46a-05189eddc53e.jpg) #00A4E8  no-repeat center center;">
+                    style="height: 350px;background:url(/static/js/2f7d401d-7788-4fb8-b46a-05189eddc53e.jpg) #00A4E8  no-repeat center center;">
                 </li>
             </ul>
         </div>
@@ -809,34 +478,6 @@
     var uid = "0";
     var scorename = "积分";
 </script>
-<div class="augg">
-    <div class="aumore">
-        <div id="marquee">
-            <li><a title="关于“全面禁止上传政府文件”文档的公告" href="n-115.html" 
-                   rel="nofollow">关于“全面禁止上传政府文件”文档的公告</a><span>2020-05-25 23:05:26.0</span></li>
-            <li><a title="415国家安全教育日--宣传教育" href="n-113.html"  rel="nofollow">415国家安全教育日--宣传教育</a><span>2020-04-15 14:19:06.0</span>
-            </li>
-            <li><a title="12-26 网站升级完毕，更新内容抢鲜看.." href="n-112.html"  rel="nofollow">12-26
-                网站升级完毕，更新内容抢鲜看..</a><span>2019-12-26 11:33:11.0</span></li>
-            <li><a title="公示：关于处罚会员“无敌小子”，ID号为158545的决定" href="n-108.html"  rel="nofollow">公示：关于处罚会员“无敌小子”，ID号为158545的决定</a><span>2020-04-18 14:44:26.0</span>
-            </li>
-            <li><a title="公示：关于处罚会员“aaakkhhp”，ID号为7604的决定" href="n-107.html"  rel="nofollow">公示：关于处罚会员“aaakkhhp”，ID号为7604的决定</a><span>2020-04-18 14:46:01.0</span>
-            </li>
-            <li><a title="公告：随心文库将于9月10日进行网站升级，无法打开（时长约6-8个小时）" href="n-106.html"  rel="nofollow">公告：随心文库将于9月10日进行网站升级，无法打开（时长约6-8个小时）</a><span>2019-10-29 18:21:23.0</span>
-            </li>
-            <li><a title="严惩发布重复内容违规行为，加强上传管理制度" href="n-102.html" 
-                   rel="nofollow">严惩发布重复内容违规行为，加强上传管理制度</a><span>2019-10-29 18:22:08.0</span></li>
-            <li><a title="网站增容升级，暂停文档上传几天，其他一切正常运行！" href="n-101.html"  rel="nofollow">网站增容升级，暂停文档上传几天，其他一切正常运行！</a><span>2019-10-29 18:22:15.0</span>
-            </li>
-            <li><a title="2019年4月30日网站服务升级，会出现短暂时间打不开" href="n-100.html"  rel="nofollow">2019年4月30日网站服务升级，会出现短暂时间打不开</a><span>2019-10-29 18:22:23.0</span>
-            </li>
-            <li><a title="服务器升级，网站可能出现打不开现象，持续时间几分钟" href="n-99.html"  rel="nofollow">服务器升级，网站可能出现打不开现象，持续时间几分钟</a><span>2019-10-29 18:22:30.0</span>
-            </li>
-        </div>
-    </div>
-    <div class="gmore"><a href="/news-1.html"  rel="nofollow">更多&gt;&gt;</a></div>
-    <script defer>new Marquee("marquee", 0, 1, 1000, 33, 20, 4000, 5000, 0);</script>
-</div>
 <div class="home_jrm">
     <div class="home_jrd">
         <div class="jrd_title">
@@ -846,99 +487,99 @@
         <div class="jrd_view">
             <li><a href="/p-19068135.html" >
                 <img alt="社区矫正人员思想汇报13篇"
-                     src=""><span
+                     src="/static/js/pic1.gif"><span
                     class="p">6</span></a>
                 <a title="社区矫正人员思想汇报13篇" href="/p-19068135.html" class="text" >社区矫正人员思想汇报13篇</a></li>
             <li><a href="/p-20662603.html" >
                 <img alt="三年级数学混合脱式运算100题(精选)"
-                     src=""><span
+                     src="/static/js/pic1.gif"><span
                     class="p">3</span></a>
                 <a title="三年级数学混合脱式运算100题(精选)" href="/p-20662603.html" class="text"
                    >三年级数学混合脱式运算100题(精选)</a></li>
             <li><a href="/p-29437139.html" >
                 <img alt="刑碧旗日记重口请慎入"
-                     src=""><span
+                     src="/static/js/pic1.gif"><span
                     class="p">182</span></a>
                 <a title="刑碧旗日记重口请慎入" href="/p-29437139.html" class="text" >刑碧旗日记重口请慎入</a></li>
             <li><a href="/p-29901404.html" >
                 <img alt="光伏材料行业"
-                     src=""><span
+                     src="/static/js/pic1.gif"><span
                     class="p">14</span></a>
                 <a title="光伏材料行业" href="/p-29901404.html" class="text" >光伏材料行业</a></li>
             <li><a href="/p-29903350.html" >
                 <img alt="全国青联十二届全委会心得"
-                     src=""><span
+                     src="/static/js/pic1.gif"><span
                     class="p">10</span></a>
                 <a title="全国青联十二届全委会心得" href="/p-29903350.html" class="text" >全国青联十二届全委会心得</a></li>
             <li><a href="/p-39773549.html" >
                 <img alt="闪光灵程(修订版)"
-                     src=""><span
+                     src="/static/js/pic1.gif"><span
                     class="p">12</span></a>
                 <a title="闪光灵程(修订版)" href="/p-39773549.html" class="text" >闪光灵程(修订版)</a></li>
             <li><a href="/p-40889437.html" >
-                <img
-                        alt="2018年度各年度一二三四季度入党积极分子思想汇报模板"
-                        src=""><span
+                <img alt="2018年度各年度一二三四季度入党积极分子思想汇报模板"
+                     src="/static/js/pic1.gif"><span
                     class="p">10</span></a>
                 <a title="2018年度各年度一二三四季度入党积极分子思想汇报模板" href="/p-40889437.html" class="text" >2018年度各年度一二三四季度入党积极分子思想汇报模板</a>
             </li>
             <li><a href="/p-43847456.html" >
                 <img alt="航拍中国第一季全部第二季一二集地理知识点详解"
-                     src="/static/images/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="p">14</span></a>
                 <a title="航拍中国第一季全部第二季一二集地理知识点详解" href="/p-43847456.html" class="text" >航拍中国第一季全部第二季一二集地理知识点详解</a>
             </li>
             <li><a href="/p-45910024.html" >
                 <img alt="全国人口普查地图标绘软件培训"
-                     src="http://f3.wenku365.com/2019-5/24/4548864c-3133-4509-9726-059bd654029a/p.jpg"><span class="p">84</span></a>
+                     src="/static/js/p.jpg"><span
+                    class="p">84</span></a>
                 <a title="全国人口普查地图标绘软件培训" href="/p-45910024.html" class="text" >全国人口普查地图标绘软件培训</a></li>
             <li><a href="/p-47476889.html" >
                 <img alt="挠脚心之校花落难记"
-                     src="/static/images/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="p">5</span></a>
                 <a title="挠脚心之校花落难记" href="/p-47476889.html" class="text" >挠脚心之校花落难记</a></li>
             <li><a href="/p-51526990.html" >
                 <img alt="各省PCR上岗证考试题库.doc"
-                     src="/static/images/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="p">4</span></a>
                 <a title="各省PCR上岗证考试题库.doc" href="/p-51526990.html" class="text" >各省PCR上岗证考试题库.doc</a>
             </li>
             <li><a href="/s-56485927.html" >
                 <img
                         alt="2020年广西专业技术人员公需科目考试试题答案.doc"
-                        src="/static/images/pic1.gif"><span
+                        src="/static/js/pic1.gif"><span
                     class="p">4</span></a>
                 <a title="2020年广西专业技术人员公需科目考试试题答案.doc" href="/s-56485927.html" class="text" >2020年广西专业技术人员公需科目考试试题答案.doc</a>
             </li>
             <li><a href="/s-56485973.html" >
                 <img
                         alt="2020年职称继续教育考试-山东省八大战略学习题库.docx"
-                        src="/static/images/pic1.gif"><span class="p">10</span></a>
+                        src="/static/js/pic1.gif"><span class="p">10</span></a>
                 <a title="2020年职称继续教育考试-山东省八大战略学习题库.docx" href="/s-56485973.html" class="text" >2020年职称继续教育考试-山东省八大战略学习题库.docx</a>
             </li>
             <li><a href="/s-56632796.html" >
                 <img
                         alt="绿色高效制冷行动及公共机构实施途径自测题.docx"
-                        src="/static/images/pic1.gif"><span
+                        src="/static/js/pic1.gif"><span
                     class="p">5</span></a>
                 <a title="绿色高效制冷行动及公共机构实施途径自测题.docx" href="/s-56632796.html" class="text" >绿色高效制冷行动及公共机构实施途径自测题.docx</a>
             </li>
             <li><a href="/s-56791691.html" >
                 <img
                         alt="2020年广西公需科目-当代科学技术前沿知识题目和答案.doc"
-                        src="/static/images/pic1.gif"><span
+                        src="/static/js/pic1.gif"><span
                     class="p">4</span></a>
                 <a title="2020年广西公需科目-当代科学技术前沿知识题目和答案.doc" href="/s-56791691.html" class="text" >2020年广西公需科目-当代科学技术前沿知识题目和答案.doc</a>
             </li>
             <li><a href="/s-56892296.html" >
                 <img alt="2020年公需课《区块链》课程考核题目.doc"
-                     src="/static/images/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="p">3</span></a>
                 <a title="2020年公需课《区块链》课程考核题目.doc" href="/s-56892296.html" class="text" >2020年公需课《区块链》课程考核题目.doc</a>
             </li>
             <li><a href="/s-56934605.html" >
                 <img alt="质量管理小组网络培训试题及答案.doc"
-                     src="/static/images/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="p">4</span></a>
                 <a title="质量管理小组网络培训试题及答案.doc" href="/s-56934605.html" class="text"
                    >质量管理小组网络培训试题及答案.doc</a></li>
@@ -981,74 +622,74 @@
         <div class="zx_view">
             <li><a href="/s-57398630.html" >
                 <img alt="实操演练方案.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/027dc8a9df85d0c4574bbbec05ee0ee1/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="实操演练方案.pdf" href="/s-57398630.html" class="text" >实操演练方案.pdf</a></li>
             <li><a href="/s-57398629.html" >
                 <img alt="完整详细的公司章程范本(doc).pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/2c50132a3dc00626e610a62fdc29c135/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="完整详细的公司章程范本(doc).pdf" href="/s-57398629.html" class="text" >完整详细的公司章程范本(doc).pdf</a>
             </li>
             <li><a href="/s-57398628.html" >
                 <img alt="完工证明范本.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/73eb1fbc896111366cc3944eb4c3b407/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="完工证明范本.pdf" href="/s-57398628.html" class="text" >完工证明范本.pdf</a></li>
             <li><a href="/s-57398627.html" >
                 <img alt="安拆工劳动合同书.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/d55c480abf645a286300035ed6e90c39/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="安拆工劳动合同书.pdf" href="/s-57398627.html" class="text" >安拆工劳动合同书.pdf</a></li>
             <li><a href="/s-57398626.html" >
                 <img alt="安防监控工程合同范本.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/9623249ac608b00b927e51f72a913cba/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="安防监控工程合同范本.pdf" href="/s-57398626.html" class="text" >安防监控工程合同范本.pdf</a></li>
             <li><a href="/s-57398625.html" >
                 <img alt="液体运动的流场理论.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/a4ab14b3c343f08e166ecb4f034ccaf5/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="ppt"></span></a>
                 <a title="液体运动的流场理论.ppt" href="/s-57398625.html" class="text" >液体运动的流场理论.ppt</a></li>
             <li><a href="/s-57398624.html" >
                 <img alt="学校的核心竞争力.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/dc6328d7f9277ad8b89cf682b099e426/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="学校的核心竞争力.pdf" href="/s-57398624.html" class="text" >学校的核心竞争力.pdf</a></li>
             <li><a href="/s-57398623.html" >
                 <img alt="学生会文艺部面试问题.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/fc43369092041d75f2f1a8351b730411/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="学生会文艺部面试问题.pdf" href="/s-57398623.html" class="text" >学生会文艺部面试问题.pdf</a></li>
             <li><a href="/s-57398622.html" >
                 <img alt="安全生产奖惩制度精品.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/f790de623ac85dc98f394b784e3ddf7c/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="安全生产奖惩制度精品.pdf" href="/s-57398622.html" class="text" >安全生产奖惩制度精品.pdf</a></li>
             <li><a href="/s-57398621.html" >
                 <img alt="学校控烟奖惩制度.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/34347a1464dd1adf3b86f58357e95cfe/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="学校控烟奖惩制度.pdf" href="/s-57398621.html" class="text" >学校控烟奖惩制度.pdf</a></li>
             <li><a href="/s-57398620.html" >
                 <img alt="学会使用银行卡教学设计.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/c38c31abf07191d67741bcd010253016/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="学会使用银行卡教学设计.pdf" href="/s-57398620.html" class="text" >学会使用银行卡教学设计.pdf</a></li>
             <li><a href="/s-57398619.html" >
                 <img alt="学校一岗双责制安全工作职责.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/77f42d3222f8ff0a072f3a0fc3b1acdb/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="学校一岗双责制安全工作职责.pdf" href="/s-57398619.html" class="text" >学校一岗双责制安全工作职责.pdf</a>
             </li>
             <li><a href="/s-57398618.html" >
                 <img alt="如何留住顾客.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/05d73c4d909d0c1d22487abd82a9fc8f/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="如何留住顾客.pdf" href="/s-57398618.html" class="text" >如何留住顾客.pdf</a></li>
             <li><a href="/s-57398617.html" >
                 <img alt="婚庆和酒店合作方案.pdf"
-                     data-original="http://f5.wenku365.com/2020-08/17/5da91182103dbc56dc66b5e238d42c72/pic1.gif"><span
+                     src="/static/js/pic1.gif"><span
                     class="pdf"></span></a>
                 <a title="婚庆和酒店合作方案.pdf" href="/s-57398617.html" class="text" >婚庆和酒店合作方案.pdf</a></li>
         </div>
@@ -1076,92 +717,92 @@
             <ul>
                 <li><a href="/s-56089086.html" >
                     <img alt="论文写作步骤及建议.doc"
-                         data-original="http://f5.wenku365.com/2020-03/16/ee5f38139f488fb5cb06182c004226d4/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
                     <a title="论文写作步骤及建议.doc" href="/s-56089086.html"  class="text">论文写作步骤及建议.doc</a>
                 </li>
                 <li><a href="/s-56089088.html" >
                     <img
                             alt="论文-在校大学生个人知识管理现状调查与分析.doc"
-                            data-original="http://f5.wenku365.com/2020-03/16/8733c8d361e5d6221ca13730748e53e4/pic1.gif">
+                            src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
                     <a title="论文-在校大学生个人知识管理现状调查与分析.doc" href="/s-56089088.html"  class="text">论文-在校大学生个人知识管理现状调查与分析.doc</a>
                 </li>
                 <li><a href="/s-56089092.html" >
                     <img
                             alt="论建筑工程中的市政地下排水工程毕业论.doc"
-                            data-original="http://f5.wenku365.com/2020-03/16/06c70cf7f2272e05d85359d7f7cd75eb/pic1.gif">
+                            src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
                     <a title="论建筑工程中的市政地下排水工程毕业论.doc" href="/s-56089092.html"  class="text">论建筑工程中的市政地下排水工程毕业论.doc</a>
                 </li>
                 <li><a href="/s-56089373.html" >
                     <img alt="音乐欣赏论文-D大调卡农赏析.doc"
-                         data-original="http://f5.wenku365.com/2020-03/16/a9090411b93097414e645c86aeb8c349/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
                     <a title="音乐欣赏论文-D大调卡农赏析.doc" href="/s-56089373.html"  class="text">音乐欣赏论文-D大调卡农赏析.doc</a>
                 </li>
                 <li><a href="/s-56089593.html" >
                     <img alt="餐桌礼仪论文300字.doc"
-                         data-original="http://f5.wenku365.com/2020-03/16/a8d689310df8c80bfbd1a46e23ad0dd8/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
                     <a title="餐桌礼仪论文300字.doc" href="/s-56089593.html"  class="text">餐桌礼仪论文300字.doc</a>
                 </li>
                 <li><a href="/s-56112623.html" >
                     <img alt="交通工程毕业论文选题.doc"
-                         data-original="http://f5.wenku365.com/2020-03/16/1b00ae43daed846e8dc4c70d6f80f22a/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
                     <a title="交通工程毕业论文选题.doc" href="/s-56112623.html"  class="text">交通工程毕业论文选题.doc</a>
                 </li>
                 <li><a href="/s-56113702.html" >
                     <img alt="电子商务案例分析毕业论文.doc"
-                         data-original="http://f5.wenku365.com/2020-03/16/9dd9de7e455b87289a4d954f94d9d0b7/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
-                    <a title="电子商务案例分析毕业论文.doc" href="/s-56113702.html" 
+                    <a title="电子商务案例分析毕业论文.doc" href="/s-56113702.html"
                        class="text">电子商务案例分析毕业论文.doc</a>
                 </li>
                 <li><a href="/s-56113717.html" >
                     <img alt="浅谈艺术教育的摘录笔记.doc"
-                         data-original="http://f5.wenku365.com/2020-03/16/fa80671366a878da3214371a99da5024/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
                     <a title="浅谈艺术教育的摘录笔记.doc" href="/s-56113717.html"  class="text">浅谈艺术教育的摘录笔记.doc</a>
                 </li>
                 <li><a href="/s-56113721.html" >
                     <img alt="浅谈秘书的信息工作.doc"
-                         data-original="http://f5.wenku365.com/2020-03/16/305d39ffb4d1c64e1c5bc858b901ddbc/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
                     <a title="浅谈秘书的信息工作.doc" href="/s-56113721.html"  class="text">浅谈秘书的信息工作.doc</a>
                 </li>
                 <li><a href="/s-56392363.html" >
                     <img
                             alt="青海春小麦主栽品种的酸价、碘价及活力变化规律的研究.ppt"
-                            data-original="http://f5.wenku365.com/2020-06/15/47b8b12638648333d49e33516a92e487/pic1.gif">
+                            src="/static/js/pic1.gif">
                     <span class="ppt"></span></a>
                     <a title="青海春小麦主栽品种的酸价、碘价及活力变化规律的研究.ppt" href="/s-56392363.html"  class="text">青海春小麦主栽品种的酸价、碘价及活力变化规律的研究.ppt</a>
                 </li>
                 <li><a href="/s-56392441.html" >
                     <img
                             alt="厦门工学院论文演示-网上购物系统的设计与实现.ppt"
-                            data-original="http://f5.wenku365.com/2020-06/15/eec60815d3567cf6076ca143997a414f/pic1.gif">
+                            src="/static/js/pic1.gif">
                     <span class="ppt"></span></a>
                     <a title="厦门工学院论文演示-网上购物系统的设计与实现.ppt" href="/s-56392441.html"  class="text">厦门工学院论文演示-网上购物系统的设计与实现.ppt</a>
                 </li>
                 <li><a href="/s-57333884.html" >
                     <img alt="后台文档测试文件.doc"
-                         data-original="http://f5.wenku365.com/2020-08/12/a1a7333083aef977bcb28864e372f3cf/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
                     <a title="后台文档测试文件.doc" href="/s-57333884.html"  class="text">后台文档测试文件.doc</a>
                 </li>
                 <li><a href="/s-57336437.html" >
                     <img alt="后台测试文件4请勿下载请勿下载.doc"
-                         data-original="http://f5.wenku365.com/2020-08/12/b2496bfb1039ca1d3b845f6f2efb7841/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
                     <a title="后台测试文件4请勿下载请勿下载.doc" href="/s-57336437.html"  class="text">后台测试文件4请勿下载请勿下载.doc</a>
                 </li>
                 <li><a href="/s-57352853.html" >
                     <img alt="原创2-测试作品-请勿下载.doc"
-                         data-original="http://f5.wenku365.com/2020-08/12/743021c4dd99d50c6b5e310291d864f4/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="doc"></span></a>
-                    <a title="原创2-测试作品-请勿下载.doc" href="/s-57352853.html" 
+                    <a title="原创2-测试作品-请勿下载.doc" href="/s-57352853.html"
                        class="text">原创2-测试作品-请勿下载.doc</a>
                 </li>
             </ul>
@@ -1171,93 +812,93 @@
                 <li><a href="/s-57397402.html" >
                     <img
                             alt="中医基础理论-四诊课件资料：藏象学说.ppt"
-                            data-original="http://f5.wenku365.com/2020-08/17/1a1bda2281ca19af24d8179f9351e7f7/pic1.gif">
+                            src="/static/js/pic1.gif">
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：藏象学说.ppt" href="/s-57397402.html"  class="text">中医基础理论-四诊课件资料：藏象学说.ppt</a>
                 </li>
                 <li><a href="/s-57397403.html" >
                     <img alt="中医基础理论-四诊课件资料：按诊.ppt"
-                         data-original="http://f5.wenku365.com/2020-08/17/cf01bb347652f45929182ceced720cd7/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：按诊.ppt" href="/s-57397403.html"  class="text">中医基础理论-四诊课件资料：按诊.ppt</a>
                 </li>
                 <li><a href="/s-57397407.html" >
                     <img alt="中医基础理论-四诊课件资料：肺经.ppt"
-                         data-original="http://f5.wenku365.com/2020-08/17/be2fe382a451e8c53733d6baf5c9fdf6/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：肺经.ppt" href="/s-57397407.html"  class="text">中医基础理论-四诊课件资料：肺经.ppt</a>
                 </li>
                 <li><a href="/s-57397416.html" >
                     <img
                             alt="中医基础理论-四诊课件资料：十二经补泻温凉引经药歌.ppt"
-                            data-original="http://f5.wenku365.com/2020-08/17/d67c8461df77e82bbadd971d99eeea78/pic1.gif">
+                            src="/static/js/pic1.gif">
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：十二经补泻温凉引经药歌.ppt" href="/s-57397416.html"  class="text">中医基础理论-四诊课件资料：十二经补泻温凉引经药歌.ppt</a>
                 </li>
                 <li><a href="/s-57397417.html" >
                     <img alt="中医基础理论-四诊课件资料：手诊.ppt"
-                         data-original="http://f5.wenku365.com/2020-08/17/3d9837996167e5b1d31e6a6fb3212dc9/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：手诊.ppt" href="/s-57397417.html"  class="text">中医基础理论-四诊课件资料：手诊.ppt</a>
                 </li>
                 <li><a href="/s-57397418.html" >
                     <img
                             alt="中医基础理论-四诊课件资料：五行讲义.ppt"
-                            data-original="http://f5.wenku365.com/2020-08/17/a869127690a44beb9b2a28a219890c63/pic1.gif">
+                            src="/static/js/pic1.gif">
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：五行讲义.ppt" href="/s-57397418.html"  class="text">中医基础理论-四诊课件资料：五行讲义.ppt</a>
                 </li>
                 <li><a href="/s-57397419.html" >
                     <img alt="中医基础理论-四诊课件资料：郁证.ppt"
-                         data-original="http://f5.wenku365.com/2020-08/17/457f19d61f6ad482500aca5c4df636ec/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：郁证.ppt" href="/s-57397419.html"  class="text">中医基础理论-四诊课件资料：郁证.ppt</a>
                 </li>
                 <li><a href="/s-57397420.html" >
                     <img alt="中医基础理论-四诊课件资料：掌纹诊病.ppt"
-                         data-original="http://f5.wenku365.com/2020-08/17/e1c776431aa1a12e3ca5fd027709ccbb/pic1.gif">
+                         src="/static/js/pic1.gif"><span
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：掌纹诊病.ppt" href="/s-57397420.html"  class="text">中医基础理论-四诊课件资料：掌纹诊病.ppt</a>
                 </li>
                 <li><a href="/s-57397421.html" >
                     <img
                             alt="中医基础理论-四诊课件资料：阴阳五行与身体健康.ppt"
-                            data-original="http://f5.wenku365.com/2020-08/17/25226bad169fc4c212e5242046dd377a/pic1.gif">
+                            src="/static/js/pic1.gif"><span
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：阴阳五行与身体健康.ppt" href="/s-57397421.html"  class="text">中医基础理论-四诊课件资料：阴阳五行与身体健康.ppt</a>
                 </li>
                 <li><a href="/s-57397423.html" >
                     <img
                             alt="中医基础理论-四诊课件资料：中药饮片学.ppt"
-                            data-original="http://f5.wenku365.com/2020-08/17/1d277b727a7fbe53bd515932842ed19f/pic1.gif">
+                            src="/static/js/pic1.gif"><span
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：中药饮片学.ppt" href="/s-57397423.html"  class="text">中医基础理论-四诊课件资料：中药饮片学.ppt</a>
                 </li>
                 <li><a href="/s-57397424.html" >
                     <img
                             alt="中医基础理论-四诊课件资料：中药的配伍.ppt"
-                            data-original="http://f5.wenku365.com/2020-08/17/3a8b0d6c4495ba5c17c7adc75b4df794/pic1.gif">
+                            src="/static/js/pic1.gif"><span
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：中药的配伍.ppt" href="/s-57397424.html"  class="text">中医基础理论-四诊课件资料：中药的配伍.ppt</a>
                 </li>
                 <li><a href="/s-57397427.html" >
                     <img
                             alt="中医基础理论-四诊课件资料：中医望闻问切.ppt"
-                            data-original="http://f5.wenku365.com/2020-08/17/1336c825ac59b4aa855ab7c08aab4971/pic1.gif">
+                            src="/static/js/pic1.gif"><span
                     <span class="ppt"></span></a>
                     <a title="中医基础理论-四诊课件资料：中医望闻问切.ppt" href="/s-57397427.html"  class="text">中医基础理论-四诊课件资料：中医望闻问切.ppt</a>
                 </li>
                 <li><a href="/s-57397431.html" >
                     <img alt="腧穴学课件资料：足太阳小肠肾经.ppt"
-                         data-original="http://f5.wenku365.com/2020-08/17/1421f51af045212857233762eedcaf73/pic1.gif">
+                         src="/static/js/pic1.gif"><span
                     <span class="ppt"></span></a>
                     <a title="腧穴学课件资料：足太阳小肠肾经.ppt" href="/s-57397431.html"  class="text">腧穴学课件资料：足太阳小肠肾经.ppt</a>
                 </li>
                 <li><a href="/s-57397536.html" >
                     <img alt="养生课件资料：地黄丸系列.pptx"
-                         data-original="http://f5.wenku365.com/2020-08/17/dcf346fd1fe1a721cf9bf1b2714f940e/pic1.gif">
+                         src="/static/js/pic1.gif"><span
                     <span class="ppt"></span></a>
-                    <a title="养生课件资料：地黄丸系列.pptx" href="/s-57397536.html" 
+                    <a title="养生课件资料：地黄丸系列.pptx" href="/s-57397536.html"
                        class="text">养生课件资料：地黄丸系列.pptx</a>
                 </li>
             </ul>
@@ -1267,47 +908,47 @@
                 <li><a href="/s-57394785.html" >
                     <img
                             alt="成都市某立交桥工程施工组织设计方案.pdf"
-                            data-original="http://f5.wenku365.com/2020-08/16/b5528e1ce7af7ff4b15e2e940c1b78b4/pic1.gif">
+                            src="/static/js/pic1.gif"><span
                     <span class="pdf"></span></a>
                     <a title="成都市某立交桥工程施工组织设计方案.pdf" href="/s-57394785.html"  class="text">成都市某立交桥工程施工组织设计方案.pdf</a>
                 </li>
                 <li><a href="/s-57394786.html" >
                     <img alt="城市轻轨工程施工组织设计.pdf"
-                         data-original="http://f5.wenku365.com/2020-08/16/0434dd01b3ca15afd408add11bb9b434/pic1.gif">
+                         src="/static/js/pic1.gif"><span
                     <span class="pdf"></span></a>
-                    <a title="城市轻轨工程施工组织设计.pdf" href="/s-57394786.html" 
+                    <a title="城市轻轨工程施工组织设计.pdf" href="/s-57394786.html"
                        class="text">城市轻轨工程施工组织设计.pdf</a>
                 </li>
                 <li><a href="/s-57394787.html" >
                     <img alt="城市轻轨工程施工组织设计方案.pdf"
-                         data-original="http://f5.wenku365.com/2020-08/16/f44007d2445327a21e7b19fec1631b0c/pic1.gif">
+                         src="/static/js/pic1.gif"><span
                     <span class="pdf"></span></a>
                     <a title="城市轻轨工程施工组织设计方案.pdf" href="/s-57394787.html"  class="text">城市轻轨工程施工组织设计方案.pdf</a>
                 </li>
                 <li><a href="/s-57394788.html" >
                     <img alt="电站热力管网工程施工组织设计.pdf"
-                         data-original="http://f5.wenku365.com/2020-08/16/68a80f4c9153564a50fdb0439e1d02ac/pic1.gif">
+                         src="/static/js/pic1.gif"><span
                     <span class="pdf"></span></a>
                     <a title="电站热力管网工程施工组织设计.pdf" href="/s-57394788.html"  class="text">电站热力管网工程施工组织设计.pdf</a>
                 </li>
                 <li><a href="/s-57394792.html" >
                     <img alt="北京六环路投标施工组织设计.pdf"
-                         data-original="http://f5.wenku365.com/2020-08/16/390c4f8d5faa3a2350f9f63ccfa3648d/pic1.gif">
+                         src="/static/js/pic1.gif"><span
                     <span class="pdf"></span></a>
-                    <a title="北京六环路投标施工组织设计.pdf" href="/s-57394792.html" 
+                    <a title="北京六环路投标施工组织设计.pdf" href="/s-57394792.html"
                        class="text">北京六环路投标施工组织设计.pdf</a>
                 </li>
                 <li><a href="/s-57394793.html" >
                     <img alt="北京六环路投标施工组织设计方案.pdf"
-                         data-original="http://f5.wenku365.com/2020-08/16/bdb7d0b71c10671e504bc095b47576ed/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="pdf"></span></a>
                     <a title="北京六环路投标施工组织设计方案.pdf" href="/s-57394793.html"  class="text">北京六环路投标施工组织设计方案.pdf</a>
                 </li>
                 <li><a href="/s-57394794.html" >
                     <img alt="北京某道路改造施工组织设计.pdf"
-                         data-original="http://f5.wenku365.com/2020-08/16/3fa00b2d239a747cb929b7ccb2ca0f85/pic1.gif">
+                         src="/static/js/pic1.gif">
                     <span class="pdf"></span></a>
-                    <a title="北京某道路改造施工组织设计.pdf" href="/s-57394794.html" 
+                    <a title="北京某道路改造施工组织设计.pdf" href="/s-57394794.html"
                        class="text">北京某道路改造施工组织设计.pdf</a>
                 </li>
                 <li><a href="/s-57394795.html" >
@@ -1321,7 +962,7 @@
                             alt="DB1301∕T 336-2020 “双随机、一公开”监管工作规范.pdf"
                             data-original="http://f5.wenku365.com/2020-08/17/1e8d974cf91cccf9b56259fa14bec27a/pic1.gif">
                     <span class="pdf"></span></a>
-                    <a title="DB1301∕T 336-2020 “双随机、一公开”监管工作规范.pdf" href="/s-57396741.html" 
+                    <a title="DB1301∕T 336-2020 “双随机、一公开”监管工作规范.pdf" href="/s-57396741.html"
                        class="text">DB1301∕T 336-2020 “双随机、一公开”监管工作规范.pdf</a>
                 </li>
                 <li><a href="/s-57396742.html" >
@@ -1329,7 +970,7 @@
                             alt="DB1301∕T 332-2020 农业物联网平台数据交换共享指南.pdf"
                             data-original="http://f5.wenku365.com/2020-08/17/959d46bb7e437361e319efad7315c56a/pic1.gif">
                     <span class="pdf"></span></a>
-                    <a title="DB1301∕T 332-2020 农业物联网平台数据交换共享指南.pdf" href="/s-57396742.html" 
+                    <a title="DB1301∕T 332-2020 农业物联网平台数据交换共享指南.pdf" href="/s-57396742.html"
                        class="text">DB1301∕T 332-2020 农业物联网平台数据交换共享指南.pdf</a>
                 </li>
                 <li><a href="/s-57396743.html" >
@@ -1337,7 +978,7 @@
                             alt="DB1301∕T 329-2020 照山白杜鹃组培快繁育苗技术规程.pdf"
                             data-original="http://f5.wenku365.com/2020-08/17/a4726d30c1550eafab6c694814a70032/pic1.gif">
                     <span class="pdf"></span></a>
-                    <a title="DB1301∕T 329-2020 照山白杜鹃组培快繁育苗技术规程.pdf" href="/s-57396743.html" 
+                    <a title="DB1301∕T 329-2020 照山白杜鹃组培快繁育苗技术规程.pdf" href="/s-57396743.html"
                        class="text">DB1301∕T 329-2020 照山白杜鹃组培快繁育苗技术规程.pdf</a>
                 </li>
                 <li><a href="/s-57396744.html" >
@@ -1345,7 +986,7 @@
                             alt="DB1301∕T 337-2020 大规格杏树嫁接梅育苗技术规程.pdf"
                             data-original="http://f5.wenku365.com/2020-08/17/b3aaf4adcaadfb65f9e4cf5d8473c2e8/pic1.gif">
                     <span class="pdf"></span></a>
-                    <a title="DB1301∕T 337-2020 大规格杏树嫁接梅育苗技术规程.pdf" href="/s-57396744.html" 
+                    <a title="DB1301∕T 337-2020 大规格杏树嫁接梅育苗技术规程.pdf" href="/s-57396744.html"
                        class="text">DB1301∕T 337-2020 大规格杏树嫁接梅育苗技术规程.pdf</a>
                 </li>
                 <li><a href="/s-57396745.html" >
@@ -1361,7 +1002,7 @@
                             alt="DB6105∕T 109-2019 秦岭北麓核桃果实采收处理贮藏技术规程.pdf"
                             data-original="http://f5.wenku365.com/2020-08/17/e111b2686908e52e605074707a9627dd/pic1.gif">
                     <span class="pdf"></span></a>
-                    <a title="DB6105∕T 109-2019 秦岭北麓核桃果实采收处理贮藏技术规程.pdf" href="/s-57396747.html" 
+                    <a title="DB6105∕T 109-2019 秦岭北麓核桃果实采收处理贮藏技术规程.pdf" href="/s-57396747.html"
                        class="text">DB6105∕T 109-2019 秦岭北麓核桃果实采收处理贮藏技术规程.pdf</a>
                 </li>
             </ul>
@@ -1384,7 +1025,7 @@
                     <img alt="中考化学计算题-专项练习.doc"
                          data-original="http://f5.wenku365.com/2020-08/15/30c18d2cdff588235d2a53f24c82999f/pic1.gif">
                     <span class="doc"></span></a>
-                    <a title="中考化学计算题-专项练习.doc" href="/s-57397704.html" 
+                    <a title="中考化学计算题-专项练习.doc" href="/s-57397704.html"
                        class="text">中考化学计算题-专项练习.doc</a>
                 </li>
                 <li><a href="/s-57397705.html" >
@@ -1457,7 +1098,7 @@
                             alt="【冀教版】六年级数学上册课件 第1单元  圆和扇形 第1课时  圆的认识.ppt"
                             data-original="http://f5.wenku365.com/2020-08/17/235b0d393a90ce89011c1ffbf1ab6c5d/pic1.gif">
                     <span class="ppt"></span></a>
-                    <a title="【冀教版】六年级数学上册课件 第1单元  圆和扇形 第1课时  圆的认识.ppt" href="/s-57398746.html" 
+                    <a title="【冀教版】六年级数学上册课件 第1单元  圆和扇形 第1课时  圆的认识.ppt" href="/s-57398746.html"
                        class="text">【冀教版】六年级数学上册课件 第1单元 圆和扇形 第1课时 圆的认识.ppt</a>
                 </li>
             </ul>
@@ -1493,14 +1134,14 @@
                     <img alt="平衡积分卡员工岗位考核办法.pdf"
                          data-original="http://f5.wenku365.com/2020-08/17/48b1f8e424df3eca2cf90e16c0341ac5/pic1.gif">
                     <span class="pdf"></span></a>
-                    <a title="平衡积分卡员工岗位考核办法.pdf" href="/s-57398747.html" 
+                    <a title="平衡积分卡员工岗位考核办法.pdf" href="/s-57398747.html"
                        class="text">平衡积分卡员工岗位考核办法.pdf</a>
                 </li>
                 <li><a href="/s-57398748.html" >
                     <img alt="平台、走梯、爬梯、护笼方案.pdf"
                          data-original="http://f5.wenku365.com/2020-08/17/c969c3177dc2a23f61f7c0fc4d208149/pic1.gif">
                     <span class="pdf"></span></a>
-                    <a title="平台、走梯、爬梯、护笼方案.pdf" href="/s-57398748.html" 
+                    <a title="平台、走梯、爬梯、护笼方案.pdf" href="/s-57398748.html"
                        class="text">平台、走梯、爬梯、护笼方案.pdf</a>
                 </li>
                 <li><a href="/s-57398749.html" >
@@ -1519,7 +1160,7 @@
                     <img alt="幼儿园财务管理制度细则精品.pdf"
                          data-original="http://f5.wenku365.com/2020-08/17/7c6d2a63001f95e8a1a126c363040700/pic1.gif">
                     <span class="pdf"></span></a>
-                    <a title="幼儿园财务管理制度细则精品.pdf" href="/s-57398751.html" 
+                    <a title="幼儿园财务管理制度细则精品.pdf" href="/s-57398751.html"
                        class="text">幼儿园财务管理制度细则精品.pdf</a>
                 </li>
                 <li><a href="/s-57398752.html" >
@@ -1566,103 +1207,103 @@
         <div class="jp_view " id="x02">
             <li><a href="/s-57398530.html" >
                 <img alt="旅游投资分析.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/2d840474c3ab4ca7776156ce214ef485/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="旅游投资分析.ppt" href="/s-57398530.html"  class="text">旅游投资分析.ppt</a>
             </li>
             <li><a href="/s-57398529.html" >
                 <img alt="旅游经济学产品开发.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/d3b6687cce9e4bd7fec7c402b5dc2714/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="旅游经济学产品开发.ppt" href="/s-57398529.html"  class="text">旅游经济学产品开发.ppt</a>
             </li>
             <li><a href="/s-57398515.html" >
                 <img alt="斜压原始方程摸式.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/899dbbe65e99aca744b0b9cbfe27b670/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="斜压原始方程摸式.ppt" href="/s-57398515.html"  class="text">斜压原始方程摸式.ppt</a>
             </li>
             <li><a href="/s-57398514.html" >
                 <img alt="新人教版高中物理选修3电势能和电势课件.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/c4fac3c1d144deb25f1697f16fbd5126/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="新人教版高中物理选修3电势能和电势课件.ppt" href="/s-57398514.html"  class="text">新人教版高中物理选修3电势能和电势课件.ppt</a>
             </li>
             <li><a href="/s-57398511.html" >
                 <img alt="数电卡诺图化简法课件.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/756be3ca00e488c4dcdcfd0491ed8165/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="数电卡诺图化简法课件.ppt" href="/s-57398511.html"  class="text">数电卡诺图化简法课件.ppt</a>
             </li>
             <li><a href="/s-57398499.html" >
                 <img alt="排列(第二课时).ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/bcdca016092578bb416ae32f85f0ffea/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="排列(第二课时).ppt" href="/s-57398499.html"  class="text">排列(第二课时).ppt</a>
             </li>
             <li><a href="/s-57398498.html" >
                 <img alt="指导高中新生怎样制订学习计划.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/b07e1bbdf54a31a0738d77afb9170214/pic1.gif"></a>
-                <a title="指导高中新生怎样制订学习计划.ppt" href="/s-57398498.html" 
+                     src="/static/js/pic1.gif"></a>
+                <a title="指导高中新生怎样制订学习计划.ppt" href="/s-57398498.html"
                    class="text">指导高中新生怎样制订学习计划.ppt</a>
             </li>
             <li><a href="/s-57398493.html" >
                 <img alt="抽样计划管理办法.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/e09220e0104c1805e8fb6f11ab558ee8/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="抽样计划管理办法.ppt" href="/s-57398493.html"  class="text">抽样计划管理办法.ppt</a>
             </li>
             <li><a href="/s-57398487.html" >
                 <img alt="护理计划单如何制订().ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/f092060c6efd2fd44d2aac74d68cd2a8/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="护理计划单如何制订().ppt" href="/s-57398487.html"  class="text">护理计划单如何制订().ppt</a>
             </li>
             <li><a href="/s-57398483.html" >
                 <img alt="扩充的正弦定理.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/a15d7fde57eab66621a3321ed0e914fe/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="扩充的正弦定理.ppt" href="/s-57398483.html"  class="text">扩充的正弦定理.ppt</a>
             </li>
             <li><a href="/s-57398480.html" >
                 <img alt="房地产企业如何实施税务管理与筹划.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/c0bf6670d0103e5be6916c04d7f799db/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="房地产企业如何实施税务管理与筹划.ppt" href="/s-57398480.html"  class="text">房地产企业如何实施税务管理与筹划.ppt</a>
             </li>
             <li><a href="/s-57398460.html" >
                 <img alt="微课--lie和lay的用法聚焦.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/06dabe6ce7d7ebf97589a57bddcc327c/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="微课--lie和lay的用法聚焦.ppt" href="/s-57398460.html"  class="text">微课--lie和lay的用法聚焦.ppt</a>
             </li>
             <li><a href="/s-57398453.html" >
                 <img alt="循环流化床锅炉的燃烧与传热.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/d55160350e1f3620f911e86244ec1203/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="循环流化床锅炉的燃烧与传热.ppt" href="/s-57398453.html"  class="text">循环流化床锅炉的燃烧与传热.ppt</a>
             </li>
             <li><a href="/s-57398447.html" >
                 <img alt="开发区基础设施融资租赁简介.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/031655cbf484348bbcc9bda8ea9fe5ee/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="开发区基础设施融资租赁简介.ppt" href="/s-57398447.html"  class="text">开发区基础设施融资租赁简介.ppt</a>
             </li>
             <li><a href="/s-57398435.html" >
                 <img alt="应用文计划和总结.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/5f8b3f849f704f2b278266d670cf998e/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="应用文计划和总结.ppt" href="/s-57398435.html"  class="text">应用文计划和总结.ppt</a>
             </li>
             <li><a href="/s-57398427.html" >
                 <img alt="幼儿皮肤的特点与卫生保健.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/ea6704b2e56ae886f2b2c54fda921ccd/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="幼儿皮肤的特点与卫生保健.ppt" href="/s-57398427.html"  class="text">幼儿皮肤的特点与卫生保健.ppt</a>
             </li>
             <li><a href="/s-57398419.html" >
                 <img alt="市场调查策划.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/8e6fc917743deba23034d930da685d9c/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="市场调查策划.ppt" href="/s-57398419.html"  class="text">市场调查策划.ppt</a>
             </li>
             <li><a href="/s-57398418.html" >
                 <img alt="常见造岩矿物鉴定特征.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/a588c0b80439748e1ae9e4854ed43afd/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="常见造岩矿物鉴定特征.ppt" href="/s-57398418.html"  class="text">常见造岩矿物鉴定特征.ppt</a>
             </li>
             <li><a href="/s-57398388.html" >
                 <img alt="客户忠诚度分析.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/1797848618dfe6f4d9913bbe2effd208/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="客户忠诚度分析.ppt" href="/s-57398388.html"  class="text">客户忠诚度分析.ppt</a>
             </li>
             <li><a href="/s-57398379.html" >
                 <img alt="实验四__颗粒剂的制备.ppt"
-                     data-original="http://f5.wenku365.com/2020-08/17/91b644811683634616b3b9ad40d6d3f4/pic1.gif"></a>
+                     src="/static/js/pic1.gif"></a>
                 <a title="实验四__颗粒剂的制备.ppt" href="/s-57398379.html"  class="text">实验四__颗粒剂的制备.ppt</a>
             </li>
         </div>
@@ -1704,45 +1345,6 @@
         <div class="lr_title">
             <a class="flou4"></a>
             <h1><font color="#ff6333">牛</font>人榜</h1>
-            <div class="sitemap">
-                <a  href="sitemap-2.html">2</a>
-                <a  href="sitemap-3.html">3</a>
-                <a  href="sitemap-4.html">4</a>
-                <a  href="sitemap-5.html">5</a>
-                <a  href="sitemap-6.html">6</a>
-                <a  href="sitemap-7.html">7</a>
-                <a  href="sitemap-8.html">8</a>
-                <a  href="sitemap-9.html">9</a>
-                <a  href="sitemap-10.html">10</a>
-                <a  href="sitemap-20.html">20</a>
-                <a  href="sitemap-30.html">30</a>
-                <a  href="sitemap-40.html">40</a>
-                <a  href="sitemap-50.html">50</a>
-                <a  href="sitemap-60.html">60</a>
-                <a  href="sitemap-70.html">70</a>
-                <a  href="sitemap-80.html">80</a>
-                <a  href="sitemap-90.html">90</a>
-                <a  href="sitemap-100.html">100</a>
-                <a  href="sitemap-110.html">110</a>
-                <a  href="sitemap-120.html">120</a>
-                <a  href="sitemap-130.html">130</a>
-                <a  href="sitemap-140.html">140</a>
-                <a  href="sitemap-150.html">150</a>
-                <a  href="sitemap-160.html">160</a>
-                <a  href="sitemap-170.html">170</a>
-                <a  href="sitemap-180.html">180</a>
-                <a  href="sitemap-190.html">190</a>
-                <a  href="sitemap-200.html">200</a>
-                <a  href="sitemap-300.html">300</a>
-                <a  href="sitemap-400.html">400</a>
-                <a  href="sitemap-500.html">500</a>
-                <a  href="sitemap-600.html">600</a>
-                <a  href="sitemap-700.html">700</a>
-                <a  href="sitemap-800.html">800</a>
-                <a  href="sitemap-900.html">900</a>
-                <a  href="sitemap-1000.html">1000</a>
-                <a  href="sitemap-2000.html">2000</a>
-            </div>
             <div class="lr_r more"><a href="UserCenter.html"  rel="nofollow">更多&gt;&gt;</a></div>
         </div>
         <div class="zr_view" style="height: 480px">
@@ -1768,7 +1370,7 @@
                     <a href="/u-5097.html"  rel="nofollow">
                         <img data-original="/static/images/avatar.png" title="aa21546" alt="aa21546"
 
-                             src="/static/images/avatar.png" style="display: inline;">
+                             src="/static/js/avatar.png" style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
 <a href="/u-5097.html"  rel="nofollow" style="font-size: 16px;">aa21546</a>
@@ -1783,7 +1385,7 @@
                     <a href="/u-7604.html"  rel="nofollow">
                         <img data-original="/static/images/avatar.png" title="aaakkhhp" alt="aaakkhhp"
 
-                             src="/static/images/avatar.png" style="display: inline;">
+                             src="/static/js/avatar.png" style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
 <a href="/u-7604.html"  rel="nofollow" style="font-size: 16px;">aaakkhhp</a>
@@ -1796,9 +1398,8 @@
                 </li>
                 <li>
                     <a href="/u-5649.html"  rel="nofollow">
-                        <img data-original="/static/images/avatar.png" title="bb21547" alt="bb21547"
-
-                             src="/static/images/avatar.png" style="display: inline;">
+                        <img title="bb21547" alt="bb21547"
+                             src="/static/js/avatar_small.gif" style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
 <a href="/u-5649.html"  rel="nofollow" style="font-size: 16px;">bb21547</a>
@@ -1811,9 +1412,8 @@
                 </li>
                 <li>
                     <a href="/u-145848.html"  rel="nofollow">
-                        <img data-original="/static/images/avatar.png" title="maxianhui" alt="maxianhui"
-
-                             src="/static/images/avatar.png" style="display: inline;">
+                        <img title="maxianhui" alt="maxianhui"
+                             src="/static/js/avatar.png" style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
 <a href="/u-145848.html"  rel="nofollow" style="font-size: 16px;">maxianhui</a>
@@ -1826,9 +1426,8 @@
                 </li>
                 <li>
                     <a href="/u-2437.html"  rel="nofollow">
-                        <img data-original="/static/images/avatar.png" title="仙人指路888" alt="仙人指路888"
-
-                             src="/static/images/avatar.png" style="display: inline;">
+                        <img title="仙人指路888" alt="仙人指路888"
+                             src="/static/js/avatar.png" style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
 <a href="/u-2437.html"  rel="nofollow" style="font-size: 16px;">仙人指路888</a>
@@ -1841,10 +1440,8 @@
                 </li>
                 <li>
                     <a href="/u-5734.html"  rel="nofollow">
-                        <img data-original="http://www.wenku365.com/FlexPaper/ZoomImage/UploadPhoto/tx_20190223151126.png"
-                             title="jinwen" alt="jinwen"
-
-                             src="http://www.wenku365.com/FlexPaper/ZoomImage/UploadPhoto/tx_20190223151126.png"
+                        <img title="jinwen" alt="jinwen"
+                             src="/static/js/avatar_small.gif"
                              style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
@@ -1858,9 +1455,9 @@
                 </li>
                 <li>
                     <a href="/u-158545.html"  rel="nofollow">
-                        <img data-original="attachment/20200224/a2679372dfc74b54b1a045e45c933e9c.jpg" title="无敌小子"
+                        <img title="无敌小子"
                              alt="无敌小子"
-                             src="/templates/calmlog/attachment/20200224/a2679372dfc74b54b1a045e45c933e9c.jpg"
+                             src="/static/js/avatar_small.gif"
                              style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
@@ -1876,7 +1473,7 @@
                     <a href="/u-2441.html"  rel="nofollow">
                         <img data-original="/static/images/avatar.png" title="精品公文资料" alt="精品公文资料"
 
-                             src="/static/images/avatar.png" style="display: inline;">
+                             src="/static/js/avatar.png" style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
 <a href="/u-2441.html"  rel="nofollow" style="font-size: 16px;">精品公文资料</a>
@@ -1889,9 +1486,8 @@
                 </li>
                 <li>
                     <a href="/u-250462.html"  rel="nofollow">
-                        <img data-original="/static/images/avatar.png" title="xtt9527" alt="xtt9527"
-
-                             src="/static/images/avatar.png" style="display: inline;">
+                        <img title="xtt9527" alt="xtt9527"
+                             src="/static/images/avatar_small.gif.png" style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
 <a href="/u-250462.html"  rel="nofollow" style="font-size: 16px;">xtt9527</a>
@@ -1906,7 +1502,7 @@
                     <a href="/u-1075.html"  rel="nofollow">
                         <img
                                 title="文库小秘" alt="文库小秘"
-
+                                src="/static/js/avatar_small.gif"
                                 style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
@@ -1922,7 +1518,7 @@
                     <a href="/u-250468.html"  rel="nofollow">
                         <img data-original="/static/images/avatar.png" title="yingxiaorong" alt="yingxiaorong"
 
-                             src="/static/images/avatar.png" style="display: inline;">
+                             src="/static/js/avatar.png" style="display: inline;">
                     </a>
                     <p class="xm"><span class="name">
 <a href="/u-250468.html"  rel="nofollow" style="font-size: 16px;">yingxiaorong</a>
@@ -2049,7 +1645,7 @@
                     class="hide_pic"></span>在线客服</a></div>
         </div>
         <div class="Q_anser">
-            <div class="Q_anser_hide"><a 
+            <div class="Q_anser_hide"><a
                                          href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=1290478887@qq.com"
                                          title="意见反馈">
                 <span class="hide_pic1"></span>意见反馈 </a></div>
@@ -2081,5 +1677,6 @@
         threshold: 180
     });
 </script>
+</div>
 </body>
 </html>
