@@ -64,7 +64,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
                 .authorizeRequests()
-                .antMatchers("/utils/**","/Home/**").permitAll()
+                .antMatchers("/utils/**","/Home/**","/Resource/**","/code/**","/customer/**").permitAll()
                 .anyRequest()
                 .access("@rbacConfig.isForbidden(request,authentication)")
             .and()

@@ -27,6 +27,13 @@ public class IndexController {
     //登录页面
     @RequestMapping("login")
     public String login(){
-        return "Login/index";
+        return "Login/login";
     }
+
+    //进入个人中心
+    @RequestMapping("user")
+    public String user(){
+        return "Upload/index";
+    }
+
 }
