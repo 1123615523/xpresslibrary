@@ -7,5 +7,6 @@ public interface CustomerDao {
     Integer add(Customerinfo customerinfo);
 
     /**登录*/
+    Customerinfo bypwd(String customertel,String customeremail,String customerpwd);
 
 }

@@ -14,4 +14,8 @@
         LEFT JOIN resourcesdetails on resourcesinfo.id = resourcesdetails.resourcesid
     </select>
 
+    <select id="findResourceById" resultType="com.aaa.entity.Resourcesdetails">
+        select * from resourcesdetails where resourcesid = #{value}
+    </select>
+
 </mapper>
