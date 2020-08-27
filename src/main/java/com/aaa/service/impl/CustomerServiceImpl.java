@@ -19,4 +19,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Integer add(Customerinfo customerinfo) {
         return customerDao.add(customerinfo);
     }
+
+    @Override
+    public Customerinfo bypwd(String customertel, String customeremail, String customerpwd) {
+        return customerDao.bypwd(customertel,customeremail,customerpwd);
+    }
 }

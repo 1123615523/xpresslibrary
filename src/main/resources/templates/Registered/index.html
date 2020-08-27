@@ -143,6 +143,9 @@
                    layer.alert("手机号码长度或格式不正确！");
                    return;
                }
+
+               /*少个数据查询验证*/
+
                var url ="/code/phonecode?phone="+phone;
                axios.get(url).then(function (value) {
                    console.log(value.data);

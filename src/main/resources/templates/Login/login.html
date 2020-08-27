@@ -8,6 +8,8 @@
     <script src="/static/js/push.js"></script>
     <script src="/static/js/hm.js"></script>
     <script type="text/javascript" src="/static/js/CheckLogin.js"></script>
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
     <style type="text/css">
         .fix:after {
             content: ".";
@@ -525,15 +527,13 @@
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/qidongcommons.js"></script>
 
-    <link href="/static/js/recentBrowse.css" rel="stylesheet">
-    <script src="/static/js/recentBrowse.js"></script>
+    <!--<link href="/static/js/recentBrowse.css" rel="stylesheet">-->
+    <!--<script src="/static/js/recentBrowse.js"></script>-->
 
 </head>
 <body>
 
-<div id="headerplace" style="height: 39px; background-color:#fff; overflow: hidden; width: 100%; min-width:1200px;">
 
-</div>
 
 <div style="background-color:#fff; z-index:1; position:relative; min-width:1200px;">
     <div class="xxxk_top cf">
@@ -593,26 +593,26 @@
                             <li v-for="res in result">
                                 <dl class="category-title ">
                                     <dt>
-                                        <a href="/c-00012.html" >{{res.name}}<b class="li-aw n-ic"></b></a>
+                                        <a href="/c-00012.html">{{res.name}}<b class="li-aw n-ic"></b></a>
                                         <span class="right-arrow">&gt;</span>
                                     </dt>
                                     <dd>
-                                        <a href="/c-0001200007.html"  rel="nofollow">
+                                        <a href="/c-0001200007.html" rel="nofollow">
                                             <nobr>毕业论文</nobr>
                                         </a>
-                                        <a href="/c-0001200024.html"  rel="nofollow">
+                                        <a href="/c-0001200024.html" rel="nofollow">
                                             <nobr>毕业设计</nobr>
                                         </a>
-                                        <a href="/c-0001200015.html"  rel="nofollow">
+                                        <a href="/c-0001200015.html" rel="nofollow">
                                             <nobr>临时分类</nobr>
                                         </a>
                                     </dd>
                                 </dl>
                                 <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
-                                    <dt><a href="/c-00012.html" >学术论文</a></dt>
+                                    <dt><a href="/c-00012.html">学术论文</a></dt>
                                     <dd>
                                     <span v-for="chid in res.resourcesdetails">
-                                        <a  href=""  rel="nofollow">
+                                        <a href="" rel="nofollow">
                                             <nobr>{{chid.dname}}</nobr>
                                         </a>
                                     </span>
@@ -625,15 +625,15 @@
                     <script src="/static/vue/axios.min.js"></script>
                     <script>
                         var v = new Vue({
-                            el:'#qwe',
-                            data:{
-                                result:[]
+                            el: '#qwe',
+                            data: {
+                                result: []
                             },
-                            created:function(){
+                            created: function () {
                                 this.find();
                             },
-                            methods:{
-                                "find":function () {
+                            methods: {
+                                "find": function () {
                                     var url = "/Resource/findResource";
                                     var that = this;
                                     axios.get(url).then(function (value) {
@@ -646,68 +646,110 @@
                         });
                     </script>
                 </div>
-                </div>
             </div>
+        </div>
 
 
-
-
-            <div class="j_menu">
-                <li class="">
-                    <a href="https://www.wenku365.com/" target="_self">
-                        首页</a></li>
-                <li class=""><a href="https://www.wenku365.com/c-00012.html">学术论文</a></li>
-                <li class=""><a href="https://www.wenku365.com/c-00015.html">应用文档</a></li>
-                <li class=""><a href="https://www.wenku365.com/c-00017.html">行业资料</a></li>
-                <li class=""><a href="https://www.wenku365.com/c-00016.html">教育资源</a></li>
-                <li class=""><a href="https://www.wenku365.com/c-00018.html">其他资料</a></li>
-            </div>
+        <div class="j_menu">
+            <li class="">
+                <a href="https://www.wenku365.com/" target="_self">
+                    首页</a></li>
+            <li class=""><a href="https://www.wenku365.com/c-00012.html">学术论文</a></li>
+            <li class=""><a href="https://www.wenku365.com/c-00015.html">应用文档</a></li>
+            <li class=""><a href="https://www.wenku365.com/c-00017.html">行业资料</a></li>
+            <li class=""><a href="https://www.wenku365.com/c-00016.html">教育资源</a></li>
+            <li class=""><a href="https://www.wenku365.com/c-00018.html">其他资料</a></li>
         </div>
     </div>
 </div>
+</div>
+<div id="login">
+    <form action="*" method="post" class="autoAjaxSubmit"
+          data-ok-href="https://www.wenku365.com/">
+        <div class="bg_100 main_bg clearfix">
+            <div class="nav_uis" style="width:1200px; margin:auto auto; margin-bottom:10px;">
 
-<form action="*" method="post" class="autoAjaxSubmit"
-      data-ok-href="https://www.wenku365.com/">
-    <div class="bg_100 main_bg clearfix">
-        <div class="nav_uis" style="width:1200px; margin:auto auto; margin-bottom:10px;">
-
-        </div>
-        <div class="ps-main clearfix" style="height: 550px; width:1200px; margin:auto auto;">
-            <div onclick="adv_addClick(5020)" class="gg_global_3">
-                <a href="#" class="a-bg" style="height: 450px; width:1200px;
+            </div>
+            <div class="ps-main clearfix" style="height: 550px; width:1200px; margin:auto auto;">
+                <div onclick="adv_addClick(5020)" class="gg_global_3">
+                    <a href="#" class="a-bg" style="height: 450px; width:1200px;
 background:url(https://static.wenku365.com/images/loginbg.jpg) no-repeat center center;background-size:cover;"></a>
-            </div>
-            <div id="loginArea" class="ps-loca fst">
-                <div class="ps-loginarea clearfix">
-                    <p class="ps-username">
-                        <input name="user" type="text" id="Content_txtUserName" class="ps-username-txt"
-                               placeholder="账号">
-                    </p>
-                    <p class="ps-passwd">
-                        <input name="pwd" type="password" id="Content_txtPassword" class="ps-passwd-txt"
-                               placeholder="密码">
-                    </p>
-                    <p class="ps-txtfunc">
-                        <!-- <span class="r"><a target="_blank" title="点此找回密码" href="getpwd.aspx">忘记密码？</a></span> -->
-                        <span class="ckbox">
-<input id="Content_autologin" type="checkbox" name="ctl00$Content$autologin"><label for="Content_autologin">记住密码</label>
-</span>
-                    </p>
-                    <div class="ps-loginfunc">
-                        <input type="button" name="ctl00$Content$btnLogin" value="登录" id="Content_btnLogin"
-                               class="ps-loginbtn">
-                    </div>
-                    <p class="ps-subtxt">
-                        <span class="l"><a class="fb orange" title="注册随心文库通行证"
-                                           href="/Home/registered">注册随心文库通行证</a></span>
-                        <span class="r">
-</span>
-                    </p>
                 </div>
-                <div class="ps-loadingtxt dn"></div>
+                <div id="loginArea" class="ps-loca fst">
+                    <div class="ps-loginarea clearfix">
+                        <p class="ps-txtfunc"></p>
+                        <p class="ps-username">
+                            <input name="user" type="text" v-model="customerEandT" id="Content_txtUserName" class="ps-username-txt"
+                                   placeholder="账号">
+                        </p>
+
+                        <p class="ps-passwd">
+                            <input name="pwd" type="password" v-model="customerpwd" id="Content_txtPassword" class="ps-passwd-txt"
+                                   placeholder="密码">
+                        </p>
+
+                        <div class="ps-loginfunc">
+                            <input type="button" name="ctl00$Content$btnLogin" value="登录" id="Content_btnLogin"
+                                   class="ps-loginbtn" @click="login()">
+                        </div>
+                        <p class="ps-subtxt">
+                        <span class="l">
+                            <a class="fb orange" title="注册随心文库通行证" href="/Home/registered">注册随心文库通行证</a></span>
+                            <span class="r">
+</span>
+                        </p>
+                    </div>
+
+                </div>
             </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
+<script>
+    new Vue({
+        el:"#login",
+        data:{
+            customerEandT:"",
+            customertel:"",
+            customeremail:"",
+            customerpwd:""
+        },
+        methods:{
+            "login":function () {
+                if (this.customerEandT === "" ){
+                    layer.alert("账号不能为空！");
+                    return;
+                }
+                if (this.customerpwd === "" ){
+                    layer.alert("密码不能为空！");
+                    return;
+                }
+                if (this.customerEandT.indexOf("com")>0){
+                    this.customeremail  = this.customerEandT;
+                    console.log(this.customeremail)
+                } else {
+                    this.customertel  = this.customerEandT;
+                    console.log(this.customertel)
+                }
+                var that = this;
+                axios.get("/customer/bypwd",{params:{
+                        customertel:this.customertel,
+                        customeremail:this.customeremail,
+                        customerpwd:this.customerpwd
+                    }}).then(function (value) {
+                        if (value.data != null){
+                            that.customertel = "";
+                            that.customeremail = "";
+                            that.customerpwd = ""
+                        }
+                        console.log("登录成功")
+                }).catch(function (reason) {
+                    console.log(reason);
+                })
+            }
+        }
+    })
+</script>
+
 </body>
 </html>
