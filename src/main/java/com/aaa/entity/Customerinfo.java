@@ -2,8 +2,6 @@ package com.aaa.entity;
 
 import lombok.Data;
 
-import java.io.Serializable;
-
 /**
  * (Customerinfo)实体类
  *
@@ -40,4 +38,8 @@ public class Customerinfo  {
     private Integer customermember;
     
     private Integer theauthor;
+
+    private String customeraddr;
+
+    private String customertruename;
 }

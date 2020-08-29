@@ -1,9 +1,10 @@
 package com.aaa.frontcontroller;
 
+import com.aaa.service.CustomerService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpSession;
+import javax.annotation.Resource;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -16,13 +17,19 @@ import java.security.NoSuchAlgorithmException;
 @RequestMapping("code")
 public class codeController {
 
+    @Resource
+    CustomerService customerService;
+
     @RequestMapping("phonecode")
     public Object cyh(String phone){
-        System.out.println(phone);
+
+        Integer res = customerService.findCustomerByPhone(phone);
+        if(res == 1){
+            return 1;
+        }
         String testUsername = "hui_ai";
         String testPassword = "hui970511";
         String testPhone = phone;
-
         String str = "1234567890";
         String code = "";
         for(int i= 0;i<6;i++){
