@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,8 +41,11 @@
                 <form action="#" method="post" class="autoAjaxSubmit" data-ok-function="ok">
                     <div class="form-group">
                         <label>手机号</label>
-                        <input type="text" v-model="customer.customertel" class="form-control" placeholder="请输入注册的手机号" name="phone" style="width: 250px">
-                        <button type="button" id="que" @click="yes()" class="btn-primary" style="margin-left: 255px;display: block;margin-top: -30px">确认</button>
+                        <input type="text" v-model="customer.customertel" class="form-control" placeholder="请输入注册的手机号"
+                               name="phone" style="width: 250px">
+                        <button type="button" id="que" @click="yes()" class="btn-primary"
+                                style="margin-left: 255px;display: block;margin-top: -30px">确认
+                        </button>
                     </div>
                     <div class="form-group">
                         <label>验证码</label>
@@ -51,11 +53,13 @@
                     </div>
                     <div class="form-group">
                         <label>邮箱</label>
-                        <input type="text" v-model="customer.customeremail" class="form-control" placeholder="请输入邮箱" name="email">
+                        <input type="email" v-model="customer.customeremail" class="form-control" placeholder="请输入邮箱"
+                               name="email">
                     </div>
                     <div class="form-group">
                         <label>密码</label>
-                        <input type="password" v-model="customer.customerpwd" class="form-control" placeholder="密码..." name="pwd">
+                        <input type="password" v-model="customer.customerpwd" class="form-control" placeholder="密码..."
+                               name="pwd">
                     </div>
                     <div class="form-group">
                         <label>确认密码</label>
@@ -78,90 +82,86 @@
 <script src="/static/vue/vue.js"></script>
 <script>
     new Vue({
-       el:"#d",
-       data:{
-         customer:{}
-       },
-        created:function () {
+        el: "#d",
+        data: {
+            customer: {}
+        },
+        created: function () {
 
         },
-        methods:{
-           "ok":function () {
-               if($("[name=phone]").val() === ''){
-                   layer.alert("请先校验手机号！");
-                   return;
-               }
-               if($("[name=yanzheng]").val() === ''){
-                   layer.alert("验证码不能为空！");
-                   return;
-               }
-               if($("[name=email]").val() === ''){
-                   layer.alert("邮箱不能为空！");
-                   return;
-               }
-               if($("[name=pwd]").val() === ''){
-                   layer.alert("密码不能为空！");
-                   return;
-               }
-               if($("[name=confirmPwd]").val() === ''){
-                   layer.alert("请确认密码！");
-                   return;
-               }
-               if($("[name=confirmPwd]").val() !== $("[name=pwd]").val()){
-                   layer.alert("前后密码不一致！");
-                   return;
-               }
-               var hui = $("[name=yanzheng]").val();
-               var code = window.sessionStorage.getItem("code");
-               console.info("获取的验证码："+code);
-               if(hui !== code){
-                   layer.alert("验证码不正确！");
-                   return;
-               }
-               var formData = new FormData();
-               for (var key in this.customer){
-                    formData.append(key,this.customer[key])
-               }
-               axios({
-                   method:"post",
-                   url:"/customer/add",
-                   headers: {
-                       "Content-Type": "multipart/form-data"
-                   },
-                   withCredentials:true,
-                   data:formData
-               }).then(function (value) {
-                   //加判断
-                   layer.alert("注册成功，点击确定进行登录。");
-                   location.href = "/Home/login";
-               });
-               // layer.alert("注册成功，点击确定进行登录。");
-           },
-           "yes":function () {
-               var phone = $("[name=phone]").val();
-               if(!(/^1[3|4|5|7|8][0-9]{9}$/.test(phone))){
-                   layer.alert("手机号码长度或格式不正确！");
-                   return;
-               }
+        methods: {
+            "ok": function () {
+                if ($("[name=phone]").val() === '') {
+                    layer.alert("请先校验手机号！");
+                    return;
+                }
+                if ($("[name=yanzheng]").val() === '') {
+                    layer.alert("验证码不能为空！");
+                    return;
+                }
+                if ($("[name=email]").val() === '') {
+                    layer.alert("邮箱不能为空！");
+                    return;
+                }
+                if ($("[name=pwd]").val() === '') {
+                    layer.alert("密码不能为空！");
+                    return;
+                }
+                if ($("[name=confirmPwd]").val() === '') {
+                    layer.alert("请确认密码！");
+                    return;
+                }
+                if ($("[name=confirmPwd]").val() !== $("[name=pwd]").val()) {
+                    layer.alert("前后密码不一致！");
+                    return;
+                }
+                var hui = $("[name=yanzheng]").val();
+                var code = window.sessionStorage.getItem("code");
+                console.info("获取的验证码：" + code);
+                if (hui !== code) {
+                    layer.alert("验证码不正确！");
+                    return;
+                }
+                var formData = new FormData();
+                for (var key in this.customer) {
+                    formData.append(key, this.customer[key])
+                }
+                axios({
+                    method: "post",
+                    url: "/customer/add",
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    },
+                    withCredentials: true,
+                    data: formData
+                }).then(function (value) {
+                    //加判断
+                    layer.alert("注册成功，点击确定进行登录。");
+                    location.href = "/Home/login";
+                });
+                // layer.alert("注册成功，点击确定进行登录。");
+            },
+            "yes": function () {
+                var phone = $("[name=phone]").val();
+                if (!(/^1[3|4|5|7|8][0-9]{9}$/.test(phone))) {
+                    layer.alert("手机号码长度或格式不正确！");
+                    return;
+                }
 
-               /*少个数据查询验证*/
 
-               var url ="/code/phonecode?phone="+phone;
-               axios.get(url).then(function (value) {
-                   console.log(value.data);
-                    if (null != value.data){
+                var url = "/code/phonecode?phone=" + phone;
+                axios.get(url).then(function (value) {
+                    if (value.data === 1) {
+                        layer.alert("该手机号已被注册，请直接登录！");
+                    } else {
                         layer.alert("发送成功，请注意查收！");
-                        window.sessionStorage.setItem("code",value.data);
-                    }else {
-                        console.log("发送验证码出错了")
+                        $("#que").html('已发送');
+                        window.sessionStorage.setItem("code", value.data);
                     }
-
-               }).catch(function (reason) {
-                   console.log(reason);
-               });
-
-               $("#que").html('已发送');
-           }
+                }).catch(function (reason) {
+                    console.log(reason);
+                });
+            }
         }
     });
 

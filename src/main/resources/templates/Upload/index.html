@@ -71,6 +71,9 @@
     <link rel="stylesheet" type="text/css" href="/static/js/balloonpanel.css">
     <script type="text/javascript" src="/static/js/highlight.pack.js"></script>
 
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+
 </head>
 <body class="sidebar-mini wysihtml5-supported skin-black-light layout-boxed" style="height: auto; min-height: 100%;">
 <div class="wrapper" style="overflow: hidden; height: auto; min-height: 100%;">
@@ -91,8 +94,9 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a href="http://upload.wenku365.com:18889/ucenter/index">
-                            <img src="/static/js/avatar.png" class="user-image">
-                            <span class="hidden-xs">您好 wdk1123615523 , 欢迎回来</span>
+                            <img th:src="${session.cus.customerpic}" class="user-image">
+                            <span class="hidden-xs">您好 <span
+                                    th:text="${session.cus!=null?session.cus.customertel:''}"></span> , 欢迎回来</span>
                         </a>
                     </li>
 
@@ -100,13 +104,12 @@
                     <li class="dropdown messages-menu" style="border-left: 1px solid #ccc;">
                         <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#" class="dropdown-toggle"
                            data-toggle="dropdown" aria-expanded="false">
-                            购物车</i>
+                            <i class="fa fa-fw fa-shopping-cart"></i>
                         </a>
                         <ul class="dropdown-menu">
                             <li class="header">购物车列表</li>
                             <li>
                                 <ul class="menu" style="background-color: #f7f7f7">
-
                                 </ul>
                             </li>
                             <li class="footer"><a href="http://upload.wenku365.com:18889/ucenter/cart"
@@ -116,12 +119,12 @@
 
                     <li style="border-left: 1px solid #ccc;">
                         <a th:href="@{/Home/index}">
-                            首页
+                            <i class="fa fa-fw fa-home"></i>
                         </a>
                     </li>
 
                     <li style="border-left: 1px solid #ccc;">
-                        <a href="http://upload.wenku365.com:18889/ucenter/doLogout?csrf_token=75656035378d403ba04aaae8a48271be">
+                        <a href="/Home/index">
                             退出
                         </a>
                     </li>
@@ -136,18 +139,21 @@
                 <li class="block"></li>
                 <li class="link">
                     <a href="http://upload.wenku365.com:18889/ucenter/index">
+                        <i class="fa fa-fw fa-home"></i>
                         <span>首页</span></a>
                 </li>
 
                 <li class="header">我的内容</li>
                 <li class="treeview active">
-                    <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#">
+                    <a href="#">
+                        <i class="fa fa-fw fa-file-text"></i>
                         <span>我的文档</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                         <span class="pull-right-container">
                     </span>
                     </a>
                     <ul class="treeview-menu" style="display: none;">
-                        <li class="active"><a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload"
+                        <li class="active"><a href="/Home/user"
                                               target="">上传文档</a></li>
                         <li><a href="http://upload.wenku365.com:18889/ucenter/authentication" target="">用户认证</a></li>
                         <li><a href="http://upload.wenku365.com:18889/ucenter/user/resource" target="">我的资源</a></li>
@@ -161,7 +167,9 @@
                 </li>
                 <li class="treeview">
                     <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#">
+                        <i class="fa fa-fw fa-file-archive-o"></i>
                         <span>我的专题</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                         <span class="pull-right-container">
                     </span>
                     </a>
@@ -174,7 +182,9 @@
                 </li>
                 <li class="treeview">
                     <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#">
+                        <i class="fa fa-fw fa-bookmark"></i>
                         <span>我的收藏</span>
+                        <i class="fa fa-angle-left pull-right"></i>
                         <span class="pull-right-container">
                     </span>
                     </a>
@@ -187,41 +197,40 @@
                 <li class="header">财务信息</li>
                 <li class="link">
                     <a href="http://upload.wenku365.com:18889/ucenter/order">
+                        <i class="fa fa-fw fa-paper-plane"></i>
                         <span>我的订单</span></a>
                 </li>
                 <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/finance/amount">
+                    <a href="/Home/blance">
+                        <i class="fa fa-fw fa-gg-circle"></i>
                         <span>我的余额</span></a>
                 </li>
-
-
                 <li class="header">个人信息</li>
                 <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/member"> <span>会员信息</span></a>
+                    <a href="http://upload.wenku365.com:18889/ucenter/member">
+                        <i class="fa fa-fw fa-coffee"></i>
+                        <span>会员信息</span></a>
                 </li>
                 <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/address">
-                        <span>我的地址</span></a>
-                </li>
-                <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/info">
+                    <a href="/Home/userinfo">
+                        <i class="fa fa-fw fa-user"></i>
                         <span>基本信息</span></a>
                 </li>
                 <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/signature"> <span>个人签名</span></a>
+                    <a href=/Home/signature>
+                        <i class="fa fa-fw fa-bars"></i>
+                        <span>个人签名</span></a>
                 </li>
                 <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/avatar">
+                    <a href="/Home/avatar">
+                        <i class="fa fa-fw fa-black-tie"></i>
                         <span>头像设置</span></a>
                 </li>
                 <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/pwd">
+                    <a href="/Home/password">
+                        <i class="fa fa-fw fa-key"></i>
                         <span>账号密码</span></a>
                 </li>
-                <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/bind"> <span>账号绑定</span></a>
-                </li>
-
             </ul>
         </section>
         <!-- /.sidebar -->

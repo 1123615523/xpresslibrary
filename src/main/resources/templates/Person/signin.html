@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>用户中心</title>
+    <link rel="stylesheet" href="/static/js/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/js/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="/static/js/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/js/ionicons.min.css">
+    <link rel="stylesheet" href="/static/js/switchery.min.css">
+    <link rel="stylesheet" href="/static/js/toastr.min.css">
+    <link rel="stylesheet" href="/static/js/AdminLTE.min.css">
+    <link rel="stylesheet" href="/static/js/skin-black-light.min.css">
+    <link rel="stylesheet" href="/static/js/qidongucenter.css">
+
+    <script>
+        var qidong = {
+            cpath: ''
+        }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/static/js/dropzone.css">
+    <style>
+        .upload-notice {
+            background-color: #fef6a9;
+            font-size: 14px;
+            color: #ff4400;
+            line-height: 25px;
+            padding: 7px 15px;
+            margin-bottom: 10px;
+            margin-right: 0px;
+            border: solid 1px #e10074;
+        }
+
+        .col-position {
+            margin-top: 5px;
+        }
+
+        .tip-font {
+            font-size: 12px;
+        }
+
+        .editor {
+            height: 230px;
+            width: 100%;
+            background-color: white
+        }
+    </style>
+
+    <link rel="stylesheet" href="/static/js/layer.css" id="layuicss-layer">
+    <style>.cke {
+        visibility: hidden;
+    }</style>
+    <script type="text/javascript" src="/static/js/config.js"></script>
+    <link rel="stylesheet" href="/static/js/style.css" id="layuicss-themejpressstylecss">
+    <link rel="stylesheet" type="text/css" href="/static/js/editor.css">
+    <script type="text/javascript" src="/static/js/zh-cn.js"></script>
+    <script type="text/javascript" src="/static/js/styles.js"></script>
+    <script type="text/javascript" src="/static/js/plugin.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/js/scayt.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/dialog.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/tableselection.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/wsc.css">
+    <script type="text/javascript" src="/static/js/zh-cn.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/js/default.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/balloontoolbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/copyformatting.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/imagebase.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/balloonpanel.css">
+    <script type="text/javascript" src="/static/js/highlight.pack.js"></script>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+</head>
+<body class="sidebar-mini wysihtml5-supported skin-black-light layout-boxed" style="height: auto; min-height: 100%;">
+<div class="wrapper" style="overflow: hidden; height: auto; min-height: 100%;">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="http://upload.wenku365.com:18889/ucenter" class="logo">
+            <span class="logo-mini"><b>JPr</b></span>
+            <span class="logo-lg"><b>随心文库</b></span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload" class="sidebar-toggle"
+               data-toggle="push-menu" role="button">
+                <span class="sr-only">切换</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="http://upload.wenku365.com:18889/ucenter/index">
+                            <img th:src="${session.cus.customerpic}" class="user-image">
+                            <span class="hidden-xs">您好 <span
+                                    th:text="${session.cus!=null?session.cus.customertel:''}"></span> , 欢迎回来</span>
+                        </a>
+                    </li>
+
+
+                    <li class="dropdown messages-menu" style="border-left: 1px solid #ccc;">
+                        <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#" class="dropdown-toggle"
+                           data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-fw fa-shopping-cart"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">购物车列表</li>
+                            <li>
+                                <ul class="menu" style="background-color: #f7f7f7">
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="http://upload.wenku365.com:18889/ucenter/cart"
+                                                  style="color: #3c8dbc !important;" target="_blank">查看全部</a></li>
+                        </ul>
+                    </li>
+
+                    <li style="border-left: 1px solid #ccc;">
+                        <a th:href="@{/Home/index}">
+                            <i class="fa fa-fw fa-home"></i>
+                        </a>
+                    </li>
+
+                    <li style="border-left: 1px solid #ccc;">
+                        <a href="/Home/index">
+                            退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu tree" data-widget="tree" id="sidebar-menu">
+                <li class="block"></li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/index">
+                        <i class="fa fa-fw fa-home"></i>
+                        <span>首页</span></a>
+                </li>
+
+                <li class="header">我的内容</li>
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-fw fa-file-text"></i>
+                        <span>我的文档</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li class="active"><a href="/Home/user"
+                                              target="">上传文档</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/authentication" target="">用户认证</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/user/resource" target="">我的资源</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/user/statistical/pBookHostView" target="">热门文档</a>
+                        </li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/user/statistical/pBookHostDownload"
+                               target="">热门下载</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/priceChangeRecord" target="">价格修改记录</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#">
+                        <i class="fa fa-fw fa-file-archive-o"></i>
+                        <span>我的专题</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/wenku/pbookgroup" target="">添加/修改专题</a>
+                        </li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/wenku/pbookgroup/page" target="">专题管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#">
+                        <i class="fa fa-fw fa-bookmark"></i>
+                        <span>我的收藏</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/article/favorite" target="">文章收藏</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/product/favorite" target="">产品收藏</a></li>
+                    </ul>
+                </li>
+
+                <li class="header">财务信息</li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/order">
+                        <i class="fa fa-fw fa-paper-plane"></i>
+                        <span>我的订单</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/blance">
+                        <i class="fa fa-fw fa-gg-circle"></i>
+                        <span>我的余额</span></a>
+                </li>
+                <li class="header">个人信息</li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/member">
+                        <i class="fa fa-fw fa-coffee"></i>
+                        <span>会员信息</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/userinfo">
+                        <i class="fa fa-fw fa-user"></i>
+                        <span>基本信息</span></a>
+                </li>
+                <li class="link">
+                    <a href=/Home/signature>
+                        <i class="fa fa-fw fa-bars"></i>
+                        <span>个人签名</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/avatar">
+                        <i class="fa fa-fw fa-black-tie"></i>
+                        <span>头像设置</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/password">
+                        <i class="fa fa-fw fa-key"></i>
+                        <span>账号密码</span></a>
+                </li>
+
+
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <div class="content-wrapper" style="min-height: 1126px;" id="app">
+        <section class="invoice">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="page-header">
+                        <i class="fa fa-check-square-o"></i> 我的签到
+                    </h2>
+                </div>
+
+            </div>
+
+            <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                    <div>
+                        <strong>累计积分</strong>
+                        <div style="font-size: 65px">
+                            {{res.money}}
+                        </div>
+                    </div>
+                    <div style="padding-top: 20px">
+                        <a @click="qian()" class="btn btn-success ">
+                            <i class="fa fa-cloud-upload"></i>
+                            签到
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-sm-offset-2">
+                    <p class="lead">签到信息</p>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>签到次数：</th>
+                                <td>{{res.count}}</td>
+                            </tr>
+                            <tr>
+                                <th>最近收益：</th>
+                                <td>0.1</td>
+                            </tr>
+                            <tr>
+                                <th>最近签到：</th>
+                                <td>{{res.time}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="invoice">
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <h2 class="page-header">
+                        <i class="fa fa-list-alt"></i> 历史签到
+                    </h2>
+                </div>
+
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>收益积分</th>
+                            <th>签到时间</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="s in res.signinInfo">
+                            <td>{{s.income}}</td>
+                            <td>{{s.incometime}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <ul class="pagination pull-right">
+                            <li class="paginate_button previous disabled">
+                                <a href="javascript:;">上一页</a>
+                            </li>
+                            <li class="paginate_button active">
+                                <a href="javascript:;">1</a>
+                            </li>
+                            <li class="paginate_button next disabled">
+                                <a href="javascript:;">下一页</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <div class="clearfix"></div>
+    </div>
+
+    <!--<img th:src="/file/images/+${session.cus.customerpic}">-->
+
+    <span hidden th:text="${session.cus.customerid}" id="resid"></span>
+
+    <script src="/static/vue/axios.min.js"></script>
+    <script src="/static/vue/vue.js"></script>
+    <script src="/static/vue/jquery-3.1.1.js"></script>
+    <script>
+        var v = new Vue({
+            el:'#app',
+            data:{
+                res:[]
+            },
+            created:function(){
+                this.find();
+            },
+            methods:{
+                "qian":function () {
+                    alert("签到了！");
+                },
+                "find":function () {
+                    var url = "/signin/find?cusid="+$("#resid").html();
+                    var that = this;
+                    axios.get(url).then(function (value) {
+                        that.res = value.data;
+                    });
+                }
+            }
+        });
+    </script>
+
+
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            version v3.0.0-rc.1
+        </div>
+        Copyright &copy; 2016-2020 Qidong Studio. All rights
+        reserved.
+    </footer>
+</div>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.form.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-datepicker.min.js"></script>
+<script src="/static/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="/static/js/fastclick.js"></script>
+<script src="/static/js/switchery.min.js"></script>
+<script src="/static/js/toastr.min.js"></script>
+<script src="/static/js/layer.js"></script>
+<script src="/static/js/adminlte.min.js"></script>
+<script src="/static/js/qidongucenter.js"></script>
+<script src="/static/js/qidongcommons.js"></script>
+<script src="/static/js/qidongcsrf.js"></script>
+<script>
+    $('#form').on('submit', function () {
+
+        ajaxSubmit('#form',function () {
+            toastr.success('修改成功');
+        });
+
+        return false;
+    });
+</script>
+<script>
+    function doSignInHandle() {
+        // $.ajax({
+        //         url: "/ucenter/finance/amount/ajaxDoSignIn",
+        //         data: {},
+        //         method: "get",
+        //         success: function (data) {
+        //             if (data.state === "ok") {
+        //                 toastr.success('保存成功');
+        //                 setTimeout(function () {
+        //                     location.reload();
+        //                 }, 1500);
+        //             } else if (data.state === "fail") {
+        //                 toastr.error(data.message);
+        //             }
+        //         }
+        //
+        //     }
+        // )
+    }
+</script>
+</body>
+</html>

@@ -3,10 +3,25 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!--接口全路径-->
 <mapper namespace="com.aaa.dao.CustomerDao">
+
     <insert id="add" useGeneratedKeys="true" keyProperty="customerid">
-        insert into customerinfo(customerid,customerpwd,customeremail,customertel,customerstate)
-        values(#{customerid},#{customerpwd},#{customeremail},#{customertel},#{customerstate})
+        insert into customerinfo(customerid,customerpwd,customeremail,customertel,customerstate,customermoney,theauthor)
+        values(#{customerid},#{customerpwd},#{customeremail},#{customertel},#{customerstate},#{customermoney},0)
     </insert>
+
+    <update id="updCustomer">
+        update customerinfo
+        set customername=#{customername},customersex=#{customersex},customeremail=#{customeremail},customerurl=#{customerurl},customercontact=#{customercontact},customeraddr=#{customeraddr},customertruename=#{customertruename}
+        where customerid=#{customerid}
+    </update>
+
+    <update id="updSignature">
+        update customerinfo set customermeno=#{param2} where customerid=#{param1}
+    </update>
+
+    <update id="updPassword">
+        update customerinfo set customerpwd=#{param2} where customerid = #{param1}
+    </update>
 
     <select id="bypwd" resultType="com.aaa.entity.Customerinfo">
         select * from customerinfo
@@ -22,4 +37,13 @@
             </if>
         </where>
     </select>
+
+    <select id="findCustomerByPhone" resultType="com.aaa.entity.Customerinfo">
+        select * from customerinfo where customertel = #{value}
+    </select>
+
+    <select id="updLogin" resultType="com.aaa.entity.Customerinfo">
+        select * from  customerinfo where customerid = #{value}
+    </select>
+
 </mapper>

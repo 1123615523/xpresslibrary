@@ -34,7 +34,7 @@
         }
 
         .sina_ico, .tweibo_ico, .qq_ico, .xn_ico, .msn_ico, .kaixin_ico, .feixin_ico, .youku_ico {
-            background: url(https://static.wenku365.com/images/site2_v1.png) 0 0 no-repeat;
+            background: url(/static/js/site2_v1.png) 0 0 no-repeat;
             width: 0;
             height: 33px;
             display: inline-block;
@@ -178,7 +178,7 @@
             line-height: 40px;
             padding-left: 40px;
             margin: 10px 0 10px 10px;
-            background: url(https://static.wenku365.com/images/home-bg-a.png) no-repeat -260px -314px;
+            background: url(/static/js/home-bg-a.png) no-repeat -260px -314px;
             border-radius: 2px 0 0 2px;
             zoom: 1
         }
@@ -331,9 +331,7 @@
     <meta name="copyright" content="https://www.wenku365.com">
     <meta name="applicable-device" content="pc">
 
-    <!--[if lte IE 8]>
-    <script src="https://static.wenku365.com/js/jquery1.9.0.min.js"></script>
-    <![endif]-->
+
     <style>.xxxk_top img {
         height: 55px;
         margin-top: 10px;
@@ -673,7 +671,7 @@
             <div class="ps-main clearfix" style="height: 550px; width:1200px; margin:auto auto;">
                 <div onclick="adv_addClick(5020)" class="gg_global_3">
                     <a href="#" class="a-bg" style="height: 450px; width:1200px;
-background:url(https://static.wenku365.com/images/loginbg.jpg) no-repeat center center;background-size:cover;"></a>
+background:url(/static/js/loginbg.jpg) no-repeat center center;background-size:cover;"></a>
                 </div>
                 <div id="loginArea" class="ps-loca fst">
                     <div class="ps-loginarea clearfix">
@@ -737,12 +735,16 @@ background:url(https://static.wenku365.com/images/loginbg.jpg) no-repeat center 
                         customeremail:this.customeremail,
                         customerpwd:this.customerpwd
                     }}).then(function (value) {
-                        if (value.data != null){
+                        if (value.data === 1){
                             that.customertel = "";
                             that.customeremail = "";
-                            that.customerpwd = ""
+                            that.customerpwd = "";
+                            layer.msg('登录成功！',{icon:1,time:1000},function () {
+                                location.href="/Home/index";
+                            });
+                        }else{
+                            layer.alert("密码或账号错误！");
                         }
-                        console.log("登录成功")
                 }).catch(function (reason) {
                     console.log(reason);
                 })

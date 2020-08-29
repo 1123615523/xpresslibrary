@@ -1,0 +1,1183 @@
+﻿@charset "utf-8";
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+.hide {
+    display: none
+}
+
+.clearfix:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0
+}
+
+.hide {
+    display: none
+}
+
+.link {
+    color: #146c88
+}
+
+.header {
+    position: relative;
+    z-index: 3;
+    height: 50px;
+    background: #333;
+    -moz-box-shadow: 0 3px 5px #999;
+    -webkit-box-shadow: 0 3px 5px #999;
+    box-shadow: 0 3px 5px #999
+}
+
+.footer {
+}
+
+.topshop {
+}
+
+.wrap {
+}
+
+.content {
+}
+
+.bookslist {
+    position: relative;
+    float: left;
+    height: 50px;
+    margin-left: 30px;
+    padding-left: 25px;
+    font: 14px/30px "微软雅黑"
+}
+
+.bookslist a {
+    display: inline-block;
+    height: 50px;
+    background: url(pointer-down.png) no-repeat right center;
+    padding-right: 25px;
+    line-height: 50px;
+    color: #fff
+}
+
+.fixed {
+}
+
+.breadcrumb {
+}
+
+.toplayer-shop {
+    position: fixed;
+    right: 10px;
+    bottom: 85px;
+    width: 50px
+}
+
+.gotop {
+    display: none;
+    position: relative;
+    width: 48px;
+    height: 63px;
+    border: solid 1px #ccc;
+    background: url(gotop-bg1.png) no-repeat;
+    cursor: pointer
+}
+
+.gotop a {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    width: 48px;
+    height: 53px;
+    padding-top: 10px;
+    background: #ddd;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+    letter-spacing: 2px
+}
+
+.readshop {
+    position: fixed;
+    z-index: 1;
+    height: 35px;
+    padding: 3px 0 2px;
+    border-top: solid 0 #ccc;
+    background: url(reading-top-bg2.png) #f5f5f5 repeat-x;
+    box-shadow: 0 1px 5px #ccc;
+    top: 0
+}
+
+.readshop .shop1, .readshop .shop2, .readshop .shop3 {
+    float: left;
+    height: 35px;
+    padding: 0 20px
+}
+
+.readshop li {
+    float: left;
+    height: 26px;
+    background: url(/static/yue/readshop-icons.png) no-repeat;
+    line-height: 26px
+}
+
+.readshop li a {
+    color: #333
+}
+
+.readshop li a:hover {
+    color: #33bbd9
+}
+
+.readshop .shop1 {
+    padding-left: 0
+}
+
+.readshop .shop1 li {
+    margin-top: 5px;
+    padding: 0 20px 0 26px
+}
+
+.readshop .shop1 li.nobg {
+    margin-top: 2px;
+    padding: 0 20px 0 0;
+    background: 0 0
+}
+
+.readshop .shop1 li.like {
+    background-position: -32px 0
+}
+
+.readshop .shop1 li.like:hover {
+    background-position: -32px -26px
+}
+
+.readshop .shop1 li.share {
+    background-position: -32px -52px
+}
+
+.readshop .shop1 li.share:hover {
+    background-position: -32px -78px
+}
+
+.readshop .shop1 li.mark {
+    background-position: -32px -234px;
+    padding-right: 10px;
+    width: 50px;
+    cursor: pointer;
+    margin-top: 4px;
+    height: 26px
+}
+
+.readshop .shop1 li.mark:hover {
+    background-position: -32px -260px;
+    padding-right: 10px;
+    width: 50px;
+    cursor: pointer;
+    margin-top: 4px;
+    height: 26px
+}
+
+.readshop .shop1 li.mark1 {
+    background-position: -32px -260px;
+    padding-right: 10px;
+    width: 50px;
+    cursor: pointer;
+    margin-top: 4px;
+    height: 26px
+}
+
+.readshop .shop2 li {
+    width: 32px;
+    height: 26px;
+    margin: 4px 5px 0;
+    cursor: pointer
+}
+
+.readshop .shop2 li.zoomb, .readshop .shop2 li.no-zoomb {
+    background-position: 0 0
+}
+
+.readshop .shop2 li.zooms, .readshop .shop2 li.no-zooms {
+    background-position: 0 -52px
+}
+
+.readshop .shop2 li.zoomb:hover {
+    background-position: 0 -26px
+}
+
+.readshop .shop2 li.zooms:hover {
+    background-position: 0 -78px
+}
+
+.readshop .shop2 li.fullscreen {
+    background-position: 0 -104px
+}
+
+.readshop .shop2 li.fullscreen:hover {
+    background-position: 0 -130px
+}
+
+.readshop .shop2 li.escscreen {
+    background-position: 0 -156px
+}
+
+.readshop .shop2 li.escscreen:hover {
+    background-position: 0 -182px
+}
+
+.readshop .shop2 li.no-zoomb, .readshop .shop2 li.no-zooms {
+    opacity: .5;
+    cursor: default
+}
+
+.readshop .shop3 li {
+    margin-top: 2px
+}
+
+.readshop .shop3 li.paging {
+    background: 0 0;
+    padding-right: 10px
+}
+
+.readshop .shop3 li.paging input {
+    width: 33px;
+    height: 26px;
+    border: none;
+    background: url(/static/yue/readshop-icons.png);
+    vertical-align: middle;
+    cursor: pointer
+}
+
+.readshop .shop3 li input.prevsmall, .readshop .shop3 li input.no-prev {
+    background-position: 0 -260px
+}
+
+.readshop .shop3 li input.nextsmall, .readshop .shop3 li input.no-next {
+    background-position: 0 -312px
+}
+
+.readshop .shop3 li input.prevsmall:hover {
+    background-position: 0 -286px
+}
+
+.readshop .shop3 li input.nextsmall:hover {
+    background-position: 0 -338px
+}
+
+.readshop .shop3 li.pages {
+    background-position: -32px -156px;
+    padding-left: 26px
+}
+
+.readshop .shop3 li.text {
+    background: 0 0;
+    margin: 2px 5px 0 0
+}
+
+.readshop .shop3 li.text input {
+    width: 40px;
+    height: 20px;
+    line-height: 20px;
+    border: solid 1px #ccc;
+    background: #fff;
+    vertical-align: middle;
+    text-align: center
+}
+
+.readshop .shop3 li.text input:focus {
+    border-color: #f39800
+}
+
+.readshop .shop3 li.btns {
+    background: 0 0;
+    padding-top: 3px \0
+}
+
+.readshop .shop3 li.btns input {
+    width: 30px;
+    height: 24px;
+    text-align: center;
+    border: none;
+    background: url(/static/yue/readshop-icons.png) -32px -106px;
+    vertical-align: middle;
+    cursor: pointer
+}
+
+.readshop .shop3 li.btns input:hover {
+    border: none;
+    background: url(/static/yue/readshop-icons.png) -32px -132px;
+    vertical-align: middle;
+    cursor: pointer
+}
+
+.readshop .shop3 li input.no-prev, .readshop .shop3 li input.no-next {
+    opacity: .5;
+    cursor: default
+}
+
+.readshop .shop4 {
+    float: right;
+    height: 35px
+}
+
+.readshop .shop4 li.inform {
+    width: 32px;
+    height: 26px;
+    background-position: 0 -208px;
+    margin-top: 4px;
+    cursor: pointer
+}
+
+.readshop .shop4 li.inform:hover {
+    background-position: 0 -234px
+}
+
+.readshop .shop4 li.btns {
+    padding: 0 0 2px 10px;
+    background: 0 0
+}
+
+.btn_sc {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    border: 0;
+    color: #fff;
+    font: 14px/16px "微软雅黑";
+    background-color: #4095ce;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 0 1px 2px 2px;
+    margin-top: 2px
+}
+
+.btn_sc:hover {
+    background-color: #3879d9
+}
+
+.btndown1 {
+    width: 80px;
+    height: 30px;
+    line-height: 30px;
+    border: 0;
+    color: #fff;
+    font: 14px/16px "微软雅黑";
+    background-color: #2db68a;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 0 1px 2px 2px;
+    margin-top: 1px
+}
+
+.btndown1:hover {
+    background-color: #3fba93
+}
+
+.btndownvip {
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    border: 0;
+    color: #fff;
+    font: 14px/16px "微软雅黑";
+    background-color: #db5b5a;
+    cursor: pointer;
+    border-radius: 3px;
+    padding: 0 1px 2px 2px;
+    margin-top: 1px;
+    margin-left: 10px
+}
+
+.btndownvip:hover {
+    background-color: #de6f6e
+}
+
+.doctopic {
+    position: relative;
+    overflow: hidden
+}
+
+.doctopic h1 {
+    float: left;
+    padding: 15px 8px 15px 10px;
+    text-align: center;
+    font: 18px/20px "微软雅黑";
+    font-weight: 400;
+    line-height: 24px;
+    color: #000
+}
+
+.doctopic h1 img {
+    float: left;
+    width: 24px;
+    height: 24px;
+    margin: 0 0 0 0
+}
+
+.doctopic .starlevel {
+    float: right;
+    margin-right: 50px;
+    padding: 13px 0 0
+}
+
+.docoutline2 {
+    position: relative;
+    clear: left;
+    margin: 0;
+    padding: 10px 0;
+    border-top: dotted 1px #ccc;
+    line-height: 2;
+    color: #666;
+    overflow: hidden;
+    width: 100%
+}
+
+.docoutline {
+    display: none;
+    position: relative;
+    padding: 10px;
+    border-top: dotted 1px #ccc;
+    clear: left;
+    line-height: 2;
+    color: #666;
+    overflow: hidden
+}
+
+.docoutline .outline {
+    text-indent: 0
+}
+
+.docoutline .attribute {
+    padding: 10px 0;
+    color: #999
+}
+
+.docoutline .attribute span {
+    padding: 0 10px
+}
+
+.doctopic .switch, .docoutline .switch {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    width: 65px;
+    height: 40px;
+    cursor: pointer
+}
+
+.doctopic .switch {
+    background: url(slideUp.png) no-repeat center center
+}
+
+.docoutline .switch {
+    background: url(slideDown.png) no-repeat center center
+}
+
+.document {
+    margin: 0 auto;
+    width: 650px;
+    padding: 20px;
+    font-size: 14px;
+    line-height: 2;
+    color: #666;
+    text-indent: 2em
+}
+
+.addiv {
+    border: solid 1px #ccc;
+    padding: 0;
+    background-color: #fff;
+    display: block;
+    margin-left: 1px;
+    margin-right: 1px;
+    _margin-left: 1px;
+    _margin-right: 1px;
+    padding-left: 0;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 5px #ccc
+}
+
+div.inner_page_more, div.inner_page {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    margin: auto;
+    text-align: center;
+    display: block;
+    vertical-align: middle;
+    padding: 30px 0
+}
+
+div.inner_page_more div, div.inner_page div {
+    margin: auto;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle
+}
+
+div.inner_page {
+    width: 100%;
+    height: 100%;
+    line-height: 100%;
+    margin: auto;
+    text-align: center;
+    display: block;
+    vertical-align: middle;
+    padding: 30px 0;
+    border: solid 1px #f60
+}
+
+.pageInfoPanel {
+    font-size: 20px;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    z-index: 500001;
+    position: fixed;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: auto;
+    right: 4px;
+    top: 200px;
+    height: auto;
+    color: #fff;
+    font-size: 16px;
+    background-color: #000;
+    filter: alpha(opacity=60);
+    -moz-opacity: .6;
+    opacity: .6
+}
+
+.morePagePanel {
+    font-size: 20px;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    z-index: 500001;
+    position: fixed;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: auto;
+    left: 4px;
+    top: 200px;
+    height: auto;
+    color: #fff;
+    font-size: 16px;
+    background-color: #000;
+    filter: alpha(opacity=60);
+    -moz-opacity: .6;
+    opacity: .6
+}
+
+.logPanel {
+    font-size: 20px;
+    border-radius: 14px;
+    -moz-border-radius: 14px;
+    -webkit-border-radius: 14px;
+    z-index: 500001;
+    position: fixed;
+    padding-left: 200px;
+    padding-right: 10px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: auto;
+    left: 4px;
+    top: 200px;
+    height: auto;
+    color: #fff;
+    font-size: 16px;
+    background-color: #000;
+    filter: alpha(opacity=60);
+    -moz-opacity: .6;
+    opacity: .6
+}
+
+.morePagePanel a {
+    color: #fff
+}
+
+.controlPanel {
+    z-index: 500001;
+    position: fixed;
+    width: auto;
+    height: auto;
+    left: 100px;
+    top: 20px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #fff;
+    border: 1px solid #666;
+    padding: 10px
+}
+
+.controlButton {
+    width: 50px;
+    height: 24px
+}
+
+.page_view {
+}
+
+.outer_page_more, .page_view .outer_page {
+    position: relative;
+    _border: solid 1px #ccc;
+    margin-bottom: 10px;
+    background-color: #fff;
+    display: block;
+    margin-left: 1px;
+    margin-right: 1px;
+    _margin-left: 1px;
+    _margin-right: 1px;
+    padding-left: 0
+}
+
+.outer_page {
+    border: solid 1px #fff;
+    overflow: hidden;
+    border: solid 1px #ccc;
+    box-shadow: 0 1px 5px #ccc
+}
+
+div.inner_page {
+    border: solid 1px #fff;
+    overflow: hidden;
+    position: relative
+}
+
+div.inner_page img {
+    max-width: 800px;
+    widht: 800px;
+    border: solid 1px #fff;
+    display: block;
+    position: absolute;
+    left: 70px;
+    top: 50px
+}
+
+.outer_page_more .b_tl, .page_view .outer_page .b_tl {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABmJLR0QA2ADYANhLVLGJAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH3AEQFQYgs4juDgAAABxJREFUCB1jZmBgYIJiFmYgA4RZgJgVxmEFciQBAx4APwapwCYAAAAASUVORK5CYII=);
+    background-position: top left;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 3px;
+    width: 3px;
+    top: -3px;
+    left: -3px
+}
+
+.outer_page_more .b_tr, .page_view .outer_page .b_tr {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABmJLR0QA2ADYANhLVLGJAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH3AEQFQ876C+cqwAAAB9JREFUCB0FwQEBABAQALE5Twf9i9rCwaBwsbHCw6APA+MAO2myB9oAAAAASUVORK5CYII=);
+    background-position: top right;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 3px;
+    width: 3px;
+    top: -3px;
+    right: -3px
+}
+
+.outer_page_more .b_br, .page_view .outer_page .b_br {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABmJLR0QA2ADYANhLVLGJAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH3AEQFQ8wf/1FIwAAAB5JREFUCFtjYGBgUAFibiBmZYAy2IGYhQEqwgzETAAI1QBVSzJ1RQAAAABJRU5ErkJggg==);
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 3px;
+    width: 3px;
+    bottom: -3px;
+    right: -3px
+}
+
+.outer_page_more .b_bl, .page_view .outer_page .b_bl {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAABmJLR0QA2ADYANhLVLGJAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH3AEQFQ8ijEQ0awAAABxJREFUCB1jZmBgYAViTiCWZwYSjEAMAt+QOf8AFK0CLdSykVIAAAAASUVORK5CYII=);
+    background-position: bottom left;
+    background-repeat: no-repeat;
+    position: absolute;
+    height: 3px;
+    width: 3px;
+    bottom: -3px;
+    left: -3px
+}
+
+.outer_page_more .b_t, .page_view .outer_page .b_t {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAADCAYAAABS3WWCAAAABmJLR0QA2ADYANhLVLGJAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH3AEQFREd7mMmiQAAABBJREFUCNdjYGBg4GCCESIAAMkAKYlqLLQAAAAASUVORK5CYII=);
+    background-repeat: repeat-x;
+    position: absolute;
+    height: 3px;
+    top: -3px;
+    left: 0;
+    right: 0
+}
+
+.outer_page_more .b_r, .page_view .outer_page .b_r {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAABmJLR0QA2ADYANhLVLGJAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH3AEQFRESftw7GAAAABJJREFUCB1jYGBgUAFiASDmAAABqQA9n2mcnQAAAABJRU5ErkJggg==);
+    background-repeat: repeat-y;
+    position: absolute;
+    width: 3px;
+    right: -3px;
+    top: 0;
+    bottom: 0
+}
+
+.outer_page_more .b_l, .page_view .outer_page .b_b {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAADCAYAAABS3WWCAAAABmJLR0QA2ADYANhLVLGJAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH3AEQFREB+mJ6xgAAABJJREFUCB1jAAIVBiAQYAACDgACAwA9yAbErgAAAABJRU5ErkJggg==);
+    background-repeat: repeat-x;
+    position: absolute;
+    height: 3px;
+    bottom: -3px;
+    left: 0;
+    right: 0
+}
+
+.outer_page_more .b_l, .page_view .outer_page .b_l {
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAABCAYAAAAb4BS0AAAABmJLR0QA2ADYANhLVLGJAAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH3AEQFQo7lVho7gAAAA9JREFUCNdjZGBg4IBiEQAAngAmsaKc+wAAAABJRU5ErkJggg==);
+    background-repeat: repeat-y;
+    position: absolute;
+    width: 3px;
+    left: -3px;
+    top: 0;
+    bottom: 0
+}
+
+.autogen_class_views_read_show_reflow .outer_page {
+    margin-top: 0 !important
+}
+
+.huanhang {
+    word-break: break-all;
+    word-wrap: break-word
+}
+
+.nav_ui_view {
+    line-height: 20px;
+    height: 20px;
+    clear: both;
+    color: #f7372c;
+    margin-bottom: 15px;
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 10px
+}
+
+.nav_ui_view span {
+    color: #666
+}
+
+.nav_ui_view img {
+    display: none
+}
+
+.layoutfull, .layout01, .layout02, .layout03 {
+    padding: 10px 0;
+    overflow: hidden
+}
+
+.layout02 .boxleft {
+    float: left;
+    width: 920px;
+    margin-right: 0
+}
+
+.layout02 {
+    border: solid 0 red
+}
+
+.layout01 .boxright {
+}
+
+.layout02 {
+    margin: 0 auto;
+    position: relative;
+    width: 1200px
+}
+
+.layout02 .boxleft1 {
+    margin-right: 0
+}
+
+.layout02 .boxright {
+    float: right;
+    width: 270px
+}
+
+.layout03 .boxleft {
+    float: left
+}
+
+.layout03 .boxright {
+}
+
+.commonbox2, .commonbox3, .commonbox2 .box, .commonbox3 .box {
+    position: relative;
+    zoom: 1
+}
+
+.commonbox2, .commonbox3 {
+    border: solid 1px #ccc;
+    background: #fff;
+    box-shadow: 0 1px 5px #ccc;
+    margin-bottom: 10px
+}
+
+.commonbox2 {
+    padding: 1px
+}
+
+.commonbox3 {
+    padding: 0 5px
+}
+
+.commonbox3 .topic {
+    border-bottom: solid 1px #ccc;
+    overflow: hidden;
+    padding: 10px;
+    color: #666;
+    overflow: hidden
+}
+
+.commonbox3 .topic h3 {
+    float: left;
+    font: 16px/100% "微软雅黑"
+}
+
+.commonbox3 .topic a {
+    float: right;
+    font-size: 12px
+}
+
+.commonbox3 .box {
+    position: relative;
+    padding: 10px 5px
+}
+
+.inp {
+    border: 1px solid #ccc;
+    height: 25px;
+    line-height: 25px;
+    width: 190px;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 0 1px;
+    margin: 3px 0
+}
+
+.ok {
+    border: 0;
+    background: url(../images/denglu1.png) left top;
+    width: 139px;
+    height: 27px;
+    margin: 5px;
+    cursor: pointer
+}
+
+.inner_page img {
+    position: static;
+    *position: relative;
+    top: -50%;
+    left: -50%
+}
+
+.inner_page {
+    padding: 0;
+    position: relative;
+    display: table-cell;
+    vertical-align: middle
+}
+
+.reader-container .banner-wrap {
+    height: 93px;
+    position: relative;
+    top: 0;
+    left: 0;
+    _zoom: 1;
+    overflow: hidden;
+    border: 1px solid #dedede;
+    margin: 0 auto 6px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none
+}
+
+.reader-container .more-btn-banner {
+    cursor: default;
+    text-align: center;
+    background: #fff;
+    height: 223px !important
+}
+
+.more-btn-banner .banner-more-btn {
+    width: 247px;
+    padding-top: 12px;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0 auto;
+    margin-top: 18px;
+    color: #b6b6b6;
+    border-top: 1px dotted #d1d1d1
+}
+
+.more-btn-banner .goBtn {
+    cursor: pointer
+}
+
+inherited from div.banner-more-btn .reader-container .more-btn-banner .banner-more-btn {
+    width: 247px;
+    padding-top: 12px;
+    font-size: 16px;
+    line-height: 16px;
+    margin: 0 auto;
+    margin-top: 18px;
+    color: #b6b6b6;
+    border-top: 1px dotted #d1d1d1
+}
+
+.more-btn-banner .fc2e {
+    color: #2eae84
+}
+
+.more-btn-banner .down-arrow {
+    width: 11px;
+    height: 7px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background: url(more_7c75e3e.png) no-repeat
+}
+
+.reader-container .more-btn-banner .goBtn {
+    cursor: pointer
+}
+
+element.style {
+}
+
+.reader-container .more-btn-banner .download {
+    display: inline-block;
+    font-size: 18px;
+    vertical-align: 2px;
+    margin-right: 6px
+}
+
+.iconfont {
+    font-family: iconfont !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: .2px;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.reader-container .more-btn-banner .ui-bz-btn-p-30 {
+    display: block;
+    font-size: 20px;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 30px;
+    _width: 124px
+}
+
+.ui-bz-btc {
+    _top: 2px;
+    position: relative;
+    font-weight: 400
+}
+
+.reader-container .banner-wrap {
+    height: 93px;
+    position: relative;
+    top: 0;
+    left: 0;
+    _zoom: 1;
+    overflow: hidden;
+    border: 1px solid #dedede;
+    margin: 0 auto 6px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none
+}
+
+.reader-container .more-btn-banner {
+    cursor: default;
+    text-align: center;
+    background: #fff;
+    height: 223px !important
+}
+
+.reader-container .more-btn-banner .ui-bz-btn-p-30 {
+    display: block;
+    font-size: 20px;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 30px;
+    _width: 124px
+}
+
+.ui-bz-btc {
+    _top: 2px;
+    position: relative;
+    font-weight: 400
+}
+
+address, caption, cite, code, dfn, em, strong, th, var, b {
+    font-style: normal;
+    font-weight: 400
+}
+
+user agent stylesheetstrong, b {
+    font-weight: 700
+}
+
+user agent stylesheeta:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto
+}
+
+inherited from div#html-reader-go-more.banner-wrap.more-btn-banner .reader-container .banner-wrap {
+    height: 93px;
+    position: relative;
+    top: 0;
+    left: 0;
+    _zoom: 1;
+    overflow: hidden;
+    border: 1px solid #dedede;
+    margin: 0 auto 6px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none
+}
+
+.reader-container .more-btn-banner {
+    cursor: default;
+    text-align: center;
+    background: #fff;
+    height: 223px !important
+}
+
+.reader-container .more-btn-banner .download {
+    display: inline-block;
+    font-size: 18px;
+    vertical-align: 2px;
+    margin-right: 6px
+}
+
+.ui-bz-btn-senior {
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+    border-radius: 2px;
+    background: #2fad85;
+    display: inline-block;
+    text-shadow: #188062 0 1px 0;
+    font-family: 微软雅黑, 冬青黑体, 宋体, arial;
+    text-decoration: none
+}
+
+.ui-bz-btn-senior:hover {
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+    border-radius: 2px;
+    background: #3fba93;
+    display: inline-block;
+    text-shadow: #188062 0 1px 0;
+    font-family: 微软雅黑, 冬青黑体, 宋体, arial;
+    text-decoration: none
+}
+
+.ui-bz-btn-senior22 {
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+    border-radius: 2px;
+    background: #2fad85;
+    display: inline-block;
+    text-shadow: #188062 0 1px 0;
+    font-family: 微软雅黑, 冬青黑体, 宋体, arial;
+    text-decoration: none
+}
+
+.ui-bz-btn-senior22:hover {
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+    border-radius: 2px;
+    background: #3fba93;
+    display: inline-block;
+    text-shadow: #188062 0 1px 0;
+    font-family: 微软雅黑, 冬青黑体, 宋体, arial;
+    text-decoration: none
+}
+
+.ui-bz-btn-senior2 {
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+    border-radius: 2px;
+    background: #db5b5a;
+    display: inline-block;
+    text-shadow: #188062 0 1px 0;
+    font-family: 微软雅黑, 冬青黑体, 宋体, arial;
+    text-decoration: none
+}
+
+.ui-bz-btn-senior2:hover {
+    cursor: pointer;
+    color: #fff;
+    border: 0;
+    border-radius: 2px;
+    background: #de6f6e;
+    display: inline-block;
+    text-shadow: #188062 0 1px 0;
+    font-family: 微软雅黑, 冬青黑体, 宋体, arial;
+    text-decoration: none
+}
+
+user agent stylesheeta:-webkit-any-link {
+    color: -webkit-link;
+    text-decoration: underline;
+    cursor: auto
+}
+
+inherited from div#html-reader-go-more.banner-wrap.more-btn-banner .reader-container .banner-wrap {
+    height: 93px;
+    position: relative;
+    top: 0;
+    left: 0;
+    _zoom: 1;
+    overflow: hidden;
+    border: 1px solid #dedede;
+    margin: 0 auto 6px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none
+}
+
+.reader-container .more-btn-banner {
+    cursor: default;
+    text-align: center;
+    background: #fff;
+    height: 223px !important
+}
+
+inherited from div#bd .banner-wrap div, .banner-wrap p, .banner-wrap span, .banner-wrap a {
+    font-family: microsoft yahei 微软雅黑 黑体 宋体
+}
+
+.more-btn-banner .fcff {
+    color: #ff7200
+}
