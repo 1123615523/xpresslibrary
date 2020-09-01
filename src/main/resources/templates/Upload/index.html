@@ -138,7 +138,7 @@
             <ul class="sidebar-menu tree" data-widget="tree" id="sidebar-menu">
                 <li class="block"></li>
                 <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/index">
+                    <a href="http://localhost:8888/Home/index">
                         <i class="fa fa-fw fa-home"></i>
                         <span>首页</span></a>
                 </li>
@@ -263,113 +263,63 @@
                         <tbody>
                         <tr>
                             <td valign="top" width="80%">
+
+
                                 <div id="wdk">
-                                    <form class="form-horizontal" autocomplete="off" id="form1" method="post"
-                                          action="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/doSave">
-                                        <input type="hidden" id="uploadFileIds" name="uploadFileIds">
+                                    <form class="form-horizontal" autocomplete="off" id="form1" method="post" enctype="multipart/form-data">
                                         <div class="box-body">
-                                            <div class="form-group ">
-                                                <label class="col-sm-2 control-label">上传方式</label>
-                                                <div class="col-sm-7 col-position" onchange="uploadTypeChange()">
-                                                    <input type="radio" id="single-upload" name="uploadType" value="0"
-                                                           required="" checked="checked">
-                                                    <label for="single-upload">单个上传</label>
-                                                    <input type="radio" id="multi-upload" name="uploadType" value="1">
-                                                    <label for="multi-upload">批量上传</label>
-                                                    <span class="tip-font" style="color: red;margin-left: 10px"><span>(今日剩余可上传资源数量:  <b>10</b>)</span></span>
-                                                </div>
-                                            </div>
                                             <div class="form-group ">
                                                 <label class="col-sm-2 control-label">资源文件</label>
                                                 <div class="col-sm-8">
-                                                    <div id="dropzoneDiv" class="dropzone dz-clickable">
-                                                        <div class="dz-default dz-message"><span><img
-                                                                src="/static/js/upload.png"
-                                                                width="50px"
-                                                                height="40px"
-                                                                alt="拖动文件至此或者点击上传"> <div>拖动文件至此或者点击上传</div></span>
-                                                        </div>
-                                                    </div>
+                                                    <input type="file" class="form-control" id="file"
+                                                           name="file" required="required">
                                                 </div>
                                             </div>
 
                                             <div class="form-group" id="resourceTitle">
                                                 <label class="col-sm-2 control-label">资源标题</label>
                                                 <div class="col-sm-8">
-                                                    <input type="input" class="form-control" id="meBookTempTitle"
-                                                           name="meBookTemp.title" value="" required="required">
+                                                    <input type="text" class="form-control" name="title" required="required">
                                                 </div>
                                             </div>
 
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">资源关键字</label>
                                                 <div class="col-sm-8">
-                                                    <input type="input" class="form-control" value=""
-                                                           required="required">
+                                                    <input type="text" class="form-control" name="essentialcode" required="required">
                                                 </div>
                                             </div>
 
                                             <div class="form-group " id="resourceKeyWord">
                                                 <label class="col-sm-2 control-label">资源简介</label>
                                                 <div class="col-sm-8">
-                                                <textarea type="input" class="form-control" id="meta_keywords"
-                                                          name="meBookTemp.meta_keywords" value=""></textarea>
-                                                    <div class="tip-font">
-                                                        <span>多个关键字以","分割；</span><span style="color: red">批量上传如果不填写，则自动按标题获取关键字</span>
-                                                    </div>
+                                                <textarea type="text" class="form-control" id="meta_keywords" name="introduction"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">资源分类</label>
 
                                                 <div class="col-sm-7">
-                                                    <select style="width: 30%;height: 30px;" v-model="resid" @change="chaxun()" name="firstCategory">
+                                                    <select style="width: 35%;height: 35px;" v-model="resid" @change="chaxun()" name="firstCategory">
                                                         <option v-for="res in result" :value="res.id">{{res.name}}</option>
                                                     </select>
 
-                                                    <select style="width: 30%;height: 30px;" v-model="detailsid">
+                                                    <select style="width: 35%;height: 35px;" v-model="detailsid" name="detaisid">
                                                         <option v-for="a in resultdetails" :value="a.did">{{a.dname}}</option>
                                                     </select>
                                                 </div>
                                             </div>
 
-                                            <!--<div class="form-group">-->
-                                                <!--<label class="col-sm-2 control-label">加入专题</label>-->
-                                                <!--<div class="col-sm-7">-->
-                                                    <!--<select id="book-group" onchange="findGroupMuLu()" style="width: 30%;height: 30px;" name="group_id">-->
-
-                                                    <!--</select>-->
-                                                    <!--<select id="book-group-mulu" name="group_mulu_id" style="width: 30%;height: 30px;">-->
-
-                                                    <!--</select>-->
-                                                <!--</div>-->
-                                            <!--</div>-->
 
                                             <div class="box-header"
                                                  style="background-color: #efefef; padding: 5px 5px; font-weight: bold; margin: 5px 0px;">
                                                 <h3 class="box-title">资源发布信息</h3>
                                             </div>
 
-                                            <div class="form-group" onchange="viewPageChange()">
+                                            <div class="form-group">
                                                 <label class="col-sm-2 control-label">预览页数</label>
-                                                <div class="col-sm-9 col-position">
-                                                    <input type="radio" id="sysViewPageSet" name="meBookTemp.freepage"
-                                                           value="0" checked="">
-                                                    <label for="sysViewPageSet">系统默认</label>
-                                                    <input type="radio" id="preViewPageSet" name="meBookTemp.freepage"
-                                                           value="1">
-                                                    <label for="preViewPageSet">预览页数设定</label>
-                                                    <input type="radio" id="noViewPageSet" name="meBookTemp.freepage"
-                                                           value="-1">
-                                                    <label for="noViewPageSet">不能预览</label>
-                                                    <div style="padding: 5px 5px; background-color: #f9f9f9; line-height: 28px; display: none"
-                                                         id="preViewPageSetting">
-                                                        预览页数/秒数：<input name="freepageValue" type="number" value="0"
-                                                                       maxlength="100" id="freepageValue" alt="p4c3p2s"
-                                                                       onblur="show();"
-                                                                       style="width: 80px; background-color: #fff;">
-                                                        <span class="tip-font" style="color: #ff1100">(资源最大可预览页数：1 页，视频资源请设置预览秒数！)</span>
-                                                    </div>
+                                                <div class="col-sm-8">
+                                                    <input style="width: 280px;" type="number" placeholder="最大预览页数：2页" class="form-control" name="previewpage" required="required">
                                                 </div>
                                             </div>
 
@@ -377,10 +327,10 @@
                                             <div class="form-group" onchange="uploadStatusChange()">
                                                 <label class="col-sm-2 control-label">允许下载</label>
                                                 <div class="col-sm-9 col-position">
-                                                    <input type="radio" id="down" name="meBookTemp.flag" value="1"
+                                                    <input type="radio" id="down" name="allowdownload" value="1"
                                                            checked="">
                                                     <label for="down">允许</label>
-                                                    <input type="radio" id="unDown" name="meBookTemp.flag" value="0">
+                                                    <input type="radio" id="unDown" name="allowdownload" value="0">
                                                     <label for="unDown">不允许</label>
 
                                                 </div>
@@ -389,37 +339,31 @@
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">是否原创</label>
                                                 <div class="col-sm-9 col-position">
-                                                    <input type="radio" id="isOriginal" name="original" value="0"
-                                                           checked="">
-                                                    <label for="down">否</label>
-                                                    <input type="radio" id="isNotOriginal" name="original" value="1">
-                                                    <label for="unDown">是</label>(请严格按实选择)
+                                                    <input type="radio" id="isNotOriginal" name="original" value="1" checked="">
+                                                    <label for="unDown">是</label>
+                                                    <input type="radio" id="isOriginal" name="original" value="0">
+                                                    <label for="down">否</label>(请严格按实选择)
                                                 </div>
                                             </div>
 
 
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">售价设置</label>
-                                                <div class="col-sm-9 col-position">
-                                                    <input type="number" value="0" maxlength="100"
-                                                           name="meBookTemp.cost"
-                                                           style="width: 70px;background-color: #fff;">
-                                                    <span style="color: #eb0064;"
-                                                          id="spanscorename"><strong>积分</strong></span>
-                                                    <span id="spanrate" style="color:blue;">【1积分=1元人民币】</span>
-                                                    <span class="tip-font"
-                                                          style="color: red">(最高售价：500.0，0为免费下载 )</span>
+                                                <div class="col-sm-8">
+                                                    <input style="width: 280px;" type="number" placeholder="请输入2.0-500.0之间的价格！" class="form-control" name="sellingprice" required="required">
+                                                    <div class="tip-font">
+                                                        <span style="color: red">1积分=1元人民币。</span>&nbsp;<span>最高售价：500.0，0为免费下载</span>
+                                                    </div>
                                                 </div>
-                                                <span id="Content_rav1"
-                                                      style="visibility:hidden;">请输入2.0-500.0之间的价格！</span>
                                             </div>
 
                                             <div class="box-footer" style="background-color: #f7f7f7">
                                                 <div class="col-sm-offset-2 col-sm-20 submit-block">
                                                     <div class="box-submit">
-                                                        <button type="button" id="btn-submit" class="btn btn-primary">
+                                                        <button type="button" id="btn-submit" class="btn btn-primary" onclick="uploadFile()">
                                                             提交
                                                         </button>
+
                                                         <div style="margin-top: 10px">
                                                             <div>
                                                                 <input type="checkbox" checked="checked"
@@ -445,6 +389,9 @@
                                         <input type="hidden" name="csrf_token" value="75656035378d403ba04aaae8a48271be">
                                     </form>
                                 </div>
+
+
+
 
                                 <script src="/static/vue/vue.js"></script>
                                 <script src="/static/vue/axios.min.js"></script>
@@ -477,6 +424,36 @@
                                             }
                                         }
                                     });
+                                </script>
+                                <script>
+                                    function uploadFile() {
+                                        var myfrom = new FormData();
+                                        myfrom.append('file',$("#file")[0].files[0]);
+                                        myfrom.append('title', $("[name=title]").val());
+                                        myfrom.append('essentialcode', $("[name=essentialcode]").val());
+                                        myfrom.append('detaisid', $("[name=detaisid]").val());
+                                        myfrom.append('introduction', $("[name=introduction]").val());
+                                        myfrom.append('previewpage', $("[name=previewpage]").val());
+                                        myfrom.append('allowdownload', $("[name=allowdownload]:checked").val());
+                                        myfrom.append('original', $("[name=original]:checked").val());
+                                        myfrom.append('sellingprice', $("[name=sellingprice]").val());
+                                        $.ajax({
+                                            url: "/documentation/upload",
+                                            type: "POST",
+                                            data: myfrom,
+                                            async: false,
+                                            contentType: false,
+                                            processData: false,
+                                            success: function (result) {
+                                                if (result == 1){
+                                                    layer.msg('上传成功！',{icon:1,time:1000});
+                                                }
+                                            },
+                                            error: function (data) {
+                                                console.log(data)
+                                            }
+                                        });
+                                    }
                                 </script>
 
                             </td>
@@ -516,9 +493,6 @@
                                     </p>
                                     <p style="line-height: 20px; font-size: 12px;">
                                         6、不需要在线预览的资源，格式不受上述格式的限制。
-                                    </p>
-                                    <p style="line-height: 20px; font-size: 12px;">
-                                        7、视频和音频采用H5播放格式，PC端需要使用Chrome，Firefox，Safari，IE10及以上版本浏览器浏览！。
                                     </p>
                                 </div>
                             </td>
@@ -567,216 +541,6 @@
 <script src="/static/js/ckeditor.js"></script>
 <script type="text/javascript" src="/static/js/dropzone.js"></script>
 <script>
-    initEditor('editor', 400, "html");
-    $("#editor1").show()
-    $("#editor2").hide();
-
-    function showdesc(type) {
-        // 纯文本
-        if (type == 1) {
-            $("#editor1").hide();
-            $("#editor2").show();
-            $("#simple-editor").attr("name", "meBookTemp.content");
-            $("#editor").removeAttr("name");
-            $("#editMode").val("1");
-        }
-        // 富文本
-        else if (type == 2) {
-            $("#editor1").show();
-            $("#editor2").hide();
-            $("#editor").attr("name", "meBookTemp.content");
-            $("#simple-editor").removeAttr("name");
-            $("#editMode").val("2");
-        } else {
-            $("#editor1").hide();
-            $("#editor2").hide();
-            $("#simple-editor").removeAttr("name", "meBookTemp.content");
-
-        }
-    }
-
-    /**
-     * 查找第二分类
-     */
-    function findSecondCategory() {
-        var categoryId = document.getElementById("firstCategory").value;
-
-        var second_category = $("#secondCategory");
-        second_category.empty();
-        var third_category = $("#thirdCategory");
-        third_category.empty();
-
-        if (categoryId) {
-            $.ajax({
-                    type: 'get',
-                    url: 'http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/getCategoryByPid',
-                    contentType: "application/json; charset=utf-8",
-                    data: {
-                        pid: categoryId
-                    },
-                    success: function (data) {
-                        if (data) {
-                            $("#secondCategory option").empty();
-                            var optionStr = "<option value=''>请选择</option>";
-                            for (var index in data) {
-                                optionStr += "<option value=" + data[index].id + ">" + data[index].title + "</option>"
-                            }
-                            $("#secondCategory").append(optionStr)
-                        }
-                    }
-                }
-            )
-        }
-    }
-
-    /**
-     * 查找第三分类
-     */
-    function findThirdCategory() {
-        var categoryId = document.getElementById("secondCategory").value;
-        var third_category = $("#thirdCategory");
-        third_category.empty();
-        if (categoryId) {
-            $.ajax({
-                    type: 'get',
-                    url: 'http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/getCategoryByPid',
-                    contentType: "application/json; charset=utf-8",
-                    data: {
-                        pid: categoryId
-                    },
-                    success: function (data) {
-                        if (data) {
-                            $("#thirdCategory option").empty();
-                            var optionStr = "<option value= " + categoryId + ">全部</option>";
-                            for (var index in data) {
-                                optionStr += "<option value=" + data[index].id + ">" + data[index].title + "</option>"
-                            }
-                            $("#thirdCategory").append(optionStr)
-                        }
-                    }
-                }
-            )
-        }
-    }
-
-    /**
-     * 查找目录
-     */
-    function findGroupMuLu() {
-        var groupId = document.getElementById("book-group").value;
-        var bookGroupMuluList = $("#book-group-mulu");
-        bookGroupMuluList.empty()
-        bookGroupMuluList.val(groupId)
-        if (groupId) {
-            $.ajax({
-                    type: 'get',
-                    url: 'http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/listGroupMuluByGroupId',
-                    contentType: "application/json; charset=utf-8",
-                    data: {
-                        groupId: groupId
-                    },
-                    success: function (data) {
-                        if (data) {
-                            $("#bookGroupMuluList option").empty();
-                            var optionStr = ''
-                            for (var index in data) {
-                                optionStr += "<option value=" + data[index].id + ">" + data[index].name + "</option>"
-                            }
-                            $("#book-group-mulu").append(optionStr)
-                        }
-                    }
-                }
-            )
-        }
-    }
-</script>
-<script>
-    var maxFileNum = '1';  // 上传总个数
-    var parallelUploadNum = 1; // 一次上传文件数量
-    var maxFileSize = 6; // 最大上传文件大小
-    var enClick = true; // 是否可以点击
-    var fileIds = [];
-    Dropzone.options.dropzoneDiv = {
-        url: "http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/uploadResource",
-        method: "post",
-        paramName: "dropzFile",
-        maxFiles: maxFileNum, // 上传次数
-        maxFilesize: maxFileSize, // 文件大小
-        parallelUploads: parallelUploadNum,// 一次上传的文件数量
-        // previewsContainer:"#preview", // 上传图片的预览窗口
-        acceptedFiles: ".doc,.docx,.ppt,.pptx,.xls,.xlsx,.pot,.potx,.pps,.ppsx,.rtf,.wps,.et,.dps,.pdf,.txt,.rar,.zip,.dwg,.DWG", // 支持文件上传
-        addRemoveLinks: true,
-        clickable: enClick,
-        dictDefaultMessage: '<img src="/static/wenku/img/upload.png" width="50px" height="40px" alt="拖动文件至此或者点击上传"> <div>拖动文件至此或者点击上传</div>',
-        dictMaxFilesExceeded: "您最多只能上传" + maxFileNum + "个文件！",
-        dictResponseError: '文件上传失败,请稍后重试!',
-        dictInvalidFileType: "此类文件暂时不能上传",
-        dictFallbackMessage: "浏览器不受支持",
-        dictFileTooBig: "文件过大上传文件最大支持.",
-        dictRemoveLinks: "删除",
-        dictRemoveFile: "<span style='color: grey'>移除文件</span>",
-        dictCancelUpload: "取消",
-        /* 上传缩略图预览模板 */
-        // previewTemplate: document.getElementById('preview-template').innerHTML,
-        init: function () {
-            this.on("addedfile", function (file) {
-                // 上传文件时触发的事件
-            });
-            this.on("success", function (file, data) {
-                // 上传成功触发的事件
-                if (data && data.state === 'ok') {
-                    file.responseData = data
-                    fileIds.push(data.resultMap.attachmentIds[0])
-                    $("#uploadFileIds").val(JSON.stringify(fileIds))
-                    var title = $("#meBookTempTitle").val()
-                    $("#meBookTempTitle").val(title + file.name.substring(0, file.name.lastIndexOf('.')))
-                    $("#meta_keywords").val(data.resultMap.keywordStr)
-                } else {
-                    toastr.error("文件上传失败：" + data.message);
-                    this.removeFile(file)
-                }
-            });
-            this.on("error", function (file, data) {
-                // 上传失败触发的事件
-            });
-
-            this.on("removedfile", function (file) {
-                // 删除文件时触发的方法
-                if (file.responseData && file.responseData.state === "ok") {
-                    var delId = file.responseData.resultMap.attachmentIds[0];
-                    $.ajax({
-                        type: "DELETE",
-                        url: "http://upload.wenku365.com:18889/ucenter/wenku/bookUpload/delFile",
-                        data: {
-                            "fileId": delId
-                        },
-                        dataType: 'json',
-                        success: function (result) {
-                            fileIds.splice(fileIds.indexOf(delId), 1)
-                            $("#uploadFileIds").val(JSON.stringify(fileIds))
-                            $("#meta_keywords").val("")
-                        }
-                    });
-                }
-            });
-        }
-
-    }
-
-    //上传方式改变
-    function uploadTypeChange() {
-        var radioValue = $('input:radio[name="uploadType"]:checked').val();
-        if ('0' === radioValue) {
-            window.location.href = "http://upload.wenku365.com:18889/ucenter/wenku/bookUpload"
-        } else if ('1' === radioValue) {
-            window.location.href = "http://upload.wenku365.com:18889/ucenter/wenku/bookUpload?uploadType=batch"
-        }
-    };
-
-    $("#resourceKeyWord").show();
-    $("#resourceTitle").show();
-    $("#meBookTempTitle").attr('required', 'true');
-    $("#single-upload").attr("checked", "checked")
 
     // 免费与收费切换
     function uploadStatusChange() {
@@ -805,7 +569,7 @@
             return false;
         }
         ajaxSubmit('#form1', function () {
-            $("#btn-submit").attr("disabled", true)
+            $("#btn-submit").attr("disabled", true);
             toastr.success('保存成功');
             setTimeout(function () {
                 location.reload();
