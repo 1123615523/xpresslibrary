@@ -2,6 +2,7 @@ package com.aaa.frontcontroller;/*
  */
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -13,6 +14,32 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("Home")
 @Controller
 public class IndexController {
+
+    //进入悬赏详情页面
+    @RequestMapping("helpInfo")
+    public String helpInfo(Integer id, Model model){
+        model.addAttribute("helpid",id);
+        return "Help/helpInfo";
+    }
+
+
+    //进入发布求助页面
+    @RequestMapping("addHelp")
+    public String addHelp(){
+        return "Help/addHelp";
+    }
+
+    //进入求助页面
+    @RequestMapping("help")
+    public String help(){
+        return "Help/index";
+    }
+
+    //进入充值页面
+    @RequestMapping("recharge")
+    public String recharge(){
+        return "Person/recharge";
+    }
 
     //进入阅读文档页面
     @RequestMapping("read")
