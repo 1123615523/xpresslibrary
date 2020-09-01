@@ -1,0 +1,61 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径-->
+<mapper namespace="com.aaa.dao.DocumentationDao">
+
+    <resultMap id="MyDocumentationMap" type="java.util.Map">
+        <id column="did" jdbcType="NUMERIC" property="did"></id>
+        <result column="filename" jdbcType="VARCHAR" property="filename"></result>
+        <result column="title" jdbcType="VARCHAR" property="title"></result>
+        <result column="essentialcode" jdbcType="VARCHAR" property="essentialcode"></result>
+        <result column="detaisid" jdbcType="NUMERIC" property="detaisid"></result>
+        <result column="introduction" jdbcType="VARCHAR" property="introduction"></result>
+        <result column="previewpage" jdbcType="NUMERIC" property="previewpage"></result>
+        <result column="pages" jdbcType="NUMERIC" property="pages"></result>
+        <result column="allowdownload" jdbcType="NUMERIC" property="allowdownload"></result>
+        <result column="original" jdbcType="NUMERIC" property="original"></result>
+        <result column="sellingprice" jdbcType="NUMERIC" property="sellingprice"></result>
+        <result column="releasetime" jdbcType="DATE" property="releasetime"></result>
+        <result column="downloads" jdbcType="NUMERIC" property="downloads"></result>
+        <result column="pageviews" jdbcType="NUMERIC" property="pageviews"></result>
+        <result column="favorites" jdbcType="NUMERIC" property="favorites"></result>
+        <result column="documentpath" jdbcType="VARCHAR" property="documentpath"></result>
+        <result column="documentsize" jdbcType="NUMERIC" property="documentsize"></result>
+        <result column="documentformat" jdbcType="VARCHAR" property="documentformat"></result>
+        <result column="documentstatus" jdbcType="NUMERIC" property="documentstatus"></result>
+        <result column="filepath" jdbcType="VARCHAR" property="filepath"></result>
+        <result column="authored" jdbcType="NUMERIC" property="authored"></result>
+        <result column="customername" jdbcType="VARCHAR" property="customername"></result>
+        <result column="customerid" jdbcType="NUMERIC" property="customerid"></result>
+        <result column="dname" jdbcType="VARCHAR" property="dname"></result>
+        <result column="name" jdbcType="VARCHAR" property="name"></result>
+    </resultMap>
+
+
+    <!--文件上传-->
+    <insert id="add" parameterType="com.aaa.entity.Documentation" useGeneratedKeys="true" keyProperty="did">
+       insert into documentation values(#{did},#{filename},#{title},#{essentialcode},#{detaisid},#{introduction},#{previewpage},#{pages},#{allowdownload},#{original},#{sellingprice},#{releasetime},#{downloads},#{pageviews},#{favorites},#{documentpath},#{documentsize},#{documentformat},#{documentstatus},#{filepath},#{imgsname},#{authored})
+    </insert>
+
+    <!--今日特别推荐查询-->
+    <select id="documentationespecially" resultType="com.aaa.entity.Documentation">
+        select  * from documentation order by rand() limit 10
+    </select>
+
+    <select id="bydid" resultMap="MyDocumentationMap">
+        select d.*,c.customername,c.customerid,rs.dname,ro.name from documentation d
+        left join customerinfo c on d.authored = c.customerid
+        left join resourcesdetails rs on d.detaisid = rs.did
+        left join resourcesinfo ro on rs.resourcesid = ro.id
+        where d.did = #{did}
+    </select>
+
+    <select id="findbyid" parameterType="java.lang.Integer" resultType="com.aaa.entity.Documentation">
+        select * from documentation where authored = #{authored}
+    </select>
+
+    <select id="findbydid" parameterType="java.lang.Integer" resultType="com.aaa.entity.Documentation">
+        select * from documentation where did = #{did}
+    </select>
+</mapper>

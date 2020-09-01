@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <span hidden th:text="${documentation}" name="hui"></span>
+    <div id="read" style="text-align: center">
+        <div th:each="img : ${#numbers.sequence(1,documentation.getPreviewpage())}"  >
+            <img th:src="${documentation.getImgsname()}+'/'+${img}+${'.png'}" style="width: 700px;height: 800px">
+            <span th:text="${img}+'/'+${documentation.getPages()}"></span>
+        </div>
+    </div>
+    <script src="/static/vue/vue.js"></script>
+    <script src="/static/vue/axios.min.js"></script>
+    <script src="/static/vue/jquery-3.1.1.js"></script>
+    <script>
+        new Vue({
+            el:"#read",
+            data:{
+                documentation:{}
+            },
+            created: function () {
+                var hui = $("[name=hui]").text();
+                this.documentation = hui;
+                console.log(this.documentation)
+            },
+            methods: {
+
+            }
+        });
+    </script>
+
+</body>
+</html>
