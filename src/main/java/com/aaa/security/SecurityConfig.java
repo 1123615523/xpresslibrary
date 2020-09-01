@@ -43,7 +43,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
                 //配置static的所有静态资源不拦截
-                .antMatchers("/static/**","/templates/**").permitAll()
+                .antMatchers("/static/**","/templates/**","/image/**").permitAll()
+            .and()
+                .headers().frameOptions().disable()
             .and()
                 //这是新加的，后台有可能会出问题
                 .headers().frameOptions().disable()
@@ -67,7 +69,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
                 .authorizeRequests()
-                .antMatchers("/utils/**","/Home/**","/Resource/**","/code/**","/customer/**","/signin/**","/alipay/**","/recharge/**","/Help/**").permitAll()
+                .antMatchers("/utils/**","/Home/**","/Resource/**","/code/**","/customer/**","/signin/**","/alipay/**","/recharge/**","/Help/**","/documentation/**").permitAll()
                 .anyRequest()
                 .access("@rbacConfig.isForbidden(request,authentication)")
             .and()
