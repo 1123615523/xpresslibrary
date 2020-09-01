@@ -98,7 +98,7 @@ public class alipayController {
             recharge.setRechargetime(new Date());
             recharge.setRechargemoney(money);
             recharge.setPaytype(1);
-            recharge.setRechargeaccount(customerinfo.getCustomercontact());
+            recharge.setRechargeaccount(customerinfo.getCustomertel());
             recharge.setCustomerid(customerinfo.getCustomerid());
             recharge.setRechargetype(2);
             Integer integer1 = rechargeService.addRecharge(recharge);
