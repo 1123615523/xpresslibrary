@@ -1,10 +1,13 @@
 package com.aaa.frontcontroller;/*
  */
 
+import com.aaa.entity.Documentation;
+import com.aaa.service.DocumentationService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 /**
@@ -40,6 +43,9 @@ public class IndexController {
     public String recharge(){
         return "Person/recharge";
     }
+
+    @Resource
+    DocumentationService documentationService;
 
     //进入阅读文档页面
     @RequestMapping("read")
@@ -112,6 +118,13 @@ public class IndexController {
     public String logout(HttpSession session){
         session.removeAttribute("cus");
         return "redirect:index";
+    }
+
+    @RequestMapping("reads")
+    public String reads(Integer did, Model model){
+        Documentation findbydid = documentationService.findbydid(did);
+        model.addAttribute("documentation",findbydid);
+        return "Read/read";
     }
 
 }
