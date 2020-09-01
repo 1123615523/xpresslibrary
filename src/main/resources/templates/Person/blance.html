@@ -207,9 +207,9 @@
                 </li>
                 <li class="header">个人信息</li>
                 <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/member">
+                    <a href="/Home/addHelp">
                         <i class="fa fa-fw fa-coffee"></i>
-                        <span>会员信息</span></a>
+                        <span>发布求助</span></a>
                 </li>
                 <li class="link">
                     <a href="/Home/userinfo">
@@ -238,7 +238,7 @@
         <!-- /.sidebar -->
     </aside>
 
-    <div class="content-wrapper" style="min-height: 1126px;">
+    <div class="content-wrapper" style="min-height: 1126px;" id="app">
     <section class="invoice">
 
         <div class="row">
@@ -255,15 +255,14 @@
             <div class="col-sm-4 invoice-col">
                 <div>
                     <strong>可用积分</strong>
-                    <div style="font-size: 65px">
-                        0.10
+                    <div style="font-size: 65px" th:text="${session.cus.customermoney}">
                     </div>
                 </div>
                 <div style="padding-top: 20px">
                     <a href="" class="btn btn-primary "><i class="fa fa-paper-plane"></i>
                         提现
                     </a>
-                    <a href="" class="btn btn-success "><i class="fa fa-credit-card"></i>
+                    <a href="/Home/recharge" class="btn btn-success "><i class="fa fa-credit-card"></i>
                         充值
                     </a>
                     <a href="/Home/signin" class="btn btn-warning "><i class="fa fa-battery-full"></i>
@@ -278,15 +277,15 @@
                     <table class="table">
                         <tbody><tr>
                             <th style="width:50%">收入：</th>
-                            <td>+0.10</td>
+                            <td>+{{res.incomeInfo}}</td>
                         </tr>
                         <tr>
                             <th>支出：</th>
-                            <td>0.00</td>
+                            <td>-{{res.expenditureInfo}}</td>
                         </tr>
                         <tr>
                             <th>提现：</th>
-                            <td>0.00</td>
+                            <td>{{res.withdrawInfo}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -320,13 +319,23 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr style="background-color: #e8ffe6">
-                        <td>收入</td>
-                        <td>签到积分</td>
-
-                        <td></td>
-                        <td>+0.10</td>
-                        <td>2020-08-20 12:40</td>
+                    <tr style="background-color: #e8ffe6" v-for="r in res.rechargeinfo">
+                        <td>{{r.paytype==1?'收入':'支出'}}</td>
+                        <td>
+                            <span v-if="r.rechargetype===1">签到积分</span>
+                            <span v-else-if="r.rechargetype===2">充值积分</span>
+                            <span v-else-if="r.rechargetype===3">提现积分</span>
+                            <span v-else-if="r.rechargetype===4">购买文档</span>
+                            <span v-else-if="r.rechargetype===5">发布悬赏</span>
+                            <span v-else-if="r.rechargetype===6">悬赏奖励</span>
+                            <span v-else>未知积分</span>
+                        </td>
+                        <td>{{r.documentations==null?'':r.documentations.title}}</td>
+                        <td>
+                            <span v-if="r.paytype===1">+{{r.rechargemoney}}</span>
+                            <span v-if="r.paytype===0">-{{r.rechargemoney}}</span>
+                        </td>
+                        <td>{{r.rechargetime}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -349,12 +358,36 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
     </section>
     <div class="clearfix"></div>
 </div>
+    <span th:text="${session.cus.customerid}" hidden id="cusid"></span>
+    <script src="/static/vue/axios.min.js"></script>
+    <script src="/static/vue/vue.js"></script>
+    <script src="/static/vue/jquery-3.1.1.js"></script>
+    <script>
+        var v = new Vue({
+            el:'#app',
+            data:{
+                res:[]
+            },
+            created:function () {
+                this.find();
+            },
+            methods:{
+                "find":function () {
+                    var url = "/recharge/findRecharge?cusid="+$("#cusid").html();
+                    var that = this;
+                    axios.get(url).then(function (value) {
+                        that.res = value.data;
+                    })
+                }
+            }
+        })
+    </script>
+
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
             version v3.0.0-rc.1

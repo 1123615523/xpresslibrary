@@ -207,9 +207,9 @@
                 </li>
                 <li class="header">个人信息</li>
                 <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/member">
+                    <a href="/Home/addHelp">
                         <i class="fa fa-fw fa-coffee"></i>
-                        <span>会员信息</span></a>
+                        <span>发布求助</span></a>
                 </li>
                 <li class="link">
                     <a href="/Home/userinfo">
@@ -276,7 +276,7 @@
                             </tr>
                             <tr>
                                 <th>最近收益：</th>
-                                <td>0.1</td>
+                                <td>1.00</td>
                             </tr>
                             <tr>
                                 <th>最近签到：</th>
@@ -343,7 +343,6 @@
         <div class="clearfix"></div>
     </div>
 
-    <!--<img th:src="/file/images/+${session.cus.customerpic}">-->
 
     <span hidden th:text="${session.cus.customerid}" id="resid"></span>
 
@@ -361,7 +360,23 @@
             },
             methods:{
                 "qian":function () {
-                    alert("签到了！");
+                    var url = "/signin/qiandao?resid="+$("#resid").html();
+                    var that = this;
+                    axios.get(url).then(function (value) {
+                        if(value.data === 1){
+                            toastr.warning("今天已经签到过了，不能重复签到哦");
+                        }else if(value.data === 2){
+                            var url = "/customer/updLogin?id="+$("#resid").html();
+                            axios.get(url).then(function (resp) {
+                                if(resp.data === 1){
+                                    toastr.success("签到成功，积分+0.1，继续保持呦^-^");
+                                    that.find();
+                                }
+                            });
+                        }else{
+                            toastr.error("系统错误，签到失败！");
+                        }
+                    })
                 },
                 "find":function () {
                     var url = "/signin/find?cusid="+$("#resid").html();
