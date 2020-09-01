@@ -1,0 +1,80 @@
+﻿@charset "utf-8";
+/* CSS Document */
+
+/* Flash Banner */
+.flash{
+	position:relative;
+	overflow:hidden;
+	width: 100%; }
+.flash .mainpart{position:relative;}
+.flash .fixedbox{
+	position:absolute;
+	z-index:1;
+	top:20%;
+	right:0;
+	left:0;
+	text-align:center;
+}
+.flash .fixedbox h1{padding:10px; font-size:30px;}
+.flash .fixedbox h2{padding:10px; font-size:20px;}
+/* End */
+
+/* 幻灯片 */
+.slides{
+	position:relative;
+	height:400px;
+	overflow:hidden;
+	position:relative;
+}
+.picbox{padding:0px 0; overflow:hidden;}
+    .picbox li {width:100%; border:0; margin:0px 0px;}
+.picbox h1{
+	padding:10% 10px 0 10px;
+	font-size:30px;
+	text-align:center;
+}
+.picbox p{
+    font-size: 18px;
+    line-height: 2em;
+    text-align: center;
+}
+.picbox h1 a{text-decoration:none;}
+.picbox li{	
+	display:none;
+	height:400px;
+	background-position:center center;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+.picbox li.current{display:block; padding: 0 0;} 
+
+.switch{
+	display:block;
+	position:absolute;
+	left:50%;
+	bottom:10px;
+	margin-left: -56px;
+}
+.switch li{
+	float:left;
+	width:16px;
+	height:16px;
+	filter:alpha(opacity=100);
+	opacity:1;
+	/*overflow:hidden;*/
+	background:#ccc;
+	border-radius: 50%; padding:0px 0px;border:0; margin:0px 0px;
+	margin-right: 10px;
+}
+.switch li.current{background-color: #ffd800;
+	width:16px; padding:0px 0px; border-color:#ffd800; border:0; margin:0px 0px;margin-right: 10px;
+	height:16px;}
+.switch a{
+	/*display:block;*/
+	/*width:200px;
+	height:10px;*/
+}
+.switch a:hover{text-decoration:none;}
+.switch li.current a{background:red;border:0;
+	width:16px; padding:0px 0px;
+	height:16px;}

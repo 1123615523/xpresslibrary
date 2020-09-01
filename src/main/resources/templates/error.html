@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>失败页面</title>
+</head>
+<body>
+
+<center>
+
+    <h1>操作出现异常!!!</h1>
+
+    <button onclick="yes()">测试打开</button>
+
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+    <script>
+        function yes() {
+            xadmin.open("测试打开",'/Home/error',800,400);
+        }
+    </script>
+
+</center>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.HelpDao">
+
+    <insert id="addHelp">
+        insert into helpinfo(id,helptime,helpcontent,cid,helpintegral,helpcount,helpcomment,helpstatus,helptype,helptitle)
+        value(null,#{helptime},#{helpcontent},#{cid},#{helpintegral},#{helpcount},#{helpcomment},#{helpstatus},#{helptype},#{helptitle})
+    </insert>
+
+    <resultMap id="MyResultMap" type="com.aaa.entity.Helpinfo" autoMapping="true">
+        <id column="id" property="id"></id>
+        <association property="customerinfos" javaType="com.aaa.entity.Customerinfo" autoMapping="true">
+            <id column="customerid" property="customerid"></id>
+        </association>
+    </resultMap>
+
+    <select id="findHelpInfo" resultMap="MyResultMap">
+        select * from helpinfo h
+        LEFT JOIN customerinfo c
+        on h.cid = c.customerid
+        ORDER BY h.helpintegral desc
+    </select>
+
+</mapper>

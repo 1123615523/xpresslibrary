@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head id="Head1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        问答求助-随心文库网
+    </title>
+    <link href="/static/wd/5dede93f-e1a9-4d5b-88af-fa62a70587ff.ico"
+          rel="shortcut icon" type="image/x-icon">
+    <link href="/static/js/base.css" rel="stylesheet" type="text/css">
+    <link href="/static/wd/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" async="" src="/static/wd/auto_dup"></script>
+    <script type="text/javascript" src="/static/wd/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/static/wd/Prototype.js"></script>
+    <script type="text/javascript" src="/static/wd/slides.banner.js"></script>
+    <link href="/static/wd/slides.css" rel="stylesheet" type="text/css">
+    <meta name="copyright" content="www.renrendoc.com">
+    <meta name="applicable-device" content="pc">
+    <!--IE8只能支持jQuery1.9-->
+    <!--[if lte IE 8]>
+    <script src="https://www.renrendoc.com/JS/jquery1.9.0.min.js"></script>
+    <![endif]-->
+    <style>
+        a {
+            color: #06a;
+            text-decoration: none;
+        }
+
+        a:focus {
+            outline: 0 none;
+        }
+
+        a:hover, a:active {
+            outline: 0
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        a.line, .tdu {
+            text-decoration: underline
+        }
+
+        a.unline, .tdn {
+            text-decoration: none
+        }
+
+        body, .main, .main_bg {
+            background-color: #fff;
+        }
+
+        .gp-wrap {
+            width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+        }
+
+        .gp-lwrap {
+            float: left;
+            width: 930px;
+        }
+
+        .gp-list-tp {
+            width: 840px;
+        }
+
+        .gp-dsc-mod {
+            width: 900px;
+        }
+
+        .dsc-ul li .title {
+            width: 840px;
+        }
+
+        .dsc-ul li .title div {
+            width: 840px;
+        }
+
+        .search_700 {
+            width: 920px
+        }
+
+        .lt-cont-add {
+            width: 930px;
+        }
+
+        .lt-cont .ad img {
+            width: 890px;
+        }
+
+        .lt-cont-add .ad, .lt-cont-add .ad img {
+            width: 930px;
+        }
+
+        .ad-brief {
+            max-width: 800px;
+        }
+    </style>
+
+    <link href="/static/wd/misc.css" rel="stylesheet" type="text/css">
+    <link href="/static/wd/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style>
+        body, .main, .main_bg {
+            background-color: #fff;
+        }
+
+        .camNavA a {
+            padding: 0px 15px;
+        }
+    </style>
+    <style>.xxxk_top img {
+        height: 55px;
+        margin-top: 10px;
+    }
+
+    .cmn_search_box {
+        margin-left: 130px;
+        margin-top: 10px;
+    }
+
+    .cmn_search_box .border {
+        border: 1px solid #00a2ca;
+        border-radius: 0px;
+    }
+
+    .cmn_search_box .border input[type='submit'] {
+        background-color: #00a2ca;
+    }
+
+    .cmn_search_box .border input[type='submit']:hover {
+        background-color: #00a2ca;
+    }
+
+    .hr-wrap {
+        border-bottom: 1px solid #00a2ca;
+        background: #00a2ca;
+    }
+
+    .home_menu {
+        border-bottom: 2px solid #00a2ca;
+    }
+
+    .home_menu .feilei {
+        font-size: 16px;
+        background-color: #00a2ca;
+        color: #fff;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .nav_bg, .nav li.over a, .nav li a, .nav #conAll0.over a {
+        background: #00a2ca;
+    }
+
+    .nav li a {
+        display: block;
+        padding: 0px 40px;
+    }
+
+    .j_menu .hottip {
+        right: -3px;
+        top: 5px;
+    }
+
+    .hottip {
+        right: 16px;
+        top: 5px;
+    }
+
+    .nav li a:Hover, .nav li.over a, .nav #conAll0:hover a:hover, .nav #conz0:hover a:hover {
+        background-color: #00a2ca;
+        color: #ff4400
+    }
+
+    .nav #conAll0 a span {
+        right: 12px;
+        top: 14px;
+    }
+
+    .home_menu .j_menu li.home a {
+        color: #ff4400
+    }
+
+    .nav #conAll0.over a, .nav #conz0.over a, .nav #conAll0:hover a, .nav #conz0:hover a {
+        background-color: #00a2ca;;
+        color: #ff4400
+    }
+
+    .cmn_top_r .inner a.upload {
+    }
+
+    .camTitle {
+        background-color: #f9f9f9;
+    }
+
+    .camNavA a {
+        font-size: 14px;
+        color: #00a2ca
+    }
+
+    .camNavA a.selected {
+        background: #fff;
+        border-top: 3px solid #00a2ca;
+        font-weight: bold;
+        border-left: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5
+    }
+
+    .camTitles {
+        background-color: #f5f5f5;
+    }
+
+    .camNavAs a {
+        font-size: 16px;
+        color: #00a2ca
+    }
+
+    .camNavAs a.selected {
+        font-weight: bold;
+        border-top: 3px solid #00a2ca;
+        background: #fff;
+    }
+
+    .cate {
+        background: #5c5c5c;
+        border-top: solid 1px #3b3b3b;
+    }
+
+    .cate li:hover .category-title {
+        background: #fff
+    }
+
+    .cate li:hover .category-title a {
+        color: #ff6600
+    }
+
+    .cate .category-sub {
+        border-color: #3b3b3b;
+        filter: alpha(opacity=100); /*IE滤镜，透明度50%*/
+        -moz-opacity: 1; /*Firefox私有，透明度50%*/
+        opacity: 1; /*其他，透明度50%*/
+    }
+
+    .shop1 a.searchbtn0 {
+        background-color: #ff491f;
+    }
+
+    .shop1 a.searchbtn0:hover {
+        background-color: #e5411c;
+    }
+
+    .main-contact .txt {
+        width: auto;
+        background: url(/images/s.gif) no-repeat -35px 0px;
+        float: none;
+        margin-top: 0px;
+    }
+
+    footer, .foot_nav_bg {
+        background: #111111;
+    }
+
+    .camZpSmall .camZpBox dd span, .camZpSmall .camZpBox dd a.selected, .camZpBox dd span, .camZpBox dd a.selected, .farea dd span, .farea dd a.selected, .fareas dd span, .fareas dd a.selected {
+        color: #fff;
+        background-color: #3b3b3b;
+    }
+
+    .farea dt, .fareas dt {
+        color: #666
+    }
+
+    .h-list #conAll, .h-list #conAll2, .dorpmenu2 {
+        border: 1px solid #3b3b3b;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .catesBox a:hover, .catesBox a.cur {
+        background: #00a2ca;
+        border: 1px solid #00a2ca;
+    }
+
+    .bannerbox .searchbox .searchbtn1 {
+        background-color: #189ae5;
+    }
+
+    .bannerbox .searchbox .searchbtn1:hover {
+        background-color: #0B8DD6;
+    }
+
+    .home_link {
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .home_link .link_con {
+        height: auto;
+        min-height: 100px;
+    }</style>
+</head>
+<body>
+<div id="BAIDU_DUP_fp_wrapper"
+     style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;">
+    <iframe id="BAIDU_DUP_fp_iframe" src="/static/wd/o.html"
+            style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe>
+</div>
+<script type="text/javascript" src="/static/wd/www2m.js"></script>
+<script type="text/javascript">
+    browserRedirect("https://m.renrendoc.com", "https://www.renrendoc.com");
+</script>
+
+<!--head-->
+<div id="headerplace" style="height: 39px; background-color:#fff; overflow: hidden; width: 100%; min-width:1200px;">
+    <div class="bg_100 top_bg">
+        <div class="top">
+        <span>
+           <span style="float:left; color:#666;">欢迎来到随心文库！</span>
+<span style="float:left; color:#F70830;">上传客服QQ1123615523</span>
+            <span th:if="${session.cus!=null}">
+        |<a th:href="@{/Home/user}" style="color: #eb0064">[个人中心]</a>|
+        <a th:href="@{/Home/logout}">安全退出</a>|
+    </span>
+    <span th:if="${session.cus==null}">
+         |<a th:href="@{/Home/login}">[登录]</a>|
+         <a th:href="@{/Home/registered}">免费注册</a>|
+    </span>
+</span>
+        </div>
+    </div>
+</div>
+
+<div style="background-color:#fff; z-index:10; position:relative; min-width:1200px;">
+
+    <div class="xxxk_top cf">
+
+        <h1><a title="随心文库网" class="fl" href="https://www.renrendoc.com/" style="height:81px; position:relative; ">
+            <img src="/static/wd/4d54aa68-a2cd-487d-9a74-8686af2ad286.jpg" title="随心文库网" alt="随心文库网"
+                 style="border: 0; "></a></h1>
+        <div class="cmn_search_box">
+            <div class="border">
+                <form>
+                    <input id="keyword" type="text" value="" name="q" placeholder="在这里搜索">
+                    <input type="submit" name="searchBtn" value="" title="点击搜索"
+                           onclick="searchWord($(&#39;#keyword&#39;).val()); return false;">
+                </form>
+            </div>
+            <p class="hot">
+                <span>热门搜索：</span>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;直缝焊接机&#39;)" title="直缝焊接机">直缝焊接机</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;矿井提升机&#39;)" title="矿井提升机">矿井提升机</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;循环球式转向器图纸&#39;)" title="循环球式转向器图纸">循环球式转向器图纸</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;机器人手爪发展史&#39;)" title="机器人手爪发展史">机器人手爪发展史</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;管道机器人dwg&#39;)" title="管道机器人dwg">管道机器人dwg</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;动平衡试验台设计&#39;)" title="动平衡试验台设计">动平衡试验台设计</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;探测机器人&#39;)" title="探测机器人">探测机器人</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;马铃薯播种机&#39;)" title="马铃薯播种机">马铃薯播种机</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;自动水箱外文翻译&#39;)" title="自动水箱外文翻译">自动水箱外文翻译</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;液压冲床图纸&#39;)" title="液压冲床图纸">液压冲床图纸</a>
+
+            </p>
+            <script>
+                function getcheckedKeyword(s) {
+                    if (!s) return "";
+                    var pattern = new RegExp("[`~%!@#$^&*()=|{}';',\\[\\]<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
+                    var rs = "";
+                    for (var i = 0; i < s.length; i++) {
+                        rs = rs + s.substr(i, 1).replace(pattern, '');
+                    }
+                    return rs;
+                }
+
+                function searchWord(keyword, aElement) {
+                    keyword = getcheckedKeyword(keyword);
+                    if (keyword == "在这里搜索") keyword = "";
+                    var url = "https://www.renrendoc.com/search.html?q=" + encodeURIComponent(keyword);
+
+                    if (!aElement) {
+                        location.href = url;
+                    } else {
+                        aElement.href = url;
+                        return true;
+                    }
+                }
+            </script>
+        </div>
+
+        <div class="topr">
+            <a class="block upload-link" href="https://www.renrendoc.com/flexpaper/add.aspx"
+               rel="nofollow"><span></span>上传我的文档</a>
+        </div>
+    </div>
+
+    <div class="xxxk_top searchfix"
+         style="height: 75px; background: rgb(255, 255, 255); box-shadow: rgb(221, 221, 221) 0px 0px 5px; left: 0px; top: 0px; width: 100%; position: relative; z-index: 1; display: none;">
+        <div class="searchbox box2" style=" width: 1200px;   margin-top: 0px;
+     left: 0px;  margin: 0px auto; position:relative;">
+            <a title="随心文库网" class="fl" href="https://www.renrendoc.com/" style="height:81px;">
+                <img src="/static/wd/4d54aa68-a2cd-487d-9a74-8686af2ad286.jpg" title="随心文库网" alt="随心文库网"
+                     style="border: 0; height:47px; width:auto; "></a>
+            <div class="cmn_search_box" style="width:800px;">
+                <div class="border">
+                    <form>
+                        <input id="keywordfix" type="text" value="" name="q" placeholder="在这里搜索">
+                        <input type="submit" name="searchBtn" value="" title="点击搜索"
+                               onclick="searchWord($(&#39;#keywordfix&#39;).val()); return false;">
+                    </form>
+                </div>
+                <a class="block upload-link" style="position: absolute; right: 0px;top:0px;"
+                   href="https://www.renrendoc.com/flexpaper/add.aspx" rel="nofollow"><span></span>上传我的文档</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(window).bind("scroll", function (event) {
+            var Y = $(this).scrollTop();
+            if (Y > 140 && $('.searchfix').css("position") != "fixed") {
+                $('.searchfix').css({
+                    position: "fixed",
+                    left: "0",
+                    top: "0",
+                    width: "100%",
+                    zIndex: "999999",
+                    display: ""
+                });
+            } else if (Y <= 140 && $('.searchfix').css("position") == "fixed") {
+                $('.searchfix').css({
+                    position: "relative",
+                    zIndex: "1",
+                    display: "none"
+                });
+            }
+        });
+    </script>
+
+    <!--div head-->
+    <div class="home_menu">
+        <div class="mcenter">
+            <div class="feilei">
+                <a href="https://www.wenku365.com/list.html" class="fen">
+                    <div class="h3">全部分类<span></span></div>
+                </a>
+
+                <div class="home_cate hide" id="menuhomecate">
+                    <div class="cate" id="wk-all-cate" style="top:0px; *top:0px;height: 351px;">
+                        <div id="qwe">
+                            <li v-for="res in result">
+                                <dl class="category-title ">
+                                    <dt>
+                                        <a href="/c-00012.html">{{res.name}}<b class="li-aw n-ic"></b></a>
+                                        <span class="right-arrow">&gt;</span>
+                                    </dt>
+                                    <dd>
+                                        <a href="/c-0001200007.html" rel="nofollow">
+                                            <nobr>毕业论文</nobr>
+                                        </a>
+                                        <a href="/c-0001200024.html" rel="nofollow">
+                                            <nobr>毕业设计</nobr>
+                                        </a>
+                                        <a href="/c-0001200015.html" rel="nofollow">
+                                            <nobr>临时分类</nobr>
+                                        </a>
+                                    </dd>
+                                </dl>
+                                <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
+                                    <dt><a href="/c-00012.html">学术论文</a></dt>
+                                    <dd>
+                                    <span v-for="chid in res.resourcesdetails">
+                                        <a href="" rel="nofollow">
+                                            <nobr>{{chid.dname}}</nobr>
+                                        </a>
+                                    </span>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </div>
+                    </div>
+                    <script src="/static/vue/vue.js"></script>
+                    <script src="/static/vue/axios.min.js"></script>
+                    <script>
+                        var v = new Vue({
+                            el: '#qwe',
+                            data: {
+                                result: []
+                            },
+                            created: function () {
+                                this.find();
+                            },
+                            methods: {
+                                "find": function () {
+                                    var url = "/Resource/findResource";
+                                    var that = this;
+                                    axios.get(url).then(function (value) {
+                                        that.result = value.data;
+                                    }).catch(function (reason) {
+                                        layer.alert("出错了");
+                                    });
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="j_menu">
+                <li class="">
+                    <a href="/Home/index" target="_self">
+                        首页</a></li>
+                <li class=""><a href="/c-00012.html">学术论文</a></li>
+                <li class=""><a href="/c-00015.html">应用文档</a></li>
+                <li class=""><a href="/c-00017.html">行业资料</a></li>
+                <li class=""><a href="/c-00016.html">教育资源</a></li>
+                <li class=""><a href="/Home/help">互动求助</a></li>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<form method="post" action="https://www.renrendoc.com/task-0-1-1.html?id=0&amp;sort=1&amp;page=1" id="form1"
+      enctype="multipart/form-data">
+    <div class="aspNetHidden">
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+               value="/wEPDwUKMTk4MDUxMDE0N2RkFAJ2ZmbtIWHq2iPzl85EkyIgGZc=">
+    </div>
+
+
+    <!--main-->
+    <div class="main1200 mb20">
+        <!-- 头部 -->
+        <div class="gp-wrap clearfix">
+            <!--左侧-->
+            <div class="gp-lwrap" id="app">
+                <div class="gp-list-tp" style="padding: 0 30px; background-color:#f0f5ff; font-size:14px; ">
+                    <span class="sptip">找资源？工作生活有难题？在这里提问吧（谢绝非健康、违规的问题哦）</span>
+                </div>
+                <div id="wdk">
+                    <div class="bannerboxmin">
+                        <div class="searchbox box2">
+                            <div class="btn2 box2">
+                                <input type="text" class="searchvalue" placeholder="问答、求助任你搜" id="searchvalue" value="">
+                                <input type="submit" onclick="searchInfo($(&#39;#searchvalue&#39;).val());return false;"
+                                       class="searchbtn2" id="searchbtn" value="搜索">
+                                <a class="fr tiwen" id="iwantask" onclick="ti()">我要提问</a>
+
+                                <span th:text="${session.cus}" id="res" hidden></span>
+                                <script src="/static/vue/jquery-3.1.1.js"></script>
+                                <script>
+                                    function ti() {
+                                        var s = $("#res").html();
+                                        if (s === '') {
+                                            alert("请先登录或注册！");
+                                        } else {
+                                            location.href = "/Home/addHelp";
+                                        }
+                                    }
+                                </script>
+
+                                <script>
+                                    function getcheckedKeyword(s) {
+                                        if (!s) return "";
+                                        var pattern = new RegExp("[`~%!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
+                                        var rs = "";
+                                        for (var i = 0; i < s.length; i++) {
+                                            rs = rs + s.substr(i, 1).replace(pattern, '');
+                                        }
+                                        return rs;
+                                    }
+
+                                    function searchInfo(keyword, aElement) {
+                                        keyword = getcheckedKeyword(keyword);
+                                        if (keyword == "问答、求助任你搜") keyword = "";
+                                        var url = "https://www.renrendoc.com/task-0-1-1.html?q=" + encodeURIComponent(keyword);
+                                        if (!aElement) {
+                                            location.href = url;
+                                        } else {
+                                            aElement.href = url;
+                                            return true;
+                                        }
+                                    }
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="catesBox clearfix">
+                        <a href="https://www.renrendoc.com/task-0-1-1.html?q=" class="cur">全部</a>
+
+                        <a href="https://www.renrendoc.com/task-18-1-1.html?q=">
+                            资源求助</a>
+
+                        <a href="https://www.renrendoc.com/task-19-1-1.html?q=">
+                            出售图纸</a>
+
+                        <a href="https://www.renrendoc.com/task-20-1-1.html?q=">
+                            设计代做</a>
+
+                        <a href="https://www.renrendoc.com/task-21-1-1.html?q=">
+                            其他求助</a>
+
+                    </div>
+
+                    <div class="gp-dsc-mod" id="nav">
+                        <div class="tit">
+                            <span class="l mr25">回复<em class="orange">79</em></span>
+
+                            <span class="l">今日<em class="orange">0</em></span>
+                            <span class="gp-re-tab">
+                        <a href="https://www.renrendoc.com/task--1-1-1.html?q=" class="tab-a cur">最新</a>|
+                        <a href="https://www.renrendoc.com/task--1-2-1.html?q=" class="tab-a ">最热</a>|
+                        <a href="https://www.renrendoc.com/task--1-3-1.html?q=" class="tab-a ">精华</a>|
+                        <a href="https://www.renrendoc.com/task--1-7-1.html?q=" class="tab-a ">悬赏</a>|
+                        <a href="https://www.renrendoc.com/task--1-4-1.html?q=" class="tab-a ">未答</a>|
+                        <a href="https://www.renrendoc.com/task--1-6-1.html?q=" class="tab-a ">已完成</a>
+                    <span class="r"><a href="https://www.renrendoc.com/task--1-5-1.html?q="
+                                       class="tab-a ">[与我相关]</a></span>
+                    </span>
+                        </div>
+                        <ul class="dsc-ul">
+                            <li v-for="r in res">
+                                <table width="100%">
+                                    <tbody>
+                                    <tr>
+                                        <td valign="top" style="width:55px;">
+                                            <!--/static/wd/avatar_small-->
+                                            <a href=""></a>
+                                            <a class="img" href="#" target="_blank">
+                                                <img class="userCardID" alt="个人中心有" width="32" height="32"
+                                                     :src="r.customerinfos.customerpic">
+                                            </a>
+                                        </td>
+                                        <td valign="top">
+                                            <div class="title clearfix">
+                                                <table>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td valign="top">
+                                                            <a class=" mr3" href="JavaScript:" @click=zou(r.id) :title="r.helptitle">{{r.helptitle}}</a>
+                                                        </td>
+                                                        <td valign="top">
+                                                        <span v-if="sizeinfo==1">
+                                                            <span class="sp sp3">置顶</span>
+                                                        </span>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div>{{r.helpcontent}}</div>
+                                                <div class="detail">
+                                                    <span class="date">{{r.helptime}}</span>
+                                                    <span class="read">阅读(<em>{{r.helpcount}}</em>)</span>
+                                                    <span class="read">评论(<em>{{r.helpcomment}}</em>)</span>
+                                                    <span class="shang">【悬赏{{r.helpintegral}}积分】</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                        </ul>
+
+                        <!-- 分页信息 -->
+                        <div class="pagination" style="text-align:center;">
+                            <div id="Content_AspNetPager1" class="paginator" showmorebuttons="false"
+                                 style="font-size:14px;">
+                                <a class="paginator" href="JavaScript:" style="margin-right:5px;" @click="fenye('first')">首页</a>
+                                <a class="paginator" href="JavaScript:" style="margin-right:5px;" @click="fenye('pre')">上一页</a>
+                                <span class="cpb" style="margin-right:5px;">{{sizeinfo}}....{{pagination.lastPage}}</span>
+                                <a class="paginator" href="JavaScript:" style="margin-right:5px;" @click="fenye('next')">下一页</a>
+                                <a class="paginator" href="JavaScript:" style="margin-right:5px;" @click="fenye('last')">尾页</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <span id="testinfo" th:text="${session.cus!=null?session.cus.customerid:''}" hidden></span>
+                <script src="/static/vue/vue.js"></script>
+                <script src="/static/vue/axios.min.js"></script>
+                <script src="/static/vue/jquery-3.1.1.js"></script>
+                <script src="/static/js/toastr.min.js"></script>
+                <script>
+                    var v = new Vue({
+                        el: '#wdk',
+                        data: {
+                            res: [],
+                            pagination: {},
+                            sizeinfo:1
+                        },
+                        created: function () {
+                            this.find(1);
+                        },
+                        methods: {
+                            "zou":function (id) {
+                                var cus = $("#testinfo").html();
+                                console.info(cus+"---------"+id);
+                                if('' === cus){
+                                    alert("请先登录！");
+                                    return;
+                                }
+                                window.location = "/Home/helpInfo?id="+id;;
+                            },
+                            "find": function (size) {
+                                var that = this;
+                                var url = "/Help/findHelpInfo?currentPage=" + size;
+                                axios.get(url).then(function (resp) {
+                                    that.res = resp.data.rows;
+                                    that.pagination = resp.data;
+                                    that.sizeinfo = resp.data.currentPage;
+                                })
+                            },
+                            "fenye": function (page) {
+                                if (page === 'first') {
+                                    this.find(1);
+                                } else if (page === 'pre') {
+                                    var res = this.sizeinfo - 1;
+                                    if (res >= 1) {
+                                        this.find(res);
+                                    }
+                                } else if (page === 'next' && this.pagination.currentPage < this.pagination.lastPage) {
+                                    var res = this.pagination.currentPage + 1;
+                                    this.find(res);
+                                } else if (page === 'last') {
+                                    this.find(this.pagination.lastPage);
+                                }
+                            }
+                        }
+                    })
+                </script>
+            </div>
+            <!--左侧end-->
+            <!--右侧-->
+
+            <div class="gp-rwrap">
+                <div class="helpBox">
+                    <span class="dib">还有<em class="red f18">117</em>个小伙伴的提问没收到答复，快来帮助他们吧！！！</span>
+                    <a href="https://www.renrendoc.com/task--1-4-1.html" class="help-btn" target="_self" title="帮助解答">帮助解答</a>
+                </div>
+
+                <div class="wd-list-box clearfix" style="margin-bottom:10px;">
+                    <div class="wd-list-tit">本周达人榜</div>
+                    <ul id="wdlistbox">
+
+
+                        <li style="border-top: none;">
+                            <em class="dib mr5 t-num  e1">1</em>
+                            <em class="t-name dib"><a href="https://www.renrendoc.com/u-1.html" title="初见n**cy"
+                                                      target="_blank">初见n**cy</a><img style="height:15px; width:20px; overflow:hidden;
+background:url(/images/bg_index_ie6_781d95ab.png) no-repeat -185px 5px;" src="/static/wd/s.gif" alt="个人认证"
+                                                                                      title="个人认证"></em>
+                            <em class="dib r t-anum">回答：27</em>
+                        </li>
+
+
+                        <li style="border-top: none;">
+                            <em class="dib mr5 t-num  e2">2</em>
+                            <em class="t-name dib"><a href="https://www.renrendoc.com/u-11040.html" title="联创帝**械机械..."
+                                                      target="_blank">联创帝**械机械...</a><img style="height:15px; width:20px; overflow:hidden;
+background:url(/images/bg_index_ie6_781d95ab.png) no-repeat -185px 5px;display:none;" src="/static/wd/s.gif"
+                                                                                          alt="企业认证" title="企业认证"></em>
+                            <em class="dib r t-anum">回答：7</em>
+                        </li>
+
+
+                        <li style="border-top: none;">
+                            <em class="dib mr5 t-num  e3">3</em>
+                            <em class="t-name dib"><a href="https://www.renrendoc.com/u-7940.html" title="机械帝国"
+                                                      target="_blank">机械帝国</a><img style="height:15px; width:20px; overflow:hidden;
+background:url(/images/bg_index_ie6_781d95ab.png) no-repeat -185px 5px;display:none;" src="/static/wd/s.gif"
+                                                                                   alt="企业认证" title="企业认证"></em>
+                            <em class="dib r t-anum">回答：4</em>
+                        </li>
+
+
+                        <li style="border-top: none;">
+                            <em class="dib mr5 t-num ">4</em>
+                            <em class="t-name dib"><a href="https://www.renrendoc.com/u-8636.html" title="红苹果"
+                                                      target="_blank">红苹果</a><img style="height:15px; width:20px; overflow:hidden;
+background:url(/images/bg_index_ie6_781d95ab.png) no-repeat -185px 5px;企业认证" src="/static/wd/s.gif" alt="个人认证"
+                                                                                  title="个人认证"></em>
+                            <em class="dib r t-anum">回答：4</em>
+                        </li>
+
+
+                        <li style="border-top: none;">
+                            <em class="dib mr5 t-num ">5</em>
+                            <em class="t-name dib"><a href="https://www.renrendoc.com/u-276126.html"
+                                                      title="机械设计QQ**06154..." target="_blank">机械设计QQ**06154...</a><img
+                                    style="height:15px; width:20px; overflow:hidden;
+background:url(/images/bg_index_ie6_781d95ab.png) no-repeat -185px 5px;企业认证" src="/static/wd/s.gif" alt="个人认证"
+                                    title="个人认证"></em>
+                            <em class="dib r t-anum">回答：4</em>
+                        </li>
+
+
+                        <li style="border-top: none;">
+                            <em class="dib mr5 t-num ">6</em>
+                            <em class="t-name dib"><a href="https://www.renrendoc.com/u-43196.html" title="Guert**feing"
+                                                      target="_blank">Guert**feing</a><img style="height:15px; width:20px; overflow:hidden;
+background:url(/images/bg_index_ie6_781d95ab.png) no-repeat -185px 5px;display:none;" src="/static/wd/s.gif"
+                                                                                           alt="企业认证" title="企业认证"></em>
+                            <em class="dib r t-anum">回答：3</em>
+                        </li>
+
+
+                        <li style="border-top: none;">
+                            <em class="dib mr5 t-num ">7</em>
+                            <em class="t-name dib"><a href="https://www.renrendoc.com/u-954634.html" title="啊，哈哈"
+                                                      target="_blank">啊，哈哈</a><img style="height:15px; width:20px; overflow:hidden;
+background:url(/images/bg_index_ie6_781d95ab.png) no-repeat -185px 5px;display:none;" src="/static/wd/s.gif"
+                                                                                   alt="企业认证" title="企业认证"></em>
+                            <em class="dib r t-anum">回答：2</em>
+                        </li>
+
+
+                        <li style="border-top: none;">
+                            <em class="dib mr5 t-num ">8</em>
+                            <em class="t-name dib"><a href="https://www.renrendoc.com/u-284307.html" title="代做注**具毕业..."
+                                                      target="_blank">代做注**具毕业...</a><img style="height:15px; width:20px; overflow:hidden;
+background:url(/images/bg_index_ie6_781d95ab.png) no-repeat -185px 5px;display:none;" src="/static/wd/s.gif"
+                                                                                          alt="企业认证" title="企业认证"></em>
+                            <em class="dib r t-anum">回答：2</em>
+                        </li>
+
+
+                        <li style="border-top: none;">
+                            <em class="dib mr5 t-num ">9</em>
+                            <em class="t-name dib"><a href="https://www.renrendoc.com/u-68322.html" title="М丫A**wēг"
+                                                      target="_blank">М丫A**wēг</a><img style="height:15px; width:20px; overflow:hidden;
+background:url(/images/bg_index_ie6_781d95ab.png) no-repeat -185px 5px;display:none;" src="/static/wd/s.gif"
+                                                                                       alt="企业认证" title="企业认证"></em>
+                            <em class="dib r t-anum">回答：2</em>
+                        </li>
+
+
+                        <li style="border-top: none;">
+                            <em class="dib mr5 t-num ">10</em>
+                            <em class="t-name dib"><a href="https://www.renrendoc.com/u-50885.html" title=" 我**太乱"
+                                                      target="_blank"> 我**太乱</a><img style="height:15px; width:20px; overflow:hidden;
+background:url(/images/bg_index_ie6_781d95ab.png) no-repeat -185px 5px;display:none;" src="/static/wd/s.gif"
+                                                                                     alt="企业认证" title="企业认证"></em>
+                            <em class="dib r t-anum">回答：2</em>
+                        </li>
+
+
+                    </ul>
+                </div>
+
+            </div>
+            <!--右侧 end-->
+        </div>
+
+
+    </div>
+    <!-- JiaThis Button END -->
+    <span id="LabelScript"></span>
+
+</form>
+
+<script>function popLogin() {
+    window.location.href = '/login.aspx?returl=https%3a%2f%2fwww.renrendoc.com%2ftasklist.aspx%3fid%3d0%26sort%3d1%26page%3d1';
+    return;
+}</script>
+
+<!--foot-->
+<div class="bg_100 foot_nav_bg" style=" min-width:1200px;">
+    <div class="foot_nav">
+
+        <a href="https://www.renrendoc.com/h-33.html" target="_blank" rel="nofollow">关于我们</a> - <a
+            href="https://www.renrendoc.com/h-34.html" target="_blank" rel="nofollow">网站声明</a> - <a
+            href="https://www.renrendoc.com/h-35.html" target="_blank" rel="nofollow">
+        网站地图</a> - <a href="https://www.renrendoc.com/sitemap.html" target="_blank" rel="nofollow">
+        资源地图</a>
+        - <a href="https://www.renrendoc.com/friend.aspx" target="_blank" rel="nofollow">友情链接</a> -
+        <a href="https://wpa.qq.com/msgrd?v=3&amp;uin=766697812&amp;site=qq&amp;menu=yes" rel="nofollow">网站客服</a>
+
+        - <a href="https://www.renrendoc.com/h-38.html" target="_blank" rel="nofollow">联系我们</a>
+
+    </div>
+</div>
+
+<div class="bg_100 siteInner_bg" style=" min-width:1200px;">
+    <div class="siteInner">
+        <p style="margin-top: 0px; padding: 0px; color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 12px; text-align: center; white-space: normal; background-color: rgb(243, 243, 243); line-height: 1.75em;">
+            <span style="font-size: 14px;"><span style="line-height: 20px;">网站客服QQ：766697812&nbsp; &nbsp;微信号：renrenwenkuwang&nbsp; &nbsp;随心文档上传用户QQ群：460291265&nbsp; &nbsp;</span></span><br>
+        </p>
+        <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 12px; text-align: center; white-space: normal; background-color: rgb(243, 243, 243); line-height: 1.75em;">
+            <span style="font-size: 14px;"><span style="line-height: 20px;">copyright@ 2020-2023&nbsp; renrendoc.com 随心文库<span
+                    style="color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 14px; text-align: center; background-color: rgb(243, 243, 243);">版权所有</span>&nbsp; &nbsp;联系电话：0512-65154990</span></span>
+        </p>
+
+        <table style="text-align: center; margin: 10px auto;">
+            <tbody>
+
+            </tbody>
+        </table>
+        <p>
+            本站为文档C2C交易模式，即用户上传的文档直接被用户下载，本站只是中间服务平台，本站所有文档下载所得的收益归上传人(含作者)所有。随心文库网仅提供信息存储空间，仅对用户上传内容的表现方式做保护处理，对上载内容本身不做任何修改或编辑。若文档所含内容侵犯了您的版权或隐私，请立即通知随心文库网，我们立即给予删除！
+        </p>
+        <br>
+        <br>
+        <br>
+
+    </div>
+</div>
+</body>
+</html>

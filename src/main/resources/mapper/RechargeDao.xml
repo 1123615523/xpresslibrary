@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.RechargeDao">
+
+    <resultMap id="MyResultMap" type="com.aaa.entity.Recharge" autoMapping="true">
+        <id column="id" property="id"></id>
+        <association property="documentations" javaType="com.aaa.entity.Documentation" autoMapping="true">
+            <id column="did" property="did"></id>
+        </association>
+    </resultMap>
+
+    <insert id="addRecharge">
+        insert into recharge(id,rechargetime,rechargemoney,paytype,rechargeaccount,customerid,rechargetype)
+        value(null,#{rechargetime},#{rechargemoney},#{paytype},#{rechargeaccount},#{customerid},#{rechargetype})
+    </insert>
+
+    <select id="findRechargeInfo" resultMap="MyResultMap">
+        SELECT * from recharge r
+        LEFT JOIN documentation d on r.documentid = d.did
+        where r.customerid = #{value} ORDER BY id desc
+    </select>
+
+    <select id="incomeInfo" resultType="java.lang.Double">
+        SELECT ifnull(sum(rechargemoney),0.00) from recharge
+        where customerid = #{value}
+        and paytype = 1
+        and rechargetype = 1
+        or rechargetype = 2
+        or rechargetype = 6
+        or rechargetype = 7
+    </select>
+
+    <select id="expenditureInfo" resultType="java.lang.Double">
+        select ifnull(sum(rechargemoney),0.00) from recharge
+        where customerid = #{value}
+        and paytype = 0
+        and rechargetype = 3
+        or rechargetype = 4
+        or rechargetype = 5
+    </select>
+
+    <select id="withdrawInfo" resultType="java.lang.Double">
+        select ifnull(sum(rechargemoney),0.00) from recharge
+        where customerid = #{value}
+        and rechargetype = 3
+    </select>
+
+
+
+</mapper>

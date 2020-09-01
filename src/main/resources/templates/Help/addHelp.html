@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>发布求助</title>
+    <link rel="stylesheet" href="/static/js/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/js/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="/static/js/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/js/ionicons.min.css">
+    <link rel="stylesheet" href="/static/js/switchery.min.css">
+    <link rel="stylesheet" href="/static/js/toastr.min.css">
+    <link rel="stylesheet" href="/static/js/AdminLTE.min.css">
+    <link rel="stylesheet" href="/static/js/skin-black-light.min.css">
+    <link rel="stylesheet" href="/static/js/qidongucenter.css">
+
+    <script>
+        var qidong = {
+            cpath: ''
+        }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/static/js/dropzone.css">
+    <style>
+        .upload-notice {
+            background-color: #fef6a9;
+            font-size: 14px;
+            color: #ff4400;
+            line-height: 25px;
+            padding: 7px 15px;
+            margin-bottom: 10px;
+            margin-right: 0px;
+            border: solid 1px #e10074;
+        }
+
+        .col-position {
+            margin-top: 5px;
+        }
+
+        .tip-font {
+            font-size: 12px;
+        }
+
+        .editor {
+            height: 230px;
+            width: 100%;
+            background-color: white
+        }
+    </style>
+
+    <link rel="stylesheet" href="/static/js/layer.css" id="layuicss-layer">
+    <style>.cke {
+        visibility: hidden;
+    }</style>
+    <script type="text/javascript" src="/static/js/config.js"></script>
+    <link rel="stylesheet" href="/static/js/style.css" id="layuicss-themejpressstylecss">
+    <link rel="stylesheet" type="text/css" href="/static/js/editor.css">
+    <script type="text/javascript" src="/static/js/zh-cn.js"></script>
+    <script type="text/javascript" src="/static/js/styles.js"></script>
+    <script type="text/javascript" src="/static/js/plugin.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/js/scayt.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/dialog.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/tableselection.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/wsc.css">
+    <script type="text/javascript" src="/static/js/zh-cn.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/js/default.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/balloontoolbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/copyformatting.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/imagebase.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/balloonpanel.css">
+    <script type="text/javascript" src="/static/js/highlight.pack.js"></script>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+</head>
+<body class="sidebar-mini wysihtml5-supported skin-black-light layout-boxed" style="height: auto; min-height: 100%;">
+<div class="wrapper" style="overflow: hidden; height: auto; min-height: 100%;">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="http://upload.wenku365.com:18889/ucenter" class="logo">
+            <span class="logo-mini"><b>JPr</b></span>
+            <span class="logo-lg"><b>随心文库</b></span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload" class="sidebar-toggle"
+               data-toggle="push-menu" role="button">
+                <span class="sr-only">切换</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="http://upload.wenku365.com:18889/ucenter/index">
+                            <img th:src="${session.cus.customerpic}" class="user-image">
+                            <span class="hidden-xs">您好 <span
+                                    th:text="${session.cus!=null?session.cus.customertel:''}"></span> , 欢迎回来</span>
+                        </a>
+                    </li>
+
+
+                    <li class="dropdown messages-menu" style="border-left: 1px solid #ccc;">
+                        <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#" class="dropdown-toggle"
+                           data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-fw fa-shopping-cart"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">购物车列表</li>
+                            <li>
+                                <ul class="menu" style="background-color: #f7f7f7">
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="http://upload.wenku365.com:18889/ucenter/cart"
+                                                  style="color: #3c8dbc !important;" target="_blank">查看全部</a></li>
+                        </ul>
+                    </li>
+
+                    <li style="border-left: 1px solid #ccc;">
+                        <a th:href="@{/Home/index}">
+                            <i class="fa fa-fw fa-home"></i>
+                        </a>
+                    </li>
+
+                    <li style="border-left: 1px solid #ccc;">
+                        <a href="/Home/index">
+                            退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu tree" data-widget="tree" id="sidebar-menu">
+                <li class="block"></li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/index">
+                        <i class="fa fa-fw fa-home"></i>
+                        <span>首页</span></a>
+                </li>
+
+                <li class="header">我的内容</li>
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-fw fa-file-text"></i>
+                        <span>我的文档</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li class="active"><a href="/Home/user"
+                                              target="">上传文档</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/authentication" target="">用户认证</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/user/resource" target="">我的资源</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/user/statistical/pBookHostView" target="">热门文档</a>
+                        </li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/user/statistical/pBookHostDownload"
+                               target="">热门下载</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/priceChangeRecord" target="">价格修改记录</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#">
+                        <i class="fa fa-fw fa-file-archive-o"></i>
+                        <span>我的专题</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/wenku/pbookgroup" target="">添加/修改专题</a>
+                        </li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/wenku/pbookgroup/page" target="">专题管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#">
+                        <i class="fa fa-fw fa-bookmark"></i>
+                        <span>我的收藏</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/article/favorite" target="">文章收藏</a></li>
+                        <li><a href="http://upload.wenku365.com:18889/ucenter/product/favorite" target="">产品收藏</a></li>
+                    </ul>
+                </li>
+
+                <li class="header">财务信息</li>
+                <li class="link">
+                    <a href="http://upload.wenku365.com:18889/ucenter/order">
+                        <i class="fa fa-fw fa-paper-plane"></i>
+                        <span>我的订单</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/blance">
+                        <i class="fa fa-fw fa-gg-circle"></i>
+                        <span>我的余额</span></a>
+                </li>
+                <li class="header">个人信息</li>
+                <li class="link">
+                    <a href="/Home/addHelp">
+                        <i class="fa fa-fw fa-coffee"></i>
+                        <span>发布求助</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/userinfo">
+                        <i class="fa fa-fw fa-user"></i>
+                        <span>基本信息</span></a>
+                </li>
+                <li class="link">
+                    <a href=/Home/signature>
+                        <i class="fa fa-fw fa-bars"></i>
+                        <span>个人签名</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/avatar">
+                        <i class="fa fa-fw fa-black-tie"></i>
+                        <span>头像设置</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/password">
+                        <i class="fa fa-fw fa-key"></i>
+                        <span>账号密码</span></a>
+                </li>
+
+
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <div class="content-wrapper" id="app">
+        <section class="content-header">
+            <h1>
+                发布求助
+                <small style="color: #ff6a00">Post help 以下信息皆为必填项</small>
+            </h1>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-primary">
+                        <div class="box-header ">
+                            <h3 class="box-title"></h3>
+                        </div>
+                        <form class="form-horizontal" autocomplete="off" v-model="res" action="#" id="wdkid">
+                            <div class="box-body ">
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">分类：</label>
+                                    <div class="col-sm-7">
+                                        <select v-model="res.helptype" name="a" style="width: 30%;height: 30px;">
+                                            <option value="1">资源求助</option>
+                                            <option value="2">出售图纸</option>
+                                            <option value="3">设计代做</option>
+                                            <option value="4">其他求助</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">标题：</label>
+                                    <div class="col-sm-7">
+                                        <input type="input" v-model="res.helptitle" name="b" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">悬赏金额：</label>
+                                    <div class="col-sm-7">
+                                        <input type="input" v-model="res.helpintegral" class="form-control" name="c">
+                                        <span>您当前积分余额：<b style="color:#ff6a00" id="wdk" th:text="${session.cus.customermoney}"></b>积分，悬赏积分不能低于<b style="color:#ff6a00">5</b>积分，如果您积分小于悬赏金额，
+                                            <a href="/Home/recharge" style="text-decoration:underline; color:blue">请先充值</a>。悬赏金额不能修改，请慎重填写！
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">描述：</label>
+                                    <div class="col-sm-7">
+                                        <textarea  rows="2" cols="20" name="d" v-model="res.helpcontent" class="right_input1" style="width:500px; height:80px"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <div class="col-sm-offset-2 col-sm-10 submit-block">
+                                    <div class="box-submit">
+                                        <button type="button" @click="addHelp()" class="btn btn-primary">发布信息</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <span id="wuyu" th:text="${session.cus.customermoney}" hidden></span>
+    <span id="resultid" th:text="${session.cus.customerid}" hidden></span>
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/vue/axios.min.js"></script>
+    <script src="/static/vue/vue.js"></script>
+    <script>
+        var v = new Vue({
+            el: '#app',
+            data: {
+                res: {}
+            },
+            methods: {
+                "addHelp":function () {
+                    if($("[name=a]").val()===null || $("[name=b]").val()==='' || $("[name=c]").val()==='' || $("[name=d]").val()===''){
+                        toastr.error("必填项不能为空！");
+                        return;
+                    }
+                    var jin = $("[name=c]").val();
+                    if(jin < 5){
+                        toastr.warning("悬赏金额不得低于5积分！");
+                        return;
+                    }
+
+                    var wuyu = $("#wuyu").html();
+                    if(jin > wuyu){
+                        alert(jin+"------"+wuyu);
+                        toastr.warning("余额不足！");
+                        return;
+                    }
+
+                    var that = this;
+                    axios.post("/Help/addHelp",this.res).then(function (resp) {
+                        if(resp.data === 2){
+                            toastr.options.onHidden = function () {
+                                var url = "/customer/updLogin?id="+$("#resultid").html();
+                                axios.get(url).then(function (resp) {
+                                    if(resp.data === 1){
+                                        location.reload();
+                                    }else{
+                                        alert("刷新失败！");
+                                    }
+                                });
+                            };
+                            toastr.success('发布成功，正在收取赏金，请等待！');
+                            that.res = {};
+                        }else{
+                            toastr.error("发布失败！");
+                        }
+                    });
+                }
+            }
+        })
+    </script>
+
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            version v3.0.0-rc.1
+        </div>
+        Copyright &copy; 2016-2020 Qidong Studio. All rights
+        reserved.
+    </footer>
+</div>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.form.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-datepicker.min.js"></script>
+<script src="/static/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="/static/js/fastclick.js"></script>
+<script src="/static/js/switchery.min.js"></script>
+<script src="/static/js/toastr.min.js"></script>
+<script src="/static/js/layer.js"></script>
+<script src="/static/js/adminlte.min.js"></script>
+<script src="/static/js/qidongucenter.js"></script>
+<script src="/static/js/qidongcommons.js"></script>
+<script src="/static/js/qidongcsrf.js"></script>
+<script>
+    $('#form').on('submit', function () {
+
+        ajaxSubmit('#form', function () {
+            toastr.success('修改成功');
+        });
+
+        return false;
+    });
+</script>
+</body>
+</html>
