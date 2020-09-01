@@ -45,6 +45,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //配置static的所有静态资源不拦截
                 .antMatchers("/static/**","/templates/**").permitAll()
             .and()
+                //这是新加的，后台有可能会出问题
+                .headers().frameOptions().disable()
+            .and()
                 .addFilterBefore(userJwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
                 .authenticationEntryPoint(authenticationErrorHandle)
@@ -64,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
                 .authorizeRequests()
-                .antMatchers("/utils/**","/Home/**","/Resource/**","/code/**","/customer/**","/signin/**").permitAll()
+                .antMatchers("/utils/**","/Home/**","/Resource/**","/code/**","/customer/**","/signin/**","/alipay/**","/recharge/**","/Help/**").permitAll()
                 .anyRequest()
                 .access("@rbacConfig.isForbidden(request,authentication)")
             .and()
