@@ -2,20 +2,24 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.aaa.dao.SigninDao">
 
+    <insert id="addSignin">
+        insert into signin value(null,#{income},#{incometime},#{customerid})
+    </insert>
+
     <select id="findSigninInfo" resultType="com.aaa.entity.Signin">
-        select * from signin where customerid = #{value}
+        select * from signin where customerid = #{value} ORDER BY id desc
     </select>
 
     <select id="findCount" resultType="java.lang.Integer">
-        select count(income) from signin where customerid = #{value}
+        select ifnull(count(income),0.0) from signin where customerid = #{value}
     </select>
 
     <select id="findMoney" resultType="java.lang.Double">
-        select sum(income) from signin where customerid = #{value}
+        select ifnull(sum(income),0.0) from signin where customerid = #{value}
     </select>
 
     <select id="findTime" resultType="java.util.Date">
-        select max(incometime) from signin where customerid = #{value}
+        select ifnull(max(incometime),'2000-11-11 11:11:11') from signin where customerid = #{value}
     </select>
 
 </mapper>

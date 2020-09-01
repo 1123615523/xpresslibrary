@@ -23,6 +23,10 @@
         update customerinfo set customerpwd=#{param2} where customerid = #{param1}
     </update>
 
+    <update id="updMoney">
+        update customerinfo set customermoney=#{param2} where customerid = #{param1}
+    </update>
+
     <select id="bypwd" resultType="com.aaa.entity.Customerinfo">
         select * from customerinfo
         <where>
