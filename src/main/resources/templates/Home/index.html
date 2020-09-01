@@ -319,7 +319,6 @@
             height: 450px;
         }
     </style>
-    <link href="/static/js/recentBrowse.css" rel="stylesheet">
     <script src="/static/js/recentBrowse.js"></script>
 </head>
 <body>
@@ -395,6 +394,7 @@
                     </a>
 
                     <div class="home_cate hide" id="menuhomecate">
+                        <!--分类-->
                         <div class="cate" id="wk-all-cate" style="top:0px; *top:0px;height: 351px;">
                             <div id="qwe">
                                 <li v-for="res in result">
@@ -430,6 +430,7 @@
                         </div>
                         <script src="/static/vue/vue.js"></script>
                         <script src="/static/vue/axios.min.js"></script>
+                        <!--qwe挂载点vue实例-->
                         <script>
                             var v = new Vue({
                                 el: '#qwe',
@@ -462,7 +463,7 @@
                     <li class=""><a href="/c-00015.html">应用文档</a></li>
                     <li class=""><a href="/c-00017.html">行业资料</a></li>
                     <li class=""><a href="/c-00016.html">教育资源</a></li>
-                    <li class=""><a href="/c-00018.html">互动求助</a></li>
+                    <li class=""><a href="/Home/help">互动求助</a></li>
                 </div>
             </div>
         </div>
@@ -482,114 +483,56 @@
         var uid = "0";
         var scorename = "积分";
     </script>
+
+
     <div class="home_jrm">
-        <div class="home_jrd">
+        <!--今日特别锐推荐-->
+        <div class="home_jrd" id="esp">
             <div class="jrd_title">
                 <h1><font color="#ff6333">今日</font>特别推荐</h1>
                 <h4></h4>
             </div>
             <div class="jrd_view">
-                <li><a href="/p-19068135.html">
-                    <img alt="社区矫正人员思想汇报13篇"
-                         src="/static/js/pic1.gif"><span
-                        class="p">6</span></a>
-                    <a title="社区矫正人员思想汇报13篇" href="/p-19068135.html" class="text">社区矫正人员思想汇报13篇</a></li>
-                <li><a href="/p-20662603.html">
-                    <img alt="三年级数学混合脱式运算100题(精选)"
-                         src="/static/js/pic1.gif"><span
-                        class="p">3</span></a>
-                    <a title="三年级数学混合脱式运算100题(精选)" href="/p-20662603.html" class="text"
-                    >三年级数学混合脱式运算100题(精选)</a></li>
-                <li><a href="/p-29437139.html">
-                    <img alt="刑碧旗日记重口请慎入"
-                         src="/static/js/pic1.gif"><span
-                        class="p">182</span></a>
-                    <a title="刑碧旗日记重口请慎入" href="/p-29437139.html" class="text">刑碧旗日记重口请慎入</a></li>
-                <li><a href="/p-29901404.html">
-                    <img alt="光伏材料行业"
-                         src="/static/js/pic1.gif"><span
-                        class="p">14</span></a>
-                    <a title="光伏材料行业" href="/p-29901404.html" class="text">光伏材料行业</a></li>
-                <li><a href="/p-29903350.html">
-                    <img alt="全国青联十二届全委会心得"
-                         src="/static/js/pic1.gif"><span
-                        class="p">10</span></a>
-                    <a title="全国青联十二届全委会心得" href="/p-29903350.html" class="text">全国青联十二届全委会心得</a></li>
-                <li><a href="/p-39773549.html">
-                    <img alt="闪光灵程(修订版)"
-                         src="/static/js/pic1.gif"><span
-                        class="p">12</span></a>
-                    <a title="闪光灵程(修订版)" href="/p-39773549.html" class="text">闪光灵程(修订版)</a></li>
-                <li><a href="/p-40889437.html">
-                    <img alt="2018年度各年度一二三四季度入党积极分子思想汇报模板"
-                         src="/static/js/pic1.gif"><span
-                        class="p">10</span></a>
-                    <a title="2018年度各年度一二三四季度入党积极分子思想汇报模板" href="/p-40889437.html" class="text">2018年度各年度一二三四季度入党积极分子思想汇报模板</a>
+                <li v-for="a in especially">
+                    <a @click="bydocument(a.did)">
+                        <img :src="a.filepath">
+                        <span class="p">1</span>
+                    </a>
+                    <a @click="" class="text">{{a.title}}</a>
                 </li>
-                <li><a href="/p-43847456.html">
-                    <img alt="航拍中国第一季全部第二季一二集地理知识点详解"
-                         src="/static/js/pic1.gif"><span
-                        class="p">14</span></a>
-                    <a title="航拍中国第一季全部第二季一二集地理知识点详解" href="/p-43847456.html" class="text">航拍中国第一季全部第二季一二集地理知识点详解</a>
-                </li>
-                <li><a href="/p-45910024.html">
-                    <img alt="全国人口普查地图标绘软件培训"
-                         src="/static/js/p.jpg"><span
-                        class="p">84</span></a>
-                    <a title="全国人口普查地图标绘软件培训" href="/p-45910024.html" class="text">全国人口普查地图标绘软件培训</a></li>
-                <li><a href="/p-47476889.html">
-                    <img alt="挠脚心之校花落难记"
-                         src="/static/js/pic1.gif"><span
-                        class="p">5</span></a>
-                    <a title="挠脚心之校花落难记" href="/p-47476889.html" class="text">挠脚心之校花落难记</a></li>
-                <li><a href="/p-51526990.html">
-                    <img alt="各省PCR上岗证考试题库.doc"
-                         src="/static/js/pic1.gif"><span
-                        class="p">4</span></a>
-                    <a title="各省PCR上岗证考试题库.doc" href="/p-51526990.html" class="text">各省PCR上岗证考试题库.doc</a>
-                </li>
-                <li><a href="/s-56485927.html">
-                    <img
-                            alt="2020年广西专业技术人员公需科目考试试题答案.doc"
-                            src="/static/js/pic1.gif"><span
-                        class="p">4</span></a>
-                    <a title="2020年广西专业技术人员公需科目考试试题答案.doc" href="/s-56485927.html" class="text">2020年广西专业技术人员公需科目考试试题答案.doc</a>
-                </li>
-                <li><a href="/s-56485973.html">
-                    <img
-                            alt="2020年职称继续教育考试-山东省八大战略学习题库.docx"
-                            src="/static/js/pic1.gif"><span class="p">10</span></a>
-                    <a title="2020年职称继续教育考试-山东省八大战略学习题库.docx" href="/s-56485973.html" class="text">2020年职称继续教育考试-山东省八大战略学习题库.docx</a>
-                </li>
-                <li><a href="/s-56632796.html">
-                    <img
-                            alt="绿色高效制冷行动及公共机构实施途径自测题.docx"
-                            src="/static/js/pic1.gif"><span
-                        class="p">5</span></a>
-                    <a title="绿色高效制冷行动及公共机构实施途径自测题.docx" href="/s-56632796.html"
-                       class="text">绿色高效制冷行动及公共机构实施途径自测题.docx</a>
-                </li>
-                <li><a href="/s-56791691.html">
-                    <img
-                            alt="2020年广西公需科目-当代科学技术前沿知识题目和答案.doc"
-                            src="/static/js/pic1.gif"><span
-                        class="p">4</span></a>
-                    <a title="2020年广西公需科目-当代科学技术前沿知识题目和答案.doc" href="/s-56791691.html" class="text">2020年广西公需科目-当代科学技术前沿知识题目和答案.doc</a>
-                </li>
-                <li><a href="/s-56892296.html">
-                    <img alt="2020年公需课《区块链》课程考核题目.doc"
-                         src="/static/js/pic1.gif"><span
-                        class="p">3</span></a>
-                    <a title="2020年公需课《区块链》课程考核题目.doc" href="/s-56892296.html" class="text">2020年公需课《区块链》课程考核题目.doc</a>
-                </li>
-                <li><a href="/s-56934605.html">
-                    <img alt="质量管理小组网络培训试题及答案.doc"
-                         src="/static/js/pic1.gif"><span
-                        class="p">4</span></a>
-                    <a title="质量管理小组网络培训试题及答案.doc" href="/s-56934605.html" class="text"
-                    >质量管理小组网络培训试题及答案.doc</a></li>
             </div>
         </div>
+        <script>
+            new Vue({
+                el:"#esp",
+                data: {
+                    especially: {},
+                    src:null
+                },
+                created: function () {
+                    this.findDocument()
+                },
+                methods: {
+                    "findDocument":function () {
+                        var _this = this;
+                        axios.post("/documentation/documentationespecially").then(function (value) {
+                            _this.especially = value.data;
+                            console.log(_this.especially);
+                        }).catch(function (reason) {
+                            console.log(reason)
+                        })
+                    },
+                    "bydocument":function (did) {
+                        console.log(did);
+                        window.sessionStorage.setItem("did",did);
+                        location.href = "/Home/read";
+                    }
+                }
+            })
+        </script>
+
+
+        <!--热门专题-->
         <div class="home_rmz">
             <div class="rmz_title">
                 <h1><font color="#ff6333">热门</font>专题</h1>
@@ -597,27 +540,14 @@
             </div>
             <div class="rmz_view">
                 <dt><a href="/g-16.html" title="国际大酒店空调工程设计 暖通空调毕业设计全套含图纸">
-                    <img data-original="https://www.wenku365.com" width="217" height="150"></a>
+                    <img data-original="" width="217" height="150"></a>
                 </dt>
                 <dd><a href="/g-15.html" title="公文写作范文">公文写作范文</a>
                 </dd>
-                <dd><a href="/g-14.html" title="公文写作范文">公文写作范文</a>
-                </dd>
-                <dd><a href="/g-13.html" title="党校优秀党课课件">党校优秀党课课件</a>
-                </dd>
-                <dd><a href="/g-12.html" title="天然气工程项目可行性报告">天然气工程项目可行性报告</a>
-                </dd>
-                <dd><a href="/g-11.html" title="小区建设项目可行性研究报告">小区建设项目可行性研究报告</a>
-                </dd>
-                <dd><a href="/g-10.html" title="污水处理厂新建项目可行性研究报告">污水处理厂新建项目可行性研究报告</a>
-                </dd>
-                <dd><a href="/g-9.html" title="生态农业可行性研究报告">生态农业可行性研究报告</a>
-                </dd>
             </div>
-
-
         </div>
         <div class="center_line"></div>
+        <!--最新上传资源-->
         <div class="home_zx">
             <div class="zx_title">
                 <a class="flou1"></a>
@@ -630,77 +560,11 @@
                          src="/static/js/pic1.gif"><span
                         class="pdf"></span></a>
                     <a title="实操演练方案.pdf" href="/s-57398630.html" class="text">实操演练方案.pdf</a></li>
-                <li><a href="/s-57398629.html">
-                    <img alt="完整详细的公司章程范本(doc).pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="完整详细的公司章程范本(doc).pdf" href="/s-57398629.html" class="text">完整详细的公司章程范本(doc).pdf</a>
-                </li>
-                <li><a href="/s-57398628.html">
-                    <img alt="完工证明范本.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="完工证明范本.pdf" href="/s-57398628.html" class="text">完工证明范本.pdf</a></li>
-                <li><a href="/s-57398627.html">
-                    <img alt="安拆工劳动合同书.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="安拆工劳动合同书.pdf" href="/s-57398627.html" class="text">安拆工劳动合同书.pdf</a></li>
-                <li><a href="/s-57398626.html">
-                    <img alt="安防监控工程合同范本.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="安防监控工程合同范本.pdf" href="/s-57398626.html" class="text">安防监控工程合同范本.pdf</a></li>
-                <li><a href="/s-57398625.html">
-                    <img alt="液体运动的流场理论.ppt"
-                         src="/static/js/pic1.gif"><span
-                        class="ppt"></span></a>
-                    <a title="液体运动的流场理论.ppt" href="/s-57398625.html" class="text">液体运动的流场理论.ppt</a></li>
-                <li><a href="/s-57398624.html">
-                    <img alt="学校的核心竞争力.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="学校的核心竞争力.pdf" href="/s-57398624.html" class="text">学校的核心竞争力.pdf</a></li>
-                <li><a href="/s-57398623.html">
-                    <img alt="学生会文艺部面试问题.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="学生会文艺部面试问题.pdf" href="/s-57398623.html" class="text">学生会文艺部面试问题.pdf</a></li>
-                <li><a href="/s-57398622.html">
-                    <img alt="安全生产奖惩制度精品.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="安全生产奖惩制度精品.pdf" href="/s-57398622.html" class="text">安全生产奖惩制度精品.pdf</a></li>
-                <li><a href="/s-57398621.html">
-                    <img alt="学校控烟奖惩制度.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="学校控烟奖惩制度.pdf" href="/s-57398621.html" class="text">学校控烟奖惩制度.pdf</a></li>
-                <li><a href="/s-57398620.html">
-                    <img alt="学会使用银行卡教学设计.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="学会使用银行卡教学设计.pdf" href="/s-57398620.html" class="text">学会使用银行卡教学设计.pdf</a></li>
-                <li><a href="/s-57398619.html">
-                    <img alt="学校一岗双责制安全工作职责.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="学校一岗双责制安全工作职责.pdf" href="/s-57398619.html" class="text">学校一岗双责制安全工作职责.pdf</a>
-                </li>
-                <li><a href="/s-57398618.html">
-                    <img alt="如何留住顾客.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="如何留住顾客.pdf" href="/s-57398618.html" class="text">如何留住顾客.pdf</a></li>
-                <li><a href="/s-57398617.html">
-                    <img alt="婚庆和酒店合作方案.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="婚庆和酒店合作方案.pdf" href="/s-57398617.html" class="text">婚庆和酒店合作方案.pdf</a></li>
             </div>
         </div>
         <div class="center_line"></div>
         <div class="blank17"></div>
+        <!--最新精品推荐-->
         <div class="home_tj">
             <div class="ttop">
                 <a class="flou2"></a>
@@ -713,9 +577,6 @@
                     <li class="sd02" id="tj03"><h2><a href="/c-00017.html" title="行业资料资源">行业资料</a></h2></li>
                     <span class="line">|</span>
                     <li class="sd02" id="tj04"><h2><a href="/c-00016.html" title="行业资料资源">教育资源</a></h2></li>
-                    <span class="line">|</span>
-                    <li class="sd02" id="tj05"><h2><a href="/c-00018.html" title="行业资料资源">互动求助</a></h2></li>
-                    <span class="line">|</span>
                 </div>
             </div>
             <div class="tj_view " id="tj001" 581>
@@ -725,91 +586,6 @@
                              src="/static/js/pic1.gif">
                         <span class="doc"></span></a>
                         <a title="论文写作步骤及建议.doc" href="/s-56089086.html" class="text">论文写作步骤及建议.doc</a>
-                    </li>
-                    <li><a href="/s-56089088.html">
-                        <img
-                                alt="论文-在校大学生个人知识管理现状调查与分析.doc"
-                                src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="论文-在校大学生个人知识管理现状调查与分析.doc" href="/s-56089088.html" class="text">论文-在校大学生个人知识管理现状调查与分析.doc</a>
-                    </li>
-                    <li><a href="/s-56089092.html">
-                        <img
-                                alt="论建筑工程中的市政地下排水工程毕业论.doc"
-                                src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="论建筑工程中的市政地下排水工程毕业论.doc" href="/s-56089092.html"
-                           class="text">论建筑工程中的市政地下排水工程毕业论.doc</a>
-                    </li>
-                    <li><a href="/s-56089373.html">
-                        <img alt="音乐欣赏论文-D大调卡农赏析.doc"
-                             src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="音乐欣赏论文-D大调卡农赏析.doc" href="/s-56089373.html" class="text">音乐欣赏论文-D大调卡农赏析.doc</a>
-                    </li>
-                    <li><a href="/s-56089593.html">
-                        <img alt="餐桌礼仪论文300字.doc"
-                             src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="餐桌礼仪论文300字.doc" href="/s-56089593.html" class="text">餐桌礼仪论文300字.doc</a>
-                    </li>
-                    <li><a href="/s-56112623.html">
-                        <img alt="交通工程毕业论文选题.doc"
-                             src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="交通工程毕业论文选题.doc" href="/s-56112623.html" class="text">交通工程毕业论文选题.doc</a>
-                    </li>
-                    <li><a href="/s-56113702.html">
-                        <img alt="电子商务案例分析毕业论文.doc"
-                             src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="电子商务案例分析毕业论文.doc" href="/s-56113702.html"
-                           class="text">电子商务案例分析毕业论文.doc</a>
-                    </li>
-                    <li><a href="/s-56113717.html">
-                        <img alt="浅谈艺术教育的摘录笔记.doc"
-                             src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="浅谈艺术教育的摘录笔记.doc" href="/s-56113717.html" class="text">浅谈艺术教育的摘录笔记.doc</a>
-                    </li>
-                    <li><a href="/s-56113721.html">
-                        <img alt="浅谈秘书的信息工作.doc"
-                             src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="浅谈秘书的信息工作.doc" href="/s-56113721.html" class="text">浅谈秘书的信息工作.doc</a>
-                    </li>
-                    <li><a href="/s-56392363.html">
-                        <img
-                                alt="青海春小麦主栽品种的酸价、碘价及活力变化规律的研究.ppt"
-                                src="/static/js/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="青海春小麦主栽品种的酸价、碘价及活力变化规律的研究.ppt" href="/s-56392363.html" class="text">青海春小麦主栽品种的酸价、碘价及活力变化规律的研究.ppt</a>
-                    </li>
-                    <li><a href="/s-56392441.html">
-                        <img
-                                alt="厦门工学院论文演示-网上购物系统的设计与实现.ppt"
-                                src="/static/js/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="厦门工学院论文演示-网上购物系统的设计与实现.ppt" href="/s-56392441.html" class="text">厦门工学院论文演示-网上购物系统的设计与实现.ppt</a>
-                    </li>
-                    <li><a href="/s-57333884.html">
-                        <img alt="后台文档测试文件.doc"
-                             src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="后台文档测试文件.doc" href="/s-57333884.html" class="text">后台文档测试文件.doc</a>
-                    </li>
-                    <li><a href="/s-57336437.html">
-                        <img alt="后台测试文件4请勿下载请勿下载.doc"
-                             src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="后台测试文件4请勿下载请勿下载.doc" href="/s-57336437.html" class="text">后台测试文件4请勿下载请勿下载.doc</a>
-                    </li>
-                    <li><a href="/s-57352853.html">
-                        <img alt="原创2-测试作品-请勿下载.doc"
-                             src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="原创2-测试作品-请勿下载.doc" href="/s-57352853.html"
-                           class="text">原创2-测试作品-请勿下载.doc</a>
                     </li>
                 </ul>
             </div>
@@ -823,95 +599,7 @@
                         <a title="中医基础理论-四诊课件资料：藏象学说.ppt" href="/s-57397402.html"
                            class="text">中医基础理论-四诊课件资料：藏象学说.ppt</a>
                     </li>
-                    <li><a href="/s-57397403.html">
-                        <img alt="中医基础理论-四诊课件资料：按诊.ppt"
-                             src="/static/js/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：按诊.ppt" href="/s-57397403.html" class="text">中医基础理论-四诊课件资料：按诊.ppt</a>
-                    </li>
-                    <li><a href="/s-57397407.html">
-                        <img alt="中医基础理论-四诊课件资料：肺经.ppt"
-                             src="/static/js/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：肺经.ppt" href="/s-57397407.html" class="text">中医基础理论-四诊课件资料：肺经.ppt</a>
-                    </li>
-                    <li><a href="/s-57397416.html">
-                        <img
-                                alt="中医基础理论-四诊课件资料：十二经补泻温凉引经药歌.ppt"
-                                src="/static/js/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：十二经补泻温凉引经药歌.ppt" href="/s-57397416.html" class="text">中医基础理论-四诊课件资料：十二经补泻温凉引经药歌.ppt</a>
-                    </li>
-                    <li><a href="/s-57397417.html">
-                        <img alt="中医基础理论-四诊课件资料：手诊.ppt"
-                             src="/static/js/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：手诊.ppt" href="/s-57397417.html" class="text">中医基础理论-四诊课件资料：手诊.ppt</a>
-                    </li>
-                    <li><a href="/s-57397418.html">
-                        <img
-                                alt="中医基础理论-四诊课件资料：五行讲义.ppt"
-                                src="/static/js/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：五行讲义.ppt" href="/s-57397418.html"
-                           class="text">中医基础理论-四诊课件资料：五行讲义.ppt</a>
-                    </li>
-                    <li><a href="/s-57397419.html">
-                        <img alt="中医基础理论-四诊课件资料：郁证.ppt"
-                             src="/static/js/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：郁证.ppt" href="/s-57397419.html" class="text">中医基础理论-四诊课件资料：郁证.ppt</a>
-                    </li>
-                    <li><a href="/s-57397420.html">
-                        <img alt="中医基础理论-四诊课件资料：掌纹诊病.ppt"
-                             src="/static/js/pic1.gif"><span
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：掌纹诊病.ppt" href="/s-57397420.html"
-                           class="text">中医基础理论-四诊课件资料：掌纹诊病.ppt</a>
-                    </li>
-                    <li><a href="/s-57397421.html">
-                        <img
-                                alt="中医基础理论-四诊课件资料：阴阳五行与身体健康.ppt"
-                                src="/static/js/pic1.gif"><span
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：阴阳五行与身体健康.ppt" href="/s-57397421.html" class="text">中医基础理论-四诊课件资料：阴阳五行与身体健康.ppt</a>
-                    </li>
-                    <li><a href="/s-57397423.html">
-                        <img
-                                alt="中医基础理论-四诊课件资料：中药饮片学.ppt"
-                                src="/static/js/pic1.gif"><span
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：中药饮片学.ppt" href="/s-57397423.html"
-                           class="text">中医基础理论-四诊课件资料：中药饮片学.ppt</a>
-                    </li>
-                    <li><a href="/s-57397424.html">
-                        <img
-                                alt="中医基础理论-四诊课件资料：中药的配伍.ppt"
-                                src="/static/js/pic1.gif"><span
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：中药的配伍.ppt" href="/s-57397424.html"
-                           class="text">中医基础理论-四诊课件资料：中药的配伍.ppt</a>
-                    </li>
-                    <li><a href="/s-57397427.html">
-                        <img
-                                alt="中医基础理论-四诊课件资料：中医望闻问切.ppt"
-                                src="/static/js/pic1.gif"><span
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：中医望闻问切.ppt" href="/s-57397427.html" class="text">中医基础理论-四诊课件资料：中医望闻问切.ppt</a>
-                    </li>
-                    <li><a href="/s-57397431.html">
-                        <img alt="腧穴学课件资料：足太阳小肠肾经.ppt"
-                             src="/static/js/pic1.gif"><span
-                        <span class="ppt"></span></a>
-                        <a title="腧穴学课件资料：足太阳小肠肾经.ppt" href="/s-57397431.html" class="text">腧穴学课件资料：足太阳小肠肾经.ppt</a>
-                    </li>
-                    <li><a href="/s-57397536.html">
-                        <img alt="养生课件资料：地黄丸系列.pptx"
-                             src="/static/js/pic1.gif"><span
-                        <span class="ppt"></span></a>
-                        <a title="养生课件资料：地黄丸系列.pptx" href="/s-57397536.html"
-                           class="text">养生课件资料：地黄丸系列.pptx</a>
-                    </li>
+
                 </ul>
             </div>
             <div class="tj_view hidden" id="tj003" 787>
@@ -919,102 +607,9 @@
                     <li><a href="/s-57394785.html">
                         <img
                                 alt="成都市某立交桥工程施工组织设计方案.pdf"
-                                src="/static/js/pic1.gif"><span
+                                src="/static/js/pic1.gif">
                         <span class="pdf"></span></a>
                         <a title="成都市某立交桥工程施工组织设计方案.pdf" href="/s-57394785.html" class="text">成都市某立交桥工程施工组织设计方案.pdf</a>
-                    </li>
-                    <li><a href="/s-57394786.html">
-                        <img alt="城市轻轨工程施工组织设计.pdf"
-                             src="/static/js/pic1.gif"><span
-                        <span class="pdf"></span></a>
-                        <a title="城市轻轨工程施工组织设计.pdf" href="/s-57394786.html"
-                           class="text">城市轻轨工程施工组织设计.pdf</a>
-                    </li>
-                    <li><a href="/s-57394787.html">
-                        <img alt="城市轻轨工程施工组织设计方案.pdf"
-                             src="/static/js/pic1.gif"><span
-                        <span class="pdf"></span></a>
-                        <a title="城市轻轨工程施工组织设计方案.pdf" href="/s-57394787.html" class="text">城市轻轨工程施工组织设计方案.pdf</a>
-                    </li>
-                    <li><a href="/s-57394788.html">
-                        <img alt="电站热力管网工程施工组织设计.pdf"
-                             src="/static/js/pic1.gif"><span
-                        <span class="pdf"></span></a>
-                        <a title="电站热力管网工程施工组织设计.pdf" href="/s-57394788.html" class="text">电站热力管网工程施工组织设计.pdf</a>
-                    </li>
-                    <li><a href="/s-57394792.html">
-                        <img alt="北京六环路投标施工组织设计.pdf"
-                             src="/static/js/pic1.gif"><span
-                        <span class="pdf"></span></a>
-                        <a title="北京六环路投标施工组织设计.pdf" href="/s-57394792.html"
-                           class="text">北京六环路投标施工组织设计.pdf</a>
-                    </li>
-                    <li><a href="/s-57394793.html">
-                        <img alt="北京六环路投标施工组织设计方案.pdf"
-                             src="/static/js/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="北京六环路投标施工组织设计方案.pdf" href="/s-57394793.html" class="text">北京六环路投标施工组织设计方案.pdf</a>
-                    </li>
-                    <li><a href="/s-57394794.html">
-                        <img alt="北京某道路改造施工组织设计.pdf"
-                             src="/static/js/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="北京某道路改造施工组织设计.pdf" href="/s-57394794.html"
-                           class="text">北京某道路改造施工组织设计.pdf</a>
-                    </li>
-                    <li><a href="/s-57394795.html">
-                        <img alt="北京某道路改造施工组织设计方案.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/16/388eaf6df45a61c416d1a2c9b4e3058d/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="北京某道路改造施工组织设计方案.pdf" href="/s-57394795.html" class="text">北京某道路改造施工组织设计方案.pdf</a>
-                    </li>
-                    <li><a href="/s-57396741.html">
-                        <img
-                                alt="DB1301∕T 336-2020 “双随机、一公开”监管工作规范.pdf"
-                                data-original="http://f5.wenku365.com/2020-08/17/1e8d974cf91cccf9b56259fa14bec27a/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="DB1301∕T 336-2020 “双随机、一公开”监管工作规范.pdf" href="/s-57396741.html"
-                           class="text">DB1301∕T 336-2020 “双随机、一公开”监管工作规范.pdf</a>
-                    </li>
-                    <li><a href="/s-57396742.html">
-                        <img
-                                alt="DB1301∕T 332-2020 农业物联网平台数据交换共享指南.pdf"
-                                data-original="http://f5.wenku365.com/2020-08/17/959d46bb7e437361e319efad7315c56a/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="DB1301∕T 332-2020 农业物联网平台数据交换共享指南.pdf" href="/s-57396742.html"
-                           class="text">DB1301∕T 332-2020 农业物联网平台数据交换共享指南.pdf</a>
-                    </li>
-                    <li><a href="/s-57396743.html">
-                        <img
-                                alt="DB1301∕T 329-2020 照山白杜鹃组培快繁育苗技术规程.pdf"
-                                data-original="http://f5.wenku365.com/2020-08/17/a4726d30c1550eafab6c694814a70032/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="DB1301∕T 329-2020 照山白杜鹃组培快繁育苗技术规程.pdf" href="/s-57396743.html"
-                           class="text">DB1301∕T 329-2020 照山白杜鹃组培快繁育苗技术规程.pdf</a>
-                    </li>
-                    <li><a href="/s-57396744.html">
-                        <img
-                                alt="DB1301∕T 337-2020 大规格杏树嫁接梅育苗技术规程.pdf"
-                                data-original="http://f5.wenku365.com/2020-08/17/b3aaf4adcaadfb65f9e4cf5d8473c2e8/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="DB1301∕T 337-2020 大规格杏树嫁接梅育苗技术规程.pdf" href="/s-57396744.html"
-                           class="text">DB1301∕T 337-2020 大规格杏树嫁接梅育苗技术规程.pdf</a>
-                    </li>
-                    <li><a href="/s-57396745.html">
-                        <img
-                                alt="DB1301∕T 335-2020 行唐大枣栽培技术规程.pdf"
-                                data-original="http://f5.wenku365.com/2020-08/17/5af56b089cb150f396fd0387bc8433f5/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="DB1301∕T 335-2020 行唐大枣栽培技术规程.pdf" href="/s-57396745.html" class="text">DB1301∕T
-                            335-2020 行唐大枣栽培技术规程.pdf</a>
-                    </li>
-                    <li><a href="/s-57396747.html">
-                        <img
-                                alt="DB6105∕T 109-2019 秦岭北麓核桃果实采收处理贮藏技术规程.pdf"
-                                data-original="http://f5.wenku365.com/2020-08/17/e111b2686908e52e605074707a9627dd/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="DB6105∕T 109-2019 秦岭北麓核桃果实采收处理贮藏技术规程.pdf" href="/s-57396747.html"
-                           class="text">DB6105∕T 109-2019 秦岭北麓核桃果实采收处理贮藏技术规程.pdf</a>
                     </li>
                 </ul>
             </div>
@@ -1026,190 +621,15 @@
                         <span class="doc"></span></a>
                         <a title="中考化学知识点复习宝典.doc" href="/s-57397701.html" class="text">中考化学知识点复习宝典.doc</a>
                     </li>
-                    <li><a href="/s-57397703.html">
-                        <img alt="中考化学计算专题(一).doc"
-                             data-original="http://f5.wenku365.com/2020-08/15/521b4886b6b987f114775c9681484106/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="中考化学计算专题(一).doc" href="/s-57397703.html" class="text">中考化学计算专题(一).doc</a>
-                    </li>
-                    <li><a href="/s-57397704.html">
-                        <img alt="中考化学计算题-专项练习.doc"
-                             data-original="http://f5.wenku365.com/2020-08/15/30c18d2cdff588235d2a53f24c82999f/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="中考化学计算题-专项练习.doc" href="/s-57397704.html"
-                           class="text">中考化学计算题-专项练习.doc</a>
-                    </li>
-                    <li><a href="/s-57397705.html">
-                        <img alt="中考化学酸碱盐试题汇编.doc"
-                             data-original="http://f5.wenku365.com/2020-08/15/5945f5d06fb51436cea2e7e36fa63f07/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="中考化学酸碱盐试题汇编.doc" href="/s-57397705.html" class="text">中考化学酸碱盐试题汇编.doc</a>
-                    </li>
-                    <li><a href="/s-57397828.html">
-                        <img alt="《小企业会计准则》 所有者权益.ppt"
-                             data-original="http://f5.wenku365.com/2020-08/17/2134c172a1372556a77e87ea201f3551/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="《小企业会计准则》 所有者权益.ppt" href="/s-57397828.html" class="text">《小企业会计准则》
-                            所有者权益.ppt</a>
-                    </li>
-                    <li><a href="/s-57397877.html">
-                        <img alt="企业会计准则讲座.ppt"
-                             data-original="http://f5.wenku365.com/2020-08/17/d1d73dbae6e6239c13f884b85a055325/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="企业会计准则讲座.ppt" href="/s-57397877.html" class="text">企业会计准则讲座.ppt</a>
-                    </li>
-                    <li><a href="/s-57397932.html">
-                        <img alt="异形词规范原则之讨论.ppt"
-                             data-original="http://f5.wenku365.com/2020-08/17/6c1b9cb86752a907aae0d328edcd0cb2/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="异形词规范原则之讨论.ppt" href="/s-57397932.html" class="text">异形词规范原则之讨论.ppt</a>
-                    </li>
-                    <li><a href="/s-57397946.html">
-                        <img alt="汉英词语对齐规范.ppt"
-                             data-original="http://f5.wenku365.com/2020-08/17/5520db69c17dd3be88702577cff4eca1/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="汉英词语对齐规范.ppt" href="/s-57397946.html" class="text">汉英词语对齐规范.ppt</a>
-                    </li>
-                    <li><a href="/s-57398220.html">
-                        <img
-                                alt="人教版五年级数学上册第四单元第十一课时-整理和复习.ppt"
-                                data-original="http://f5.wenku365.com/2020-08/17/349e26e3b126f273659da415c41de190/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="人教版五年级数学上册第四单元第十一课时-整理和复习.ppt" href="/s-57398220.html" class="text">人教版五年级数学上册第四单元第十一课时-整理和复习.ppt</a>
-                    </li>
-                    <li><a href="/s-57398226.html">
-                        <img alt="新人教版三年级数学上册期中复习.ppt"
-                             data-original="http://f5.wenku365.com/2020-08/17/9831b0459833ea7a9b8a3b932c24a5fb/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="新人教版三年级数学上册期中复习.ppt" href="/s-57398226.html" class="text">新人教版三年级数学上册期中复习.ppt</a>
-                    </li>
-                    <li><a href="/s-57398227.html">
-                        <img
-                                alt="冀教版五年级数学上册《方程》PPT课件.ppt"
-                                data-original="http://f5.wenku365.com/2020-08/17/ef3f09ec5831234e826d3c77e040ff24/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="冀教版五年级数学上册《方程》PPT课件.ppt" href="/s-57398227.html"
-                           class="text">冀教版五年级数学上册《方程》PPT课件.ppt</a>
-                    </li>
-                    <li><a href="/s-57398228.html">
-                        <img
-                                alt="人教版五年级数学上册《复杂方程》PPT课件.ppt"
-                                data-original="http://f5.wenku365.com/2020-08/17/ec0e532cc5e09e1b1048f2b7ed00d0b3/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="人教版五年级数学上册《复杂方程》PPT课件.ppt" href="/s-57398228.html" class="text">人教版五年级数学上册《复杂方程》PPT课件.ppt</a>
-                    </li>
-                    <li><a href="/s-57398229.html">
-                        <img
-                                alt="人教版五年级数学上册《稍复杂的方程》课件.ppt"
-                                data-original="http://f5.wenku365.com/2020-08/17/e142fe97439616da7aa122a1eff1d4bd/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="人教版五年级数学上册《稍复杂的方程》课件.ppt" href="/s-57398229.html" class="text">人教版五年级数学上册《稍复杂的方程》课件.ppt</a>
-                    </li>
-                    <li><a href="/s-57398746.html">
-                        <img
-                                alt="【冀教版】六年级数学上册课件 第1单元  圆和扇形 第1课时  圆的认识.ppt"
-                                data-original="http://f5.wenku365.com/2020-08/17/235b0d393a90ce89011c1ffbf1ab6c5d/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="【冀教版】六年级数学上册课件 第1单元  圆和扇形 第1课时  圆的认识.ppt" href="/s-57398746.html"
-                           class="text">【冀教版】六年级数学上册课件 第1单元 圆和扇形 第1课时 圆的认识.ppt</a>
-                    </li>
+
                 </ul>
                 `
-            </div>
-            <div class="tj_view hidden" id="tj005" 814>
-                <ul>
-                    <li><a href="/s-57398742.html">
-                        <img alt="带搅拌反应器(釜)维护检修规程.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/8ffd098e12ea4fcb8de318c1e5b1ffdb/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="带搅拌反应器(釜)维护检修规程.pdf" href="/s-57398742.html" class="text">带搅拌反应器(釜)维护检修规程.pdf</a>
-                    </li>
-                    <li><a href="/s-57398743.html">
-                        <img alt="常年咨询管理顾问协议书(正式).pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/e8e5311bf585c931ca4ad329ac9c8ef2/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="常年咨询管理顾问协议书(正式).pdf" href="/s-57398743.html" class="text">常年咨询管理顾问协议书(正式).pdf</a>
-                    </li>
-                    <li><a href="/s-57398744.html">
-                        <img alt="工资证明--收入证明(标准版).pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/9cc62069f16b69d191ecd6a891b17a40/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="工资证明--收入证明(标准版).pdf" href="/s-57398744.html" class="text">工资证明--收入证明(标准版).pdf</a>
-                    </li>
-                    <li><a href="/s-57398745.html">
-                        <img alt="干股分红协议书.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/1e3cc17b9fe3eb9e28fc131e3986ddab/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="干股分红协议书.pdf" href="/s-57398745.html" class="text">干股分红协议书.pdf</a>
-                    </li>
-                    <li><a href="/s-57398747.html">
-                        <img alt="平衡积分卡员工岗位考核办法.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/48b1f8e424df3eca2cf90e16c0341ac5/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="平衡积分卡员工岗位考核办法.pdf" href="/s-57398747.html"
-                           class="text">平衡积分卡员工岗位考核办法.pdf</a>
-                    </li>
-                    <li><a href="/s-57398748.html">
-                        <img alt="平台、走梯、爬梯、护笼方案.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/c969c3177dc2a23f61f7c0fc4d208149/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="平台、走梯、爬梯、护笼方案.pdf" href="/s-57398748.html"
-                           class="text">平台、走梯、爬梯、护笼方案.pdf</a>
-                    </li>
-                    <li><a href="/s-57398749.html">
-                        <img alt="幼儿园园长聘任协议书.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/77739dbcf7bd7f12229143e7a0ac5cfd/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="幼儿园园长聘任协议书.pdf" href="/s-57398749.html" class="text">幼儿园园长聘任协议书.pdf</a>
-                    </li>
-                    <li><a href="/s-57398750.html">
-                        <img alt="幼儿园一日常规管理制度.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/325733cb397b75e557807e48444ebe0f/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="幼儿园一日常规管理制度.pdf" href="/s-57398750.html" class="text">幼儿园一日常规管理制度.pdf</a>
-                    </li>
-                    <li><a href="/s-57398751.html">
-                        <img alt="幼儿园财务管理制度细则精品.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/7c6d2a63001f95e8a1a126c363040700/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="幼儿园财务管理制度细则精品.pdf" href="/s-57398751.html"
-                           class="text">幼儿园财务管理制度细则精品.pdf</a>
-                    </li>
-                    <li><a href="/s-57398752.html">
-                        <img alt="广告词创意教案.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/7e4a458e851d05bc4f5817b35bd2f2e5/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="广告词创意教案.pdf" href="/s-57398752.html" class="text">广告词创意教案.pdf</a>
-                    </li>
-                    <li><a href="/s-57398753.html">
-                        <img alt="幼儿园财务管理制度精品.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/1409234555e07b3b50cad990ecf2c74f/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="幼儿园财务管理制度精品.pdf" href="/s-57398753.html" class="text">幼儿园财务管理制度精品.pdf</a>
-                    </li>
-                    <li><a href="/s-57398754.html">
-                        <img alt="幼儿园财务管理制度细则.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/03b139f0bcda22615e68312ae32997d9/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="幼儿园财务管理制度细则.pdf" href="/s-57398754.html" class="text">幼儿园财务管理制度细则.pdf</a>
-                    </li>
-                    <li><a href="/s-57398755.html">
-                        <img alt="应急处置卡汇总.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/418983f2d1ce63474bb124a9a8b59c85/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="应急处置卡汇总.pdf" href="/s-57398755.html" class="text">应急处置卡汇总.pdf</a>
-                    </li>
-                    <li><a href="/s-57398756.html">
-                        <img alt="应急处置卡模板.pdf"
-                             data-original="http://f5.wenku365.com/2020-08/17/361d65019ce2b4ef191592b911ce8b9a/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="应急处置卡模板.pdf" href="/s-57398756.html" class="text">应急处置卡模板.pdf</a>
-                    </li>
-                </ul>
             </div>
         </div>
         <div class="center_line"></div>
         <div class="blank17"></div>
+
+        <!--今日更新ppt-->
         <div class="home_jp">
             <div class="jp_title">
                 <a class="flou3"></a>
@@ -1222,107 +642,11 @@
                          src="/static/js/pic1.gif"></a>
                     <a title="旅游投资分析.ppt" href="/s-57398530.html" class="text">旅游投资分析.ppt</a>
                 </li>
-                <li><a href="/s-57398529.html">
-                    <img alt="旅游经济学产品开发.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="旅游经济学产品开发.ppt" href="/s-57398529.html" class="text">旅游经济学产品开发.ppt</a>
-                </li>
-                <li><a href="/s-57398515.html">
-                    <img alt="斜压原始方程摸式.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="斜压原始方程摸式.ppt" href="/s-57398515.html" class="text">斜压原始方程摸式.ppt</a>
-                </li>
-                <li><a href="/s-57398514.html">
-                    <img alt="新人教版高中物理选修3电势能和电势课件.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="新人教版高中物理选修3电势能和电势课件.ppt" href="/s-57398514.html" class="text">新人教版高中物理选修3电势能和电势课件.ppt</a>
-                </li>
-                <li><a href="/s-57398511.html">
-                    <img alt="数电卡诺图化简法课件.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="数电卡诺图化简法课件.ppt" href="/s-57398511.html" class="text">数电卡诺图化简法课件.ppt</a>
-                </li>
-                <li><a href="/s-57398499.html">
-                    <img alt="排列(第二课时).ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="排列(第二课时).ppt" href="/s-57398499.html" class="text">排列(第二课时).ppt</a>
-                </li>
-                <li><a href="/s-57398498.html">
-                    <img alt="指导高中新生怎样制订学习计划.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="指导高中新生怎样制订学习计划.ppt" href="/s-57398498.html"
-                       class="text">指导高中新生怎样制订学习计划.ppt</a>
-                </li>
-                <li><a href="/s-57398493.html">
-                    <img alt="抽样计划管理办法.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="抽样计划管理办法.ppt" href="/s-57398493.html" class="text">抽样计划管理办法.ppt</a>
-                </li>
-                <li><a href="/s-57398487.html">
-                    <img alt="护理计划单如何制订().ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="护理计划单如何制订().ppt" href="/s-57398487.html" class="text">护理计划单如何制订().ppt</a>
-                </li>
-                <li><a href="/s-57398483.html">
-                    <img alt="扩充的正弦定理.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="扩充的正弦定理.ppt" href="/s-57398483.html" class="text">扩充的正弦定理.ppt</a>
-                </li>
-                <li><a href="/s-57398480.html">
-                    <img alt="房地产企业如何实施税务管理与筹划.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="房地产企业如何实施税务管理与筹划.ppt" href="/s-57398480.html" class="text">房地产企业如何实施税务管理与筹划.ppt</a>
-                </li>
-                <li><a href="/s-57398460.html">
-                    <img alt="微课--lie和lay的用法聚焦.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="微课--lie和lay的用法聚焦.ppt" href="/s-57398460.html" class="text">微课--lie和lay的用法聚焦.ppt</a>
-                </li>
-                <li><a href="/s-57398453.html">
-                    <img alt="循环流化床锅炉的燃烧与传热.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="循环流化床锅炉的燃烧与传热.ppt" href="/s-57398453.html" class="text">循环流化床锅炉的燃烧与传热.ppt</a>
-                </li>
-                <li><a href="/s-57398447.html">
-                    <img alt="开发区基础设施融资租赁简介.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="开发区基础设施融资租赁简介.ppt" href="/s-57398447.html" class="text">开发区基础设施融资租赁简介.ppt</a>
-                </li>
-                <li><a href="/s-57398435.html">
-                    <img alt="应用文计划和总结.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="应用文计划和总结.ppt" href="/s-57398435.html" class="text">应用文计划和总结.ppt</a>
-                </li>
-                <li><a href="/s-57398427.html">
-                    <img alt="幼儿皮肤的特点与卫生保健.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="幼儿皮肤的特点与卫生保健.ppt" href="/s-57398427.html" class="text">幼儿皮肤的特点与卫生保健.ppt</a>
-                </li>
-                <li><a href="/s-57398419.html">
-                    <img alt="市场调查策划.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="市场调查策划.ppt" href="/s-57398419.html" class="text">市场调查策划.ppt</a>
-                </li>
-                <li><a href="/s-57398418.html">
-                    <img alt="常见造岩矿物鉴定特征.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="常见造岩矿物鉴定特征.ppt" href="/s-57398418.html" class="text">常见造岩矿物鉴定特征.ppt</a>
-                </li>
-                <li><a href="/s-57398388.html">
-                    <img alt="客户忠诚度分析.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="客户忠诚度分析.ppt" href="/s-57398388.html" class="text">客户忠诚度分析.ppt</a>
-                </li>
-                <li><a href="/s-57398379.html">
-                    <img alt="实验四__颗粒剂的制备.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="实验四__颗粒剂的制备.ppt" href="/s-57398379.html" class="text">实验四__颗粒剂的制备.ppt</a>
-                </li>
             </div>
         </div>
         <div class="center_line"></div>
         <div class="blank17"></div>
-
+        <!--样式-->
         <style>
             .home_lr .zr_view li {
                 width: 180px;
@@ -1353,204 +677,68 @@
                 font-weight: 500
             }
         </style>
+        <!--牛人榜-->
         <div class="home_lr">
-            <div class="lr_title">
-                <a class="flou4"></a>
-                <h1><font color="#ff6333">牛</font>人榜</h1>
-                <div class="lr_r more"><a href="UserCenter.html" rel="nofollow">更多&gt;&gt;</a></div>
-            </div>
-            <div class="zr_view" style="height: 480px">
-                <ul>
-                    <li>
-                        <a href="/u-991.html" rel="nofollow">
-                            <img data-original="http://www.wenku365.com/FlexPaper/ZoomImage/UploadPhoto/tx_20181201164704.png"
-                                 title="ggakttt" alt="ggakttt"
+        <div class="lr_title">
+            <a class="flou4"></a>
+            <h1><font color="#ff6333">牛</font>人榜</h1>
+            <div class="lr_r more"><a href="UserCenter.html" rel="nofollow">更多&gt;&gt;</a></div>
+        </div>
+        <div class="zr_view" style="height: 480px">
+            <ul>
 
-                                 src="http://www.wenku365.com/FlexPaper/ZoomImage/UploadPhoto/tx_20181201164704.png"
-                                 style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-991.html" rel="nofollow" style="font-size: 16px;">ggakttt</a>
- </span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-5097.html" rel="nofollow">
-                            <img data-original="/static/images/avatar.png" title="aa21546" alt="aa21546"
-
-                                 src="/static/js/avatar.png" style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-5097.html" rel="nofollow" style="font-size: 16px;">aa21546</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-7604.html" rel="nofollow">
-                            <img data-original="/static/images/avatar.png" title="aaakkhhp" alt="aaakkhhp"
-
-                                 src="/static/js/avatar.png" style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-7604.html" rel="nofollow" style="font-size: 16px;">aaakkhhp</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-5649.html" rel="nofollow">
-                            <img title="bb21547" alt="bb21547"
-                                 src="/static/js/avatar_small.gif" style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
+                <li>
+                    <a href="/u-5649.html" rel="nofollow">
+                        <img title="bb21547" alt="bb21547"
+                             src="/static/js/avatar_small.gif" style="display: inline;">
+                    </a>
+                    <p class="xm"><span class="name">
 <a href="/u-5649.html" rel="nofollow" style="font-size: 16px;">bb21547</a>
 </span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-145848.html" rel="nofollow">
-                            <img title="maxianhui" alt="maxianhui"
-                                 src="/static/js/avatar.png" style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-145848.html" rel="nofollow" style="font-size: 16px;">maxianhui</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:123
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-2437.html" rel="nofollow">
-                            <img title="仙人指路888" alt="仙人指路888"
-                                 src="/static/js/avatar.png" style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-2437.html" rel="nofollow" style="font-size: 16px;">仙人指路888</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-5734.html" rel="nofollow">
-                            <img title="jinwen" alt="jinwen"
-                                 src="/static/js/avatar_small.gif"
-                                 style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
+                    <div style="font-size: 12px;margin-left: 10px">
+                        简介:此人太懒了,什么都没有留下
+                    </div>
+                    <br>
+                    <p></p>
+                </li>
+                <li>
+                    <a href="/u-5734.html" rel="nofollow">
+                        <img title="jinwen" alt="jinwen"
+                             src="/static/js/avatar_small.gif"
+                             style="display: inline;">
+                    </a>
+                    <p class="xm"><span class="name">
 <a href="/u-5734.html" rel="nofollow" style="font-size: 16px;">jinwen</a>
 </span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:分享好文档！
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-158545.html" rel="nofollow">
-                            <img title="无敌小子"
-                                 alt="无敌小子"
-                                 src="/static/js/avatar_small.gif"
-                                 style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-158545.html" rel="nofollow" style="font-size: 16px;">无敌小子</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-2441.html" rel="nofollow">
-                            <img data-original="/static/images/avatar.png" title="精品公文资料" alt="精品公文资料"
-
-                                 src="/static/js/avatar.png" style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-2441.html" rel="nofollow" style="font-size: 16px;">精品公文资料</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-250462.html" rel="nofollow">
-                            <img title="xtt9527" alt="xtt9527"
-                                 src="/static/images/avatar_small.gif.png" style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-250462.html" rel="nofollow" style="font-size: 16px;">xtt9527</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-1075.html" rel="nofollow">
-                            <img
-                                    title="文库小秘" alt="文库小秘"
-                                    src="/static/js/avatar_small.gif"
-                                    style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-1075.html" rel="nofollow" style="font-size: 16px;">文库小秘</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-250468.html" rel="nofollow">
-                            <img data-original="/static/images/avatar.png" title="yingxiaorong" alt="yingxiaorong"
-
-                                 src="/static/js/avatar.png" style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-250468.html" rel="nofollow" style="font-size: 16px;">yingxiaorong</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                </ul>
-            </div>
+                    <div style="font-size: 12px;margin-left: 10px">
+                        简介:分享好文档！
+                    </div>
+                    <br>
+                    <p></p>
+                </li>
+            </ul>
         </div>
     </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
     <script type="text/javascript" src="/static/js/home.js"></script>
     <script type="text/javascript">
         var siteUrlRoot = "https://www.wenku365.com";
     </script>
     <script type="text/javascript" src="/static/js/Prototype.js"></script>
     <script type="text/javascript" src="/static/js/index.js"></script>
+    <!--控制各种文档现实的位置的代码-->
     <script language="javascript" type="text/javascript">
         window.onload = function () {
             try {
@@ -1573,11 +761,12 @@
                 SDmodel.sd(["s01", "s02"], ["x01", "x02"], "sd01", "sd02");
             } catch (e) {
             }
-            SDmodel.sd(["tj01", "tj02", "tj03", "tj04", "tj05"],
-                ["tj001", "tj002", "tj003", "tj004", "tj005"], "sd01", "sd02");
+            SDmodel.sd(["tj01", "tj02", "tj03", "tj04"],
+                ["tj001", "tj002", "tj003", "tj004"], "sd01", "sd02");
         }
         document.getElementById("menuhomecate").setAttribute("class", "home_cate");
     </script>
+    <!--尾部黑色部分链接-->
     <div class="bg_100 foot_nav_bg" style=" min-width:1200px;">
         <div class="foot_nav">
             <a href="https://www.wenku365.com/h-33.html" rel="nofollow">关于我们</a> - <a
@@ -1593,6 +782,7 @@
             - <a href="https://www.wenku365.com/h-38.html" rel="nofollow">联系我们</a>
         </div>
     </div>
+    <!--尾部介绍说明-->
     <div class="bg_100 siteInner_bg" style=" min-width:1200px;">
         <div class="siteInner">
             <p style="text-align: center; line-height: 1.75em; margin-bottom: 5px;"><span style="font-size: 14px;"><span
@@ -1623,19 +813,7 @@
                     s.parentNode.insertBefore(hm, s);
                 })();
             </script>
-            <script>
-                (function () {
-                    var bp = document.createElement('script');
-                    var curProtocol = window.location.protocol.split(':')[0];
-                    if (curProtocol === 'https') {
-                        bp.src = '/static/js/push.js';
-                    } else {
-                        bp.src = '/static/js/push.js';
-                    }
-                    var s = document.getElementsByTagName("script")[0];
-                    s.parentNode.insertBefore(bp, s);
-                })();
-            </script>
+
             <script>
                 (function () {
                     var src = "/static/js/11.0.1.js";
@@ -1648,41 +826,9 @@
         var fileType = "-1";
         initFileType();
     </script>
-    <div class="QQ_S" style="height: 172px;position:fixed;right: 0px;bottom: 20px; top:auto;">
-        <div class="Q_top" onclick="HideFoot()"><span class="signi"></span>收起</div>
-        <div class="Q_botm">
-            <div class="Q_pic">
-                <div class="Q_pic_hide"><a
-                        href="https://wpa.qq.com/msgrd?v=3&amp;uin=1290478887&amp;site=qq&amp;menu=yes"
-                        title="在线客服" rel="nofollow"><span
-                        class="hide_pic"></span>在线客服</a></div>
-            </div>
-            <div class="Q_anser">
-                <div class="Q_anser_hide"><a
-                        href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=1290478887@qq.com"
-                        title="意见反馈">
-                    <span class="hide_pic1"></span>意见反馈 </a></div>
-            </div>
-            <div class="Q_sign">
-                <div class="Q_sign_hide" onclick="backToTop();"><a href="javascript:void(0)" title="返回顶部"><span
-                        class="hide_pic2"></span>返回顶部 </a></div>
-            </div>
-        </div>
-    </div>
-    <div class="QQ_S1">
-        <div class="Q_top1" onclick="ShowFoot()"><span class="signj"></span>展开</div>
-        <div class="Q_botm1">
-            <div class="Q_pic1">
-                <div class="Q_pic1_hide">
-                    <a href="https://wpa.qq.com/msgrd?v=3&amp;uin=1290478887&amp;site=qq&amp;menu=yes" rel="nofollow">
-                        <span class="hide_pic3"></span>QQ交谈</a></div>
-            </div>
-            <div class="Q_sign1">
-                <div class="Q_sign1_hide" onclick="backToTop();"><a href="javascript:void(0)">返回顶部</a></div>
-            </div>
-        </div>
-    </div>
+
     <script type="text/javascript" src="/static/js/lanrenzhijia.js"></script>
+    <!--控制图片转圈-->
     <script type="text/javascript" charset="utf-8">
         $("img").lazyload({
             placeholder: "https://static.wenku365.com/images/loading_d1.gif",
