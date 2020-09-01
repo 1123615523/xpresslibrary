@@ -24,4 +24,7 @@ public interface CustomerDao {
     //修改用户密码
     Integer updPassword(Integer id,String pwd);
 
+    //签到成功修改积分余额
+    Integer updMoney(Integer id,double money);
+
 }

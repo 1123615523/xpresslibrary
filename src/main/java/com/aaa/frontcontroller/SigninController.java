@@ -21,5 +21,11 @@ public class SigninController {
         return signinService.findSignInfo(cusid);
     }
 
+    @ResponseBody
+    @RequestMapping("qiandao")
+    public Object qiandao(Integer resid){
+        return signinService.signinStatus(resid);
+    }
+
 
 }

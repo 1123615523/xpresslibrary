@@ -16,6 +16,11 @@ public class CustomerServiceImpl implements CustomerService {
     CustomerDao customerDao;
 
     @Override
+    public Integer updMoney(Integer cusid, Double money) {
+        return customerDao.updMoney(cusid,money);
+    }
+
+    @Override
     public Integer updPassword(Integer id, String pwd) {
         return customerDao.updPassword(id,pwd);
     }

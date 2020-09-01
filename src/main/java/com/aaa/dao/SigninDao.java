@@ -20,4 +20,7 @@ public interface SigninDao {
     //最近签到时间
     Date findTime(Integer cusid);
 
+    //签到成功，添加签到记录
+    Integer addSignin(Signin signin);
+
 }

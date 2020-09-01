@@ -68,6 +68,7 @@ public class CustomerController {
     public Object add(Customerinfo customerinfo){
         customerinfo.setCustomerstate(1);
         customerinfo.setCustomermoney(0.00);
+        customerinfo.setCustomerpic("/static/wd/avatar_small.gif");
         return customerService.add(customerinfo);
     }
 
