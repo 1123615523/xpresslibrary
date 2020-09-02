@@ -18,6 +18,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IndexController {
 
+    //下载充值页面
+    @RequestMapping("payInfo")
+    public String payInfo(){
+        return "pay/index";
+    }
+
     //进入悬赏详情页面
     @RequestMapping("helpInfo")
     public String helpInfo(Integer id, Model model){
@@ -105,6 +111,12 @@ public class IndexController {
     @RequestMapping("login")
     public String login(){
         return "Login/login";
+    }
+
+    //进入个人中心登录
+    @RequestMapping("loginUser")
+    public String loginUser(){
+        return "Login/index";
     }
 
     //进入个人中心

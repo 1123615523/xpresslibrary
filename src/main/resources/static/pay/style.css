@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 .top_bg {
     background-color: #f5f5f5;
     border-bottom: 1px solid #eee;
@@ -6428,7 +6428,7 @@ input.btn5 {
 }
 
 .btn_118_40 {
-    background: url(../../images/fabu_bg.png) no-repeat;
+    background: url(/static/pay/fabu_bg.png) no-repeat;
     width: 118px;
     height: 40px;
     line-height: 40px;
@@ -6562,7 +6562,7 @@ input.btn5 {
 }
 
 .btn_gray {
-    background: url(../../images/liuyan_bg.png);
+    background: url(/static/pay/liuyan_bg.png);
     border: 0;
     width: 99px;
     height: 26px;
@@ -10597,7 +10597,7 @@ span.switch-page {
 a.flou1 {
     width: 35px;
     height: 24px;
-    background: url(/static/js/flou.png) no-repeat 0 0;
+    background: url(/img/flou.png) no-repeat 0 0;
     display: block;
     float: left;
     margin: 16px 5px 0 0
@@ -10606,7 +10606,7 @@ a.flou1 {
 a.flou2 {
     width: 35px;
     height: 24px;
-    background: url(/static/js/flou.png) no-repeat 0 -24px;
+    background: url(/img/flou.png) no-repeat 0 -24px;
     display: block;
     float: left;
     margin: 16px 5px 0 0
@@ -10615,7 +10615,7 @@ a.flou2 {
 a.flou3 {
     width: 35px;
     height: 24px;
-    background: url(/static/js/flou.png) no-repeat 0 -48px;
+    background: url(/img/flou.png) no-repeat 0 -48px;
     display: block;
     float: left;
     margin: 16px 0 0;
@@ -10625,7 +10625,7 @@ a.flou3 {
 a.flou4 {
     width: 35px;
     height: 24px;
-    background: url(/static/js/flou.png) no-repeat 0 -72px;
+    background: url(/img/flou.png) no-repeat 0 -72px;
     display: block;
     float: left;
     margin: 16px 5px 0 0
@@ -10634,7 +10634,7 @@ a.flou4 {
 a.flou5 {
     width: 35px;
     height: 24px;
-    background: url(/static/js/flou.png) no-repeat 0 -96px;
+    background: url(/img/flou.png) no-repeat 0 -96px;
     display: block;
     float: left;
     margin: 16px 0 0;
