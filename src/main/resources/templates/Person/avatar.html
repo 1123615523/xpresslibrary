@@ -246,8 +246,6 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box box-primary">
-                        <form class="form-horizontal autoAjaxSubmit" autocomplete="off" action="/ucenter/doSaveAvatar"
-                              method="post" data-ok-function="submitSuccess">
                             <div class="text-center" style="margin-bottom: 20px">
                                 <div style="max-width:500px;margin: auto">
                                     <img th:src="${session.cus.customerpic}" style="width: 100%;height: 100%"
@@ -257,12 +255,14 @@
                             <div class="box-footer">
                                 <div class="col-sm-10 submit-block">
                                     <div class="box-submit">
-                                        <input type="file">
-                                        <button type="submit" class="btn btn-primary"> 保存选择</button>
+                                        <form class="form-horizontal" autocomplete="off" id="form1" method="post" enctype="multipart/form-data">
+                                            <input type="file"  id="file" name="file" required="required"><br/>
+                                            <input type="hidden" name="customerid" th:value="${session.cus.customerid}">
+                                            <button type="button" class="btn btn-primary" onclick="uploadFile()">保存选择</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        </form>
                     </div>
                 </div>
             </div>
@@ -290,21 +290,42 @@
 <script src="/static/js/qidongcommons.js"></script>
 <script src="/static/js/qidongcsrf.js"></script>
 <script src="/static/js/bootstrap.min.css"></script>
+<script src="/static/vue/axios.min.js"></script>
 <script>
-
-    function submitSuccess() {
-        toastr.options.onHidden = function () {
-            location.reload();
-        };
-        toastr.success('头像修改成功，2s后自动刷新...');
-    }
-
-    $('#form').on('submit', function () {
-        ajaxSubmit('#form', function () {
-            toastr.success('修改成功');
+    function uploadFile() {
+        var myfrom = new FormData();
+        myfrom.append('file',$("#file")[0].files[0]);
+        myfrom.append('customerid', $("[name=customerid]").val());
+        $.ajax({
+            url: "/customer/editFile",
+            type: "POST",
+            data: myfrom,
+            async: false,
+            contentType: false,
+            processData: false,
+            success: function (result) {
+                if (result == 1){
+                    layer.msg('上传成功！正在更新,请等待...',{icon:1,time:2000},function () {
+                        var id = $("[name=customerid]").val();
+                        console.log(id);
+                        var url = "/customer/updLogin?id="+$("[name=customerid]").val();
+                        axios.get(url).then(function (resp) {
+                            if(resp.data === 1){
+                                location.reload();
+                            }else{
+                                alert("刷新失败！");
+                            }
+                        });
+                    });
+                }else {
+                    layer.msg('完蛋了！失败了',{icon:1,time:1000});
+                }
+            },
+            error: function (data) {
+                console.log(data)
+            }
         });
-        return false;
-    });
+    }
 </script>
 </body>
 </html>

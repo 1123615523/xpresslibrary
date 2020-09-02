@@ -31,4 +31,7 @@ public interface CustomerService {
     //充值成功修改用户余额
     Integer updMoney(Integer cusid,Double money);
 
+    /**修改头像*/
+    Integer editFile(Customerinfo customerinfo);
+
 }

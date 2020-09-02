@@ -27,4 +27,7 @@ public interface CustomerDao {
     //签到成功修改积分余额
     Integer updMoney(Integer id,double money);
 
+    /**修改头像*/
+    Integer editFile(Customerinfo customerinfo);
+
 }

@@ -49,5 +49,9 @@
     <select id="updLogin" resultType="com.aaa.entity.Customerinfo">
         select * from  customerinfo where customerid = #{value}
     </select>
+    
+    <update id="editFile" parameterType="com.aaa.entity.Customerinfo">
+        update customerinfo set customerpic=#{customerpic}  where  customerid = #{customerid}
+    </update>
 
 </mapper>

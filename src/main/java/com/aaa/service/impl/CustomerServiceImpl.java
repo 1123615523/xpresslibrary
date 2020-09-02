@@ -20,6 +20,12 @@ public class CustomerServiceImpl implements CustomerService {
         return customerDao.updMoney(cusid,money);
     }
 
+    /**修改头像*/
+    @Override
+    public Integer editFile(Customerinfo customerinfo) {
+        return customerDao.editFile(customerinfo);
+    }
+
     @Override
     public Integer updPassword(Integer id, String pwd) {
         return customerDao.updPassword(id,pwd);
