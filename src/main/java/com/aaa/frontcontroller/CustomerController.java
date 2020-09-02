@@ -2,13 +2,19 @@ package com.aaa.frontcontroller;
 
 import com.aaa.entity.Customerinfo;
 import com.aaa.service.CustomerService;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
+import java.io.File;
+import java.util.UUID;
 
 @Controller
 @RequestMapping("customer")
@@ -81,6 +87,37 @@ public class CustomerController {
             return 1;
         }
         return 0;
+    }
+
+    @RequestMapping("editFile")
+    @ResponseBody
+    public Object editFile(@RequestParam("file") MultipartFile file,Integer customerid){
+        Customerinfo customerinfo = new Customerinfo();
+        customerinfo.setCustomerid(customerid);
+        //文件原名称
+        String filename = file.getOriginalFilename();
+        //文件新名称
+        String newFilename = UUID.randomUUID().toString().replace("-","")+"."+ FilenameUtils.getExtension(filename);
+        try {
+            //获取图片的绝对路径
+            String s = ResourceUtils.getURL("classpath:").getPath() + "/static/images";
+            System.out.println("绝对路径:"+s);
+            //获取存放图片的相对路径
+            String news = "/static/images/" +newFilename;
+            customerinfo.setCustomerpic(news);
+            File fileDir = new File(s);
+            System.out.println("我为创建文件夹"+fileDir);
+            if (!fileDir.exists()){
+                System.out.println("我进来了");
+                //创建目录(多级)
+                fileDir.mkdirs();
+            }
+            file.transferTo(new File(fileDir,newFilename));
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return customerService.editFile(customerinfo);
     }
 
 }
