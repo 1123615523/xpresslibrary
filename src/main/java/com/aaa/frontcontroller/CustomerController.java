@@ -101,12 +101,10 @@ public class CustomerController {
         try {
             //获取图片的绝对路径
             String s = ResourceUtils.getURL("classpath:").getPath() + "/static/images";
-            System.out.println("绝对路径:"+s);
             //获取存放图片的相对路径
             String news = "/static/images/" +newFilename;
             customerinfo.setCustomerpic(news);
             File fileDir = new File(s);
-            System.out.println("我为创建文件夹"+fileDir);
             if (!fileDir.exists()){
                 System.out.println("我进来了");
                 //创建目录(多级)
