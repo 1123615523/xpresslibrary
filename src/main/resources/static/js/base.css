@@ -3757,7 +3757,7 @@ a.upload-link:hover {
     height: 24px;
     line-height: 24px;
     padding: 26px 0 0;
-    background: url(../../images/dk-le-zanbg.png) no-repeat;
+    background: url(/static/wd/dk-le-zanbg.png) no-repeat;
     text-align: center;
     color: #e95d09;
     font-family: \5B8B\4F53;
@@ -4929,7 +4929,7 @@ a.upload-link:hover {
     width: 18px;
     height: 24px;
     line-height: 24px;
-    background: url(../../images/icons.gif) no-repeat 1px 0;
+    background: url(/static/wd/icons.gif) no-repeat 1px 0;
     float: left;
     margin-top: -2px
 }
@@ -4938,7 +4938,7 @@ a.upload-link:hover {
     width: 18px;
     height: 24px;
     line-height: 24px;
-    background: url(../../images/icons.gif) no-repeat -71px 0;
+    background: url(/static/wd/icons.gif) no-repeat -71px 0;
     float: left;
     margin-top: -2px
 }
@@ -4947,7 +4947,7 @@ a.upload-link:hover {
     width: 18px;
     height: 24px;
     line-height: 24px;
-    background: url(../../images/icons.gif) no-repeat -35px 0;
+    background: url(/static/wd/icons.gif) no-repeat -35px 0;
     float: left;
     margin-top: -2px
 }
@@ -4956,7 +4956,7 @@ a.upload-link:hover {
     width: 18px;
     height: 24px;
     line-height: 24px;
-    background: url(../../images/icons.gif) no-repeat -104px 0;
+    background: url(/static/wd/icons.gif) no-repeat -104px 0;
     float: left;
     margin-top: -2px
 }
@@ -4965,7 +4965,7 @@ a.upload-link:hover {
     width: 18px;
     height: 24px;
     line-height: 24px;
-    background: url(../../images/icons.gif) no-repeat -138px 0;
+    background: url(/static/wd/icons.gif) no-repeat -138px 0;
     float: left;
     margin-top: -2px
 }
@@ -4974,7 +4974,7 @@ a.upload-link:hover {
     width: 18px;
     height: 24px;
     line-height: 24px;
-    background: url(../../images/icons.gif) no-repeat -207px -27px;
+    background: url(/static/wd/icons.gif) no-repeat -207px -27px;
     float: left;
     margin-top: -2px
 }
@@ -4983,7 +4983,7 @@ a.upload-link:hover {
     width: 18px;
     height: 24px;
     line-height: 24px;
-    background: url(../../images/icons.gif) no-repeat -207px 0;
+    background: url(/static/wd/icons.gif) no-repeat -207px 0;
     float: left;
     margin-top: -2px
 }
@@ -4992,7 +4992,7 @@ a.upload-link:hover {
     width: 18px;
     height: 24px;
     line-height: 24px;
-    background: url(../../images/icons.gif) no-repeat -172px 0;
+    background: url(/static/wd/icons.gif) no-repeat -172px 0;
     float: left;
     margin-top: -2px
 }
@@ -5001,7 +5001,7 @@ a.upload-link:hover {
     width: 18px;
     height: 24px;
     line-height: 24px;
-    background: url(../../images/icons.gif) no-repeat -207px -142px;
+    background: url(/static/wd/icons.gif) no-repeat -207px -142px;
     float: left;
     margin-top: -2px
 }
@@ -5010,7 +5010,7 @@ a.upload-link:hover {
     width: 18px;
     height: 24px;
     line-height: 24px;
-    background: url(../../images/icons.gif) no-repeat -104px -27px;
+    background: url(/static/wd/icons.gif) no-repeat -104px -27px;
     float: left;
     margin-top: -2px
 }
@@ -5019,7 +5019,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -158px -142px;
+    background: url(/static/wd/icons.gif) no-repeat -158px -142px;
     float: left;
     margin-top: -2px
 }
@@ -5028,7 +5028,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -103px -144px;
+    background: url(/static/wd/icons.gif) no-repeat -103px -144px;
     float: left;
     margin-top: -2px
 }
@@ -5037,7 +5037,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -183px -142px;
+    background: url(/static/wd/icons.gif) no-repeat -183px -142px;
     float: left;
     margin-top: -2px
 }
@@ -5046,7 +5046,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -214px -118px;
+    background: url(/static/wd/icons.gif) no-repeat -214px -118px;
     float: left;
     margin-top: -2px
 }
@@ -5055,7 +5055,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -203px -74px;
+    background: url(/static/wd/icons.gif) no-repeat -203px -74px;
     float: left;
     margin-top: -2px
 }
@@ -5064,7 +5064,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat 1px -163px;
+    background: url(/static/wd/icons.gif) no-repeat 1px -163px;
     float: left;
     margin-top: -2px
 }
@@ -5073,7 +5073,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -20px -164px;
+    background: url(/static/wd/icons.gif) no-repeat -20px -164px;
     float: left;
     margin-top: -2px
 }
@@ -5082,7 +5082,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -61px -163px;
+    background: url(/static/wd/icons.gif) no-repeat -61px -163px;
     float: left;
     margin-top: -2px
 }
@@ -5091,7 +5091,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -41px -163px;
+    background: url(/static/wd/icons.gif) no-repeat -41px -163px;
     float: left;
     margin-top: -2px
 }
@@ -5100,7 +5100,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -21px -142px;
+    background: url(/static/wd/icons.gif) no-repeat -21px -142px;
     float: left;
     margin-top: -2px
 }
@@ -5109,7 +5109,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -88px -163px;
+    background: url(/static/wd/icons.gif) no-repeat -88px -163px;
     float: left;
     margin-top: -2px
 }
@@ -5118,7 +5118,7 @@ a.upload-link:hover {
     width: 18px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -171px -163px;
+    background: url(/static/wd/icons.gif) no-repeat -171px -163px;
     float: left;
     margin-top: -2px
 }
@@ -5127,7 +5127,7 @@ a.upload-link:hover {
     width: 20px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -141px -163px;
+    background: url(/static/wd/icons.gif) no-repeat -141px -163px;
     float: left;
     margin-top: -2px
 }
@@ -5136,7 +5136,7 @@ a.upload-link:hover {
     width: 22px;
     height: 20px;
     line-height: 20px;
-    background: url(../../images/icons.gif) no-repeat -112px -163px;
+    background: url(/static/wd/icons.gif) no-repeat -112px -163px;
     float: left;
     margin-top: -2px
 }
