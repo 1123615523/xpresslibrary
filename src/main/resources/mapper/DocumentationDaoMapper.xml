@@ -28,6 +28,7 @@
         <result column="authored" jdbcType="NUMERIC" property="authored"></result>
         <result column="customername" jdbcType="VARCHAR" property="customername"></result>
         <result column="customerid" jdbcType="NUMERIC" property="customerid"></result>
+        <result column="customerpic" jdbcType="VARCHAR" property="customerpic"></result>
         <result column="dname" jdbcType="VARCHAR" property="dname"></result>
         <result column="name" jdbcType="VARCHAR" property="name"></result>
     </resultMap>
@@ -44,7 +45,7 @@
     </select>
 
     <select id="bydid" resultMap="MyDocumentationMap">
-        select d.*,c.customername,c.customerid,rs.dname,ro.name from documentation d
+        select d.*,c.customername,c.customerid,c.customerpic,rs.dname,ro.name from documentation d
         left join customerinfo c on d.authored = c.customerid
         left join resourcesdetails rs on d.detaisid = rs.did
         left join resourcesinfo ro on rs.resourcesid = ro.id
