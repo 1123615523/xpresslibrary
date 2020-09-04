@@ -1,6 +1,6 @@
  <!-- 模态窗体 -->
-    <script src="./ShowModel/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="./ShowModel/js/xadmin.js"></script>
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+        <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
 
     一对多
     <resultMap id="res" type="com.wdk.entity.Classes" autoMapping="true">

@@ -290,6 +290,7 @@
                                 <div class="col-sm-offset-2 col-sm-10 submit-block">
                                     <div class="box-submit">
                                         <button type="button" @click="addHelp()" class="btn btn-primary">发布信息</button>
+                                        <button type="button" class="btn btn-primary" @click="showHelp()">管理求助</button>
                                     </div>
                                 </div>
                             </div>
@@ -311,6 +312,9 @@
                 res: {}
             },
             methods: {
+                "showHelp":function () {
+                    location.href = "/Home/helpDetailsInfo";
+                },
                 "addHelp":function () {
                     if($("[name=a]").val()===null || $("[name=b]").val()==='' || $("[name=c]").val()==='' || $("[name=d]").val()===''){
                         toastr.error("必填项不能为空！");
@@ -324,7 +328,6 @@
 
                     var wuyu = $("#wuyu").html();
                     if(jin > wuyu){
-                        alert(jin+"------"+wuyu);
                         toastr.warning("余额不足！");
                         return;
                     }

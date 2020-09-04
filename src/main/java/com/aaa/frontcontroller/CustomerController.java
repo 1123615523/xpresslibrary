@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.util.Date;
 import java.util.UUID;
 
 @Controller
@@ -75,6 +76,10 @@ public class CustomerController {
         customerinfo.setCustomerstate(1);
         customerinfo.setCustomermoney(0.00);
         customerinfo.setCustomerpic("/static/wd/avatar_small.gif");
+        customerinfo.setCustomermeno("暂无简介");
+        long time = new Date().getTime();
+        String res = String.valueOf(time);
+        customerinfo.setCustomername(res);
         return customerService.add(customerinfo);
     }
 

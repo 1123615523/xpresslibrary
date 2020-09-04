@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto; min-height: 100%;" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>用户中心</title>
+    <link rel="stylesheet" href="/static/js/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/js/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" href="/static/js/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/js/ionicons.min.css">
+    <link rel="stylesheet" href="/static/js/switchery.min.css">
+    <link rel="stylesheet" href="/static/js/toastr.min.css">
+    <link rel="stylesheet" href="/static/js/AdminLTE.min.css">
+    <link rel="stylesheet" href="/static/js/skin-black-light.min.css">
+    <link rel="stylesheet" href="/static/js/qidongucenter.css">
+
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+
+    <script>
+        var qidong = {
+            cpath: ''
+        }
+    </script>
+
+    <link rel="stylesheet" type="text/css" href="/static/js/dropzone.css">
+    <style>
+        .upload-notice {
+            background-color: #fef6a9;
+            font-size: 14px;
+            color: #ff4400;
+            line-height: 25px;
+            padding: 7px 15px;
+            margin-bottom: 10px;
+            margin-right: 0px;
+            border: solid 1px #e10074;
+        }
+
+        .col-position {
+            margin-top: 5px;
+        }
+
+        .tip-font {
+            font-size: 12px;
+        }
+
+        .editor {
+            height: 230px;
+            width: 100%;
+            background-color: white
+        }
+    </style>
+
+    <link rel="stylesheet" href="/static/js/layer.css" id="layuicss-layer">
+    <style>.cke {
+        visibility: hidden;
+    }</style>
+    <script type="text/javascript" src="/static/js/config.js"></script>
+    <link rel="stylesheet" href="/static/js/style.css" id="layuicss-themejpressstylecss">
+    <link rel="stylesheet" type="text/css" href="/static/js/editor.css">
+    <script type="text/javascript" src="/static/js/zh-cn.js"></script>
+    <script type="text/javascript" src="/static/js/styles.js"></script>
+    <script type="text/javascript" src="/static/js/plugin.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/js/scayt.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/dialog.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/tableselection.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/wsc.css">
+    <script type="text/javascript" src="/static/js/zh-cn.js"></script>
+    <link rel="stylesheet" type="text/css" href="/static/js/default.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/balloontoolbar.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/copyformatting.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/imagebase.css">
+    <link rel="stylesheet" type="text/css" href="/static/js/balloonpanel.css">
+    <script type="text/javascript" src="/static/js/highlight.pack.js"></script>
+
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+</head>
+<body class="sidebar-mini wysihtml5-supported skin-black-light layout-boxed" style="height: auto; min-height: 100%;">
+<div class="wrapper" style="overflow: hidden; height: auto; min-height: 100%;">
+
+    <header class="main-header">
+        <!-- Logo -->
+        <a href="http://upload.wenku365.com:18889/ucenter" class="logo">
+            <span class="logo-mini"><b>JPr</b></span>
+            <span class="logo-lg"><b>随心文库</b></span>
+        </a>
+        <nav class="navbar navbar-static-top">
+            <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload" class="sidebar-toggle"
+               data-toggle="push-menu" role="button">
+                <span class="sr-only">切换</span>
+            </a>
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu">
+                        <a href="JavaScript:">
+                            <img th:src="${session.cus!=null?session.cus.customerpic:''}" class="user-image">
+                            <span class="hidden-xs">您好 <span
+                                    th:text="${session.cus!=null?session.cus.customertel:''}"></span> , 欢迎回来</span>
+                        </a>
+                    </li>
+
+
+                    <li class="dropdown messages-menu" style="border-left: 1px solid #ccc;">
+                        <a href="JavaScript:" class="dropdown-toggle"
+                           data-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-fw fa-shopping-cart"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li class="header">购物车列表</li>
+                            <li>
+                                <ul class="menu" style="background-color: #f7f7f7">
+                                </ul>
+                            </li>
+                            <li class="footer"><a href="JavaScript:"
+                                                  style="color: #3c8dbc !important;" target="_blank">查看全部</a></li>
+                        </ul>
+                    </li>
+
+                    <li style="border-left: 1px solid #ccc;">
+                        <a th:href="@{/Home/index}">
+                            <i class="fa fa-fw fa-home"></i>
+                        </a>
+                    </li>
+
+                    <li style="border-left: 1px solid #ccc;">
+                        <a href="/Home/index">
+                            退出
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+            <ul class="sidebar-menu tree" data-widget="tree" id="sidebar-menu">
+                <li class="block"></li>
+                <li class="link">
+                    <a href="http://localhost:8888/Home/index">
+                        <i class="fa fa-fw fa-home"></i>
+                        <span>首页</span></a>
+                </li>
+
+                <li class="header">我的内容</li>
+                <li class="treeview active">
+                    <a href="#">
+                        <i class="fa fa-fw fa-file-text"></i>
+                        <span>我的文档</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu" style="display: none;">
+                        <li class="active"><a href="/Home/user"
+                                              target="">上传文档</a></li>
+                        <li><a href="JavaScript:" target="">用户认证</a></li>
+                        <li><a href="JavaScript:" target="">我的资源</a></li>
+                        <li><a href="JavaScript:" target="">热门文档</a>
+                        </li>
+                        <li><a href="JavaScript:"
+                               target="">热门下载</a></li>
+                        <li><a href="JavaScript:" target="">价格修改记录</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="JavaScript:">
+                        <i class="fa fa-fw fa-file-archive-o"></i>
+                        <span>我的专题</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="JavaScript:" target="">添加/修改专题</a>
+                        </li>
+                        <li><a href="JavaScript:" target="">专题管理</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="treeview">
+                    <a href="JavaScript:">
+                        <i class="fa fa-fw fa-bookmark"></i>
+                        <span>我的收藏</span>
+                        <i class="fa fa-angle-left pull-right"></i>
+                        <span class="pull-right-container">
+                    </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="JavaScript:" target="">文章收藏</a></li>
+                        <li><a href="JavaScript:" target="">产品收藏</a></li>
+                    </ul>
+                </li>
+
+                <li class="header">财务信息</li>
+                <li class="link">
+                    <a href="JavaScript:">
+                        <i class="fa fa-fw fa-paper-plane"></i>
+                        <span>我的订单</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/blance">
+                        <i class="fa fa-fw fa-gg-circle"></i>
+                        <span>我的余额</span></a>
+                </li>
+                <li class="header">个人信息</li>
+                <li class="link">
+                    <a href="/Home/addHelp">
+                        <i class="fa fa-fw fa-coffee"></i>
+                        <span>发布求助</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/userinfo">
+                        <i class="fa fa-fw fa-user"></i>
+                        <span>基本信息</span></a>
+                </li>
+                <li class="link">
+                    <a href=/Home/signature>
+                        <i class="fa fa-fw fa-bars"></i>
+                        <span>个人签名</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/avatar">
+                        <i class="fa fa-fw fa-black-tie"></i>
+                        <span>头像设置</span></a>
+                </li>
+                <li class="link">
+                    <a href="/Home/password">
+                        <i class="fa fa-fw fa-key"></i>
+                        <span>账号密码</span></a>
+                </li>
+            </ul>
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <div class="content-wrapper">
+        <section class="content-header">
+            <h1>
+                我的悬赏
+                <small>My ReWard</small>
+            </h1>
+        </section>
+            <section class="content">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="box box-primary">
+                            <div id="app">
+                            <div class="box-header with-border">
+                                <form class="form-horizontal actionPanel">
+                                    <div class="row">
+                                        <div class="form-group col-xs-4">
+                                            <label class="col-sm-3 control-label">标题</label>
+                                            <div class="col-sm-9">
+                                                <input type="text" v-model.trim="keyword" class="form-control">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-xs-4">
+                                            <button type="button" class="btn btn-primary" @click="bian()">查询</button>
+                                            <button type="button" class="btn btn-default" @click="find(1)">重置</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="box-body ">
+                                <table class="table table-striped">
+                                    <tbody>
+                                    <tr>
+                                        <th style="text-align: center">标题</th>
+                                        <th style="text-align: center">评论</th>
+                                        <th style="text-align: center">赏金</th>
+                                        <th style="text-align: center">日期</th>
+                                        <th style="text-align: center">操作</th>
+                                    </tr>
+                                    <tr v-for="r in res">
+                                        <td colspan="5" bgcolor="#fff">
+                                            <div class="box box-dashboard" style="margin-bottom: 0px">
+                                                <div class="box-header with-border">
+                                                    <div class="col-lg-10">
+                                                        发布日期：{{r.helptime}}
+                                                        悬赏金额：<span style="padding-right: 20px">{{r.helpintegral}}</span>
+                                                        悬赏状态：
+                                                        <span v-show="r.helpstatus===1">已解决</span>
+                                                        <span style="padding-right: 20px;color: red" v-show="r.helpstatus===0">未解决</span>
+                                                    </div>
+                                                </div>
+
+                                                <div class="box-body no-padding">
+                                                    <table class="table table-striped">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td style="width: 20%;text-align: center">
+                                                                <a :href="HelpInfo(r.id)">{{r.helptitle}}</a>
+                                                            </td>
+                                                            <td style="width: 20%;text-align: center">{{r.helpcomment}}</td>
+                                                            <td style="width: 20%;text-align: center">{{r.helpintegral}}</td>
+                                                            <td style="width: 20%;text-align: center">
+                                                                {{r.helptime}}
+                                                            </td>
+                                                            <td style="width: 20%;text-align: center;margin-left: 50px">
+                                                                <button type="button" class="btn btn-primary btn-xs" @click="zou(r.id)">去页面</button>
+                                                                <button type="button" class="btn btn-primary btn-xs" @click="details(r.id,r.helpstatus,r.helpintegral)">查看详情</button>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-sm-12">
+                                    <ul class="pagination pull-right">
+                                        <li class="paginate_button previous ">
+                                            <a href="javascript:;" @click="fenye('pre')">上一页</a>
+                                        </li>
+                                        <li class="paginate_button active">
+                                            <a href="javascript:;">{{sizeinfo}}...{{pagination.lastPage}}</a>
+                                        </li>
+                                        <li class="paginate_button next ">
+                                            <a href="javascript:;" @click="fenye('next')">下一页</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        <span id="resid" th:text="${session.cus.customerid}" hidden></span>
+        <script src="/static/vue/axios.min.js"></script>
+        <script src="/static/vue/vue.js"></script>
+        <script src="/static/vue/jquery-3.1.1.js"></script>
+        <script>
+            var v = new Vue({
+                el:'#app',
+                data:{
+                    res:[],
+                    newRes:[],
+                    keyword:'',
+                    pagination:{},
+                    sizeinfo:1
+                },
+                created:function () {
+                    this.find(1);
+                },
+                methods:{
+                    "details":function (id,status,money) {
+                        xadmin.open('评论详情','/Home/HelpDetails?id='+id+'&status='+status+"&money="+money,700,400);
+                    },
+                    "HelpInfo":function (id) {
+                        return '/Home/helpInfo?id='+id;
+                    },
+                    "fenye":function (page) {
+                        if(page === 'pre'){
+                            var res = this.sizeinfo - 1;
+                            if (res >= 1) {
+                                this.find(res);
+                            }
+                        }else if(page === 'next' && this.pagination.currentPage < this.pagination.lastPage){
+                            var res = this.pagination.currentPage + 1;
+                            this.find(res);
+                        }
+                    },
+                    "bian":function () {
+                        this.newRes = [];
+                        for(var i=0;i <= this.res.length-1;i++){
+                            if(this.res[i].helptitle.indexOf(this.keyword) >= 0){
+                                this.newRes.push(this.res[i]);
+                            }
+                        }
+                        this.res = this.newRes;
+                    },
+                    "find":function (size) {
+                        var url = "/Help/findUserHelp?keyWord="+$("#resid").html()+"&currentPage="+size;
+                        var that = this;
+                        axios.get(url).then(function (resp) {
+                            that.res = resp.data.rows;
+                            that.pagination = resp.data;
+                            that.sizeinfo = resp.data.currentPage;
+                        });
+                    },
+                    "zou":function (id) {
+                        window.location = "/Home/helpInfo?id="+id;
+                    }
+                }
+            })
+        </script>
+
+    </div>
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            version v3.0.0-rc.1
+        </div>
+        Copyright &copy; 2016-2020 Qidong Studio. All rights
+        reserved.
+    </footer>
+</div>
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/jquery.form.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+<script src="/static/js/bootstrap-datepicker.min.js"></script>
+<script src="/static/js/bootstrap-datepicker.zh-CN.min.js"></script>
+<script src="/static/js/fastclick.js"></script>
+<script src="/static/js/switchery.min.js"></script>
+<script src="/static/js/toastr.min.js"></script>
+<script src="/static/js/layer.js"></script>
+<script src="/static/js/adminlte.min.js"></script>
+<script src="/static/js/qidongucenter.js"></script>
+<script src="/static/js/qidongcommons.js"></script>
+<script src="/static/js/qidongcsrf.js"></script>
+</body>
+</html>

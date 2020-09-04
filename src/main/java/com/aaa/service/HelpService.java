@@ -12,4 +12,7 @@ public interface HelpService {
     //查询全部的求助信息
     PageModel<Helpinfo> findMenuPath(PageModel pm);
 
+    //查询我发布的悬赏信息
+    PageModel<Helpinfo> findUserInfo(PageModel pm);
+
 }

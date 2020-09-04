@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>审核结果</title>
+
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+
+</head>
+<body>
+
+<center>
+    <div id="app">
+        <table border="1">
+            <tr>
+                <td>编号</td>
+                <td>评论人</td>
+                <td>头像</td>
+                <td>评论内容</td>
+                <td>评论日期</td>
+                <td>是否采用</td>
+                <td>赞同数</td>
+                <td>操作</td>
+            </tr>
+            <tr v-for="r in res">
+                <td>{{r.id}}</td>
+                <td>{{r.customerinfos.customername}}</td>
+                <td><img :src="r.customerinfos.customerpic" width="38" height="38"></td>
+                <td>{{r.replycontent}}</td>
+                <td>{{r.replytime}}</td>
+                <td>{{r.replystatus===0?'未采用':'已采用'}}</td>
+                <td>{{r.replycount}}</td>
+                <td>
+                    <button @click="caina(r.id,r.customerinfos.customerid)" v-show="r.replystatus===0">采纳</button>
+                    <button v-show="r.replystatus===1">已采纳</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <span id="helpid" th:text="${helpid}" hidden></span>
+    <span id="status" th:text="${status}" hidden></span>
+    <span id="money" th:text="${money}" hidden></span>
+    <span id="cusid" th:text="${session.cus.customerid}" hidden></span>
+    <script src="/static/vue/axios.min.js"></script>
+    <script src="/static/vue/vue.js"></script>
+    <script src="/static/vue/jquery-3.1.1.js"></script>
+    <script>
+        var v = new Vue({
+            el:'#app',
+            data:{
+                res:[]
+            },
+            created:function () {
+                this.find();
+            },
+            methods:{
+                "caina":function (helpid,cusid) {
+                    var status = $("#status").html();
+                    var cid = $("#cusid").html();
+                    var hid = $("#helpid").html();
+                    var money = $("#money").html();
+                    if(status == 1){
+                        alert("此帖子已解决，不可重复操作！");
+                        return;
+                    }
+                    if(cusid == cid){
+                        alert("您不能将赏金发给自己！");
+                        return;
+                    }
+                    /*
+                    * 原ID：hid
+                    * 子ID：helpid
+                    * 金额：money
+                    * 记录：cusid
+                    * */
+                    var url2 = "/Help/updHelpInfo?helpid="+hid+"&replyid="+helpid+"&money="+money+"&cusid="+cusid;
+                    var that = this;
+                    layer.confirm('确认采纳此回答？', {icon: 3, title:'提示'}, function(index){
+                        axios.get(url2).then(function (resp) {
+                            if(resp.data > 0){
+                                layer.msg('采纳成功！',{icon:1,time:1000},function(){
+                                    parent.layer.close(index);
+                                    that.find();
+                                });
+                            }else{
+                                layer.alert("采纳失败！");
+                            }
+                        });
+                    });
+                },
+                "find":function () {
+                    var helpid = $("#helpid").html();
+                    var url = "/Help/findHelpReplyInfo?helpid="+helpid;
+                    var that = this;
+                    axios.get(url).then(function (resp) {
+                        that.res = resp.data;
+                    })
+                }
+            }
+        })
+    </script>
+
+</center>
+
+</body>
+</html>

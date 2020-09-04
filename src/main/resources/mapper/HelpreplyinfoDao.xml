@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.aaa.dao.HelpreplyinfoDao">
+
+    <resultMap id="MyResultMap" type="java.util.Map">
+        <id column="id" jdbcType="NUMERIC" property="id"></id>
+        <result column="replycontent" jdbcType="VARCHAR" property="replycontent"></result>
+        <result column="replytime" jdbcType="DATE" property="replytime"></result>
+        <result column="customerhelpid" jdbcType="NUMERIC" property="customerhelpid"></result>
+        <result column="replystatus" jdbcType="NUMERIC" property="replystatus"></result>
+        <result column="helpid" jdbcType="NUMERIC" property="helpid"></result>
+        <result column="replyparentid" jdbcType="NUMERIC" property="replyparentid"></result>
+        <result column="replycount" jdbcType="NUMERIC" property="replycount"></result>
+
+        <result column="customerid" jdbcType="NUMERIC" property="customerid"></result>
+        <result column="customername" jdbcType="VARCHAR" property="customername"></result>
+        <result column="customerpic" jdbcType="VARCHAR" property="customerpic"></result>
+    </resultMap>
+
+    <insert id="addHhelp">
+        insert into helpreplyinfo value(null,#{replycontent},#{replytime},#{customerhelpid},#{replystatus},#{helpid},#{replyparentid},#{replycount})
+    </insert>
+
+    <update id="updHelpReply">
+        update helpreplyinfo set replystatus=1 where id = #{value}
+    </update>
+
+    <delete id="delHelpInfo">
+        delete from helpreplyinfo
+        <where>
+            <if test="param1 != null">
+                id = #{param1}
+            </if>
+            <if test="param2 != null">
+                or replyparentid = #{param2}
+            </if>
+        </where>
+    </delete>
+
+    <select id="findHelpInfo" resultMap="MyResultMap">
+        select h.*,c.customerid,c.customername,c.customerpic from helpreplyinfo h
+        left join customerinfo c
+        on h.customerhelpid = c.customerid
+        where h.helpid = #{param1} and replyparentid = #{param2}
+        ORDER BY h.id desc
+    </select>
+
+    <select id="findParentId" resultType="java.lang.Integer">
+        select replyparentid from helpreplyinfo where id = #{value}
+    </select>
+
+    <resultMap id="resutMap" type="com.aaa.entity.Helpreplyinfo" autoMapping="true">
+        <id column="id" property="id"></id>
+        <association property="customerinfos" javaType="com.aaa.entity.Customerinfo" autoMapping="true">
+            <id column="customerid" property="customerid"></id>
+        </association>
+    </resultMap>
+
+    <select id="findHelpReplyInfo" resultMap="resutMap">
+        select * from helpreplyinfo h
+        LEFT JOIN customerinfo cus
+        on h.customerhelpid = cus.customerid
+        where h.helpid = #{value}
+    </select>
+
+
+</mapper>

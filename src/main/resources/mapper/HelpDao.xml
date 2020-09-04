@@ -6,6 +6,13 @@
         insert into helpinfo(id,helptime,helpcontent,cid,helpintegral,helpcount,helpcomment,helpstatus,helptype,helptitle)
         value(null,#{helptime},#{helpcontent},#{cid},#{helpintegral},#{helpcount},#{helpcomment},#{helpstatus},#{helptype},#{helptitle})
     </insert>
+    <update id="updHelpStatus">
+        update helpinfo set helpstatus=1 where id = #{value}
+    </update>
+
+    <update id="updComment">
+        update helpinfo set helpcomment=#{param2} where id = #{param1}
+    </update>
 
     <resultMap id="MyResultMap" type="com.aaa.entity.Helpinfo" autoMapping="true">
         <id column="id" property="id"></id>
@@ -19,6 +26,21 @@
         LEFT JOIN customerinfo c
         on h.cid = c.customerid
         ORDER BY h.helpintegral desc
+    </select>
+
+    <select id="findHelp" resultMap="MyResultMap">
+        select * from helpinfo h
+        LEFT JOIN customerinfo c
+        on h.cid = c.customerid
+        where h.id = #{value}
+    </select>
+
+    <select id="findUserInfo" resultMap="MyResultMap">
+        select * from helpinfo h
+        LEFT JOIN customerinfo c
+        on h.cid = c.customerid
+        where h.cid = #{value}
+        ORDER BY h.id desc
     </select>
 
 </mapper>

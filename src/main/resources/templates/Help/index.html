@@ -395,10 +395,22 @@
         </div>
 
         <div class="topr">
-            <a class="block upload-link" href="https://www.renrendoc.com/flexpaper/add.aspx"
-               rel="nofollow"><span></span>上传我的文档</a>
+            <a class="block upload-link" href="JavaScript:"
+               rel="nofollow" onclick="chuan()">上传我的文档</a>
         </div>
     </div>
+
+    <span id="testcus" th:text="${session.cus!=null?session.cus:''}" hidden></span>
+    <script>
+        function chuan() {
+            var test = $("#testcus").html();
+            if('' === test){
+                window.location = '/Home/loginUser';
+            }else {
+                window.location = "/Home/user";
+            }
+        }
+    </script>
 
     <div class="xxxk_top searchfix"
          style="height: 75px; background: rgb(255, 255, 255); box-shadow: rgb(221, 221, 221) 0px 0px 5px; left: 0px; top: 0px; width: 100%; position: relative; z-index: 1; display: none;">
@@ -416,7 +428,7 @@
                     </form>
                 </div>
                 <a class="block upload-link" style="position: absolute; right: 0px;top:0px;"
-                   href="https://www.renrendoc.com/flexpaper/add.aspx" rel="nofollow"><span></span>上传我的文档</a>
+                   href="https://www.renrendoc.com/flexpaper/add.aspx" rel="nofollow">上传我的文档</a>
             </div>
         </div>
     </div>
@@ -700,12 +712,11 @@
                         methods: {
                             "zou":function (id) {
                                 var cus = $("#testinfo").html();
-                                console.info(cus+"---------"+id);
                                 if('' === cus){
                                     alert("请先登录！");
                                     return;
                                 }
-                                window.location = "/Home/helpInfo?id="+id;;
+                                window.location = "/Home/helpInfo?id="+id;
                             },
                             "find": function (size) {
                                 var that = this;

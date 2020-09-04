@@ -32,6 +32,21 @@ public class HelpServiceImpl implements HelpService {
     RechargeDao rechargeDao;
 
     @Override
+    public PageModel<Helpinfo> findUserInfo(PageModel pm) {
+        PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
+        String string = pm.getKeyWord().toString();
+        int cusid = Integer.parseInt(string);
+        List<Helpinfo> helpInfo = helpDao.findUserInfo(cusid);
+        pm.setRows(helpInfo);
+        PageInfo<Helpinfo> personPageInfo = new PageInfo<Helpinfo>(helpInfo);
+        int pages = personPageInfo.getPages();
+        long total = personPageInfo.getTotal();
+        pm.setTotal(total);
+        pm.setLastPage(pages);
+        return pm;
+    }
+
+    @Override
     public PageModel<Helpinfo> findMenuPath(PageModel pm) {
         PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
         List<Helpinfo> helpInfo = helpDao.findHelpInfo();

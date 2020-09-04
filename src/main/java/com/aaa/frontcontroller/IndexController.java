@@ -18,6 +18,34 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IndexController {
 
+    //进入资源分类详情页面
+    @RequestMapping("ResourceDetails")
+    public String ResourceDetails(Integer did,Model model){
+        model.addAttribute("did",did);
+        return "Home/indexDetails";
+    }
+
+    //进入个人信息主页
+    @RequestMapping("UserInfoPerson")
+    public String UserInfoPerson(){
+        return "User/index";
+    }
+
+    //进入求助评论详情
+    @RequestMapping("HelpDetails")
+    public String HelpDetails(Integer id,Integer status,Double money,Model model){
+        model.addAttribute("helpid",id);
+        model.addAttribute("status",status);
+        model.addAttribute("money",money);
+        return "Help/helpAdoption";
+    }
+
+    //进入求助信息详细页面
+    @RequestMapping("helpDetailsInfo")
+    public String helpDetailsInfo(){
+        return "Help/helpDetailsInfo";
+    }
+
     //下载充值页面
     @RequestMapping("payInfo")
     public String payInfo(){
@@ -30,7 +58,6 @@ public class IndexController {
         model.addAttribute("helpid",id);
         return "Help/helpInfo";
     }
-
 
     //进入发布求助页面
     @RequestMapping("addHelp")

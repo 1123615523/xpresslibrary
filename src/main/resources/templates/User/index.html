@@ -1,0 +1,1178 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head id="Head1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        问答求助-随心文库网
+    </title>
+    <link href="/static/wd/5dede93f-e1a9-4d5b-88af-fa62a70587ff.ico"
+          rel="shortcut icon" type="image/x-icon">
+    <link href="/static/js/base.css" rel="stylesheet" type="text/css">
+    <link href="/static/wd/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" async="" src="/static/wd/auto_dup"></script>
+    <script type="text/javascript" src="/static/wd/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/static/wd/Prototype.js"></script>
+    <script type="text/javascript" src="/static/wd/slides.banner.js"></script>
+    <link href="/static/wd/slides.css" rel="stylesheet" type="text/css">
+    <meta name="copyright" content="www.renrendoc.com">
+    <meta name="applicable-device" content="pc">
+    <!--IE8只能支持jQuery1.9-->
+    <!--[if lte IE 8]>
+    <script src="https://www.renrendoc.com/JS/jquery1.9.0.min.js"></script>
+    <![endif]-->
+    <style>
+        a {
+            color: #06a;
+            text-decoration: none;
+        }
+
+        a:focus {
+            outline: 0 none;
+        }
+
+        a:hover, a:active {
+            outline: 0
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        a.line, .tdu {
+            text-decoration: underline
+        }
+
+        a.unline, .tdn {
+            text-decoration: none
+        }
+
+        body, .main, .main_bg {
+            background-color: #fff;
+        }
+
+        .gp-wrap {
+            width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+        }
+
+        .gp-lwrap {
+            float: left;
+            width: 930px;
+        }
+
+        .gp-list-tp {
+            width: 840px;
+        }
+
+        .gp-dsc-mod {
+            width: 900px;
+        }
+
+        .dsc-ul li .title {
+            width: 840px;
+        }
+
+        .dsc-ul li .title div {
+            width: 840px;
+        }
+
+        .search_700 {
+            width: 920px
+        }
+
+        .lt-cont-add {
+            width: 930px;
+        }
+
+        .lt-cont .ad img {
+            width: 890px;
+        }
+
+        .lt-cont-add .ad, .lt-cont-add .ad img {
+            width: 930px;
+        }
+
+        .ad-brief {
+            max-width: 800px;
+        }
+    </style>
+
+    <link href="/static/wd/misc.css" rel="stylesheet" type="text/css">
+    <link href="/static/wd/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style>
+        body, .main, .main_bg {
+            background-color: #fff;
+        }
+
+        .camNavA a {
+            padding: 0px 15px;
+        }
+    </style>
+    <style>.xxxk_top img {
+        height: 55px;
+        margin-top: 10px;
+    }
+
+    .cmn_search_box {
+        margin-left: 130px;
+        margin-top: 10px;
+    }
+
+    .cmn_search_box .border {
+        border: 1px solid #00a2ca;
+        border-radius: 0px;
+    }
+
+    .cmn_search_box .border input[type='submit'] {
+        background-color: #00a2ca;
+    }
+
+    .cmn_search_box .border input[type='submit']:hover {
+        background-color: #00a2ca;
+    }
+
+    .hr-wrap {
+        border-bottom: 1px solid #00a2ca;
+        background: #00a2ca;
+    }
+
+    .home_menu {
+        border-bottom: 2px solid #00a2ca;
+    }
+
+    .home_menu .feilei {
+        font-size: 16px;
+        background-color: #00a2ca;
+        color: #fff;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .nav_bg, .nav li.over a, .nav li a, .nav #conAll0.over a {
+        background: #00a2ca;
+    }
+
+    .nav li a {
+        display: block;
+        padding: 0px 40px;
+    }
+
+    .j_menu .hottip {
+        right: -3px;
+        top: 5px;
+    }
+
+    .hottip {
+        right: 16px;
+        top: 5px;
+    }
+
+    .nav li a:Hover, .nav li.over a, .nav #conAll0:hover a:hover, .nav #conz0:hover a:hover {
+        background-color: #00a2ca;
+        color: #ff4400
+    }
+
+    .nav #conAll0 a span {
+        right: 12px;
+        top: 14px;
+    }
+
+    .home_menu .j_menu li.home a {
+        color: #ff4400
+    }
+
+    .nav #conAll0.over a, .nav #conz0.over a, .nav #conAll0:hover a, .nav #conz0:hover a {
+        background-color: #00a2ca;;
+        color: #ff4400
+    }
+
+    .cmn_top_r .inner a.upload {
+    }
+
+    .camTitle {
+        background-color: #f9f9f9;
+    }
+
+    .camNavA a {
+        font-size: 14px;
+        color: #00a2ca
+    }
+
+    .camNavA a.selected {
+        background: #fff;
+        border-top: 3px solid #00a2ca;
+        font-weight: bold;
+        border-left: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5
+    }
+
+    .camTitles {
+        background-color: #f5f5f5;
+    }
+
+    .camNavAs a {
+        font-size: 16px;
+        color: #00a2ca
+    }
+
+    .camNavAs a.selected {
+        font-weight: bold;
+        border-top: 3px solid #00a2ca;
+        background: #fff;
+    }
+
+    .cate {
+        background: #5c5c5c;
+        border-top: solid 1px #3b3b3b;
+    }
+
+    .cate li:hover .category-title {
+        background: #fff
+    }
+
+    .cate li:hover .category-title a {
+        color: #ff6600
+    }
+
+    .cate .category-sub {
+        border-color: #3b3b3b;
+        filter: alpha(opacity=100); /*IE滤镜，透明度50%*/
+        -moz-opacity: 1; /*Firefox私有，透明度50%*/
+        opacity: 1; /*其他，透明度50%*/
+    }
+
+    .shop1 a.searchbtn0 {
+        background-color: #ff491f;
+    }
+
+    .shop1 a.searchbtn0:hover {
+        background-color: #e5411c;
+    }
+
+    .main-contact .txt {
+        width: auto;
+        background: url(/images/s.gif) no-repeat -35px 0px;
+        float: none;
+        margin-top: 0px;
+    }
+
+    footer, .foot_nav_bg {
+        background: #111111;
+    }
+
+    .camZpSmall .camZpBox dd span, .camZpSmall .camZpBox dd a.selected, .camZpBox dd span, .camZpBox dd a.selected, .farea dd span, .farea dd a.selected, .fareas dd span, .fareas dd a.selected {
+        color: #fff;
+        background-color: #3b3b3b;
+    }
+
+    .farea dt, .fareas dt {
+        color: #666
+    }
+
+    .h-list #conAll, .h-list #conAll2, .dorpmenu2 {
+        border: 1px solid #3b3b3b;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .catesBox a:hover, .catesBox a.cur {
+        background: #00a2ca;
+        border: 1px solid #00a2ca;
+    }
+
+    .bannerbox .searchbox .searchbtn1 {
+        background-color: #189ae5;
+    }
+
+    .bannerbox .searchbox .searchbtn1:hover {
+        background-color: #0B8DD6;
+    }
+
+    .home_link {
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .home_link .link_con {
+        height: auto;
+        min-height: 100px;
+    }</style>
+</head>
+<body>
+<div id="BAIDU_DUP_fp_wrapper"
+     style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;">
+    <iframe id="BAIDU_DUP_fp_iframe" src="/static/wd/o.html"
+            style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe>
+</div>
+<script type="text/javascript" src="/static/wd/www2m.js"></script>
+<script type="text/javascript">
+    browserRedirect("https://m.renrendoc.com", "https://www.renrendoc.com");
+</script>
+
+<!--head-->
+<div id="headerplace" style="height: 39px; background-color:#fff; overflow: hidden; width: 100%; min-width:1200px;">
+    <div class="bg_100 top_bg">
+        <div class="top">
+        <span>
+           <span style="float:left; color:#666;">欢迎来到随心文库！</span>
+<span style="float:left; color:#F70830;">上传客服QQ1123615523</span>
+            <span th:if="${session.cus!=null}">
+        |<a th:href="@{/Home/user}" style="color: #eb0064">[个人中心]</a>|
+        <a th:href="@{/Home/logout}">安全退出</a>|
+    </span>
+    <span th:if="${session.cus==null}">
+         |<a th:href="@{/Home/login}">[登录]</a>|
+         <a th:href="@{/Home/registered}">免费注册</a>|
+    </span>
+</span>
+        </div>
+    </div>
+</div>
+
+<div style="background-color:#fff; z-index:10; position:relative; min-width:1200px;">
+
+    <div class="xxxk_top cf">
+
+        <h1><a title="随心文库网" class="fl" href="https://www.renrendoc.com/" style="height:81px; position:relative; ">
+            <img src="/static/wd/4d54aa68-a2cd-487d-9a74-8686af2ad286.jpg" title="随心文库网" alt="随心文库网"
+                 style="border: 0; "></a></h1>
+        <div class="cmn_search_box">
+            <div class="border">
+                <form>
+                    <input id="keyword" type="text" value="" name="q" placeholder="在这里搜索">
+                    <input type="submit" name="searchBtn" value="" title="点击搜索"
+                           onclick="searchWord($(&#39;#keyword&#39;).val()); return false;">
+                </form>
+            </div>
+            <p class="hot">
+                <span>热门搜索：</span>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;直缝焊接机&#39;)" title="直缝焊接机">直缝焊接机</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;矿井提升机&#39;)" title="矿井提升机">矿井提升机</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;循环球式转向器图纸&#39;)" title="循环球式转向器图纸">循环球式转向器图纸</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;机器人手爪发展史&#39;)" title="机器人手爪发展史">机器人手爪发展史</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;管道机器人dwg&#39;)" title="管道机器人dwg">管道机器人dwg</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;动平衡试验台设计&#39;)" title="动平衡试验台设计">动平衡试验台设计</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;探测机器人&#39;)" title="探测机器人">探测机器人</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;马铃薯播种机&#39;)" title="马铃薯播种机">马铃薯播种机</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;自动水箱外文翻译&#39;)" title="自动水箱外文翻译">自动水箱外文翻译</a>
+
+                <a href="javascript:void(0);" onclick="searchWord(&#39;液压冲床图纸&#39;)" title="液压冲床图纸">液压冲床图纸</a>
+
+            </p>
+            <script>
+                function getcheckedKeyword(s) {
+                    if (!s) return "";
+                    var pattern = new RegExp("[`~%!@#$^&*()=|{}';',\\[\\]<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
+                    var rs = "";
+                    for (var i = 0; i < s.length; i++) {
+                        rs = rs + s.substr(i, 1).replace(pattern, '');
+                    }
+                    return rs;
+                }
+
+                function searchWord(keyword, aElement) {
+                    keyword = getcheckedKeyword(keyword);
+                    if (keyword == "在这里搜索") keyword = "";
+                    var url = "https://www.renrendoc.com/search.html?q=" + encodeURIComponent(keyword);
+
+                    if (!aElement) {
+                        location.href = url;
+                    } else {
+                        aElement.href = url;
+                        return true;
+                    }
+                }
+            </script>
+        </div>
+
+        <div class="topr">
+            <a class="block upload-link" href="JavaScript:"
+               rel="nofollow" onclick="chuan()">上传我的文档</a>
+        </div>
+    </div>
+
+    <span id="testcus" th:text="${session.cus!=null?session.cus:''}" hidden></span>
+    <script>
+        function chuan() {
+            var test = $("#testcus").html();
+            if('' === test){
+                window.location = '/Home/loginUser';
+            }else {
+                window.location = "/Home/user";
+            }
+        }
+    </script>
+
+    <div class="xxxk_top searchfix"
+         style="height: 75px; background: rgb(255, 255, 255); box-shadow: rgb(221, 221, 221) 0px 0px 5px; left: 0px; top: 0px; width: 100%; position: relative; z-index: 1; display: none;">
+        <div class="searchbox box2" style=" width: 1200px;   margin-top: 0px;
+     left: 0px;  margin: 0px auto; position:relative;">
+            <a title="随心文库网" class="fl" href="https://www.renrendoc.com/" style="height:81px;">
+                <img src="/static/wd/4d54aa68-a2cd-487d-9a74-8686af2ad286.jpg" title="随心文库网" alt="随心文库网"
+                     style="border: 0; height:47px; width:auto; "></a>
+            <div class="cmn_search_box" style="width:800px;">
+                <div class="border">
+                    <form>
+                        <input id="keywordfix" type="text" value="" name="q" placeholder="在这里搜索">
+                        <input type="submit" name="searchBtn" value="" title="点击搜索"
+                               onclick="searchWord($(&#39;#keywordfix&#39;).val()); return false;">
+                    </form>
+                </div>
+                <a class="block upload-link" style="position: absolute; right: 0px;top:0px;"
+                   href="https://www.renrendoc.com/flexpaper/add.aspx" rel="nofollow">上传我的文档</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(window).bind("scroll", function (event) {
+            var Y = $(this).scrollTop();
+            if (Y > 140 && $('.searchfix').css("position") != "fixed") {
+                $('.searchfix').css({
+                    position: "fixed",
+                    left: "0",
+                    top: "0",
+                    width: "100%",
+                    zIndex: "999999",
+                    display: ""
+                });
+            } else if (Y <= 140 && $('.searchfix').css("position") == "fixed") {
+                $('.searchfix').css({
+                    position: "relative",
+                    zIndex: "1",
+                    display: "none"
+                });
+            }
+        });
+    </script>
+
+    <!--div head-->
+    <div class="home_menu">
+        <div class="mcenter">
+            <div class="feilei">
+                <a href="https://www.wenku365.com/list.html" class="fen">
+                    <div class="h3">全部分类<span></span></div>
+                </a>
+
+                <div class="home_cate hide" id="menuhomecate">
+                    <div class="cate" id="wk-all-cate" style="top:0px; *top:0px;height: 351px;">
+                        <div id="qwe">
+                            <li v-for="res in result">
+                                <dl class="category-title ">
+                                    <dt>
+                                        <a href="/c-00012.html">{{res.name}}<b class="li-aw n-ic"></b></a>
+                                        <span class="right-arrow">&gt;</span>
+                                    </dt>
+                                    <dd>
+                                        <a href="/c-0001200007.html" rel="nofollow">
+                                            <nobr>毕业论文</nobr>
+                                        </a>
+                                        <a href="/c-0001200024.html" rel="nofollow">
+                                            <nobr>毕业设计</nobr>
+                                        </a>
+                                        <a href="/c-0001200015.html" rel="nofollow">
+                                            <nobr>临时分类</nobr>
+                                        </a>
+                                    </dd>
+                                </dl>
+                                <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
+                                    <dt><a href="/c-00012.html">学术论文</a></dt>
+                                    <dd>
+                                    <span v-for="chid in res.resourcesdetails">
+                                        <a href="" rel="nofollow">
+                                            <nobr>{{chid.dname}}</nobr>
+                                        </a>
+                                    </span>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </div>
+                    </div>
+                    <script src="/static/vue/vue.js"></script>
+                    <script src="/static/vue/axios.min.js"></script>
+                    <script>
+                        var v = new Vue({
+                            el: '#qwe',
+                            data: {
+                                result: []
+                            },
+                            created: function () {
+                                this.find();
+                            },
+                            methods: {
+                                "find": function () {
+                                    var url = "/Resource/findResource";
+                                    var that = this;
+                                    axios.get(url).then(function (value) {
+                                        that.result = value.data;
+                                    }).catch(function (reason) {
+                                        layer.alert("出错了");
+                                    });
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="j_menu">
+                <li class="">
+                    <a href="/Home/index" target="_self">
+                        首页</a></li>
+                <li class=""><a href="/c-00012.html">学术论文</a></li>
+                <li class=""><a href="/c-00015.html">应用文档</a></li>
+                <li class=""><a href="/c-00017.html">行业资料</a></li>
+                <li class=""><a href="/c-00016.html">教育资源</a></li>
+                <li class=""><a href="/Home/help">互动求助</a></li>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form method="post"
+      action="https://www.renrendoc.com/u-1304335.html?id=1304335&amp;id=1304335&amp;id=1304335&amp;id=1304335&amp;id=1304335&amp;id=1304335"
+      id="form1" enctype="multipart/form-data">
+    <div class="aspNetHidden">
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="">
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="">
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+               value="/wEPDwUKMTMxMTQ4MzMyOQ8WAh4TR2V0VXNlclZpZXdJbmZvQnlJRAKPzk8WAmYPZBYEZg9kFgICBQ8WAh4EVGV4dAWBFzxzdHlsZT4ueHh4a190b3AgaW1ne2hlaWdodDo1NXB4OyBtYXJnaW4tdG9wOjEwcHg7fSAgICAgICAgICAuY21uX3NlYXJjaF9ib3ggeyAgbWFyZ2luLWxlZnQ6IDEzMHB4OyAgbWFyZ2luLXRvcDogMTBweDt9ICAgICAgICAgIC5jbW5fc2VhcmNoX2JveCAuYm9yZGVyIHsgIGJvcmRlcjogMXB4IHNvbGlkICMzYjNiM2I7IGJvcmRlci1yYWRpdXM6IDBweDsgfSAgLmNtbl9zZWFyY2hfYm94IC5ib3JkZXIgaW5wdXRbdHlwZT0nc3VibWl0J10geyAgYmFja2dyb3VuZC1jb2xvcjogIzNiM2IzYjsgIH0gLmNtbl9zZWFyY2hfYm94IC5ib3JkZXIgaW5wdXRbdHlwZT0nc3VibWl0J106aG92ZXIgeyAgYmFja2dyb3VuZC1jb2xvcjogIzNiM2IzYjsgIH0gLmhyLXdyYXB7Ym9yZGVyLWJvdHRvbToxcHggc29saWQgIzNiM2IzYjtiYWNrZ3JvdW5kOiMzYjNiM2I7fSAgICAgICAgICAuaG9tZV9tZW51e2JvcmRlci1ib3R0b206IDJweCBzb2xpZCAjM2IzYjNiO30uaG9tZV9tZW51IC5mZWlsZWl7IGZvbnQtc2l6ZToxNnB4OyAgICAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjM2IzYjNiOyBjb2xvcjogI2ZmZjsgIGJvcmRlci1yYWRpdXM6MHB4IDBweCAwcHggMHB4O30gICAgICAgICAgLm5hdl9iZywgLm5hdiBsaS5vdmVyIGEsLm5hdiBsaSBhLC5uYXYgI2NvbkFsbDAub3ZlciBhe2JhY2tncm91bmQ6IzNiM2IzYjt9ICAgICAgICAgICAubmF2IGxpIGF7IGRpc3BsYXk6YmxvY2s7IHBhZGRpbmc6MHB4IDQwcHg7fS5qX21lbnUgLmhvdHRpcCB7IHJpZ2h0OiAtM3B4OyB0b3A6IDVweDsgfS5ob3R0aXAgeyByaWdodDogMTZweDt0b3A6IDVweDt9IC5uYXYgbGkgYTpIb3ZlciwubmF2IGxpLm92ZXIgYSwgICAgICAgICAgLm5hdiAjY29uQWxsMDpob3ZlciBhOmhvdmVyLC5uYXYgI2NvbnowOmhvdmVyIGE6aG92ZXJ7YmFja2dyb3VuZC1jb2xvcjojM2IzYjNiO2NvbG9yOiNmZjQ0MDB9ICAgICAgICAgIC5uYXYgI2NvbkFsbDAgYSBzcGFueyByaWdodDoxMnB4OyB0b3A6MTRweDsgfSAuaG9tZV9tZW51IC5qX21lbnUgbGkuaG9tZSBhe2NvbG9yOiNmZjQ0MDB9ICAgICAgICAgIC5uYXYgI2NvbkFsbDAub3ZlciBhLC5uYXYgI2NvbnowLm92ZXIgYSwgICAgICAgICAgLm5hdiAjY29uQWxsMDpob3ZlciBhLC5uYXYgI2NvbnowOmhvdmVyIGF7YmFja2dyb3VuZC1jb2xvcjojM2IzYjNiOztjb2xvcjojZmY0NDAwfS5jbW5fdG9wX3IgLmlubmVyIGEudXBsb2FkeyB9LmNhbVRpdGxle2JhY2tncm91bmQtY29sb3I6I2Y5ZjlmOTt9IC5jYW1OYXZBIGF7Zm9udC1zaXplOjE0cHg7Y29sb3I6IzJkMmQyZH0gLmNhbU5hdkEgYS5zZWxlY3RlZHtiYWNrZ3JvdW5kOiNmZmY7Ym9yZGVyLXRvcDozcHggc29saWQgIzNiM2IzYjtmb250LXdlaWdodDpib2xkO2JvcmRlci1sZWZ0OjFweCBzb2xpZCAjZTVlNWU1O2JvcmRlci1yaWdodDoxcHggc29saWQgI2U1ZTVlNX0gLmNhbVRpdGxlc3tiYWNrZ3JvdW5kLWNvbG9yOiNmNWY1ZjU7fSAuY2FtTmF2QXMgYXtmb250LXNpemU6MTZweDtjb2xvcjojMmQyZDJkfSAuY2FtTmF2QXMgYS5zZWxlY3RlZHtmb250LXdlaWdodDpib2xkO2JvcmRlci10b3A6M3B4IHNvbGlkICMzYjNiM2I7YmFja2dyb3VuZDojZmZmO30gLmNhdGV7YmFja2dyb3VuZDojNWM1YzVjO2JvcmRlci10b3A6c29saWQgMXB4ICMzYjNiM2I7fSAuY2F0ZSBsaTpob3ZlciAuY2F0ZWdvcnktdGl0bGV7YmFja2dyb3VuZDogI2ZmZn0gLmNhdGUgbGk6aG92ZXIgLmNhdGVnb3J5LXRpdGxlIGF7Y29sb3I6ICNmZjY2MDB9IC5jYXRlIC5jYXRlZ29yeS1zdWJ7Ym9yZGVyLWNvbG9yOiMzYjNiM2I7ICAgICAgICAgICAgICAgICAgICAgIGZpbHRlcjphbHBoYShvcGFjaXR5PTEwMCk7IC8qSUXmu6TplZzvvIzpgI/mmI7luqY1MCUqLyAtbW96LW9wYWNpdHk6MTsgLypGaXJlZm9456eB5pyJ77yM6YCP5piO5bqmNTAlKi8gb3BhY2l0eToxOy8q5YW25LuW77yM6YCP5piO5bqmNTAlKi99IC5zaG9wMSBhLnNlYXJjaGJ0bjB7IGJhY2tncm91bmQtY29sb3I6I2ZmNDkxZjt9IC5zaG9wMSBhLnNlYXJjaGJ0bjA6aG92ZXJ7YmFja2dyb3VuZC1jb2xvcjojZTU0MTFjO30gLm1haW4tY29udGFjdCAudHh0eyAgd2lkdGg6YXV0bzsgYmFja2dyb3VuZDogdXJsKC9pbWFnZXMvcy5naWYpIG5vLXJlcGVhdCAtMzVweCAwcHg7DQoJCWZsb2F0OiBub25lOyBtYXJnaW4tdG9wOiAwcHg7fSBmb290ZXIsLmZvb3RfbmF2X2Jne2JhY2tncm91bmQ6IzExMTExMTt9LmNhbVpwU21hbGwgLmNhbVpwQm94IGRkIHNwYW4sLmNhbVpwU21hbGwgLmNhbVpwQm94IGRkIGEuc2VsZWN0ZWQsLmNhbVpwQm94IGRkIHNwYW4sLmNhbVpwQm94IGRkIGEuc2VsZWN0ZWQsLmZhcmVhIGRkIHNwYW4sLmZhcmVhIGRkIGEuc2VsZWN0ZWQsLmZhcmVhcyBkZCBzcGFuLC5mYXJlYXMgZGQgYS5zZWxlY3RlZHtjb2xvcjojZmZmOyBiYWNrZ3JvdW5kLWNvbG9yOiMzYjNiM2I7fS5mYXJlYSBkdCwuZmFyZWFzIGR0e2NvbG9yOiM2NjZ9ICAgICAgICAgICAgIC5oLWxpc3QgI2NvbkFsbCwuaC1saXN0ICNjb25BbGwyLC5kb3JwbWVudTJ7Ym9yZGVyOjFweCBzb2xpZCAjM2IzYjNiOyBib3JkZXItcmFkaXVzOjBweCAwcHggMHB4IDBweDt9ICAgICAgICAuY2F0ZXNCb3ggYTpob3ZlciAsIC5jYXRlc0JveCBhLmN1ciB7IGJhY2tncm91bmQ6ICMzYjNiM2I7Ym9yZGVyOjFweCBzb2xpZCAjM2IzYjNiO30gICAgICAgIC5iYW5uZXJib3ggLnNlYXJjaGJveCAuc2VhcmNoYnRuMXtiYWNrZ3JvdW5kLWNvbG9yOiMxODlhZTU7fSAgICAgICAgICAgICAgLmJhbm5lcmJveCAuc2VhcmNoYm94IC5zZWFyY2hidG4xOmhvdmVye2JhY2tncm91bmQtY29sb3I6IzBCOERENjt9ICAgICAgLmhvbWVfbGlua3toZWlnaHQ6IGF1dG87IG1hcmdpbi1ib3R0b206MjBweDt9LmhvbWVfbGluayAubGlua19jb257aGVpZ2h0OmF1dG87IG1pbi1oZWlnaHQ6MTAwcHg7fTwvc3R5bGU+ZAICD2QWAgIBD2QWAgIBD2QWAmYPZBYmAgcPDxYEHghDc3NDbGFzc2UeBF8hU0ICAmRkAggPDxYEHwJlHwMCAmRkAgkPDxYEHwJlHwMCAmRkAgoPDxYEHwJlHwMCAmRkAgsPDxYEHwJlHwMCAmRkAgwPDxYEHwJlHwMCAmRkAg0PDxYEHwJlHwMCAmRkAg4PDxYEHwIFCHNlbGVjdGVkHwMCAmRkAhIPFgIeC18hSXRlbUNvdW50AggWEGYPZBYCZg8VAwAFMDAwMTEM5Zu+57q45LiL6L29ZAIBD2QWAmYPFQMABTAwMDAxDOaVmeiCsuS4k+WMumQCAg9kFgJmDxUDAAUwMDAwMgzkuJPkuJrmlofnjK5kAgMPZBYCZg8VAwAFMDAwMDQM5bqU55So5paH5LmmZAIED2QWAmYPFQMABTAwMDEwDOihjOS4mui1hOaWmWQCBQ9kFgJmDxUDAAUwMDAwOAznlJ/mtLvkvJHpl7JkAgYPZBYCZg8VAwAFMDAwMTMM5YWa5pS/5p2Q5paZZAIHD2QWAmYPFQMABTAwMDEyDOavleS4muiuvuiuoWQCFQ88KwAJAGQCFg88KwAJAGQCGA8WAh8EZmQCHA88KwAJAGQCHQ88KwAJAGQCHg88KwAJAGQCHw8WAh4JaW5uZXJodG1sZWQCIQ88KwAJAQAPFgQeCERhdGFLZXlzFgAfBAIBZBYCZg9kFgJmDxUKKGh0dHBzOi8vd3d3LnJlbnJlbmRvYy5jb20vdS0xMzA0MzM1Lmh0bWwPYXM7bGtkKioqKnNkYWxmS2h0dHBzOi8vcXphcHAucWxvZ28uY24vcXphcHAvMTAwNTU0NjI3LzhGM0Y5NkM3MjUxMjZGNkQyOEVDODQ4NzI0NzMzOEJBLzEwMA9hcztsa2QqKioqc2RhbGYoaHR0cHM6Ly93d3cucmVucmVuZG9jLmNvbS91LTEzMDQzMzUuaHRtbA9hcztsa2QqKioqc2RhbGYPYXM7bGtkKioqKnNkYWxmBuWImuWImhLkvaDmmK/mnIDluIXnmoR3ZGsBMWQCIg8PFgYeCFBhZ2VTaXplAgoeEEN1cnJlbnRQYWdlSW5kZXgCAR4LUmVjb3JkY291bnQCAWRkAiMPPCsACQBkZI5DFJRn51ouhroZbEV0ESJ523MP">
+    </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var theForm = document.forms['form1'];
+        if (!theForm) {
+            theForm = document.form1;
+        }
+
+        function __doPostBack(eventTarget, eventArgument) {
+            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                theForm.__EVENTTARGET.value = eventTarget;
+                theForm.__EVENTARGUMENT.value = eventArgument;
+                theForm.submit();
+            }
+        }
+
+        //]]>
+    </script>
+
+
+    <script src="/static/user/WebResource.axd"
+            type="text/javascript"></script>
+
+
+    <script src="/static/user/ScriptResource.axd"
+            type="text/javascript"></script>
+    <script type="text/javascript">
+        //<![CDATA[
+        if (typeof (Sys) === 'undefined') throw new Error('ASP.NET Ajax 客户端框架未能加载。');
+        //]]>
+    </script>
+
+    <script src="/static/user/ScriptResource(1).axd"
+            type="text/javascript"></script>
+    <div class="aspNetHidden">
+
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION"
+               value="/wEdABGNxVRwZZ2DUnNiADiixLjWHgViJuhymsMgxW8H0Olz9OufqrRpfzkn3CBIiMq3//QTAutUUiTPkQMLp1wf2FFQhbeYxD6o709s+CQKnDDXsDJWyCyNw79cUfqTvo+/BAmFdxmOTzBv/ZYASO8yYm4R5S69NoMQFlgB+/DUmkOa4V82GSr/7j1NhjsqePLzexQe8/fY5ahl3X5KOmOg8qD4KaYZYrUhQeS5QlYvjjZ988EdCw4uNHCg6nJ89V18ri+P6TVmdCBffUsZV9EypOSA3q4I2HPvVP7qvS2QsaZT0Pe2h6P4JoW1GZqaoKnmNFoMP321wHd3pCU7s8BSdoPOPy3cgS5x4XUWEbj+9h+s0sS6xA81ruFo5FKxzw30SzKEtH73">
+    </div>
+
+
+    <div class="user_banner_wrap" style="margin-top: 0px; min-width:1200px;">
+        <div class="user_banner">
+            <div class="user_pic">
+                <img src="/static/user/100" style="border:0; border-radius:100px 100px;" width="100" height="100">
+                <div style="padding-top:10px; text-align:center;">
+                    <a href="javascript:popFolder()" style="color:#ff1100; font-size:14px;">
+                        <img src="/static/user/posticon_reply.gif" style="margin-bottom:2px;" align="absmiddle" alt="给TA发私信">给TA发私信</a>
+                </div>
+            </div>
+            <div class="user_ziliao">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <div class="user_ziliao_1">
+                                <div class="username">
+                                    as;lkd****sdalf
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="user_ziliao_3" style="width:auto;">
+                                免费会员
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="user_ziliao_2">
+                    02123123
+                </div>
+
+                <div class="user_ziliao_5" style="margin-top: 0px;"><a
+                        href="https://www.renrendoc.com/u-1304335.html?t=11#guanzhu"><span class="f20 cf90 font-yahei">
+                        1</span></a> 粉丝 / <a href="https://www.renrendoc.com/u-1304335.html?t=10#guanzhu"><span
+                        class="f20 cf90 font-yahei">
+                            0</span></a> 关注 &nbsp;&nbsp;|&nbsp;&nbsp;
+                    <a id="Top_Button3" class="guanzhuId doAtt"
+                       href="javascript:__doPostBack(&#39;ctl00$Top$Button3&#39;,&#39;&#39;)">取消关注</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--main-->
+    <div class="main1200 mb20">
+        <script type="text/javascript">
+            //<![CDATA[
+            Sys.WebForms.PageRequestManager._initialize('ctl00$Content$ScriptManager1', 'form1', ['tctl00$Content$UpdatePanel2', 'Content_UpdatePanel2'], [], [], 90, 'ctl00');
+            //]]>
+        </script>
+
+        <div class="nav_ui" style="display: none">
+            <a href="https://www.renrendoc.com/">
+                <img src="/static/user/home.gif"
+                     width="16" height="16" align="absmiddle" alt="首页">
+                人人文库网</a><span>&nbsp;&gt;&nbsp;</span><a href="https://www.renrendoc.com/usercenter.html">用户广场</a><span>&nbsp;&gt;&nbsp;as;lkd****sdalf</span>
+        </div>
+        <!--个人主页 top end-->
+        <div id="Content_UpdatePanel2">
+
+            <input name="ctl00$Content$hiddenLevel1" type="hidden" id="Content_hiddenLevel1" value="4">
+            <input name="ctl00$Content$hiddenLevel2" type="hidden" id="Content_hiddenLevel2">
+            <input name="ctl00$Content$hiddenLevel3" type="hidden" id="Content_hiddenLevel3" value="0">
+            <input name="ctl00$Content$hiddenUserGroup" type="hidden" id="Content_hiddenUserGroup" value="0">
+            <input name="ctl00$Content$hiddenUserGroup2" type="hidden" id="Content_hiddenUserGroup2" value="0">
+            <input name="ctl00$Content$hiddenViewType" type="hidden" id="Content_hiddenViewType" value="1">
+            <!--资源首页-->
+            <div class="longbox mt10 clearfix">
+                <a name="guanzhu"></a><span style="display: none">
+                    <a id="Content_linkbuttonView"
+                       href="javascript:__doPostBack(&#39;ctl00$Content$linkbuttonView&#39;,&#39;&#39;)"
+                       style="font-size:15px;">给TA留言</a>
+                    <a id="Content_linkbuttonLiuyan"
+                       href="javascript:__doPostBack(&#39;ctl00$Content$linkbuttonLiuyan&#39;,&#39;&#39;)"
+                       style="font-size:15px;">给TA留言</a></span>
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="uc">
+                    <tbody>
+                    <tr>
+                        <td align="left" valign="top">
+                            <a id="titleMaoDian" name="titleMaoDian"></a>
+                            <div class="camTitle">
+                                <div class="camNavC" style=" position:relative;">
+                                    <a onclick="SetLevel1(0);" id="Content_linkbuttonZiyuan"
+                                       href="javascript:__doPostBack(&#39;ctl00$Content$linkbuttonZiyuan&#39;,&#39;&#39;)"
+                                       style="font-size:15px;">资源</a><a onclick="SetLevel1(2);"
+                                                                        id="Content_linkbuttonZhuanti"
+                                                                        href="javascript:__doPostBack(&#39;ctl00$Content$linkbuttonZhuanti&#39;,&#39;&#39;)"
+                                                                        style="font-size:15px;">专题</a><a
+                                        onclick="SetLevel1(4);" id="Content_linkbutton3" class="selected"
+                                        href="javascript:__doPostBack(&#39;ctl00$Content$linkbutton3&#39;,&#39;&#39;)"
+                                        style="font-size:15px;">给TA留言</a>
+                                </div>
+                            </div>
+                            <div style="display: none">
+                                <input name="ctl00$Content$BtnJs" type="button" id="Content_BtnJs" value="CallServerJs"
+                                       onclick="dis()">
+                            </div>
+                            <div style="background: #fff;  border-left: 1px solid #e5e5e5; border-right: 1px solid #e5e5e5;"
+                                 class="camZpSmall personHome borderTop">
+                                <table width="100%">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+
+                                            <div style="padding: 10px 0px 10px 20px; color: #000; line-height: 20px; font-weight: bold;
+                                                    font-size: 16px">
+                                                给TA留言
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="longConCam p10  pl20 pr20">
+
+                                <script type="text/javascript">
+                                    function SetLevel1(level) {
+                                        document.getElementById("Content_hiddenLevel1").value = level;
+                                        document.getElementById("Content_hiddenLevel2").value = "";
+                                        document.getElementById("Content_hiddenLevel3").value = "0";
+                                    }
+
+                                    function SetLevel2(level) {
+                                        document.getElementById("Content_hiddenLevel2").value = level;
+                                        document.getElementById("Content_linkbuttonLiuyan").click();
+                                    }
+
+                                    function SetLevel3(level) {
+                                        document.getElementById("Content_hiddenLevel3").value = level;
+
+                                        document.getElementById("Content_linkbuttonLiuyan").click();
+
+                                    }
+
+                                    function SetView(level) {
+                                        document.getElementById("Content_hiddenViewType").value = level;
+                                        document.getElementById("Content_linkbuttonView").click();
+                                    }
+                                </script>
+
+                                <input name="ctl00$Content$hiddenGuanzhu" type="hidden" id="Content_hiddenGuanzhu"
+                                       value="0">
+
+                                <div>
+                                    <div class="p-div clear" style="margin-top: 10px">
+                                        <h3>
+                                            留言（共
+                                            1
+                                            条）</h3>
+                                        <div style="line-height: 25px; color: #555; padding: 20px 20px 20px 20px;"
+                                             class="p-content">
+
+                                            <div id="divComment">
+                                                <div style="background: url(/webcommon/images/commentbg.png) no-repeat left top;
+                                                    padding-top: 2px;">
+                                                    <textarea name="ctl00$Content$textareaComment"
+                                                              id="Content_textareaComment" cols="5" class="Comment"
+                                                              rows="6" style="width: 100%;
+                                                        border-style: none; height: 96px; background-color: transparent; padding: 5px 5px;
+                                                        border: solid 1px #ddd;"></textarea><br>
+                                                    <div style="padding-top: 5px">
+                                                        <input type="submit" name="ctl00$Content$Button1" value="提交留言"
+                                                               id="Content_Button1" class="btn">(限250字)
+                                                    </div>
+
+                                                    <br>
+                                                    <table id="Content_DataList2" cellspacing="0"
+                                                           style="width:100%;border-collapse:collapse;">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td valign="top">
+                                                                <div class="udetail2 ulist11"
+                                                                     style="background-position: left top; background-repeat:repeat-x; padding-top: 15px">
+                                                                    <table style="width: 100%;">
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td valign="top"
+                                                                                style="text-align: left; width: 70px;">
+                                                                                <a href="https://www.renrendoc.com/u-1304335.html"
+                                                                                   title="as;lkd****sdalf"
+                                                                                   target="_blank">
+                                                                                    <img src="/static/user/100"
+                                                                                         alt="as;lkd****sdalf"
+                                                                                         
+                                                                                         width="50" height="50"
+                                                                                         class="radius3">
+                                                                                </a>
+                                                                            </td>
+                                                                            <td valign="top">
+                                                                                <div style="width:100%">
+                                                                                    <a href="https://www.renrendoc.com/u-1304335.html"
+                                                                                       title="as;lkd****sdalf"
+                                                                                       target="_blank">
+                                                                                        as;lkd****sdalf
+                                                                                    </a>&nbsp;
+                                                                                    刚刚
+                                                                                    说：
+                                                                                </div>
+                                                                                <div style="padding-top: 5px; line-height: 20px;">
+                                                                                    你是最帅的wdk
+                                                                                    &nbsp;
+                                                                                </div>
+                                                                            </td>
+                                                                            <td align="right" valign="middle"
+                                                                                style="font-size: 50px; color: #efefef">
+                                                                                1
+                                                                            </td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </td>
+                        <td style="padding-left: 15px; padding-top: 0px;  width: 250px" valign="top">
+
+                            <!--最近来访-->
+
+                            <div class="   ulist11" style="font-size: 16px">
+                                最近来访
+                            </div>
+                            <div>
+                                <ul class="layout lastVisited clearfix">
+
+
+                                    <li><a target="_blank" href="https://www.renrendoc.com/u-1304335.html">
+                                        <img width="48" height="48"
+                                             
+                                             style="border-radius:48px 48px;" title="as;lkd****sdalf"
+                                             src="/static/user/100"
+                                             alt="as;lkd****sdalf"></a>
+                                        <p class="mt5 mb10">
+                                            <a target="_blank" href="https://www.renrendoc.com/u-1304335.html"
+                                               title="as;lkd****sdalf" class="c009cff">
+                                                as;lkd****sdalf</a><br>
+                                            <span class="c999">
+                                                            1分钟前</span></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+    <!-- JiaThis Button END -->
+    <span id="LabelScript"></span>
+    <script language="javascript"></script>
+</form>
+
+<script>function popLogin() {
+    window.location.href = '/login.aspx?returl=https%3a%2f%2fwww.renrendoc.com%2fUser.aspx%3fid%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335';
+    return;
+}</script>
+
+<!--foot-->
+<div class="bg_100 foot_nav_bg" style=" min-width:1200px;">
+    <div class="foot_nav">
+
+        <a href="https://www.renrendoc.com/h-33.html" target="_blank" rel="nofollow">关于我们</a> - <a
+            href="https://www.renrendoc.com/h-34.html" target="_blank" rel="nofollow">网站声明</a> - <a
+            href="https://www.renrendoc.com/h-35.html" target="_blank" rel="nofollow">
+        网站地图</a> - <a href="https://www.renrendoc.com/sitemap.html" target="_blank" rel="nofollow">
+        资源地图</a>
+        - <a href="https://www.renrendoc.com/friend.aspx" target="_blank" rel="nofollow">友情链接</a> -
+        <a href="https://wpa.qq.com/msgrd?v=3&amp;uin=766697812&amp;site=qq&amp;menu=yes" rel="nofollow">网站客服</a>
+
+        - <a href="https://www.renrendoc.com/h-38.html" target="_blank" rel="nofollow">联系我们</a>
+
+    </div>
+</div>
+
+<div class="bg_100 siteInner_bg" style=" min-width:1200px;">
+    <div class="siteInner">
+        <p style="margin-top: 0px; padding: 0px; color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 12px; text-align: center; white-space: normal; background-color: rgb(243, 243, 243); line-height: 1.75em;">
+            <span style="font-size: 14px;"><span style="line-height: 20px;">网站客服QQ：766697812&nbsp; &nbsp;微信号：renrenwenkuwang&nbsp; &nbsp;人人文档上传用户QQ群：460291265&nbsp; &nbsp;</span></span><br>
+        </p>
+        <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 12px; text-align: center; white-space: normal; background-color: rgb(243, 243, 243); line-height: 1.75em;">
+            <span style="font-size: 14px;"><span style="line-height: 20px;">copyright@ 2020-2023&nbsp; renrendoc.com 人人文库<span
+                    style="color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 14px; text-align: center; background-color: rgb(243, 243, 243);">版权所有</span>&nbsp; &nbsp;联系电话：0512-65154990</span></span>
+        </p>
+        <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 12px; text-align: center; white-space: normal; background-color: rgb(243, 243, 243); line-height: 1.75em;">
+            <a href="http://beian.miit.gov.cn/state/outPortal/loginPortal.action;jsessionid=7js-nYSzOzuTqQXLYUGw1d5sh_dy2K9kgDy8pT-wZfCw7shPsLdp!656317600"
+               target="_blank" title="备案号:苏ICP备12009002号-5"><span style="font-size: 14px;"><span
+                    style="line-height: 20px;">备案号:苏ICP备12009002号-5</span></span></a><span
+                style="font-size: 14px;"><span style="line-height: 20px;">&nbsp;&nbsp;</span></span><span
+                style="font-size: 14px; line-height: 20px;">经营许可证:苏B2-20200052&nbsp; <a
+                href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32050602011097" target="_blank"><img
+                src="/static/user/6372245331453261982974848_1.png"
+                title="6370907065681635766032491.png">苏公网安备<span
+                style="color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 14px; text-align: center; background-color: rgb(243, 243, 243);">:</span><span
+                style="color: rgb(102, 102, 102); font-family: Roboto-Regular, 微软雅黑, 宋体, Arial, sans-serif; font-size: 14px; background-color: rgb(245, 245, 245);"><span
+                style="color: rgb(102, 102, 102); font-family: Roboto-Regular, 微软雅黑, 宋体, Arial, sans-serif; font-size: 14px; background-color: rgb(245, 245, 245);">32050602011097号</span></span></a></span>
+        </p>
+        <table style="text-align: center; margin: 10px auto;">
+            <tbody>
+            <tr class="firstRow">
+                <td>
+                    <a target="cyxyv"
+                       href="https://v.yunaq.com/certificate?domain=www.renrendoc.com&amp;from=label&amp;code=90020">
+                        <img src="/static/user/label_sm_90020.png"></a>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                </td>
+                <td style="padding-left:10px;">
+                    <!--可信网站LOGO安装开始-->
+                    <script id="kXScript" type="text/javascript"
+                            src="/static/user/seallogo.dll"></script>
+                    <span style="position: relative !important;display: inline-block !important;width:131px !important;height:47px !important;"><a
+                            href="https://ss.knet.cn/verifyseal.dll?sn=e20041511010681372itgy000000&amp;ct=df&amp;pa=AUSoJMQcojkdYyXY"
+                            oncontextmenu="return false;"
+                            style="display:inline-block !important;width:131px !important;height:47px !important;"
+                            target="_blank">            <img id="7cjmv9q9fqkelec8d1" class="" height="47px" alt="可信网站"
+                                                             style="opacity: 0; display: block !important; width: 131px !important; height: 47px !important; position: absolute !important; top: 0px !important; left: 0px !important; border: none !important;"
+                                                             src="/static/user/star4.png">            <img
+                            id="h5x7ftcpzpkelec8d1" class="act" height="47px" alt="可信网站"
+                            style="opacity: 1; display: block !important; width: 131px !important; height: 47px !important; position: absolute !important; top: 0px !important; left: 0px !important; border: none !important;"
+                            src="/static/user/140.png">            </a></span>
+                    <!--可信网站LOGO安装结束-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            本站为文档C2C交易模式，即用户上传的文档直接被用户下载，本站只是中间服务平台，本站所有文档下载所得的收益归上传人(含作者)所有。人人文库网仅提供信息存储空间，仅对用户上传内容的表现方式做保护处理，对上载内容本身不做任何修改或编辑。若文档所含内容侵犯了您的版权或隐私，请立即通知人人文库网，我们立即给予删除！
+        </p>
+
+    </div>
+</div>
+<!--foot end-->
+
+
+<script src="/static/user/yzf_chat.min.js"></script>
+<script>
+    window.yzf && window.yzf.init({
+        sign: '37ef9b97d57200907416cdea4fe7b231789a7af423e3eefabc9a8429e4f0f3e8baa031b179f819bf462e9451e2e68477071487a8',
+        uid: '',
+        data: {
+            c1: '',
+            c2: '',
+            c3: '',
+            c4: '',
+            c5: ''
+        },
+        selector: '',
+        callback: function (type, data) {
+        }
+    })
+</script>
+<div style="display: block;">
+    <style id="styleyzfh5-data-1599052109655">
+        @media (max-height: 600px),(max-width: 1000px) {
+            [yzfh5-data-1599052109655].main-contact {
+                position: fixed;
+                bottom: 150px;
+                right: 15px;
+                z-index: 100000000000000000
+            }
+
+            [yzfh5-data-1599052109655].main-contact .icon {
+                display: block;
+                width: 30px;
+                height: 30px;
+                background-image: url(https://yzf.qq.com/xv/web/static/img/chat-btn.png);
+                background-size: 100% 100%;
+                vertical-align: -3px
+            }
+
+            [yzfh5-data-1599052109655].main-contact .chat-btn {
+                padding: 10px;
+                display: -webkit-box;
+                display: -ms-flexbox;
+                display: flex;
+                font-size: 12px;
+                -webkit-box-orient: vertical;
+                -webkit-box-direction: normal;
+                -ms-flex-direction: column;
+                flex-direction: column;
+                text-decoration: none;
+                padding: 5px 10px;
+                border-radius: 2px
+            }
+
+            [yzfh5-data-1599052109655].main-contact .chat-btn .txt {
+                display: block;
+                margin-top: -2px
+            }
+
+            [yzfh5-data-1599052109655].main-contact .dot {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                position: absolute;
+                top: -6px;
+                right: -6px;
+                background: #ed4343;
+                border: 1px solid #fff;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .5)
+            }
+
+            [yzfh5-data-1599052109655].main-contact .state {
+                display: none
+            }
+        }
+
+        @media (min-height: 600px) and (min-width: 1000px) {
+            [yzfh5-data-1599052109655].main-contact {
+                position: fixed;
+                bottom: 50px;
+                right: 50px;
+                display: block;
+                z-index: 100000000000000000
+            }
+
+            [yzfh5-data-1599052109655].main-contact .icon {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                background-image: url(https://yzf.qq.com/xv/web/static/img/chat-btn.png);
+                background-size: 100% 100%;
+                margin-right: 10px;
+                vertical-align: top
+            }
+
+            [yzfh5-data-1599052109655].main-contact .chat-btn {
+                width: 138px;
+                padding: 13px 10px;
+                font-size: 0;
+                height: 50px
+            }
+
+            [yzfh5-data-1599052109655].main-contact .txt {
+                display: inline-block;
+                font-size: 16px;
+                line-height: 24px
+            }
+
+            [yzfh5-data-1599052109655].main-contact .dot {
+                display: none
+            }
+
+            [yzfh5-data-1599052109655].main-contact .state {
+                display: inline-block;
+                width: 138px;
+                height: 50px;
+                position: absolute;
+                background: #fff;
+                left: -153px;
+                top: 0;
+                z-index: 99999;
+                line-height: 50px;
+                box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .14)
+            }
+
+            [yzfh5-data-1599052109655].main-contact .state .desc {
+                color: #000;
+                padding-left: 16px;
+                position: relative;
+                font-size: 16px
+            }
+
+            [yzfh5-data-1599052109655].main-contact .state .desc:before {
+                display: inline-block;
+                border-radius: 50%;
+                content: "";
+                width: 6px;
+                height: 6px;
+                background: #265bed;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                margin-top: -3px
+            }
+
+            [yzfh5-data-1599052109655].main-contact .state .desc:after {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-color: transparent;
+                border-style: solid;
+                right: -26px;
+                border-width: 5px 0 5px 5px;
+                border-left-color: #fff;
+                top: 50%;
+                margin-top: -5px
+            }
+        }
+
+        [yzfh5-data-1599052109655] .chat-btn {
+            display: inline-block;
+            margin-bottom: 0;
+            font-weight: 400;
+            text-align: center;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            background-image: none;
+            border: none;
+            white-space: nowrap;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            min-width: 50px;
+            padding: 7px 10px;
+            font-size: 15px;
+            color: #fff;
+            background-color: #4979ff;
+            box-sizing: border-box;
+            vertical-align: middle
+        }
+
+        @media (max-height: 600px),(max-width: 1000px) {
+            [yzfh5-data-1599052109655].main-chat {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 10000000000000000
+            }
+
+            [yzfh5-data-1599052109655].main-chat .main-iframe {
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0
+            }
+        }
+
+        @media (min-height: 600px) and (min-width: 1000px) {
+            [yzfh5-data-1599052109655].main-chat {
+                position: fixed;
+                width: 375px;
+                max-height: 667px;
+                height: calc(100vh - 100px);
+                right: 50px;
+                bottom: 50px;
+                background: #fafafb;
+                box-shadow: 0 2px 8px 0 rgba(0, 0, 0, .14);
+                overflow: hidden
+            }
+
+            [yzfh5-data-1599052109655].main-chat .main-iframe {
+                width: 100%;
+                height: 100%
+            }
+        }
+    </style>
+    <div yzfh5-data-1599052109655="" id="yzfh5-main-contact-1599052109655" class="main-contact" style="display: block;">
+        <a href="javascript:;" id="yzfh5-chat-btn-1599052109655" class="chat-btn"
+           style="background-color: rgb(39, 92, 240);">
+            <i class="icon" id="yzfh5-icon-1599052109655"></i>
+            <span class="txt">联系客服</span>
+            <i class="dot" id="yzfh5-dot-1599052109655" style="display:none"></i>
+            <div class="state" id="yzfh5-state-1599052109655" style="display:none"><span class="desc">客服已回复</span></div>
+        </a>
+    </div>
+    <div yzfh5-data-1599052109655="" id="yzfh5-main-chat-1599052109655" class="main-chat"
+         style="display: none; z-index: 2147483647;">
+        <iframe id="yzfh5-main-iframe-1599052109655" class="main-iframe" frameborder="0"
+                src="/static/user/saved_resource.html"></iframe>
+    </div>
+</div>
+
+
+</body>
+</html>

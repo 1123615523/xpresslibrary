@@ -14,6 +14,10 @@
     <script type="text/javascript" src="/static/wd/Prototype.js"></script>
     <script type="text/javascript" src="/static/wd/slides.banner.js"></script>
     <link href="/static/wd/slides.css" rel="stylesheet" type="text/css">
+
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+
     <meta name="copyright" content="www.renrendoc.com">
     <meta name="applicable-device" content="pc">
     <!--IE8只能支持jQuery1.9-->
@@ -47,7 +51,7 @@
         }
 
         body, .main, .main_bg {
-            background-color: #fff;
+            background-color: #f9fafd;
         }
 
         .gp-wrap {
@@ -103,7 +107,7 @@
     <link href="/static/wd/font-awesome.min.css" rel="stylesheet" type="text/css">
     <style>
         body, .main, .main_bg {
-            background-color: #fff;
+            /*background-color: #fff;*/
         }
 
         .camNavA a {
@@ -356,17 +360,6 @@
                 <a href="javascript:void(0);" onclick="searchWord(&#39;机器人手爪发展史&#39;)" title="机器人手爪发展史">机器人手爪发展史</a>
 
                 <a href="javascript:void(0);" onclick="searchWord(&#39;管道机器人dwg&#39;)" title="管道机器人dwg">管道机器人dwg</a>
-
-                <a href="javascript:void(0);" onclick="searchWord(&#39;动平衡试验台设计&#39;)" title="动平衡试验台设计">动平衡试验台设计</a>
-
-                <a href="javascript:void(0);" onclick="searchWord(&#39;探测机器人&#39;)" title="探测机器人">探测机器人</a>
-
-                <a href="javascript:void(0);" onclick="searchWord(&#39;马铃薯播种机&#39;)" title="马铃薯播种机">马铃薯播种机</a>
-
-                <a href="javascript:void(0);" onclick="searchWord(&#39;自动水箱外文翻译&#39;)" title="自动水箱外文翻译">自动水箱外文翻译</a>
-
-                <a href="javascript:void(0);" onclick="searchWord(&#39;液压冲床图纸&#39;)" title="液压冲床图纸">液压冲床图纸</a>
-
             </p>
             <script>
                 function getcheckedKeyword(s) {
@@ -395,9 +388,23 @@
         </div>
 
         <div class="topr">
-            <a class="block upload-link" href="https://www.renrendoc.com/flexpaper/add.aspx"
-               rel="nofollow"><span></span>上传我的文档</a>
+            <a class="block upload-link" href="JavaScript:"
+               rel="nofollow" onclick="chuan()">上传我的文档</a>
         </div>
+
+        <span id="wdk" th:text="${session.cus}" hidden></span>
+        <script src="/static/vue/jquery-3.1.1.js"></script>
+        <script>
+            function chuan() {
+                var test = $("#wdk").html();
+                if ('' === test) {
+                    alert("请先登录后再上传！");
+                    return;
+                }
+                window.location = "/Home/user";
+            }
+        </script>
+
     </div>
 
     <div class="xxxk_top searchfix"
@@ -522,420 +529,223 @@
             </div>
         </div>
     </div>
+
 </div>
 
-<form method="post" action="t-261914.html?id=261914" id="form1" enctype="multipart/form-data">
-    <div class="aspNetHidden">
-        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
-        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
-        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
-               value="/wEPDwUJMzQ1MzQzNjI3D2QWAmYPZBYEZg9kFgQCAg9kFgQCAQ8WAh4EVGV4dAV4PG1ldGEgbmFtZT0ia2V5d29yZHMiIGNvbnRlbnQ9IuS4gOS4iyzlpKflrrYs5a6d5a6dLOS4jeiCryzlkIPppa0s5oCO5LmI5YqeLOaxguaVmSzor7fmlZks5Lq65Lq65paH5bqTLHJlbnJlbmRvYy5jb20iIC8+ZAIDDxYCHwAFsQI8bWV0YSBuYW1lPSJkZXNjcmlwdGlvbiIgY29udGVudD0i5oiR5a625a2p5a2Q5LiN55+l6YGT5oCO5LmI5Zue5LqL77yM5bCx5piv5LiN6IKv5ZCD6aWt77yM5q+P5Yiw5ZCD6aWt55qE5pe25YCZ5bCx5YOP5piv6KaB5LuW5ZG95LiA5qC377yM5omA5Lul5LuW546w5Zyo57uZ5Lq655qE5oSf6KeJ5bCx5piv6JCl5YW75LiN6Imv77yM6K6p5oiR5Y2B5YiG55qE5ouF5b+D77yM5LqO5piv5bCx5oOz5p2l6Zeu6Zeu5L2g5Lus77yM5a2p5a2Q5LiN6IKv5ZCD6aWt5oCO5LmI5Yqe5ZGiLOS6uuS6uuaWh+W6kyxyZW5yZW5kb2MuY29tIiAvPmQCBQ8WAh8ABYEXPHN0eWxlPi54eHhrX3RvcCBpbWd7aGVpZ2h0OjU1cHg7IG1hcmdpbi10b3A6MTBweDt9ICAgICAgICAgIC5jbW5fc2VhcmNoX2JveCB7ICBtYXJnaW4tbGVmdDogMTMwcHg7ICBtYXJnaW4tdG9wOiAxMHB4O30gICAgICAgICAgLmNtbl9zZWFyY2hfYm94IC5ib3JkZXIgeyAgYm9yZGVyOiAxcHggc29saWQgIzNiM2IzYjsgYm9yZGVyLXJhZGl1czogMHB4OyB9ICAuY21uX3NlYXJjaF9ib3ggLmJvcmRlciBpbnB1dFt0eXBlPSdzdWJtaXQnXSB7ICBiYWNrZ3JvdW5kLWNvbG9yOiAjM2IzYjNiOyAgfSAuY21uX3NlYXJjaF9ib3ggLmJvcmRlciBpbnB1dFt0eXBlPSdzdWJtaXQnXTpob3ZlciB7ICBiYWNrZ3JvdW5kLWNvbG9yOiAjM2IzYjNiOyAgfSAuaHItd3JhcHtib3JkZXItYm90dG9tOjFweCBzb2xpZCAjM2IzYjNiO2JhY2tncm91bmQ6IzNiM2IzYjt9ICAgICAgICAgIC5ob21lX21lbnV7Ym9yZGVyLWJvdHRvbTogMnB4IHNvbGlkICMzYjNiM2I7fS5ob21lX21lbnUgLmZlaWxlaXsgZm9udC1zaXplOjE2cHg7ICAgICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6ICMzYjNiM2I7IGNvbG9yOiAjZmZmOyAgYm9yZGVyLXJhZGl1czowcHggMHB4IDBweCAwcHg7fSAgICAgICAgICAubmF2X2JnLCAubmF2IGxpLm92ZXIgYSwubmF2IGxpIGEsLm5hdiAjY29uQWxsMC5vdmVyIGF7YmFja2dyb3VuZDojM2IzYjNiO30gICAgICAgICAgIC5uYXYgbGkgYXsgZGlzcGxheTpibG9jazsgcGFkZGluZzowcHggNDBweDt9LmpfbWVudSAuaG90dGlwIHsgcmlnaHQ6IC0zcHg7IHRvcDogNXB4OyB9LmhvdHRpcCB7IHJpZ2h0OiAxNnB4O3RvcDogNXB4O30gLm5hdiBsaSBhOkhvdmVyLC5uYXYgbGkub3ZlciBhLCAgICAgICAgICAubmF2ICNjb25BbGwwOmhvdmVyIGE6aG92ZXIsLm5hdiAjY29uejA6aG92ZXIgYTpob3ZlcntiYWNrZ3JvdW5kLWNvbG9yOiMzYjNiM2I7Y29sb3I6I2ZmNDQwMH0gICAgICAgICAgLm5hdiAjY29uQWxsMCBhIHNwYW57IHJpZ2h0OjEycHg7IHRvcDoxNHB4OyB9IC5ob21lX21lbnUgLmpfbWVudSBsaS5ob21lIGF7Y29sb3I6I2ZmNDQwMH0gICAgICAgICAgLm5hdiAjY29uQWxsMC5vdmVyIGEsLm5hdiAjY29uejAub3ZlciBhLCAgICAgICAgICAubmF2ICNjb25BbGwwOmhvdmVyIGEsLm5hdiAjY29uejA6aG92ZXIgYXtiYWNrZ3JvdW5kLWNvbG9yOiMzYjNiM2I7O2NvbG9yOiNmZjQ0MDB9LmNtbl90b3BfciAuaW5uZXIgYS51cGxvYWR7IH0uY2FtVGl0bGV7YmFja2dyb3VuZC1jb2xvcjojZjlmOWY5O30gLmNhbU5hdkEgYXtmb250LXNpemU6MTRweDtjb2xvcjojMmQyZDJkfSAuY2FtTmF2QSBhLnNlbGVjdGVke2JhY2tncm91bmQ6I2ZmZjtib3JkZXItdG9wOjNweCBzb2xpZCAjM2IzYjNiO2ZvbnQtd2VpZ2h0OmJvbGQ7Ym9yZGVyLWxlZnQ6MXB4IHNvbGlkICNlNWU1ZTU7Ym9yZGVyLXJpZ2h0OjFweCBzb2xpZCAjZTVlNWU1fSAuY2FtVGl0bGVze2JhY2tncm91bmQtY29sb3I6I2Y1ZjVmNTt9IC5jYW1OYXZBcyBhe2ZvbnQtc2l6ZToxNnB4O2NvbG9yOiMyZDJkMmR9IC5jYW1OYXZBcyBhLnNlbGVjdGVke2ZvbnQtd2VpZ2h0OmJvbGQ7Ym9yZGVyLXRvcDozcHggc29saWQgIzNiM2IzYjtiYWNrZ3JvdW5kOiNmZmY7fSAuY2F0ZXtiYWNrZ3JvdW5kOiM1YzVjNWM7Ym9yZGVyLXRvcDpzb2xpZCAxcHggIzNiM2IzYjt9IC5jYXRlIGxpOmhvdmVyIC5jYXRlZ29yeS10aXRsZXtiYWNrZ3JvdW5kOiAjZmZmfSAuY2F0ZSBsaTpob3ZlciAuY2F0ZWdvcnktdGl0bGUgYXtjb2xvcjogI2ZmNjYwMH0gLmNhdGUgLmNhdGVnb3J5LXN1Yntib3JkZXItY29sb3I6IzNiM2IzYjsgICAgICAgICAgICAgICAgICAgICAgZmlsdGVyOmFscGhhKG9wYWNpdHk9MTAwKTsgLypJRea7pOmVnO+8jOmAj+aYjuW6pjUwJSovIC1tb3otb3BhY2l0eToxOyAvKkZpcmVmb3jnp4HmnInvvIzpgI/mmI7luqY1MCUqLyBvcGFjaXR5OjE7Lyrlhbbku5bvvIzpgI/mmI7luqY1MCUqL30gLnNob3AxIGEuc2VhcmNoYnRuMHsgYmFja2dyb3VuZC1jb2xvcjojZmY0OTFmO30gLnNob3AxIGEuc2VhcmNoYnRuMDpob3ZlcntiYWNrZ3JvdW5kLWNvbG9yOiNlNTQxMWM7fSAubWFpbi1jb250YWN0IC50eHR7ICB3aWR0aDphdXRvOyBiYWNrZ3JvdW5kOiB1cmwoL2ltYWdlcy9zLmdpZikgbm8tcmVwZWF0IC0zNXB4IDBweDsNCgkJZmxvYXQ6IG5vbmU7IG1hcmdpbi10b3A6IDBweDt9IGZvb3RlciwuZm9vdF9uYXZfYmd7YmFja2dyb3VuZDojMTExMTExO30uY2FtWnBTbWFsbCAuY2FtWnBCb3ggZGQgc3BhbiwuY2FtWnBTbWFsbCAuY2FtWnBCb3ggZGQgYS5zZWxlY3RlZCwuY2FtWnBCb3ggZGQgc3BhbiwuY2FtWnBCb3ggZGQgYS5zZWxlY3RlZCwuZmFyZWEgZGQgc3BhbiwuZmFyZWEgZGQgYS5zZWxlY3RlZCwuZmFyZWFzIGRkIHNwYW4sLmZhcmVhcyBkZCBhLnNlbGVjdGVke2NvbG9yOiNmZmY7IGJhY2tncm91bmQtY29sb3I6IzNiM2IzYjt9LmZhcmVhIGR0LC5mYXJlYXMgZHR7Y29sb3I6IzY2Nn0gICAgICAgICAgICAgLmgtbGlzdCAjY29uQWxsLC5oLWxpc3QgI2NvbkFsbDIsLmRvcnBtZW51Mntib3JkZXI6MXB4IHNvbGlkICMzYjNiM2I7IGJvcmRlci1yYWRpdXM6MHB4IDBweCAwcHggMHB4O30gICAgICAgIC5jYXRlc0JveCBhOmhvdmVyICwgLmNhdGVzQm94IGEuY3VyIHsgYmFja2dyb3VuZDogIzNiM2IzYjtib3JkZXI6MXB4IHNvbGlkICMzYjNiM2I7fSAgICAgICAgLmJhbm5lcmJveCAuc2VhcmNoYm94IC5zZWFyY2hidG4xe2JhY2tncm91bmQtY29sb3I6IzE4OWFlNTt9ICAgICAgICAgICAgICAuYmFubmVyYm94IC5zZWFyY2hib3ggLnNlYXJjaGJ0bjE6aG92ZXJ7YmFja2dyb3VuZC1jb2xvcjojMEI4REQ2O30gICAgICAuaG9tZV9saW5re2hlaWdodDogYXV0bzsgbWFyZ2luLWJvdHRvbToyMHB4O30uaG9tZV9saW5rIC5saW5rX2NvbntoZWlnaHQ6YXV0bzsgbWluLWhlaWdodDoxMDBweDt9PC9zdHlsZT5kAgIPZBYCAgEPZBYGAgEPDxYCHgtSZWNvcmRjb3VudAIBZGQCBA9kFgJmD2QWBAIGDxYCHgtfIUl0ZW1Db3VudAIFFgpmD2QWEGYPFQsoaHR0cHM6Ly93d3cucmVucmVuZG9jLmNvbS91LTEzMDQzMzUuaHRtbA9hcztsa2QqKioqc2RhbGZLaHR0cHM6Ly9xemFwcC5xbG9nby5jbi9x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"/>
-    </div>
+<form method="post" action="#" id="form1" enctype="multipart/form-data">
 
-    <script type="text/javascript">
-        //<![CDATA[
-        var theForm = document.forms['form1'];
-        if (!theForm) {
-            theForm = document.form1;
-        }
+    <div class="main1200 mb20" id="qweqwe">
+        <div id="app">
+            <div class="gp-wrap clearfix mt10">
+                <!--面包屑-->
+                <div class="bread-crumb" style="margin-right: 200px">
+                    <a href="https://www.renrendoc.com/task-0-1-1.html">问答求助</a> &gt;
+                    <a href="https://www.renrendoc.com/task-21-1.html">其他求助</a>
+                </div>
+                <!--左侧-->
+                <div class="gp-lwrap">
+                    <div class="gp-lin">
+                        <div class="gp-tl-mod">
+                            <div class="gp-ht-titbox clearfix" style="padding-right:18px;">
 
-        function __doPostBack(eventTarget, eventArgument) {
-            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-                theForm.__EVENTTARGET.value = eventTarget;
-                theForm.__EVENTARGUMENT.value = eventArgument;
-                theForm.submit();
-            }
-        }
-
-        //]]>
-    </script>
-
-
-    <script src="/WebResource.axd?d=rGP58xA8WzmN6YIGL8-XTzK2aA6o8RZhJcc8jn93-T-UOpHd7SPMwM0xvH3zMOBFpoRSsreb8hlnWFiE0&amp;t=635117209265614829"
-            type="text/javascript"></script>
-
-
-    <script src="/ScriptResource.axd?d=m2IDlbrUsJWyqZ-Bt11asfKoqdmCX_gZK6ZrfAVTsYGERxqHBywNQ2MgLGDRlMu-A7nr7KCAYRqeI2ueRP7BOyCI0l_8pjEa9sk3woPX2Ji39wBt3bXx01_pCIumEkZcxgSbwmi096mVUa-bZkiZ28zd1qW_YbIOi7SUuA2&amp;t=26dfbc01"
-            type="text/javascript"></script>
-    <script type="text/javascript">
-        //<![CDATA[
-        if (typeof (Sys) === 'undefined') throw new Error('ASP.NET Ajax 客户端框架未能加载。');
-        //]]>
-    </script>
-
-    <script src="/ScriptResource.axd?d=t1XA9OpbuRXXpHTK_cqssZclqfVWXM-6Dlxy8k2djVaAipooaLQfFuLzaGrzcULbrAfdSrGR14P2j6xi8HjFjhTpj_zVzFKbYJkzS92MXNPDvq7LqPKjcifuKPgyVzcUZUj5V8TKbLpYyqvPuHM_DCjqzfGsiPJyjr9Bs7-jWCSAOgg20&amp;t=26dfbc01"
-            type="text/javascript"></script>
-    <div class="aspNetHidden">
-
-        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION"
-               value="/wEdAB7lRJmb+WRr71ihlnpL4YZRDD99tcB3d6QlO7PAUnaDzrtio7jPLpz2ucHX9ilhFMpMU0mMxJbDVHxiGIrzsoZR9wmhHye43Ave839T3w0SHSjmpzXdTur9Vd4mRkTtnrVqUoYJo50PqpUvAkVEPQFIMIEGQrXA9mUWLfqQmX6JUsxFhiJjfa6v9L6zBsYtNTuqwStZCv9ALvyd8iyxYdNeCE5cOw2CcOm7bh4lKoPirOxMykNNfOLdZ3mPrmRkRS1Xot0/5wnqSM0Vjp0ou4wL82pWS0PXvlSvXGUDtuWYvoon+EdDjl06gksZmmhqZhGem7MRawYit5G8QTL+OEoQNi5+FkNljMZuZGFwJTENRzxjfH6pifWXEX70/FiLQRIg6xxuUys0YhF6HPPYRWUEwkkj86ErqnMJIXgZM2/8DgAJSpvyt8Vr9lzgEcKpG2Lwwj8DPizesx1Cvz7+EvRYZkc4I5+9G5YXlqsgkm4z/KmDcist/sjwLzB48XxPkaG0GXWSusphBCnYH66bVOPUntHVsrmhmCyLv9NJ85aEbY08wyNEflKVo17nD00NzdGtQRv1HrUk3tDrC59vvPWlCCIAP/KReFKtLkLANKkc6BpEZGtqqcFJQRIo52LjVOC8AYcAfsnGAk40wENSH0mRCxdWPw=="/>
-    </div>
-
-
-    <!--main-->
-    <div class="main1200 mb20">
-        <script type="text/javascript">
-            //<![CDATA[
-            Sys.WebForms.PageRequestManager._initialize('ctl00$Content$ScriptManager1', 'form1', ['tctl00$Content$UpdatePanel1', 'Content_UpdatePanel1'], [], [], 90, 'ctl00');
-            //]]>
-        </script>
-
-
-        <div class="gp-wrap clearfix mt10">
-            <!--面包屑-->
-            <div class="bread-crumb">
-                <a href="https://www.renrendoc.com/task-0-1-1.html">问答求助</a> &gt;
-                <a href="https://www.renrendoc.com/task-21-1.html">其他求助</a>
-
-            </div>
-            <!--左侧-->
-            <div class="gp-lwrap">
-                <div class="gp-lin">
-                    <div class="gp-tl-mod">
-                        <div class="gp-ht-titbox clearfix" style="padding-right:18px;">
-                            <span class="r pb5"><a title="查看全部回复" class="dk-le-btn-pl allhfcount1" href="#comment">3</a></span>
-                            <span class="cls-ms-head">
-            	<a href="https://www.renrendoc.com/u-618508.html" class="aimg">
-                	<img src='https://qzapp.qlogo.cn/qzapp/100554627/06E493083212440B0CDC51038A57E96D/100'>
-                    <span class="atxt">楼主</span>
-                </a>
-            </span>
-                            <!-- 楼主头像 -->
-                            <div class="aside clearfix">
-                                <div class="tit" style=" height:auto;">
-                                    <h1 id="threadtitle">想问一下大家，宝宝不肯吃饭怎么办啊？求教~</h1>
-                                </div>
-                                <div class="gray9 fst mt10">
-                                    <a href="https://www.renrendoc.com/u-618508.html" class="mr30">_A****_</a>2019-09-26
-                                    17:15 | 人气：456
+                            <span class="r pb5">
+                                <a title="查看全部回复" class="dk-le-btn-pl allhfcount1" href="JavaScript:"></a>
+                            </span>
+                                <span class="cls-ms-head">
+            	                    <a href="#" class="aimg">
+                                        <img :src="help.customerinfos.customerpic" width="48" height="48" alt="_Azura_">
+                                        <span class="atxt">楼主</span>
+                                    </a>
+                                </span>
+                                <!-- 楼主头像 -->
+                                <div class="aside clearfix">
+                                    <div class="tit" style=" height:auto;">
+                                        <h1 id="threadtitle">{{help.helptitle}}</h1>
+                                    </div>
+                                    <div class="gray9 fst mt10">
+                                        <a href="https://www.renrendoc.com/u-618508.html" class="mr30">{{help.customerinfos.customertel}}</a>
+                                        {{help.helptime}} | 人气：457----{{help.id}}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="gp-txt clearfix" deep="4">
-                            <div class="P_conten">
-                                <p>我家孩子不知道怎么回事，就是不肯吃饭，每到吃饭的时候就像是要他命一样，所以他现在给人的感觉就是营养不良，让我十分的担心，于是就想来问问你们，孩子不肯吃饭怎么办呢？</p>
-                                <div style="padding: 20px 0px; text-align: center">
-
-                                    <!-- AspNetPager V7.0.2 for VS2005 & VS2008  Copyright:2003-2007 Webdiyer (www.webdiyer.com) -->
-                                    <!--记录总数只有一页，AspNetPager已自动隐藏，若需在只有一页数据时显示AspNetPager，请将AlwaysShow属性值设为true！-->
-                                    <!-- AspNetPager V7.0.2 for VS2005 & VS2008 End -->
-
-
+                            <div class="gp-txt clearfix" deep="4">
+                                <div class="P_conten">
+                                    <p>{{help.helpcontent}}</p>
+                                    <div style="padding: 20px 0px; text-align: center">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-
-
-                        <!--评论区-->
-                        <div id="Content_UpdatePanel1">
-
-                            <div class="gp-pl-area" id="huatiview_pl">
-
-                                <div>
-                                    <textarea name="ctl00$Content$textareaComment" id="Content_textareaComment"
-                                              placeholder="请输入回复内容" class="P_shuru w718"></textarea>
-
-                                    <p class="P_pinglun pt20 pb20">
-                                        还可以输入<span class="red1" id="name_word">500</span>字符 &nbsp;&nbsp;<input
-                                            type="submit" name="ctl00$Content$Button2" value="发布" id="Content_Button2"
-                                            class="hr-btn-b hr-btnsize-b hr-btnfixed-b"/></p>
-
-
+                            <!--评论区-->
+                            <div id="Content_UpdatePanel1">
+                                <div class="gp-pl-area" id="huatiview_pl">
+                                    <div>
+                                        <textarea name="fabuinfo" id="Content_textareaComment"
+                                                  placeholder="请输入回复内容" class="P_shuru w718"
+                                                  style="width: 897px;height: 60px;margin: 0px"></textarea>
+                                        <p class="P_pinglun pt20 pb20">还可以输入<span class="red1" id="name_word">500</span>字符
+                                            &nbsp;&nbsp;<input type="button" name="ctl00$Content$Button2" value="发布"
+                                                               id="Content_Button2" @click="fabu()"
+                                                               class="hr-btn-b hr-btnsize-b hr-btnfixed-b"></p>
+                                    </div>
+                                    <p>
+                                        <a class="dib pl-cur cur allhfcount4"></a>
+                                        <a id="Content_LinkButton4" class="dib pl-cur cur allhfcount4" href="#">全部回复</a><em
+                                            class="orange allhfcount2">(5)</em>
+                                        <a class="ml10 pl-cur dib allhfcount3" style="display:none;"><em
+                                                class="orange myhfcount3">(0)</em></a>
+                                    </p>
                                 </div>
-                                <p>
-                                    <a class="dib pl-cur cur allhfcount4"><a id="Content_LinkButton4"
-                                                                             class="dib pl-cur cur allhfcount4"
-                                                                             href="javascript:__doPostBack(&#39;ctl00$Content$LinkButton4&#39;,&#39;&#39;)">全部回复</a><em
-                                            class="orange allhfcount2">(5)</em></a>
-                                    <a class="ml10 pl-cur dib allhfcount3" style="display:none;"><em
-                                            class="orange myhfcount3">(0)</em></a>
-                                    <span class="ml15 gtflo-box f12">
-				<input name="ctl00$Content$ipttext_floor" type="text" id="Content_ipttext_floor" class="ipttext"
-                       placeholder="输入楼层" style="color: rgb(170, 170, 170);"/>
+                                <style type="text/css">u {
+                                    font-style: italic !important;
+                                }</style>
+                                <div class="gp-pl-ls" id="pl"><a name="comment"></a>
+                                    <ul id="huatipl_ul">
 
-                <a id="Content_lk1" class="gobtn"
-                   href="javascript:__doPostBack(&#39;ctl00$Content$lk1&#39;,&#39;&#39;)">跳转到指定楼层</a>
-			</span></p>
-                            </div>
+                                        <li class="clearfix" v-for="(res,index) in helpinfo">
+                                            <a href="#" class="img " title="1395****010">
+                                                <img width="48" height="48" :src="res.customerpic" alt="1395****010">
+                                            </a>
+                                            <div class="lstxt">
+                                                <p class="litit gray9 fst">
+                                                    <span class="l">
+                                                        <a class="" href="https://www.renrendoc.com/u-942026.html"
+                                                           :title="res.customername">{{res.customername}}</a>&nbsp;&nbsp;{{res.replytime}}</span>
+                                                    <span class="r">{{index+1}}楼</span>
+                                                </p>
+                                                <div class="re-con">{{res.replycontent}}</div>
 
-                            <style type="text/css">u {
-                                font-style: italic !important;
-                            }</style>
-                            <div class="gp-pl-ls" id="pl"><a name="comment"></a>
-                                <ul id="huatipl_ul">
-
-
-                                    <li class="clearfix">
-                                        <a href="https://www.renrendoc.com/u-1304335.html" class="img "
-                                           title="as;lkd****sdalf">
-                                            <img width="48" height="48"
-                                                 src='https://qzapp.qlogo.cn/qzapp/100554627/8F3F96C725126F6D28EC8487247338BA/100'
-                                                 alt="as;lkd****sdalf">
-
-                                        </a>
-                                        <div class="lstxt">
-                                            <p class="litit gray9 fst">
-			<span class="l">
-								<a class="" href="https://www.renrendoc.com/u-1304335.html" title="as;lkd****sdalf">as;lkd****sdalf</a>				2020-09-01 16:11			</span>
-                                                <span class="r">
-								5楼
-			</span>
-                                            </p>
-                                            <div class="re-con">现在怎么样了呢？</div><!--评论内容-->
-
-                                            <input type="hidden" name="ctl00$Content$DataList2$ctl00$hdnID_c"
-                                                   id="Content_DataList2_hdnID_c_0" value="320037"/>
-                                            <input type="hidden" name="ctl00$Content$DataList2$ctl00$hiddenUserID"
-                                                   id="Content_DataList2_hiddenUserID_0" value="1304335"/>
+                                                <div class="pinglun_z fst f12">
+                                                    <a class="mr10 huatipl_hf" href="JavaScript:" @click="huifu(res.id)">回复</a>
+                                                    <a class="mr10 huatipl_hf" v-show="res.customerid===cusid" href="JavaScript:" @click="del(res.id,res.helpid)">删除</a>
+                                                    <a class="mr10 huatipl_hf" href="#" style="cursor: pointer;">赞同</a>({{res.replycount}})
+                                                </div>
 
 
-                                            <!--二次回复列表 end-->
-                                            <div class="pinglun_z fst f12">
-                                                <a onclick="return confirm(&#39;您确定要删除此回复吗？&#39;);"
-                                                   id="Content_DataList2_lnkbtnDel_0" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl00$lnkbtnDel&#39;,&#39;&#39;)"
-                                                   style="cursor: pointer;">删除</a>
-
-                                                <a id="Content_DataList2_LinkButton1_0" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl00$LinkButton1&#39;,&#39;&#39;)">回复</a>
-
-                                                <a id="Content_DataList2_LinkButton2_0" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl00$LinkButton2&#39;,&#39;&#39;)"
-                                                   style="cursor: pointer;">赞同</a>（1）
-
-
-                                            </div>
-
-
-                                        </div>
-                                    </li>
-
-
-                                    <li class="clearfix">
-                                        <a href="https://www.renrendoc.com/u-1304335.html" class="img "
-                                           title="as;lkd****sdalf">
-                                            <img width="48" height="48"
-                                                 src='https://qzapp.qlogo.cn/qzapp/100554627/8F3F96C725126F6D28EC8487247338BA/100'
-                                                 alt="as;lkd****sdalf">
-
-                                        </a>
-                                        <div class="lstxt">
-                                            <p class="litit gray9 fst">
-			<span class="l">
-								<a class="" href="https://www.renrendoc.com/u-1304335.html" title="as;lkd****sdalf">as;lkd****sdalf</a>				2020-09-01 16:10			</span>
-                                                <span class="r">
-								4楼
-			</span>
-                                            </p>
-                                            <div class="re-con">这问题我家孩子也有</div><!--评论内容-->
-
-                                            <input type="hidden" name="ctl00$Content$DataList2$ctl01$hdnID_c"
-                                                   id="Content_DataList2_hdnID_c_1" value="320036"/>
-                                            <input type="hidden" name="ctl00$Content$DataList2$ctl01$hiddenUserID"
-                                                   id="Content_DataList2_hiddenUserID_1" value="1304335"/>
-
-
-                                            <!--二次回复列表 end-->
-                                            <div class="pinglun_z fst f12">
-                                                <a onclick="return confirm(&#39;您确定要删除此回复吗？&#39;);"
-                                                   id="Content_DataList2_lnkbtnDel_1" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl01$lnkbtnDel&#39;,&#39;&#39;)"
-                                                   style="cursor: pointer;">删除</a>
-
-                                                <a id="Content_DataList2_LinkButton1_1" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl01$LinkButton1&#39;,&#39;&#39;)">回复</a>
-
-                                                <a id="Content_DataList2_LinkButton2_1" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl01$LinkButton2&#39;,&#39;&#39;)"
-                                                   style="cursor: pointer;">赞同</a>（0）
-
-
-                                            </div>
-
-
-                                        </div>
-                                    </li>
-
-
-                                    <li class="clearfix">
-                                        <a href="https://www.renrendoc.com/u-1007874.html" class="img " title="哲熙之家">
-                                            <img width="48" height="48"
-                                                 src='/static/wd/avatar_small.gif' alt="哲熙之家">
-
-                                        </a>
-                                        <div class="lstxt">
-                                            <p class="litit gray9 fst">
-			<span class="l">
-								<a class="" href="https://www.renrendoc.com/u-1007874.html" title="哲熙之家">哲熙之家</a>				2020-03-20 16:54			</span>
-                                                <span class="r">
-								3楼
-			</span>
-                                            </p>
-                                            <div class="re-con">多大的孩子，你要根据孩子的年龄来制定相对应的措施。</div><!--评论内容-->
-
-                                            <input type="hidden" name="ctl00$Content$DataList2$ctl02$hdnID_c"
-                                                   id="Content_DataList2_hdnID_c_2" value="314488"/>
-                                            <input type="hidden" name="ctl00$Content$DataList2$ctl02$hiddenUserID"
-                                                   id="Content_DataList2_hiddenUserID_2" value="1007874"/>
-
-
-                                            <!--二次回复列表 end-->
-                                            <div class="pinglun_z fst f12">
-
-
-                                                <a id="Content_DataList2_LinkButton1_2" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl02$LinkButton1&#39;,&#39;&#39;)">回复</a>
-
-                                                <a id="Content_DataList2_LinkButton2_2" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl02$LinkButton2&#39;,&#39;&#39;)"
-                                                   style="cursor: pointer;">赞同</a>（1）
-
-
-                                            </div>
-
-
-                                        </div>
-                                    </li>
-
-
-                                    <li class="clearfix">
-                                        <a href="https://www.renrendoc.com/u-942026.html" class="img "
-                                           title="1395****010">
-                                            <img width="48" height="48"
-                                                 src='/static/wd/avatar_small.gif'
-                                                 alt="1395****010">
-
-                                        </a>
-                                        <div class="lstxt">
-                                            <p class="litit gray9 fst">
-			<span class="l">
-								<a class="" href="https://www.renrendoc.com/u-942026.html" title="1395****010">1395****010</a>				2020-02-20 11:20			</span>
-                                                <span class="r">
-								2楼
-			</span>
-                                            </p>
-                                            <div class="re-con">小孩子不吃饭 都是出于身体的本能，血液里的糖分含量高低起到是否需要进食的信号发送给大脑，请观察小孩自除了吃饭外的
-                                                奶粉 糖果 零食 是怎么吃的 饭前2小时不要进食零食 等含糖分的食物即可
-                                            </div><!--评论内容-->
-
-                                            <input type="hidden" name="ctl00$Content$DataList2$ctl03$hdnID_c"
-                                                   id="Content_DataList2_hdnID_c_3" value="313050"/>
-                                            <input type="hidden" name="ctl00$Content$DataList2$ctl03$hiddenUserID"
-                                                   id="Content_DataList2_hiddenUserID_3" value="942026"/>
-                                            <!--二次回复列表-->
-                                            <div class="sec-replay">
-                                                <input type="hidden"
-                                                       name="ctl00$Content$DataList2$ctl03$DataList3$ctl01$hdnID_c1"
-                                                       id="Content_DataList2_DataList3_3_hdnID_c1_0" value="313050"/>
-
-                                                <div class="sec-replay-ls clearfix" id="plli_1324878">
-                                                    <a href="https://www.renrendoc.com/u-1304335.html" class="sec-img "
-                                                       title="as;lkd****sdalf">
-                                                        <img width="32" height="32"
-                                                             src='https://qzapp.qlogo.cn/qzapp/100554627/8F3F96C725126F6D28EC8487247338BA/100'
-                                                             alt="as;lkd****sdalf">
-                                                    </a>
-                                                    <div class="l">
-                                                        <p class="f12 gray9 fst clearfix">
-<span>
-<a class="" href="https://www.renrendoc.com/u-1304335.html" title="as;lkd****sdalf">as;lkd****sdalf</a>
-    	        2020-08-31 16:45	        </span>
-                                                        </p>
-                                                        <div class="sec-con">
-                                                            学到了，十分感谢
-                                                            <span class="pinglun_delete" style='display: inline'>
-<a onclick="return confirm(&#39;您确定要删除此回复吗？&#39;);" id="Content_DataList2_DataList3_3_lnkbtnDel_0"
-   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl03$DataList3$ctl01$lnkbtnDel&#39;,&#39;&#39;)"
-   style="cursor: pointer;">删除</a></span>
-
+                                                <!--评论内容-->
+                                                <!--二次回复列表-->
+                                                <div v-for="r in res.child">
+                                                    <div class="sec-replay">
+                                                        <div class="sec-replay-ls clearfix" id="plli_1324878">
+                                                            <a href="#" class="sec-img" title="as;lkd****sdalf">
+                                                                <img width="32" height="32" :src="r.customerpic" alt="as;lkd****sdalf">
+                                                            </a>
+                                                            <div class="l">
+                                                                <p class="f12 gray9 fst clearfix">
+                                                                <span>
+                                                                    <a class="" href="#" :title="r.customername">
+                                                                        <span>{{r.customerid===cusid?'我的回复':r.customername}}</span>
+                                                                    </a>&nbsp;&nbsp;{{r.replytime}}
+                                                                </span>
+                                                                </p>
+                                                                <div class="sec-con">
+                                                                    {{r.replycontent}}
+                                                                </div>
+                                                            </div>
                                                         </div>
+                                                    </div>
+                                                    <!--二次回复列表 end-->
+
+                                                    <div class="pinglun_z fst f12">
+                                                        <a class="mr10 huatipl_hf" href="JavaScript:" @click="huifu(res.id)">回复</a>
+                                                        <a class="mr10 huatipl_hf" v-show="r.customerid===cusid" href="JavaScript:" @click="del(r.id,r.helpid)">删除</a>
+                                                        <a class="mr10 huatipl_hf" href="#" style="cursor: pointer;">赞同</a>({{r.replycount}})
                                                     </div>
                                                 </div>
                                             </div>
+                                        </li>
 
-                                            <!--二次回复列表 end-->
-                                            <div class="pinglun_z fst f12">
-
-
-                                                <a id="Content_DataList2_LinkButton1_3" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl03$LinkButton1&#39;,&#39;&#39;)">回复</a>
-
-                                                <a id="Content_DataList2_LinkButton2_3" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl03$LinkButton2&#39;,&#39;&#39;)"
-                                                   style="cursor: pointer;">赞同</a>（0）
-
-
-                                            </div>
-
-
-                                        </div>
-                                    </li>
-
-
-                                    <li class="clearfix">
-                                        <a href="https://www.renrendoc.com/u-889877.html" class="img " title="沧浪之水">
-                                            <img width="48" height="48"
-                                                 src='/static/wd/avatar_small.gif'
-                                                 alt="沧浪之水">
-
-                                        </a>
-                                        <div class="lstxt">
-                                            <p class="litit gray9 fst">
-			<span class="l">
-								<a class="" href="https://www.renrendoc.com/u-889877.html" title="沧浪之水">沧浪之水</a>				2020-01-10 15:09			</span>
-                                                <span class="r">
-								1楼
-			</span>
-                                            </p>
-                                            <div class="re-con">不肯吃饭的原因是没有食欲，没有食欲最大的可能是消化不好，因此给孩子吃点益生菌调理肠胃应该可以解决问题。
-                                            </div><!--评论内容-->
-
-                                            <input type="hidden" name="ctl00$Content$DataList2$ctl04$hdnID_c"
-                                                   id="Content_DataList2_hdnID_c_4" value="311808"/>
-                                            <input type="hidden" name="ctl00$Content$DataList2$ctl04$hiddenUserID"
-                                                   id="Content_DataList2_hiddenUserID_4" value="889877"/>
-
-
-                                            <!--二次回复列表 end-->
-                                            <div class="pinglun_z fst f12">
-
-
-                                                <a id="Content_DataList2_LinkButton1_4" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl04$LinkButton1&#39;,&#39;&#39;)">回复</a>
-
-                                                <a id="Content_DataList2_LinkButton2_4" class="mr10 huatipl_hf"
-                                                   href="javascript:__doPostBack(&#39;ctl00$Content$DataList2$ctl04$LinkButton2&#39;,&#39;&#39;)"
-                                                   style="cursor: pointer;">赞同</a>（0）
-
-
-                                            </div>
-
-
-                                        </div>
-                                    </li>
-
-
-                                </ul>
-
+                                    </ul>
+                                </div>
                             </div>
-
-
+                            <!--评论区-->
                         </div>
-                        <!--评论区-->
                     </div>
-
                 </div>
-
             </div>
-            <!--左侧end-->
-            <!--右侧-->
-
-
-
+        </div>
     </div>
-    <!-- JiaThis Button END -->
-    <span id="LabelScript"></span>
+    <span id="helpid" th:text="${helpid}" hidden></span>
+    <script src="/static/vue/axios.min.js"></script>
+    <script src="/static/vue/jquery-3.1.1.js"></script>
+    <script src="/static/vue/vue.js"></script>
+    <script src="/static/js/toastr.min.js"></script>
+    <script>
+        var v = new Vue({
+            el: '#app',
+            data: {
+                help: {},
+                helpinfo: [],
+                cusid:0,
+                reply:{}
+            },
+            created: function () {
+                this.findHelpInfo();
+            },
+            methods: {
+                "del":function (id,helpid) {
+                    var that = this;
+                    var url = "/Help/delHelpInfo?id="+id+"&helpid="+helpid;
+                    layer.confirm('确认删除此评论？', {icon: 3, title:'提示'}, function(index){
+                        axios.get(url).then(function (resp) {
+                            if(resp.data > 0){
+                                layer.msg('删除成功！',{icon:1,time:1000},function(){
+                                    parent.layer.close(index);
+                                    that.findHelpInfo();
+                                });
+                            }else{
+                                layer.alert("删除失败！");
+                            }
+                        });
+                    });
+                },
+                "huifu":function (id) {
+                    var b = this.cusid;
+                    var c = this.help.id;
+                    var that = this;
+                    layer.prompt({title:'请输入回复内容^_^',formType: 2},function(pass,index){
+                        var url = "/Help/addHelpHuifu?fabuinfo="+pass+"&cusid="+b+"&helpid="+c+"&parentid="+id;
+                        axios.get(url).then(function (resp) {
+                            if(resp.data > 0){
+                                layer.msg('回复成功！',{icon:1,time:1000},function(){
+                                    parent.layer.close(index);
+                                    that.findHelpInfo();
+                                });
+                            }else{
+                                layer.alert("回复失败！");
+                            }
+                        });
+                    });
+                },
+                "findHelpInfo": function () {
+                    var helpid = $("#helpid").html();
+                    var url = "/Help/findHelp?helpid=" + helpid;
+                    var that = this;
+                    axios.get(url).then(function (resp) {
+                        that.help = resp.data.help;
+                        that.helpinfo = resp.data.helpInfo;
+                        that.cusid = resp.data.cusid;
+                    })
+                },
+                "fabu":function (){
+                    var a = $("[name=fabuinfo]").val();
+                    var b = this.cusid;
+                    var c = this.help.id;
+                    var url = "/Help/addHelpReply?fabuinfo="+a+"&cusid="+b+"&helpid="+c;
+                    var that = this;
+                    axios.get(url).then(function (resp) {
+                        if(resp.data > 0){
+                            layer.msg('发布成功^_^',{icon:1,time:1000});
+                            that.findHelpInfo();
+                            $("[name=fabuinfo]").val('');
+                        }else{
+                            layer.msg('发布失败！',{icon:2,time:1000});
+                        }
+                    })
+                }
+            }
+        })
+    </script>
 
 </form>
 
@@ -982,7 +792,6 @@
         <br>
         <br>
         <br>
-
     </div>
 </div>
 </body>

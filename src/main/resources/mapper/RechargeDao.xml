@@ -24,19 +24,14 @@
         SELECT ifnull(sum(rechargemoney),0.00) from recharge
         where customerid = #{value}
         and paytype = 1
-        and rechargetype = 1
-        or rechargetype = 2
-        or rechargetype = 6
-        or rechargetype = 7
+        and rechargetype in(1,2,6,7)
     </select>
 
     <select id="expenditureInfo" resultType="java.lang.Double">
         select ifnull(sum(rechargemoney),0.00) from recharge
         where customerid = #{value}
         and paytype = 0
-        and rechargetype = 3
-        or rechargetype = 4
-        or rechargetype = 5
+        and rechargetype in(3,4,5)
     </select>
 
     <select id="withdrawInfo" resultType="java.lang.Double">

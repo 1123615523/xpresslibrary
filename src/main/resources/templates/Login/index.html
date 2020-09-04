@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="/static/js/font-awesome.min.css">
     <link rel="stylesheet" href="/static/js/ionicons.min.css">
     <link rel="stylesheet" href="/static/js/AdminLTE.min.css">
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
 
     <style>
         .login-page {
@@ -34,17 +36,17 @@
                       data-ok-href="https://www.wenku365.com/ucenter">
                     <div class="form-group">
                         <label>账号</label>
-                        <input type="text" class="form-control" placeholder="请输入手机号或邮箱" v-model.trim="name">
+                        <input type="text" v-model="customerEandT" class="form-control" placeholder="请输入手机号或邮箱">
                     </div>
                     <div class="form-group">
                         <label>密码</label>
-                        <input type="password" class="form-control" placeholder="及密码..." v-model.trim="pwd">
+                        <input type="password" v-model="customerpwd" class="form-control" placeholder="及密码...">
                     </div>
-                    <div class="form-group">
-                        <label>验证码</label>
-                        <input type="text" class="form-control" placeholder="请输入验证码" name="captcha" id="captcha">
-                        <img src="/static/js/captcha.jpg" onclick="this.src='/commons/captcha?d='+Math.random();" cdn-exclude id="captchaimg">
-                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label>验证码</label>-->
+                        <!--<input type="text" class="form-control" placeholder="请输入验证码" name="captcha" id="captcha">-->
+                        <!--<img src="/static/js/captcha.jpg" onclick="this.src='/commons/captcha?d='+Math.random();" cdn-exclude id="captchaimg">-->
+                    <!--</div>-->
                     <div class="row">
                         <div class="col-xs-12" style="padding-top: 15px">
                             <button type="button" @click="login()" class="btn btn-primary btn-block btn-flat">登 录
@@ -64,24 +66,53 @@
 <script src="/static/vue/axios.min.js"></script>
 <script src="/static/vue/jquery-3.1.1.js"></script>
 <script>
-    var vue = new Vue({
-        el: '#app',
-        data: {
-            name: '',
-            pwd: ''
+    new Vue({
+        el:"#app",
+        data:{
+            customerEandT:"",
+            customertel:"",
+            customeremail:"",
+            customerpwd:""
         },
-        created: function () {
-
-        },
-        methods: {
-            "login": function () {
-                var url = "";
-                axios.get(url).then(function (value) {
-
-                });
+        methods:{
+            "login":function () {
+                if (this.customerEandT === "" ){
+                    layer.alert("账号不能为空！");
+                    return;
+                }
+                if (this.customerpwd === "" ){
+                    layer.alert("密码不能为空！");
+                    return;
+                }
+                if (this.customerEandT.indexOf("com")>0){
+                    this.customeremail  = this.customerEandT;
+                    console.log(this.customeremail)
+                } else {
+                    this.customertel  = this.customerEandT;
+                    console.log(this.customertel)
+                }
+                var that = this;
+                axios.get("/customer/bypwd",{params:{
+                        customertel:this.customertel,
+                        customeremail:this.customeremail,
+                        customerpwd:this.customerpwd
+                    }}).then(function (value) {
+                    if (value.data === 1){
+                        that.customertel = "";
+                        that.customeremail = "";
+                        that.customerpwd = "";
+                        layer.msg('登录成功！',{icon:1,time:1000},function () {
+                            location.href="/Home/user";
+                        });
+                    }else{
+                        layer.alert("密码或账号错误！");
+                    }
+                }).catch(function (reason) {
+                    console.log(reason);
+                })
             }
         }
-    });
+    })
 </script>
 
 
