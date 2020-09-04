@@ -319,7 +319,10 @@
                                             <div class="form-group">
                                                 <label class="col-sm-2 control-label">预览页数</label>
                                                 <div class="col-sm-8">
-                                                    <input style="width: 280px;" type="number" placeholder="最大预览页数：2页" class="form-control" name="previewpage" required="required">
+                                                    <input style="width: 280px;" type="number" placeholder="最大预览页数：10页" class="form-control" name="previewpage" required="required">
+                                                    <div class="tip-font">
+                                                        <span>预览页数</span><span style="color: red">超过</span><span>总页数将</span><span style="color: red">按照总页数</span><span>设置</span>
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -427,6 +430,12 @@
                                 </script>
                                 <script>
                                     function uploadFile() {
+
+                                        if ($("[name=previewpage]").val() > 10 || $("[name=previewpage]").val() < 1){
+                                            layer.alert("可预览页数：1 - 10 页！");
+                                            return;
+                                        }
+
                                         var myfrom = new FormData();
                                         myfrom.append('file',$("#file")[0].files[0]);
                                         myfrom.append('title', $("[name=title]").val());
@@ -552,15 +561,6 @@
         }
     }
 
-    // 预览页数的变化
-    function viewPageChange() {
-        var radioValue = $('input:radio[name="meBookTemp.freepage"]:checked').val();
-        if ('1' === radioValue) {
-            $("#preViewPageSetting").show();
-        } else {
-            $("#preViewPageSetting").hide();
-        }
-    }
 
     $('#form1').on('submit', function () {
         // 校验上传方式
