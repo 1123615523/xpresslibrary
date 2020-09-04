@@ -181,26 +181,6 @@
     .bannerbox .searchbox .searchbtn1:hover {
         background-color: #0b8dd6
     }</style>
-    <script type="text/javascript" src="/static/pay/jquery.lazyload.js"></script>
-    <script type="text/javascript">function browserRedirect() {
-        var d = navigator.userAgent.toLowerCase();
-        var j = d.match(/ipad/i) == "ipad";
-        var k = d.match(/iphone os/i) == "iphone os";
-        var h = d.match(/midp/i) == "midp";
-        var f = d.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
-        var g = d.match(/ucweb/i) == "ucweb";
-        var b = d.match(/android/i) == "android";
-        var c = d.match(/windows ce/i) == "windows ce";
-        var l = d.match(/windows mobile/i) == "windows mobile";
-        var e = "https://m.wenku365.com/d-20662603.html";
-        var i = "https://www.wenku365.com/d-20662603.html";
-        if (k || h || f || g || b || c || l) {
-            var a = window.location.href.toLowerCase();
-            location.href = e
-        }
-    }
-
-    browserRedirect();</script>
     <script>function Login() {
         var d = document.getElementById("username").value;
         var b = document.getElementById("password").value;
@@ -262,35 +242,6 @@
         height: 30px;
         line-height: 30px
     }
-
-    #wx_d:hover {
-        background: url(https://static.wenku365.com /images/ wx_d . jpg) no-repeat left - 154 px
-    }
-
-    #alipy_d {
-        background: url(https://static.wenku365.com /images/ alipy_d . jpg) no-repeat left top;
-        cursor: pointer;
-        float: left;
-        border: 0;
-        padding: 0
-    }
-
-    #alipy_d:hover {
-        background: url(https://static.wenku365.com /images/ alipy_d . jpg) no-repeat left - 154 px
-    }
-
-    #passpay_d {
-        background: url(https://static.wenku365.com /images/ passpay_d . png) no-repeat left top;
-        cursor: pointer;
-        float: left;
-        border: 0;
-        padding: 0
-    }
-
-    #passpay_d:hover {
-        background: url(https://static.wenku365.com /images/ passpay_d . png) no-repeat left - 154 px
-    }
-
     .tuij {
         float: left;
         font-size: 14px;
@@ -429,7 +380,6 @@
     }
 
     .btn_150_40 {
-        background: url(https://static.wenku365.com /images/ 150 _40 . png) #4ebe25 no-repeat;
         width: 150px;
         height: 40px;
         line-height: 40px;
@@ -452,13 +402,6 @@
         height: 300px;
         text-align: center;
         overflow: hidden
-    }
-
-    .download-img-show img {
-        max-width: 220px;
-        max-height: 300px;
-        _width: expression(this.width>300?"300px":true);
-        _height: expression(this.height>300?"300px":true)
     }
 
     .Textbox {
@@ -492,8 +435,6 @@
         color: #333
     }</style>
     <meta content="IE=7" http-equiv="X-UA-Compatible">
-    <link href="/static/pay/recentBrowse.css" rel="stylesheet">
-    <script src="/static/pay/recentBrowse.js"></script>
     <script src="/static/pay/share.js"></script>
     <link rel="stylesheet" href="/static/pay/share_style0_24.css">
 </head>
@@ -660,184 +601,75 @@
     <form method="post" id="checkout">
         <div class="bg_100 main_bg clearfix">
             <div class="main clearfix">
-                <div class="bag" style="border: 0; background-color: Transparent; position:relative;">
+
+                <!--挂载点开始-->
+                <div class="bag" style="border: 0; background-color: Transparent; position:relative;" id="hui">
+                    <!--分类显示-->
                     <div style="width: 100%; float: none; margin-top:10px;">
                         <div style="border: solid 0px #ddd;">
                             <table style="width: 100%; font-family: 宋体; line-height: 22px;">
                                 <tbody>
                                 <tr>
-                                    <td><a name="downloadarea"></a> <a href="https://www.wenku365.com/"> <img
+                                    <td><a name="downloadarea"></a> <a href="http://localhost:8888/Home/index"> <img
                                             src="/static/pay/home.gif" width="16" height="16"
-                                            align="absmiddle" alt="首页"> 天天文库</a>&nbsp;&gt;&nbsp;<a
-                                            href="https://www.wenku365.com/list.html">资源分类</a>&nbsp;&gt;&nbsp;DOC文档下载
-                                    </td>
-                                    <td align="right" style="padding-left: 5px; width: 250px;">
-                                        <div style="padding-top: 0px;">
-                                            <div class="clearfix">
-                                                <div class="bdsharebuttonbox bdshare-button-style0-24"
-                                                     data-bd-bind="1599041488286"><a
-                                                        href="https://www.wenku365.com/d-20662603.html#"
-                                                        class="bds_more"
-                                                        data-cmd="more"></a><a
-                                                        href="https://www.wenku365.com/d-20662603.html#"
-                                                        class="bds_weixin"
-                                                        data-cmd="weixin" title="分享到微信"></a><a
-                                                        href="https://www.wenku365.com/d-20662603.html#"
-                                                        class="bds_qzone"
-                                                        data-cmd="qzone" title="分享到QQ空间"></a><a
-                                                        href="https://www.wenku365.com/d-20662603.html#"
-                                                        class="bds_tsina"
-                                                        data-cmd="tsina" title="分享到新浪微博"></a><a
-                                                        href="https://www.wenku365.com/d-20662603.html#" class="bds_tqq"
-                                                        data-cmd="tqq" title="分享到腾讯微博"></a><a
-                                                        href="https://www.wenku365.com/d-20662603.html#" class="bds_sqq"
-                                                        data-cmd="sqq" title="分享到QQ好友"></a><a
-                                                        href="https://www.wenku365.com/d-20662603.html#"
-                                                        class="bds_renren"
-                                                        data-cmd="renren" title="分享到人人网"></a></div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td align="right" style="width:100px;" valign="top"><input type="button"
-                                                                                               class="btn_sc2"
-                                                                                               onclick="window.location.href=&#39;/copyrightAppeal/20662603&#39;;return false;"
-                                                                                               value="版权申诉">&nbsp;
+                                            align="absmiddle" alt="首页"> 随心文库</a>&nbsp;&gt;&nbsp;{{documentation.documentformat}}文档下载
                                     </td>
                                 </tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
-                    <div class="download-main-bd clearfix"
-                         style="background-color: #fff; border: solid 1px #ddd; padding: 30px 0px 0px 0px">
-                        <div class="fl download-img-show" id="showMore" style="height: 100%;position:relative;"><a
-                                href="https://www.wenku365.com/p-20662603.html" style=" position:relative;"> <img
-                                src="/static/pay/pic1.gif" alt="三年级数学混合脱式运算100题(精选)"
-                                title="三年级数学混合脱式运算100题(精选)"></a> <br> <br> <a class="btn_gray"
-                                                                              href="https://www.wenku365.com/p-20662603.html"
-                                                                              style="display: block; text-decoration: none; color: #333; margin: 0px auto;">阅读全文</a>
+                    <div class="download-main-bd clearfix" style="background-color: #fff; border: solid 1px #ddd; padding: 30px 0px 0px 0px">
+                        <!--左侧阅读-->
+                        <div class="fl download-img-show" id="showMore" style=" width: 301px; height: 100%;position:relative;">
+                            <a @click="bydocument(documentation.did)" style=" position:relative;">
+                                <img :src="documentation.filepath"  :title="documentation.title">
+                            </a>
+                            <br>
+                            <br>
+                            <a class="btn_gray" @click="bydocument(documentation.did)" style="display: block; text-decoration: none; color: #333; margin: 0px auto;">阅读文档</a>
                         </div>
-                        <div class="download-img-manage fl"><h1 class=" word-wrap"><a
-                                href="https://www.wenku365.com/p-20662603.html"
-                                style="line-height:26px; font-size:20px;">三年级数学混合脱式运算100题(精选)</a>
-                        </h1>
+                        <!--右侧数据-->
+                        <div class="download-img-manage fl">
+                            <h1 class=" word-wrap">
+                                <a @click="bydocument(documentation.did)" style="line-height:26px; font-size:20px;">{{documentation.filename}}</a>
+                            </h1>
                             <ul class="download-img-info">
-                                <li class="download-img-info-item"><span>资源ID：<span
-                                        class="font-tahoma">20662603</span></span>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span>资源大小：<span class="font-tahoma">37.5 KB</span></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span>全文页数：<span class="font-tahoma">3页</span></span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <span> 用户：<a style="text-decoration:none;" title="墨香宝书阁"
-                                                 href="https://www.wenku365.com/u-3713.html"> 墨香宝书阁 </a> </span></li>
-                                <li class="download-img-info-item"><span itemprop="mode">资源格式：&nbsp;<span
-                                        class="font-tahoma">DOC</span></span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; 下载权限：<b
-                                        class="font-tahoma red1">游客/注册会员</b> &nbsp;&nbsp;&nbsp; 下载费用：<b
-                                        class="font-tahoma red1">11.90</b>积分 【人民币<span
-                                        style="color: #ff1100">11.90</span>元】
+                                <li class="download-img-info-item">
+                                    <span>资源标题：
+                                        <span class="font-tahoma">{{documentation.title}}</span>
+                                    </span>&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span>资源大小：
+                                        <span class="font-tahoma">{{documentation.documentsize}} KB</span>
+                                    </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span>全文页数：
+                                        <span class="font-tahoma">{{documentation.pages}}</span>
+                                    </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <span> 用户：
+                                        <a style="text-decoration:none;" title="作者" href="https://www.wenku365.com/u-3713.html"> {{documentation.customername}} </a>
+                                    </span>
+                                </li>
+                                <li class="download-img-info-item">
+                                    <span itemprop="mode">资源格式：&nbsp;
+                                        <span class="font-tahoma">{{documentation.documentformat}}</span>
+                                    </span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;下载费用：
+                                    <b class="font-tahoma red1">{{documentation.sellingprice}}</b>积分 【人民币
+                                    <span style="color: #ff1100">{{documentation.sellingprice}}</span>元】
                                 </li>
                             </ul>
-                            <div class="download-pwd-box" style="padding: 0px 0px;background-color:#fafcef;"><input
-                                    type="hidden" value="" id="hiddenpaytype">
-                                <table cellpadding="0" cellspacing="0" width="100%">
-                                    <tbody>
-                                    <tr>
-                                        <td valign="top">
+
+
+                            <!--消费提醒-->
+                            <div class="download-pwd-box" style="padding: 0px 0px;background-color:#fafcef;">
+                                <input type="hidden" value="" id="hiddenpaytype">
                                             <div style="padding: 17px 5px 17px 20px; font-size: 14px;">
-                                                <div style="color: #00a2c9; font-size: 16px; padding-bottom: 10px;">
-                                                    消费提示
-                                                </div>
-                                                <div class="download-pay-tip"> 您目前现金积分余额：<b
-                                                        class="font-tahoma red1">0.30</b>积分; <b class="black"> 余额不足,
-                                                    请选择支付方式下载,或者充值后下载 </b>.
+                                                <div style="color: #00a2c9; font-size: 16px; padding-bottom: 10px;">消费提示</div>
+                                                <div class="download-pay-tip"> 您目前现金积分余额：
+                                                    <b name="money" class="font-tahoma red1" th:text="${session.cus.customermoney}" ></b> 积分
+                                                    <input type="hidden" th:value="${session.cus.customerid}" name="customerid">
                                                     <div style="margin-top: 5px;"> &nbsp;&nbsp;
-                                                        <table>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>
-                                                                    <script>function selectzhifu2(b) {
-                                                                        document.getElementById("hiddenpaytype").value = b;
-                                                                        var c = "1";
-                                                                        var a = "15";
-                                                                        if (b == "alipay") {
-                                                                            $("#zhifu005").attr("class", "sel1");
-                                                                            $.ajax({
-                                                                                type: "GET",
-                                                                                contentType: "application/json;charset=UTF-8",
-                                                                                url: "/order/book/genorder?pid=20662603&paytype=alipay",
-                                                                                success: function (d) {
-                                                                                    openwindow("/order/book/payorder/" + d.orderId + "?paytype=" + d.paytype + "&pid=20662603", "支付并下载", 1000, 900)
-                                                                                },
-                                                                                error: function (d) {
-                                                                                    alert("购买失败：" + data.message)
-                                                                                }
-                                                                            });
-                                                                            ShowTip()
-                                                                        }
-                                                                        if (b == "weixin") {
-                                                                            $("#zhifu004").attr("class", "sel1");
-                                                                            $.ajax({
-                                                                                type: "GET",
-                                                                                contentType: "application/json;charset=UTF-8",
-                                                                                url: "/order/book/genorder?pid=20662603&paytype=wechat",
-                                                                                success: function (d) {
-                                                                                    console.log(d);
-                                                                                    Wx_Dialog("/order/book/payorder/" + d.orderId + "?paytype=" + d.paytype + "&pid=20662603")
-                                                                                },
-                                                                                error: function (d) {
-                                                                                    alert("购买失败：" + data.message)
-                                                                                }
-                                                                            })
-                                                                        }
-                                                                    }
 
-                                                                    function Wx_Dialog(a) {
-                                                                        var d = "1";
-                                                                        var c = "15";
-                                                                        var b = '<iframe scrolling="no" frameborder="0" width="660" height="460" src="' + a + '"></iframe>';
-                                                                        obj = art.dialog({
-                                                                            title: "<span></span>",
-                                                                            content: b,
-                                                                            width: "458",
-                                                                            height: "417",
-                                                                            skin: "blue",
-                                                                            lock: true,
-                                                                            padding: "0px 0px",
-                                                                            background: "#666",
-                                                                            opacity: 0.6,
-                                                                            duration: 300,
-                                                                            fixed: true,
-                                                                            left: "50%",
-                                                                            top: "38.2%",
-                                                                            zIndex: 1987,
-                                                                            resize: true,
-                                                                            drag: true,
-                                                                            cancelValue: "我知道了，关闭",
-                                                                            cancel: true
-                                                                        });
-                                                                        $(".d-header").hide();
-                                                                        $(".d-footer").hide()
-                                                                    }
 
-                                                                    function ShowTip() {
-                                                                        var a = "<p class='ptip' style='font-size:14px;'><span>请在打开的新窗口中进行支付!<br/>付款未完成前请不要关闭该窗口。<br/><br/>如无弹窗，可能被浏览器拦截，请允许弹窗。<br/><br/><a href='/d-20662603.html' class='pop_btn_long2'><span style='color:#de0f73'>已付款成功,刷新当前页</span></a><input type='button' value='刷新页面' onclick='location.reload();' class='btn_89_27'/></span></p>";
-                                                                        obj = art.dialog({
-                                                                            content: a,
-                                                                            title: "提示",
-                                                                            ok: false,
-                                                                            cancel: true,
-                                                                            cancelVal: "关闭",
-                                                                            skin: "blue",
-                                                                            lock: true,
-                                                                            background: "#666",
-                                                                            opacity: 0.6,
-                                                                            duration: 300,
-                                                                            fixed: true,
-                                                                            left: "50%",
-                                                                            top: "38.2%",
-                                                                            zIndex: 1987,
-                                                                            resize: true,
-                                                                            drag: true
-                                                                        })
-                                                                    };</script>
                                                                     <table class="table0">
                                                                         <tbody>
                                                                         <tr>
@@ -847,45 +679,29 @@
                                                                                     class="sel0" alt="支付宝支付"
                                                                                     id="zhifu005"
                                                                                     onclick="selectzhifu2(&#39;alipay&#39;)"
-                                                                                    height="35"> <img
-                                                                                    src="/static/pay/wx_pay.png"
-                                                                                    class="sel0" alt="微信扫码支付"
-                                                                                    id="zhifu004"
-                                                                                    onclick="selectzhifu2(&#39;weixin&#39;)"
-                                                                                    height="35"></td>
+                                                                                    height="35"><br><br>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                        <tr>
+                                                                            <td>
+                                                                                <a @click="download(documentation.sellingprice)" class="btn_118_40 fl " target="_blank" style="display: block"  hidefocus="true">直接下载</a>
+                                                                            </td>
+                                                                            <td>
+                                                                                <a href="https://www.wenku365.com/ucenter/finance/amount/recharge" class="btn_118_40 fl " target="_blank" style="display: block" hidefocus="true">充值后下载</a>
+                                                                            </td>
                                                                         </tr>
                                                                         </tbody>
                                                                     </table>
-                                                                    <br> <a
-                                                                        href="https://www.wenku365.com/ucenter/finance/amount/recharge"
-                                                                        class="btn_118_40 fl " target="_blank"
-                                                                        style="display: block" title="在线充值下载"
-                                                                        hidefocus="true">充值后下载</a></td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+
+
                             </div>
-                            <div class="download-description-box">
-                                <div class="mt30" style="margin-top: 10px; overflow: hidden; height: 40px;"><h3
-                                        class=" word-wrap">三年级数学混合脱式运算100题(精选)</h3>
-                                    <div>三年级数学混合运算练习100题27247;3215;7 3215;6247;9 25247;5215;8 81247;3215;8 458-23
-                                        63247;7215;8 24-810 28247;4215;7 3524-12 48247;8215;9 40247;8215;21 84247;4247;7
-                                        69047215;5 205-35247;7 28120215;8 97-12215;6 2
-                                    </div>
-                                </div>
-                                <div id="show-more-div" style="display:flex;justify-content: center;"><a
-                                        id="show-more-a"
-                                        onclick="showContentDetail()"
-                                        style="cursor: pointer;color: #fff;border: 0;border-radius: 2px;display: inline-block; background-color: white; padding: 5px 35px; font-family: sans-serif; text-decoration: none;margin-top: 10px">
-                                    <span id="show-more-span" style="width:100px; color: black">阅读更多</span> </a></div>
-                            </div>
+
+
+                            <!--说明-->
                             <div class="download-pwd-box">
                                 <table width="100%">
                                     <tbody>
@@ -898,21 +714,6 @@
                                             5、文档的总页数、文档格式和文档大小以系统显示为准(不同办公软件显示的页数偶尔有区别)，网站客服只以系统显示的页数、文件格式、文档大小作为仲裁依据；<br>
                                             6、如果您还有什么不清楚的，可以点击右侧栏的客服对话；
                                         </td>
-                                        <td style="line-height: 30px; width:280px; border-left:dashed 1px #ddd; padding-left:20px;"
-                                            valign="top">
-                                            <div><b style="font-size: 16px">下载须知 | 常见问题汇总</b></div>
-                                            <div style="line-height: 30px;"><a
-                                                    href="https://www.wenku365.com/i-105.html"
-                                                    title="关于手机版文档无法下载解决方法"
-                                                    style=" color:#444; font-size:14px; text-decoration:underline; display:block; line-height:20px; padding:5px 0px;">
-                                                1、关于手机版文档无法下载解决方法</a> <a href="https://www.wenku365.com/i-104.html"
-                                                                         title="下载文档相关问题汇总"
-                                                                         style=" color:#444; font-size:14px; text-decoration:underline; display:block; line-height:20px; padding:5px 0px;">
-                                                2、下载文档相关问题汇总</a> <a href="https://www.wenku365.com/i-103.html"
-                                                                    title="微信支付显示空白页无法支付？"
-                                                                    style=" color:#444; font-size:14px; text-decoration:underline; display:block; line-height:20px; padding:5px 0px;">
-                                                3、微信支付显示空白页无法支付？</a></div>
-                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -920,103 +721,69 @@
                             <br></div>
                     </div>
                 </div>
-                <dl class="download-notice clearfix "
-                    style="background-color: #F8F8FF; border: solid 1px #ddd; margin-top: 5px;">
+                <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+                <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+                <script>
+                    new Vue({
+                        el:"#hui",
+                        data:{
+                            documentation:{},
+                            did:""
+                        },
+                        created: function () {
+                            this.did = window.sessionStorage.getItem("did");
+                            this.findbydid();
+                        },
+                        methods: {
+                            "findbydid":function () {
+                                var _this = this;
+                                var url = "/documentation/bydid?did="+this.did;
+                                axios.get(url).then(function (value) {
+                                    _this.documentation = value.data;
+                                }).catch(function (reason) {
+                                    console.log(reason)
+                                })
+                            },
+                            "bydocument":function (did) {
+                                window.sessionStorage.setItem("did",did);
+                                location.href = "/Home/read";
+                            },
+                            "download":function (sellingprice) {
+                               var money = $("[name=money]").text();
+                               var customerid = $("[name=customerid]").val();
+                               console.log(this.did);
+                               if (sellingprice>money){
+                                   layer.alert("积分不足!   请充值！！");
+                                   return;
+                               }
+                                var url = "/documentation/download?did="+this.did;
+                                axios.get(url).then(function (value) {
+                                    console.log(value)
+                                }).catch(function (reason) {
+                                    console.log(reason)
+                                })
+                            }
+                        }
+                    })
+                </script>
+                <!--注意事项-->
+                <dl class="download-notice clearfix " style="background-color: #F8F8FF; border: solid 1px #ddd; margin-top: 5px;">
                     <dt class="left download-notice-title" style="float: left; min-height:80px;"><span
                             class="inline-block vertical-middle mr5 mb5 download-notice-ico ico"></span>注意事项
                     </dt>
-                    <dd class="download-notice-detail"><p>
+                    <dd class="download-notice-detail">
+                        <p>
                         本文（三年级数学混合脱式运算100题(精选)）为本站会员（墨香宝书阁）主动上传，收益归上传者所有，天天文库仅提供信息存储空间，仅对用户上传内容的表现方式做保护处理，对上载内容本身不做任何修改或编辑。
-                        若此文所含内容侵犯了您的版权或隐私，请立即通知天天文库（发送邮件至1290478887@qq.com或直接QQ联系客服），我们立即给予删除！ </p>
-                        <p><b>温馨提示：如果因为网速或其他原因下载失败请重新下载，重复下载不扣分。</b></p></dd>
+                        若此文所含内容侵犯了您的版权或隐私，请立即通知随心文库（发送邮件至2392140804@qq.com或直接QQ联系客服），我们立即给予删除！ </p>
+                    </dd>
                 </dl>
             </div>
-            <script type="text/javascript">var obj;
-
-            function CloseMe() {
-                obj.close()
-            }
-
-            function RefreshMe() {
-                CloseMe();
-                window.location.href = "/d-20662603.html"
-            };</script>
-            <script type="text/javascript">function download_Dialog() {
-                var a = '<div style="padding:20px 20px; font-size:14px; width:300px;color:#ff1c00;">正在下载，请稍后...</div>';
-                obj = art.dialog({
-                    title: "<span>下载提示</span>",
-                    content: a,
-                    width: "458",
-                    height: "417",
-                    skin: "blue",
-                    lock: true,
-                    padding: "0px 0px",
-                    background: "#666",
-                    opacity: 0.6,
-                    duration: 300,
-                    fixed: true,
-                    left: "50%",
-                    top: "38.2%",
-                    zIndex: 1987,
-                    resize: true,
-                    drag: true,
-                    cancelValue: "我知道了，关闭",
-                    cancel: true,
-                    time: 2000
-                })
-            };</script>
-            <br><br><br> <span id="LabelScript"></span></div>
+            <br><br><br> <span id="LabelScript"></span>
+        </div>
     </form>
-    <script src="/static/pay/jquery.form.min.js"></script>
-    <script>function openwindow(b, a, c, d) {
-        window.location = b
-    }
 
-    $("#checkout").on("submit", function () {
-        var b = "";
-        if (document.getElementById("Content_hiddenType") != null) {
-            b = document.getElementById("Content_hiddenType").value
-        }
-        var a = "amount";
-        if (b == "cz_apliy") {
-            a = "alipay"
-        }
-        if (b == "cz_weixin") {
-            a = "wechat"
-        }
-        if (b == "cz_amount") {
-            a = "amount"
-        }
-        $(this).ajaxSubmit({
-            type: "post", url: "/order/book/genorder?pid=20662603&paytype=" + a, success: function (c) {
-                if (c.state == "ok") {
-                    if (c.gotoUrl != null) {
-                        openwindow(c.gotoUrl, "支付并下载", 1000, 900)
-                    } else {
-                        openwindow("/order/book/payorder/" + c.orderId + "?paytype=" + c.paytype + "&pid=20662603", "支付并下载", 1000, 900)
-                    }
-                } else {
-                    alert(c.message)
-                }
-            }, error: function () {
-                alert("系统错误，请稍后重试。")
-            }
-        });
-        return false
-    });
-    var isShowDetail = false;
 
-    function showContentDetail() {
-        if (!isShowDetail) {
-            $(".mt30").height("auto");
-            isShowDetail = true;
-            $("#show-more-span").text("收起")
-        } else {
-            $(".mt30").height("40px");
-            isShowDetail = false;
-            $("#show-more-span").text("阅读更多")
-        }
-    };</script>
+    <!--底部黑色部分内容-->
     <div class="bg_100 foot_nav_bg" style=" min-width:1200px;">
         <div class="foot_nav"><a href="https://www.wenku365.com/h-33.html" target="_blank" rel="nofollow">关于我们</a> - <a
                 href="https://www.wenku365.com/h-34.html" target="_blank" rel="nofollow">网站声明</a> - <a
@@ -1031,105 +798,26 @@
                 title="点击这里,给天天文库发消息,QQ:1290478887"></a>
             - <a href="https://www.wenku365.com/h-38.html" target="_blank" rel="nofollow">联系我们</a></div>
     </div>
+    <!--底部内容-->
     <div class="bg_100 siteInner_bg" style=" min-width:1200px;">
         <div class="siteInner"><p style="text-align: center; line-height: 1.75em; margin-bottom: 5px;"><span
                 style="font-size: 14px;"><span
-                style="text-align: center; color: rgb(102, 102, 102); line-height: 20px; font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 14px;">本站为“文档C2C交易模式”，即用户上传的文档直接卖给(下载)用户，本站只是中间服务平台，本站所有文档下载所得的收益归上传人(含作者)所有【成交的100%(原创)】。本站是网络服务平台方，若您的权利被侵害，侵权客服QQ：1290478887 欢迎举报。</span></span><span
+                style="text-align: center; color: rgb(102, 102, 102); line-height: 20px;  font-size: 14px;">本站为“文档C2C交易模式”，即用户上传的文档直接卖给(下载)用户，本站只是中间服务平台，本站所有文档下载所得的收益归上传人(含作者)所有【成交的100%(原创)】。本站是网络服务平台方，若您的权利被侵害，侵权客服QQ：1290478887 欢迎举报。</span></span><span
                 style="font-size: 14px;"><span
-                style="text-align: center; color: rgb(102, 102, 102); line-height: 20px; font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 14px;"></span></span><br>
+                style="text-align: center; color: rgb(102, 102, 102); line-height: 20px; font-size: 14px;"></span></span><br>
         </p>
             <p style="text-align: center; line-height: 1.75em;"><span style="font-size: 14px;"><span
-                    style="text-align: center; color: rgb(102, 102, 102); line-height: 20px; font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 14px;">1290478887@qq.com 2017-2027 https://www.wenku365.com 网站版权所有</span></span>
+                    style="text-align: center; color: rgb(102, 102, 102); line-height: 20px; font-size: 14px;">2392140804@qq.com 2017-2027 https://www.wenku365.com 网站版权所有</span></span>
             </p>
             <p style="text-align: center; line-height: 1.75em;"><span style="font-size: 14px;"><span
-                    style="text-align: center; color: rgb(102, 102, 102); line-height: 20px; font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 14px;"><a
+                    style="text-align: center; color: rgb(102, 102, 102); line-height: 20px; font-size: 14px;"><a
                     rel="nofollow" href="http://www.beian.miit.gov.cn/">粤ICP备19057495号</a>&nbsp;</span></span></p>
             <table>
                 <tbody>
                 <tr class="firstRow"></tr>
                 </tbody>
             </table>
-            <script>var _hmt = _hmt || [];
-            (function () {
-                var b = document.createElement("script");
-                b.src = "https://hm.baidu.com/hm.js?37da034ad2dfcecdf30d6732d531372a";
-                var a = document.getElementsByTagName("script")[0];
-                a.parentNode.insertBefore(b, a)
-            })();</script>
-            <script>(function () {
-                var c = document.createElement("script");
-                var b = window.location.protocol.split(":")[0];
-                if (b === "https") {
-                    c.src = "https://zz.bdstatic.com/linksubmit/push.js"
-                } else {
-                    c.src = "http://push.zhanzhang.baidu.com/push.js"
-                }
-                var a = document.getElementsByTagName("script")[0];
-                a.parentNode.insertBefore(c, a)
-            })();</script>
-            <script>(function () {
-                var a = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
-                document.write('<script src="' + a + '" id="sozz"><\/script>')
-            })();</script>
-            <script src="/static/pay/11.0.1.js" id="sozz"></script>
-            <script charset="utf-8" src="/static/pay/ab77b6ea7f3fbf79.js"></script>
         </div>
-    </div>
-    <script type="text/javascript">var fileType = "-1";
-    initFileType();</script>
-    <div class="QQ_S" style="height: 172px;position:fixed;right: 0px;bottom: 20px; top:auto;">
-        <div class="Q_top" onclick="HideFoot()"><span class="signi"></span>收起</div>
-        <div class="Q_botm">
-            <div class="Q_pic">
-                <div class="Q_pic_hide"><a
-                        href="https://wpa.qq.com/msgrd?v=3&amp;uin=1290478887&amp;site=qq&amp;menu=yes"
-                        target="_blank" title="在线客服" rel="nofollow"><span
-                        class="hide_pic"></span>在线客服</a></div>
-            </div>
-            <div class="Q_anser">
-                <div class="Q_anser_hide"><a target="_blank"
-                                             href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&amp;email=1290478887@qq.com"
-                                             title="意见反馈"> <span class="hide_pic1"></span>意见反馈 </a></div>
-            </div>
-            <div class="Q_sign">
-                <div class="Q_sign_hide" onclick="backToTop();"><a href="javascript:void(0)" title="返回顶部"><span
-                        class="hide_pic2"></span>返回顶部 </a></div>
-            </div>
-        </div>
-    </div>
-    <div class="QQ_S1">
-        <div class="Q_top1" onclick="ShowFoot()"><span class="signj"></span>展开</div>
-        <div class="Q_botm1">
-            <div class="Q_pic1">
-                <div class="Q_pic1_hide"><a
-                        href="https://wpa.qq.com/msgrd?v=3&amp;uin=1290478887&amp;site=qq&amp;menu=yes"
-                        rel="nofollow"> <span class="hide_pic3"></span>QQ交谈</a></div>
-            </div>
-            <div class="Q_sign1">
-                <div class="Q_sign1_hide" onclick="backToTop();"><a href="javascript:void(0)">返回顶部</a></div>
-            </div>
-        </div>
-    </div>
-    <script type="text/javascript" src="/static/pay/lanrenzhijia.js"></script>
-    <script type="text/javascript" charset="utf-8">$("img").lazyload({
-        placeholder: "https://static.wenku365.com/images/loading_d1.gif",
-        effect: "fadeIn",
-        threshold: 180
-    });</script>
-    <div id="cd-nav" class="is-fixed"><a href="https://www.wenku365.com/d-20662603.html#0"
-                                         class="cd-nav-trigger">bookList<span></span></a>
-        <nav id="cd-main-nav">
-            <ul id="cd-nav-ul">
-                <div style="border-bottom:1px solid rgba(0, 162, 202, 0.4); font-size: 16px;width:100%;line-height: 20px;padding: 14px;">
-                    <span style="color: #0a0a0a">最近预览</span></div>
-                <li><a href="https://www.wenku365.com/p-20662603.html"
-                       style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;"> 三年级数学混合脱式运算100题(精选) </a>
-                </li>
-                <li><a href="https://www.wenku365.com/p-19333643.html"
-                       style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">
-                    加强对制度执行情况的监督检查,对已经,制度,严格落实,不流于形式 </a></li>
-            </ul>
-        </nav>
     </div>
 </div>
 </body>

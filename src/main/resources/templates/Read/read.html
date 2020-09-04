@@ -6,15 +6,40 @@
 </head>
 <body>
     <span hidden th:text="${documentation}" name="hui"></span>
-    <div id="read" style="text-align: center">
+    <div id="read" style="text-align: center;margin: 0 auto">
         <div th:each="img : ${#numbers.sequence(1,documentation.getPreviewpage())}"  >
-            <img th:src="${documentation.getImgsname()}+'/'+${img}+${'.png'}" style="width: 700px;height: 800px">
-            <span th:text="${img}+'/'+${documentation.getPages()}"></span>
+            <img th:src="${documentation.getImgsname()}+'/'+${img}+${'.png'}" style="width: 700px;height: 800px; border: solid 1px #ccc; box-shadow: 0 1px 5px #ccc;">
+            <p><span th:text="${img}+'/'+${documentation.getPages()}"></span></p>
+        </div>
+        <div  style="width: 700px;height: 150px;border: solid 1px #ccc; box-shadow: 0 1px 5px #ccc; margin: 0 auto">
+               <div th:if="${documentation.getAllowdownload() == 1}">
+                   <p style="text-align: center; font-size: 18px;">
+                       <span id="ftip">可预览资源已结束，全部内容请下载后查看！</span>
+                   </p>
+                   <p style="text-align: center; font-size: 14px;"><b></b><span><b style="color: #ff0000" th:text="${documentation.getSellingprice()}"></b> 积分</span></p>
+                   <p style="text-align: center; font-size: 14px;">
+                       <input type="hidden" name="did" th:value="${documentation.getDid()}">
+                       <a id="online_preview" class="ui-bz-btn-senior banner-download" @click="hui()" style="background-color: #4095CE;color: #fff; padding: 5px 35px; text-decoration: none">
+                           下载文档
+                       </a>
+
+                   </p>
+               </div>
+               <div th:if="${documentation.getAllowdownload() == 0}">
+                   <br>
+                   <br>
+                   <p style="text-align: center; font-size: 18px;">
+                       <span style="color: #ff0000">可预览资源已结束，该文档不支持下载！请多担待！</span>
+                   </p>
+               </div>
         </div>
     </div>
+
     <script src="/static/vue/vue.js"></script>
     <script src="/static/vue/axios.min.js"></script>
     <script src="/static/vue/jquery-3.1.1.js"></script>
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
     <script>
         new Vue({
             el:"#read",
@@ -27,7 +52,13 @@
                 console.log(this.documentation)
             },
             methods: {
-
+                "hui":function () {
+                    var did = $("[name=did]").val();
+                    window.sessionStorage.setItem("did",did);
+                    var index = parent.layer.getFrameIndex(window.name);
+                    parent.layer.close(index);
+                    parent.location = "/Home/payInfo";
+                }
             }
         });
     </script>
