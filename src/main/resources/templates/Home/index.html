@@ -514,9 +514,9 @@
                 <li v-for="a in especially">
                     <a @click="bydocument(a.did)">
                         <img :src="a.filepath">
-                        <span class="p">1</span>
+                        <span class="p">{{a.pages}}</span>
                     </a>
-                    <a @click="" class="text">{{a.title}}</a>
+                    <a @click="bydocument(a.did)" class="text">{{a.title}}.{{a.documentformat}}</a>
                 </li>
             </div>
         </div>
@@ -535,7 +535,6 @@
                         var _this = this;
                         axios.post("/documentation/documentationespecially").then(function (value) {
                             _this.especially = value.data;
-                            console.log(_this.especially);
                         }).catch(function (reason) {
                             console.log(reason)
                         })
@@ -557,8 +556,10 @@
                 <span class="more"><a href="https://www.wenku365.com/group.html">更多&gt;&gt;</a></span>
             </div>
             <div class="rmz_view">
-                <dt><a href="/g-16.html" title="国际大酒店空调工程设计 暖通空调毕业设计全套含图纸">
-                    <img data-original="" width="217" height="150"></a>
+                <dt>
+                    <a href="/g-16.html" title="国际大酒店空调工程设计 暖通空调毕业设计全套含图纸">
+                    <img data-original="" width="217" height="150">
+                </a>
                 </dt>
                 <dd><a href="/g-15.html" title="公文写作范文">公文写作范文</a>
                 </dd>
@@ -566,20 +567,49 @@
         </div>
         <div class="center_line"></div>
         <!--最新上传资源-->
-        <div class="home_zx">
+        <div class="home_zx" id="lat">
             <div class="zx_title">
                 <a class="flou1"></a>
                 <h1><a href="order.html" title="最新在线资源"><font color="#ff6333">最新</font>上传资源</a></h1>
                 <div class="zx_r more"><a href="order.html" title="最新在线资源">更多&gt;&gt;</a></div>
             </div>
             <div class="zx_view">
-                <li><a href="/s-57398630.html">
-                    <img alt="实操演练方案.pdf"
-                         src="/static/js/pic1.gif"><span
-                        class="pdf"></span></a>
-                    <a title="实操演练方案.pdf" href="/s-57398630.html" class="text">实操演练方案.pdf</a></li>
+                <li v-for="b in latest">
+                    <a @click="latdocument(b.did)">
+                        <img :src="b.filepath">
+                        <span :class="b.documentformat"></span>
+                    </a>
+                    <a @click="latdocument(b.did)" class="text">{{b.title}}.{{b.documentformat}}</a>
+                </li>
             </div>
         </div>
+        <script>
+            new Vue({
+                el:"#lat",
+                data: {
+                    latest: {},
+                    src:null
+                },
+                created: function () {
+                    this.findlatDocument()
+                },
+                methods: {
+                    "findlatDocument":function () {
+                        var _this = this;
+                        axios.post("/documentation/documentationlatest").then(function (value) {
+                            _this.latest = value.data;
+                        }).catch(function (reason) {
+                            console.log(reason)
+                        })
+                    },
+                    "latdocument":function (did) {
+                        window.sessionStorage.setItem("did",did);
+                        location.href = "/Home/read";
+                    }
+                }
+            })
+        </script>
+
         <div class="center_line"></div>
         <div class="blank17"></div>
         <!--最新精品推荐-->
@@ -648,20 +678,49 @@
         <div class="blank17"></div>
 
         <!--今日更新ppt-->
-        <div class="home_jp">
+        <div class="home_jp" id="ppt">
             <div class="jp_title">
                 <a class="flou3"></a>
                 <h1 class="sd02" id="s02"><font color="#ff6333">今日</font><font color="#595959">更新PPT</font></h1>
                 <h4></h4>
             </div>
             <div class="jp_view " id="x02">
-                <li><a href="/s-57398530.html">
-                    <img alt="旅游投资分析.ppt"
-                         src="/static/js/pic1.gif"></a>
-                    <a title="旅游投资分析.ppt" href="/s-57398530.html" class="text">旅游投资分析.ppt</a>
+                <li v-for="p in ppts">
+                    <a @click="pptdocument(p.did)">
+                        <img :src="p.filepath">
+                    </a>
+                    <a @click="pptdocument(p.did)" class="text">{{p.title}}.{{p.documentformat}}</a>
                 </li>
             </div>
         </div>
+        <script>
+            new Vue({
+                el:"#ppt",
+                data: {
+                    ppts: {},
+                    src:null
+                },
+                created: function () {
+                    this.findpptDocument()
+                },
+                methods: {
+                    "findpptDocument":function () {
+                        var _this = this;
+                        axios.post("/documentation/documentationppt").then(function (value) {
+                            _this.ppts = value.data;
+                        }).catch(function (reason) {
+                            console.log(reason)
+                        })
+                    },
+                    "pptdocument":function (did) {
+                        window.sessionStorage.setItem("did",did);
+                        location.href = "/Home/read";
+                    }
+                }
+            })
+        </script>
+
+
         <div class="center_line"></div>
         <div class="blank17"></div>
         <!--样式-->
@@ -695,48 +754,64 @@
                 font-weight: 500
             }
         </style>
+
+
+
+
         <!--牛人榜-->
         <div class="home_lr">
-            <div class="lr_title">
-                <a class="flou4"></a>
-                <h1><font color="#ff6333">牛</font>人榜</h1>
-                <div class="lr_r more"><a href="UserCenter.html" rel="nofollow">更多&gt;&gt;</a></div>
-            </div>
-            <div class="zr_view" style="height: 480px">
-                <ul>
-
-                    <li>
-                        <a href="/u-5649.html" rel="nofollow">
-                            <img title="bb21547" alt="bb21547"
-                                 src="/static/js/avatar_small.gif" style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-5649.html" rel="nofollow" style="font-size: 16px;">bb21547</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:此人太懒了,什么都没有留下
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                    <li>
-                        <a href="/u-5734.html" rel="nofollow">
-                            <img title="jinwen" alt="jinwen"
-                                 src="/static/js/avatar_small.gif"
-                                 style="display: inline;">
-                        </a>
-                        <p class="xm"><span class="name">
-<a href="/u-5734.html" rel="nofollow" style="font-size: 16px;">jinwen</a>
-</span></p>
-                        <div style="font-size: 12px;margin-left: 10px">
-                            简介:分享好文档！
-                        </div>
-                        <br>
-                        <p></p>
-                    </li>
-                </ul>
-            </div>
+        <div class="lr_title">
+            <a class="flou4"></a>
+            <h1><font color="#ff6333">牛</font>人榜</h1>
+            <div class="lr_r more"><a href="UserCenter.html" rel="nofollow">更多&gt;&gt;</a></div>
         </div>
+        <div class="zr_view" style="height: 480px" id="bull">
+            <ul>
+                <li v-for="hui in bulls">
+                    <a @click="customer(hui.customerid)" rel="nofollow">
+                        <img  :src="hui.customerpic" style="display: inline;">
+                    </a>
+                    <p class="xm">
+                        <span class="name">
+                            <a @click="customer(hui.customerid)">{{hui.customername}}</a>
+                        </span>
+                    </p>
+                    <div style="font-size: 12px;margin-left: 10px">
+                        简介:{{hui.customermeno}}
+                    </div>
+                    <br>
+                    <p></p>
+                </li>
+            </ul>
+        </div>
+        <script>
+            new Vue({
+                el:"#bull",
+                data: {
+                    bulls: {},
+                    src:null
+                },
+                created: function () {
+                    this.findbull()
+                },
+                methods: {
+                    "findbull":function () {
+                        var _this = this;
+                        axios.post("/documentation/findbull").then(function (value) {
+                            _this.bulls = value.data;
+                            console.log(_this.bulls);
+                        }).catch(function (reason) {
+                            console.log(reason)
+                        })
+                    },
+                    "customer":function (customerid) {
+                        console.log(customerid);
+                    }
+                }
+            })
+
+        </script>
+    </div>
     </div>
 
 
