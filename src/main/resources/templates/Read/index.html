@@ -341,7 +341,7 @@
                                 <input type="submit" class="sbtncss" value="" onclick=""></div>
                         </form>
                     </ul>
-                    <ul class="shop4">
+                    <ul class="shop4" v-show="documentation.allowdownload == 1">
                         <li class="btns"><span style="color: #666">下载费用：</span> <span style="color: #ff1100;"> <b
                                 style="font-size: 14px;">{{documentation.sellingprice}}</b>积分 </span> &nbsp; <input
                                 type="button"
@@ -387,16 +387,16 @@
                         </div>
 
                         <!--阅读文档 以及 下载文档-->
-                        <div id="outer_page_more"
-                             style="margin-bottom: 20px; background-color: #FFF; overflow: hidden;">
-                            <div class="inner_page_more" id="page_more"
-                                 style="width: 920px; overflow: hidden; border: solid 1px #ccc; box-shadow: 0 1px 5px #ccc; height: 200px; line-height: 30px;">
-                                <div id="html-reader-go-more" class="banner-wrap more-btn-banner"
-                                     style="padding-top: 40px; width: 920px; position: relative;">
-                                    <p style="text-align: center; font-size: 18px;"><span id="ftip">本资源提供点击预览，点击阅读文档即可进行预览,如果喜欢文档就下载吧，使用更方便哦！</span>
+                        <div id="outer_page_more" style="margin-bottom: 20px; background-color: #FFF; overflow: hidden;">
+                            <div class="inner_page_more" id="page_more" style="width: 920px; overflow: hidden; border: solid 1px #ccc; box-shadow: 0 1px 5px #ccc; height: 200px; line-height: 30px;">
+                                <div id="html-reader-go-more" class="banner-wrap more-btn-banner" style="padding-top: 40px; width: 920px; position: relative;">
+                                    <p style="text-align: center; font-size: 18px;"><span id="ftip">本资源提供点击预览，点击阅读文档即可进行预览,如果喜欢文档就下载吧，使用更方便哦！</span></p>
+                                    <p style="text-align: center; font-size: 14px;" v-show="documentation.allowdownload == 1">
+                                        <b></b>
+                                        <span>
+                                            <b style="color: #ff0000"> {{documentation.sellingprice}}</b> 积分
+                                        </span>
                                     </p>
-                                    <p style="text-align: center; font-size: 14px;"><b></b><span><b
-                                            style="color: #ff0000"> {{documentation.sellingprice}}</b> 积分</span></p>
                                     <p style="text-align: center; padding-top: 10px;"></p>
                                     <!--阅读和下载-->
                                     <table style="margin: 0px auto;">
@@ -411,11 +411,12 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="JavaScript:"
-                                                   class="ui-bz-btn-senior banner-download"
-                                                   style="padding: 5px 35px; font-size: 15px; text-decoration: none">
-                                                    <b style="color: #fff" @click="download()">下载文档</b>
-                                                </a>
+                                                <span v-show="documentation.allowdownload == 1">
+                                                    <a href="https://www.wenku365.com/d-19068135.html" class="ui-bz-btn-senior banner-download" style="padding: 5px 35px; font-size: 15px; text-decoration: none">
+                                                        <b style="color: #fff">下载文档</b>
+                                                    </a>
+                                                </span>
+
                                             </td>
                                         </tr>
                                         </tbody>
@@ -524,8 +525,7 @@
                 </div>
             </div>
             <div style="display: none" id="Div3">
-                <iframe src="/static/yue/bookRead.html" frameborder="0" style="width: 0px; height: 0px"
-                        rel="nofollow"></iframe>
+                <iframe src="/static/yue/bookRead.html" frameborder="0" style="width: 0px; height: 0px" rel="nofollow"></iframe>
             </div>
         </div>
     </div>
