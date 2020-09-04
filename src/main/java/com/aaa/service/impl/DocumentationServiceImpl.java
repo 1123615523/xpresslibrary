@@ -49,7 +49,7 @@ public class DocumentationServiceImpl implements DocumentationService {
             //获取文件后缀(格式)
             String extension = FilenameUtils.getExtension(filename);
             //获取文件大小
-            float size = file.getSize()/1000;
+            float size = file.getSize()/1024;
 //            float sizes = size;
             //文档路径
             String libraryFile = "F:/libraryFile";
@@ -127,7 +127,11 @@ public class DocumentationServiceImpl implements DocumentationService {
             hui.setEssentialcode(essentialcode);
             hui.setDetaisid(detaisid);
             hui.setIntroduction(introduction);
-            hui.setPreviewpage(previewpage);
+            if (previewpage > pages){
+                hui.setPreviewpage(pages);
+            }else {
+                hui.setPreviewpage(previewpage);
+            }
             hui.setPages(pages);
             hui.setAllowdownload(allowdownload);
             hui.setOriginal(original);
@@ -178,6 +182,23 @@ public class DocumentationServiceImpl implements DocumentationService {
     @Override
     public Documentation findbydid(Integer did) {
         return documentationDao.findbydid(did);
+    }
+
+    /**最近上传查询方法*/
+    @Override
+    public List<Documentation> documentationlatest() {
+        return documentationDao.documentationlatest();
+    }
+    /**根据ppt格式进行查询随机14条数据*/
+    @Override
+    public List<Documentation> documentationppt() {
+        return documentationDao.documentationppt();
+    }
+
+    /**根据用户个人上传的文档数量查询牛人榜*/
+    @Override
+    public List<Map<String, Object>> findbull() {
+        return documentationDao.findbull();
     }
 
     /**该方法文件转换为pdf的时候进行调用*/

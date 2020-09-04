@@ -25,4 +25,13 @@ public interface DocumentationService {
 
     /**根据文档id获取文档信息*/
     Documentation findbydid(Integer did);
+
+    /**最近上传查询方法*/
+    List<Documentation> documentationlatest();
+
+    /**根据ppt格式进行查询随机14条数据*/
+    List<Documentation> documentationppt();
+
+    /**根据用户个人上传的文档数量查询牛人榜*/
+    List<Map<String,Object>> findbull();
 }

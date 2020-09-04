@@ -13,6 +13,9 @@ public interface DocumentationDao {
     /**今日特别推荐查询方法*/
     List<Documentation> documentationespecially();
 
+    /**最近上传查询方法*/
+    List<Documentation> documentationlatest();
+
     /**根据文档id值进行查询文档详细信息*/
     Map<String,Object> bydid(Integer did);
 
@@ -21,4 +24,10 @@ public interface DocumentationDao {
 
     /**根据文档id获取文档信息*/
     Documentation findbydid(Integer did);
+
+    /**根据ppt格式进行查询随机14条数据*/
+    List<Documentation> documentationppt();
+
+    /**根据用户个人上传的文档数量查询牛人榜*/
+    List<Map<String,Object>> findbull();
 }
