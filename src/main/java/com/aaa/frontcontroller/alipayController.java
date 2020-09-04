@@ -103,6 +103,7 @@ public class alipayController {
             recharge.setRechargetype(2);
             Integer integer1 = rechargeService.addRecharge(recharge);
             if(integer1 > 0){
+                session.removeAttribute("money");
                 Customerinfo updLogin = customerService.updLogin(customerinfo.getCustomerid());
                 //刷新用户的session信息
                 session.removeAttribute("cus");
@@ -110,6 +111,7 @@ public class alipayController {
                 return "Person/blance";
             }
         }
+        session.removeAttribute("money");
         return "error";
     }
 
