@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head id="Head1">
     <meta charset="utf-8">
     <title>社区矫正人员思想汇报13篇 免费阅读可下载_天天文库</title>
@@ -230,28 +230,56 @@
             <li class=""><a href="https://www.wenku365.com/" target="_self">首页 </a></li>
             <li id="conAll0" class="an"><a href="https://www.wenku365.com/list.html" target="_self"> 文档分类</a>
                 <ul id="conAll2" style="display: none; z-index: 9999999;">
-                    <li>
+                    <div id="qwe">
+                    <li v-for="res in result">
                         <span>
-                            <a href="https://www.wenku365.com/c-00012.html" title="学术论文" target="_blank">学术论文</a>
+                            <a href="https://www.wenku365.com/c-00012.html" title="学术论文" target="_blank">{{res.name}}</a>
                         </span>
-                        <dl>
-                            <a href="https://www.wenku365.com/c-0001200007.html" target="_blank">毕业论文</a>
+                        <dl v-for="chid in res.resourcesdetails">
+                            <a href="https://www.wenku365.com/c-0001200007.html" target="_blank">{{chid.dname}}</a>
                         </dl>
                     </li>
+                    </div>
                 </ul>
             </li>
-            <li class=""><a href="https://www.wenku365.com/c-00012.html">学术论文</a></li>
-            <li class=""><a href="https://www.wenku365.com/c-00015.html">应用文档</a></li>
-            <li class=""><a href="https://www.wenku365.com/c-00017.html">行业资料</a></li>
-            <li class=""><a href="https://www.wenku365.com/c-00016.html">教育资源</a></li>
-            <li class=""><a href="https://www.wenku365.com/c-00018.html">其他资料</a></li>
+            <script src="/static/vue/vue.js"></script>
+            <script src="/static/vue/axios.min.js"></script>
+            <!--qwe挂载点vue实例-->
+            <script>
+                var v = new Vue({
+                    el: '#qwe',
+                    data: {
+                        result: []
+                    },
+                    created: function () {
+                        this.find();
+                    },
+                    methods: {
+                        "find": function () {
+                            var url = "/Resource/findResource";
+                            var that = this;
+                            axios.get(url).then(function (value) {
+                                that.result = value.data;
+                            }).catch(function (reason) {
+                                layer.alert("出错了");
+                            });
+                        }
+                    }
+                });
+            </script>
+            <li class=""><a href="/c-00012.html">学术论文</a></li>
+            <li class=""><a href="/c-00015.html">应用文档</a></li>
+            <li class=""><a href="/c-00017.html">行业资料</a></li>
+            <li class=""><a href="/c-00016.html">教育资源</a></li>
+            <li class=""><a href="/Home/help">互动求助</a></li>
         </ul>
         <div class="usershop">
             <ul>
                 <li class="shop1">
                     <form id="forms" enctype="multipart/form-data">
                         <div class="bigsearch">
-                            <input type="text" placeholder=" 在这里搜索..." class="stext" id="keyword" style="width: 150px; font-size: 14px;" value="">
+                            <input type="text" placeholder=" 在这里搜索..." class="stext" id="keyword"
+                                   style="width: 150px; font-size: 14px;" value="">
                             <input type="submit" class="sbtncss" value="" onclick="">
                         </div>
                     </form>
@@ -262,17 +290,18 @@
             </ul>
         </div>
         <div class="h-login-type">
-            <div style="float: left;" getloginedcontent="/user/header?style=1"><a target="_parent"
-                                                                                  style="color: #eb0064"
-                                                                                  href="https://www.wenku365.com/ucenter">（wdk1123615523）的个人中心</a>
-                | <a target="_parent"
-                     href="https://www.wenku365.com/ucenter/doLogout?csrf_token=a3fb10f105f147f089fa5195977251a8">安全退出</a>
+            <div style="float: left;" th:if="${session.cus!=null}">
+                <a style="color: #eb0064" href="/Home/userinfo">（<span
+                        th:text="${session.cus!=null?session.cus.customertel:''}"></span>）的个人中心</a>
+                | <a href="/Home/logout">安全退出</a>
+            </div>
+            <div style="float: left;" th:if="${session.cus==null}">
+                <a href="/Home/registered">[免费注册]</a>
+                | <a  href="/Home/login">[登录]</a>
             </div>
         </div>
     </div>
 </div>
-
-
 
 
 <div class="bg_100 main_bg clearfix" style="background-color: #ebeef2; padding-top: 25px;">
@@ -288,10 +317,10 @@
                             <tr>
                                 <td>
                                 </td>
-                                <td><input type="button" class="btn_sc" onclick="javascript:void(0);" value="收藏">&nbsp;
+                                <td><input type="button" class="btn_sc" value="收藏">&nbsp;
                                 </td>
                                 <td>
-                                    <input type="button" class="btn_sc2" onclick="" value="关注">&nbsp;
+                                    <input type="button" class="btn_sc2"  value="关注">&nbsp;
                                 </td>
                             </tr>
                             </tbody>
@@ -314,10 +343,11 @@
                     </ul>
                     <ul class="shop4">
                         <li class="btns"><span style="color: #666">下载费用：</span> <span style="color: #ff1100;"> <b
-                                style="font-size: 14px;">{{documentation.sellingprice}}</b>积分 </span> &nbsp; <input type="button"
-                                                                                           class="btndown1"
-                                                                                           onclick=""
-                                                                                           value="下载资源"></li>
+                                style="font-size: 14px;">{{documentation.sellingprice}}</b>积分 </span> &nbsp; <input
+                                type="button"
+                                class="btndown1"
+                                onclick=""
+                                value="下载资源"></li>
                     </ul>
                 </div>
             </div>
@@ -341,7 +371,8 @@
                         <div class="commonbox2" id="box1">
                             <div class="doctopic">
                                 <h1 :title="documentation.title">
-                                    <img style="margin-top: 2px" src="/static/yue/s.gif" class="doc"> {{documentation.title}}
+                                    <img style="margin-top: 2px" src="/static/yue/s.gif" class="doc">
+                                    {{documentation.title}}
                                 </h1>
                             </div>
                         </div>
@@ -356,11 +387,16 @@
                         </div>
 
                         <!--阅读文档 以及 下载文档-->
-                        <div id="outer_page_more" style="margin-bottom: 20px; background-color: #FFF; overflow: hidden;">
-                            <div class="inner_page_more" id="page_more" style="width: 920px; overflow: hidden; border: solid 1px #ccc; box-shadow: 0 1px 5px #ccc; height: 200px; line-height: 30px;">
-                                <div id="html-reader-go-more" class="banner-wrap more-btn-banner" style="padding-top: 40px; width: 920px; position: relative;">
-                                    <p style="text-align: center; font-size: 18px;"><span id="ftip">本资源提供点击预览，点击阅读文档即可进行预览,如果喜欢文档就下载吧，使用更方便哦！</span></p>
-                                    <p style="text-align: center; font-size: 14px;"><b></b><span><b style="color: #ff0000"> {{documentation.sellingprice}}</b> 积分</span></p>
+                        <div id="outer_page_more"
+                             style="margin-bottom: 20px; background-color: #FFF; overflow: hidden;">
+                            <div class="inner_page_more" id="page_more"
+                                 style="width: 920px; overflow: hidden; border: solid 1px #ccc; box-shadow: 0 1px 5px #ccc; height: 200px; line-height: 30px;">
+                                <div id="html-reader-go-more" class="banner-wrap more-btn-banner"
+                                     style="padding-top: 40px; width: 920px; position: relative;">
+                                    <p style="text-align: center; font-size: 18px;"><span id="ftip">本资源提供点击预览，点击阅读文档即可进行预览,如果喜欢文档就下载吧，使用更方便哦！</span>
+                                    </p>
+                                    <p style="text-align: center; font-size: 14px;"><b></b><span><b
+                                            style="color: #ff0000"> {{documentation.sellingprice}}</b> 积分</span></p>
                                     <p style="text-align: center; padding-top: 10px;"></p>
                                     <!--阅读和下载-->
                                     <table style="margin: 0px auto;">
@@ -368,14 +404,17 @@
                                         <tbody>
                                         <tr>
                                             <td>
-
-                                                <a id="online_preview" class="ui-bz-btn-senior banner-download" onclick="read()" style="background-color: #4095CE; padding: 5px 35px; font-size: 15px; text-decoration: none">
+                                                <a id="online_preview" class="ui-bz-btn-senior banner-download"
+                                                   onclick="read()"
+                                                   style="background-color: #4095CE; padding: 5px 35px; font-size: 15px; text-decoration: none">
                                                     <b style="color: #fff">阅读文档</b>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="https://www.wenku365.com/d-19068135.html" class="ui-bz-btn-senior banner-download" style="padding: 5px 35px; font-size: 15px; text-decoration: none">
-                                                    <b style="color: #fff">下载文档</b>
+                                                <a href="JavaScript:"
+                                                   class="ui-bz-btn-senior banner-download"
+                                                   style="padding: 5px 35px; font-size: 15px; text-decoration: none">
+                                                    <b style="color: #fff" @click="download()">下载文档</b>
                                                 </a>
                                             </td>
                                         </tr>
@@ -438,7 +477,7 @@
                                                 <dt class="author-avatar-box fl"><a class="author-avatar"
                                                                                     title="作者头像"
                                                                                     href="https://www.wenku365.com/u-5097.html">
-                                                    <img src="/static/yue/avatar_small.gif"> </a></dt>
+                                                    <img :src="documentation.customerpic"> </a></dt>
                                             </td>
                                             <td>
                                                 <div class="author-name fl w100 ellipsis"><a
@@ -471,6 +510,7 @@
                                      style="height: 314px; overflow: auto">
                                     <li v-for="customer in customerinfo">
                                         <h2>
+                                            <span></span>
                                             <a @click="cyh(customer.did)"
                                                :title="customer.filename">
                                                 <span style="display:block;width: 230px; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{customer.filename}}.{{customer.documentformat}}</span>
@@ -484,7 +524,8 @@
                 </div>
             </div>
             <div style="display: none" id="Div3">
-                <iframe src="/static/yue/bookRead.html" frameborder="0" style="width: 0px; height: 0px" rel="nofollow"></iframe>
+                <iframe src="/static/yue/bookRead.html" frameborder="0" style="width: 0px; height: 0px"
+                        rel="nofollow"></iframe>
             </div>
         </div>
     </div>
@@ -498,7 +539,8 @@
         <a href="https://www.wenku365.com/h-35.html" target="_blank" rel="nofollow"> 网站地图</a> -
         <a href="https://www.wenku365.com/sitemap.html" target="_blank" rel="nofollow"> 资源地图</a> -
         <a href="javascript:void(0)" target="_blank" rel="nofollow">友情链接</a> -
-        <a target="_blank" href="https://wpa.qq.com/msgrd?v=3&amp;uin=1290478887&amp;site=qq&amp;menu=yes" rel="nofollow"> 网站客服
+        <a target="_blank" href="https://wpa.qq.com/msgrd?v=3&amp;uin=1290478887&amp;site=qq&amp;menu=yes"
+           rel="nofollow"> 网站客服
             <img border="0" src="/static/yue/pa" alt="点击这里,给天天文库发消息,QQ:1290478887" title="点击这里,给天天文库发消息,QQ:1290478887"></a>-
         <a href="https://www.wenku365.com/h-38.html" target="_blank" rel="nofollow">联系我们</a>
     </div>
@@ -534,52 +576,60 @@
         <script>
             var _hmt = _hmt || [];
             (function () {
-            var b = document.createElement("script");
-            b.src = "https://hm.baidu.com/hm.js?37da034ad2dfcecdf30d6732d531372a";
-            var a = document.getElementsByTagName("script")[0];
-            a.parentNode.insertBefore(b, a)
-        })();
+                var b = document.createElement("script");
+                b.src = "https://hm.baidu.com/hm.js?37da034ad2dfcecdf30d6732d531372a";
+                var a = document.getElementsByTagName("script")[0];
+                a.parentNode.insertBefore(b, a)
+            })();
         </script>
         <script>
             (function () {
-            var c = document.createElement("script");
-            var b = window.location.protocol.split(":")[0];
-            if (b === "https") {
-                c.src = "https://zz.bdstatic.com/linksubmit/push.js"
-            } else {
-                c.src = "http://push.zhanzhang.baidu.com/push.js"
-            }
-            var a = document.getElementsByTagName("script")[0];
-            a.parentNode.insertBefore(c, a)
-        })();
+                var c = document.createElement("script");
+                var b = window.location.protocol.split(":")[0];
+                if (b === "https") {
+                    c.src = "https://zz.bdstatic.com/linksubmit/push.js"
+                } else {
+                    c.src = "http://push.zhanzhang.baidu.com/push.js"
+                }
+                var a = document.getElementsByTagName("script")[0];
+                a.parentNode.insertBefore(c, a)
+            })();
         </script>
         <script>
             (function () {
-            var a = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
-            document.write('<script src="' + a + '" id="sozz"><\/script>')
-        })();
+                var a = "https://jspassport.ssl.qhimg.com/11.0.1.js?d182b3f28525f2db83acfaaf6e696dba";
+                document.write('<script src="' + a + '" id="sozz"><\/script>')
+            })();
         </script>
     </div>
 </div>
+<span id="cus" th:text="${session.cus}" hidden=""></span>
 <script src="/static/vue/vue.js"></script>
 <script src="/static/vue/axios.min.js"></script>
 <script src="/static/vue/jquery-3.1.1.js"></script>
 <script>
-        new Vue({
-        el:"#b",
-        data:{
-            did:"",
-            documentation:{},
-            customerinfo:{}
+    new Vue({
+        el: "#b",
+        data: {
+            did: "",
+            documentation: {},
+            customerinfo: {}
         },
         created: function () {
             this.did = window.sessionStorage.getItem("did");
             this.bydid();
         },
         methods: {
-            "bydid":function () {
+            "download":function () {
+                var cus = $("#cus").html();
+                if(cus === ''){
+                    toastr.warning("请先登录！");
+                    return;
+                }
+            },
+            "bydid": function () {
                 var _this = this;
-                var url = "/documentation/bydid?did="+this.did;
+                var url = "/documentation/bydid?did=" + this.did;
                 axios.get(url).then(function (value) {
                     _this.documentation = value.data;
                     var id = _this.documentation.customerid;
@@ -588,17 +638,17 @@
                     console.log(reason)
                 })
             },
-            "hui":function (id) {
+            "hui": function (id) {
                 var _this = this;
-                var url = "/documentation/findbyid?authored="+id;
+                var url = "/documentation/findbyid?authored=" + id;
                 axios.get(url).then(function (value) {
                     _this.customerinfo = value.data;
                 }).catch(function (reason) {
                     console.log(reason)
                 })
             },
-            "cyh":function (did) {
-                window.sessionStorage.setItem("did",did);
+            "cyh": function (did) {
+                window.sessionStorage.setItem("did", did);
                 location.href = "/Home/read";
             }
         }
@@ -610,7 +660,7 @@
     function read() {
         var did = $("[name=did]").val();
         console.log(did);
-        xadmin.open("文档阅读","/Home/reads?did="+did,"750","800");
+        xadmin.open("文档阅读", "/Home/reads?did=" + did, "750", "800");
     }
 </script>
 <script>
@@ -618,7 +668,8 @@
         stopBodyScroll(true);
         $("body").css({position: "fixed", width: "100%"});
         var a = document.documentElement.clientHeight;
-        onlinePreview.showWin("840", a, "社区矫正人员思想汇报13篇", "https://view.wenku365.com/", "79b0d6a992be4cc810b1b467a726a699e23d83e42d04eeed9a908de865652fe2ee9a0a904b612bbcbbec0cb5227fd422", "6")};
+        onlinePreview.showWin("840", a, "社区矫正人员思想汇报13篇", "https://view.wenku365.com/", "79b0d6a992be4cc810b1b467a726a699e23d83e42d04eeed9a908de865652fe2ee9a0a904b612bbcbbec0cb5227fd422", "6")
+    };
 </script>
 </body>
 </html>
