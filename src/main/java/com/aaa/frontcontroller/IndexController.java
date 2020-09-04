@@ -18,6 +18,13 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IndexController {
 
+    //进入支付成功订单详情页面
+    @RequestMapping("OrderInfo")
+    public String OrderInfo(Model model){
+        //在这里携带你的订单参数
+        return "pay/order";
+    }
+
     //进入资源分类详情页面
     @RequestMapping("ResourceDetails")
     public String ResourceDetails(Integer did,Model model){

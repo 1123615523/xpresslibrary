@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>支付成功</title>
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="/static/order/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/order/font-awesome.min.css">
+    <link rel="stylesheet" href="/static/order/ionicons.min.css">
+    <link rel="stylesheet" href="/static/order/AdminLTE.min.css">
+    <!--[if lt IE 9]>
+    <script src="/static/html5shiv/html5shiv.min.js"></script>
+    <script src="/static/respond/respond.min.js"></script>
+    <![endif]-->
+    <style>
+
+        .login-page {
+            background-image: url("/static/commons/img/loginbg.png");
+            background-size: cover;
+        }
+
+        .form-group {
+            text-align: left;
+        }
+
+        .login-box {
+            margin: 2% auto;
+            width: 660px;
+            min-height: 600px;
+            padding: 0;
+        }
+
+        .login-box-body {
+            padding: 0;
+        }
+
+        .page-header {
+            margin: 50px 0 30px 0;
+            font-size: 16px;
+            color: #999;
+            text-align: left;
+        }
+
+        .pay-header {
+            background-color: #3c8dbc;
+            color: #fff;
+            height: 30px;
+            text-align: left;
+            line-height: 30px;
+            padding-left: 10px;
+        }
+
+        .pay-content {
+            margin-top: 10px;
+        }
+
+        .pay-content-title {
+            padding-top: 20px;
+            color: #000;
+            font-size: 20px;
+        }
+
+        .pay-content-money {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .pay-content-qrcode img {
+            margin: auto;
+            max-width: 100%;
+            padding: 0px 20px 20px 20px;
+        }
+
+        .pay-content-img img {
+            margin: auto;
+            max-width: 100%;
+            padding: 20px;
+        }
+
+    </style>
+    <style>
+        .pay-content-failmsg {
+            font-size: 14px;
+            color: #666;
+            line-height: 25px;
+        }
+    </style>
+</head>
+<body class="hold-transition login-page">
+<div class="row" id="app">
+    <div class="login-box text-center">
+        <div class="login-box-body">
+            <div class="pay-header" style="background-color: #00a65a">
+                支付成功
+            </div>
+            <div class="row pay-content">
+                <div class="col-lg-12 pay-content-info">
+                    <div class="pay-content-title" style="padding: 30px 0 0 0">
+                        <i class="fa fa-fw fa-check-circle" style="color: #00a65a;font-size: 65px"></i>
+                    </div>
+                    <div class="pay-content-title" style="padding: 10px 0 30px 0">
+                        支付成功
+                    </div>
+                    <div class="pay-content-failmsg">
+                        金额：0.00 元 <br>
+                        编号：3056fa80a44543218042f9ed106b498f <br>
+                    </div>
+                    <div style="padding: 60px">
+                        <a href="JavaScript:" class="btn btn-success btn-flat"> 查看我的订单 </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/static/vue/axios.min.js"></script>
+<script src="/static/vue/jquery-3.1.1.js"></script>
+<script src="/static/vue/vue.js"></script>
+<script>
+    var v = new Vue({
+        el:'#app',
+        data: {
+
+        },
+        created:function () {
+
+        },
+        methods:{
+
+        }
+    });
+</script>
+
+</body>
+</html>
