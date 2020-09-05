@@ -3,6 +3,7 @@ package com.aaa.frontcontroller;
 import com.aaa.entity.Customerinfo;
 import com.aaa.entity.Documentation;
 import com.aaa.service.DocumentationService;
+import com.aaa.utils.PageModel;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,18 @@ public class DocumentationController {
 
     @Resource
     DocumentationService documentationService;
+
+    @RequestMapping("findNewDocument")
+    public Object findNewDocument(Integer did){
+        return documentationService.findNewDocument(did);
+    }
+
+    @RequestMapping("findDocumentByResorce")
+    public Object findDocumentByResorce(PageModel<Documentation> pm){
+        pm = documentationService.findDocumentByResorce(pm);
+        return pm;
+    }
+
 
     @RequestMapping("upload")
     public String upload(@RequestParam("file") MultipartFile file, HttpSession session, String title, String essentialcode, Integer detaisid, String introduction, Integer previewpage, Integer allowdownload, Integer original, Integer sellingprice) throws IOException {
