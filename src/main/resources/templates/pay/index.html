@@ -652,7 +652,7 @@
                                 <li class="download-img-info-item">
                                     <span itemprop="mode">资源格式：&nbsp;
                                         <span class="font-tahoma">{{documentation.documentformat}}</span>
-                                    </span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;下载费用：
+                                    </span>&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;购买费用：
                                     <b class="font-tahoma red1">{{documentation.sellingprice}}</b>积分 【人民币
                                     <span style="color: #ff1100">{{documentation.sellingprice}}</span>元】
                                 </li>
@@ -685,10 +685,10 @@
 
                                                                         <tr>
                                                                             <td>
-                                                                                <a @click="download(documentation.sellingprice)" class="btn_118_40 fl " target="_blank" style="display: block"  hidefocus="true">直接下载</a>
+                                                                                <a @click="download(documentation.sellingprice)" class="btn_118_40 fl " target="_blank" style="display: block"  hidefocus="true">直接购买</a>
                                                                             </td>
                                                                             <td>
-                                                                                <a href="https://www.wenku365.com/ucenter/finance/amount/recharge" class="btn_118_40 fl " target="_blank" style="display: block" hidefocus="true">充值后下载</a>
+                                                                                <a href="https://www.wenku365.com/ucenter/finance/amount/recharge" class="btn_118_40 fl " target="_blank" style="display: block" hidefocus="true">充值后购买</a>
                                                                             </td>
                                                                         </tr>
                                                                         </tbody>
@@ -750,18 +750,11 @@
                             },
                             "download":function (sellingprice) {
                                var money = $("[name=money]").text();
-                               var customerid = $("[name=customerid]").val();
-                               console.log(this.did);
                                if (sellingprice>money){
                                    layer.alert("积分不足!   请充值！！");
                                    return;
                                }
-                                var url = "/documentation/download?did="+this.did;
-                                axios.get(url).then(function (value) {
-                                    console.log(value)
-                                }).catch(function (reason) {
-                                    console.log(reason)
-                                })
+                               location.href = "/order/documentbuy?did="+this.did;
                             }
                         }
                     })
