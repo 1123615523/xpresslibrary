@@ -14,13 +14,13 @@
         <div  style="width: 700px;height: 150px;border: solid 1px #ccc; box-shadow: 0 1px 5px #ccc; margin: 0 auto">
                <div th:if="${documentation.getAllowdownload() == 1}">
                    <p style="text-align: center; font-size: 18px;">
-                       <span id="ftip">可预览资源已结束，全部内容请下载后查看！</span>
+                       <span id="ftip">可预览资源已结束，全部内容请购买后查看！</span>
                    </p>
                    <p style="text-align: center; font-size: 14px;"><b></b><span><b style="color: #ff0000" th:text="${documentation.getSellingprice()}"></b> 积分</span></p>
                    <p style="text-align: center; font-size: 14px;">
                        <input type="hidden" name="did" th:value="${documentation.getDid()}">
                        <a id="online_preview" class="ui-bz-btn-senior banner-download" @click="hui()" style="background-color: #4095CE;color: #fff; padding: 5px 35px; text-decoration: none">
-                           下载文档
+                           购买文档
                        </a>
 
                    </p>
@@ -29,7 +29,7 @@
                    <br>
                    <br>
                    <p style="text-align: center; font-size: 18px;">
-                       <span style="color: #ff0000">可预览资源已结束，该文档不支持下载！请多担待！</span>
+                       <span style="color: #ff0000">可预览资源已结束，该文档不支持购买！请多担待！</span>
                    </p>
                </div>
         </div>
