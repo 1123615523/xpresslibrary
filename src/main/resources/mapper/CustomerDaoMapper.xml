@@ -5,8 +5,8 @@
 <mapper namespace="com.aaa.dao.CustomerDao">
 
     <insert id="add" useGeneratedKeys="true" keyProperty="customerid">
-        insert into customerinfo(customerid,customerpwd,customeremail,customertel,customerstate,customermoney,theauthor)
-        values(#{customerid},#{customerpwd},#{customeremail},#{customertel},#{customerstate},#{customermoney},0)
+        insert into customerinfo(customerid,customerpwd,customeremail,customertel,customerstate,customermoney,theauthor,customerfence)
+        values(#{customerid},#{customerpwd},#{customeremail},#{customertel},#{customerstate},#{customermoney},0,0)
     </insert>
 
     <update id="updCustomer">
