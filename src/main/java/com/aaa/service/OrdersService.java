@@ -6,5 +6,5 @@ public interface OrdersService {
 
 
     /**购买方法*/
-    public void documentbuy(Integer did, HttpSession session);
+    public Integer documentbuy(Integer did, HttpSession session);
 }

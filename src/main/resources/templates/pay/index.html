@@ -242,6 +242,7 @@
         height: 30px;
         line-height: 30px
     }
+
     .tuij {
         float: left;
         font-size: 14px;
@@ -619,15 +620,18 @@
                             </table>
                         </div>
                     </div>
-                    <div class="download-main-bd clearfix" style="background-color: #fff; border: solid 1px #ddd; padding: 30px 0px 0px 0px">
+                    <div class="download-main-bd clearfix"
+                         style="background-color: #fff; border: solid 1px #ddd; padding: 30px 0px 0px 0px">
                         <!--左侧阅读-->
-                        <div class="fl download-img-show" id="showMore" style=" width: 301px; height: 100%;position:relative;">
-                            <a @click="bydocument(documentation.did)" style=" position:relative;">
-                                <img :src="documentation.filepath"  :title="documentation.title">
+                        <div class="fl download-img-show" id="showMore"
+                             style=" width: 301px; height: 100%;position:relative;">
+                            <a href="JavaScript:" @click="bydocument(documentation.did)" style=" position:relative;">
+                                <img :src="documentation.filepath" :title="documentation.title">
                             </a>
                             <br>
                             <br>
-                            <a class="btn_gray" @click="bydocument(documentation.did)" style="display: block; text-decoration: none; color: #333; margin: 0px auto;">阅读文档</a>
+                            <a class="btn_gray" @click="bydocument(documentation.did)"
+                               style="display: block; text-decoration: none; color: #333; margin: 0px auto;">阅读文档</a>
                         </div>
                         <!--右侧数据-->
                         <div class="download-img-manage fl">
@@ -646,7 +650,8 @@
                                         <span class="font-tahoma">{{documentation.pages}}</span>
                                     </span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <span> 用户：
-                                        <a style="text-decoration:none;" title="作者" href="https://www.wenku365.com/u-3713.html"> {{documentation.customername}} </a>
+                                        <a style="text-decoration:none;" title="作者"
+                                           href="https://www.wenku365.com/u-3713.html"> {{documentation.customername}} </a>
                                     </span>
                                 </li>
                                 <li class="download-img-info-item">
@@ -662,40 +667,45 @@
                             <!--消费提醒-->
                             <div class="download-pwd-box" style="padding: 0px 0px;background-color:#fafcef;">
                                 <input type="hidden" value="" id="hiddenpaytype">
-                                            <div style="padding: 17px 5px 17px 20px; font-size: 14px;">
-                                                <div style="color: #00a2c9; font-size: 16px; padding-bottom: 10px;">消费提示</div>
-                                                <div class="download-pay-tip"> 您目前现金积分余额：
-                                                    <b name="money" class="font-tahoma red1" th:text="${session.cus.customermoney}" ></b> 积分
-                                                    <input type="hidden" th:value="${session.cus.customerid}" name="customerid">
-                                                    <div style="margin-top: 5px;"> &nbsp;&nbsp;
+                                <div style="padding: 17px 5px 17px 20px; font-size: 14px;">
+                                    <div style="color: #00a2c9; font-size: 16px; padding-bottom: 10px;">消费提示</div>
+                                    <div class="download-pay-tip"> 您目前现金积分余额：
+                                        <b name="money" class="font-tahoma red1"
+                                           th:text="${session.cus.customermoney}"></b> 积分
+                                        <input type="hidden" th:value="${session.cus.customerid}" name="customerid">
+                                        <div style="margin-top: 5px;"> &nbsp;&nbsp;
 
 
-                                                                    <table class="table0">
-                                                                        <tbody>
-                                                                        <tr>
-                                                                            <td valign="middle">快捷支付方式：</td>
-                                                                            <td><img
-                                                                                    src="/static/pay/alipay.gif"
-                                                                                    class="sel0" alt="支付宝支付"
-                                                                                    id="zhifu005"
-                                                                                    onclick="selectzhifu2(&#39;alipay&#39;)"
-                                                                                    height="35"><br><br>
-                                                                            </td>
-                                                                        </tr>
+                                            <table class="table0">
+                                                <tbody>
+                                                <tr>
+                                                    <td valign="middle">快捷支付方式：</td>
+                                                    <td><img
+                                                            src="/static/pay/alipay.gif"
+                                                            class="sel0" alt="支付宝支付"
+                                                            id="zhifu005"
+                                                            onclick="selectzhifu2(&#39;alipay&#39;)"
+                                                            height="35"><br><br>
+                                                    </td>
+                                                </tr>
 
-                                                                        <tr>
-                                                                            <td>
-                                                                                <a @click="download(documentation.sellingprice)" class="btn_118_40 fl " target="_blank" style="display: block"  hidefocus="true">直接购买</a>
-                                                                            </td>
-                                                                            <td>
-                                                                                <a href="https://www.wenku365.com/ucenter/finance/amount/recharge" class="btn_118_40 fl " target="_blank" style="display: block" hidefocus="true">充值后购买</a>
-                                                                            </td>
-                                                                        </tr>
-                                                                        </tbody>
-                                                                    </table>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                <tr>
+                                                    <td>
+                                                        <a @click="download(documentation.sellingprice)"
+                                                           class="btn_118_40 fl " target="_blank" style="display: block"
+                                                           hidefocus="true">直接购买</a>
+                                                    </td>
+                                                    <td>
+                                                        <a href="https://www.wenku365.com/ucenter/finance/amount/recharge"
+                                                           class="btn_118_40 fl " target="_blank" style="display: block"
+                                                           hidefocus="true">充值后购买</a>
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
 
 
                             </div>
@@ -721,53 +731,80 @@
                             <br></div>
                     </div>
                 </div>
+                <span id="pwd" th:text="${session.cus.customerpwd}" hidden></span>
+                <span id="customerid" th:text="${session.cus.customerid}" hidden></span>
                 <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
                 <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
                 <script>
                     new Vue({
-                        el:"#hui",
-                        data:{
-                            documentation:{},
-                            did:""
+                        el: "#hui",
+                        data: {
+                            documentation: {},
+                            did: ""
                         },
                         created: function () {
                             this.did = window.sessionStorage.getItem("did");
                             this.findbydid();
                         },
                         methods: {
-                            "findbydid":function () {
+                            "findbydid": function () {
                                 var _this = this;
-                                var url = "/documentation/bydid?did="+this.did;
+                                var url = "/documentation/bydid?did=" + this.did;
                                 axios.get(url).then(function (value) {
                                     _this.documentation = value.data;
                                 }).catch(function (reason) {
                                     console.log(reason)
                                 })
                             },
-                            "bydocument":function (did) {
-                                window.sessionStorage.setItem("did",did);
+                            "bydocument": function (did) {
+                                window.sessionStorage.setItem("did", did);
                                 location.href = "/Home/read";
                             },
-                            "download":function (sellingprice) {
-                               var money = $("[name=money]").text();
-                               if (sellingprice>money){
-                                   layer.alert("积分不足!   请充值！！");
-                                   return;
-                               }
-                               location.href = "/order/documentbuy?did="+this.did;
+                            "download": function (sellingprice) {
+                                var money = $("[name=money]").text();
+                                if (sellingprice > money) {
+                                    layer.alert("积分不足!   请充值！！");
+                                    return;
+                                }
+                                var that = this;
+                                layer.prompt({title: '输入密码，验证您的身份！', formType: 1}, function (pass, index) {
+                                    var url = "/order/documentbuy?did="+that.did;
+                                    var cid = $("#customerid").html();
+                                    if (pass == $("#pwd").html()) {
+                                        layer.close(index);
+                                        axios.get(url).then(function (resp) {
+                                            if(resp.data > 0){
+                                                layer.msg('购买成功！',{icon:1,time:1000},function(){
+                                                    var sess = "/customer/updLogin?id="+cid;
+                                                    axios.get(sess).then(function (resp) {
+                                                        if(resp.data > 0){
+                                                            location.href = "/Home/OrderInfo";
+                                                        }
+                                                    });
+                                                });
+                                            }else{
+                                                layer.alert("支付失败！");
+                                            }
+                                        })
+                                    } else {
+                                        layer.alert("验证失败！");
+                                        return;
+                                    }
+                                });
                             }
                         }
                     })
                 </script>
                 <!--注意事项-->
-                <dl class="download-notice clearfix " style="background-color: #F8F8FF; border: solid 1px #ddd; margin-top: 5px;">
+                <dl class="download-notice clearfix "
+                    style="background-color: #F8F8FF; border: solid 1px #ddd; margin-top: 5px;">
                     <dt class="left download-notice-title" style="float: left; min-height:80px;"><span
                             class="inline-block vertical-middle mr5 mb5 download-notice-ico ico"></span>注意事项
                     </dt>
                     <dd class="download-notice-detail">
                         <p>
-                        本文（三年级数学混合脱式运算100题(精选)）为本站会员（墨香宝书阁）主动上传，收益归上传者所有，天天文库仅提供信息存储空间，仅对用户上传内容的表现方式做保护处理，对上载内容本身不做任何修改或编辑。
-                        若此文所含内容侵犯了您的版权或隐私，请立即通知随心文库（发送邮件至2392140804@qq.com或直接QQ联系客服），我们立即给予删除！ </p>
+                            本文（三年级数学混合脱式运算100题(精选)）为本站会员（墨香宝书阁）主动上传，收益归上传者所有，天天文库仅提供信息存储空间，仅对用户上传内容的表现方式做保护处理，对上载内容本身不做任何修改或编辑。
+                            若此文所含内容侵犯了您的版权或隐私，请立即通知随心文库（发送邮件至2392140804@qq.com或直接QQ联系客服），我们立即给予删除！ </p>
                     </dd>
                 </dl>
             </div>

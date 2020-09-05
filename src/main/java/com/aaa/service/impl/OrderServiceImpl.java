@@ -36,7 +36,7 @@ public class OrderServiceImpl implements OrdersService {
      * 该方法中进行消费记录，赚取记录，订单生成等信息
      * */
     @Override
-    public void documentbuy(Integer did, HttpSession session) {
+    public Integer documentbuy(Integer did, HttpSession session) {
         //获取当前用户
         Customerinfo cus = (Customerinfo) session.getAttribute("cus");
         //获取当前用户id
@@ -57,7 +57,7 @@ public class OrderServiceImpl implements OrdersService {
         //当前用户减去文档钱
         Double money1 = customermoney - sellingprice;
         //修改当前用户金额-
-        customerDao.updMoney(customerid,money1);
+        Integer one = customerDao.updMoney(customerid, money1);
         //生成消费记录 消费时间 消费积分 消费类型 消费账号 消费id 项目类别 文档id
         Recharge recharge = new Recharge();
         recharge.setRechargetime(new Date());
@@ -67,11 +67,11 @@ public class OrderServiceImpl implements OrdersService {
         recharge.setCustomerid(customerid);
         recharge.setRechargetype(4);
         recharge.setDocumentid(did);
-        rechargeDao.recording(recharge);
+        Integer two = rechargeDao.recording(recharge);
         //作者获取文档钱
         Double money2 = producermoney + sellingprice;
         //修改作者金额+
-        customerDao.updMoney(producerid,money2);
+        Integer there = customerDao.updMoney(producerid, money2);
         //生成赚取记录  赚取时间 赚取积分 消费类型 赚取账号 赚取id 项目类别 文档id
         Recharge producer = new Recharge();
         producer.setRechargetime(new Date());
@@ -81,7 +81,7 @@ public class OrderServiceImpl implements OrdersService {
         producer.setCustomerid(producerid);
         producer.setRechargetype(7);
         producer.setDocumentid(did);
-        rechargeDao.recording(producer);
+        Integer four = rechargeDao.recording(producer);
         //生成订单：随机生成订单编号 当前日期 文档积分 消费者id 文档id
         //生成订单编号
         String hui = "1234567890";
@@ -91,12 +91,15 @@ public class OrderServiceImpl implements OrdersService {
             ordered+=hui.charAt(index);
         }
         Orders order = new Orders();
-        order.setOrdered(ordered);
+        order.setOrdered(hui);
         order.setOrdertime(new Date());
         order.setOrderintegral(sellingprice);
         order.setCustomerid(customerid);
         order.setDocumented(did);
-        orderDao.documentbuy(order);
-        System.out.println("完成");
+        Integer five = orderDao.documentbuy(order);
+        if(one > 0 && two > 0 && there > 0 && four > 0 && five > 0){
+            return 1;
+        }
+        return 0;
     }
 }
