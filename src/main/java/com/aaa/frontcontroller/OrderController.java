@@ -19,7 +19,6 @@ public class OrderController {
     @RequestMapping("documentbuy")
     @ResponseBody
     public Object documentbuy(Integer did, HttpSession session){
-        System.out.println("did："+did);
         return orderService.documentbuy(did, session);
     }
 }

@@ -84,14 +84,10 @@ public class OrderServiceImpl implements OrdersService {
         Integer four = rechargeDao.recording(producer);
         //生成订单：随机生成订单编号 当前日期 文档积分 消费者id 文档id
         //生成订单编号
-        String hui = "1234567890";
-        String ordered = "";
-        for(int i= 0;i<6;i++){
-            int index = (int)(Math.random()*hui.length());
-            ordered+=hui.charAt(index);
-        }
+        long time = new Date().getTime();
+        String orderId = String.valueOf(time);
         Orders order = new Orders();
-        order.setOrdered(hui);
+        order.setOrdered(orderId);
         order.setOrdertime(new Date());
         order.setOrderintegral(sellingprice);
         order.setCustomerid(customerid);
