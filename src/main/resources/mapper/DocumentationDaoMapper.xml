@@ -81,11 +81,21 @@
     <select id="documentationppt" resultType="com.aaa.entity.Documentation">
         select * from documentation where documentformat = "pptx" order by rand() limit 14
     </select>
+
     <select id="findbull" resultMap="bull">
         select c.customerid ,c.customername,c.customerpic,c.customermeno,count(*) uploads from documentation d
         left join customerinfo c on c.customerid = d.authored GROUP BY d.authored
         ORDER BY uploads DESC LIMIT 12
     </select>
+
+    <select id="findDocumentByDetaisid" resultType="com.aaa.entity.Documentation">
+        select * from documentation where detaisid = #{value}
+    </select>
+
+    <select id="findNewDocument" resultType="com.aaa.entity.Documentation">
+        select * from documentation where detaisid = #{value} ORDER BY did desc
+    </select>
+
 
     <select id="findbydidcid" resultMap="huiMap">
         select d.did,d.sellingprice,c.customerid,c.customermoney,c.customertel from documentation d left join customerinfo c on d.authored = c.customerid where d.did = #{did}

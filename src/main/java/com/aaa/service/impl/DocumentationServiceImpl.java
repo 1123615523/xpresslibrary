@@ -4,6 +4,9 @@ import com.aaa.dao.DocumentationDao;
 import com.aaa.entity.Customerinfo;
 import com.aaa.entity.Documentation;
 import com.aaa.service.DocumentationService;
+import com.aaa.utils.PageModel;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lowagie.text.pdf.PdfReader;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -28,8 +31,28 @@ public class DocumentationServiceImpl implements DocumentationService {
 
     @Resource
     DocumentationDao documentationDao;
+
     @Resource
     DocumentConverter documentConverter;
+
+    @Override
+    public List<Documentation> findNewDocument(Integer did) {
+        return documentationDao.findNewDocument(did);
+    }
+
+    @Override
+    public PageModel<Documentation> findDocumentByResorce(PageModel pm) {
+        PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
+        String detasid = pm.getKeyWord().toString();
+        List<Documentation> documentInfo = documentationDao.findDocumentByDetaisid(Integer.parseInt(detasid));
+        pm.setRows(documentInfo);
+        PageInfo<Documentation> pageInfo = new PageInfo<>(documentInfo);
+        int pages = pageInfo.getPages();
+        long total = pageInfo.getTotal();
+        pm.setTotal(total);
+        pm.setLastPage(pages);
+        return pm;
+    }
 
     @Override
     public Integer add(Documentation documentation) {

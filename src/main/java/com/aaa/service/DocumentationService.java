@@ -1,6 +1,7 @@
 package com.aaa.service;
 
 import com.aaa.entity.Documentation;
+import com.aaa.utils.PageModel;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -34,4 +35,10 @@ public interface DocumentationService {
 
     /**根据用户个人上传的文档数量查询牛人榜*/
     List<Map<String,Object>> findbull();
+
+    //分页查询资源下的详细信息
+    PageModel<Documentation> findDocumentByResorce(PageModel pm);
+
+    //查询最新更新的资源
+    List<Documentation> findNewDocument(Integer did);
 }
