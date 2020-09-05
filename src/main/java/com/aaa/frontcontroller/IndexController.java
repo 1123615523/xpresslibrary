@@ -167,9 +167,10 @@ public class IndexController {
     }
 
     @RequestMapping("reads")
-    public String reads(Integer did, Model model){
+    public String reads(Integer did,Integer cusid,Model model){
         Documentation findbydid = documentationService.findbydid(did);
         model.addAttribute("documentation",findbydid);
+        model.addAttribute("cusid",cusid);
         return "Read/read";
     }
 
