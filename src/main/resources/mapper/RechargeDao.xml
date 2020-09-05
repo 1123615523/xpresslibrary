@@ -40,6 +40,9 @@
         and rechargetype = 3
     </select>
 
-
+    <insert id="recording">
+        insert into recharge(id,rechargetime,rechargemoney,paytype,rechargeaccount,customerid,rechargetype,documentid)
+        value(null,#{rechargetime},#{rechargemoney},#{paytype},#{rechargeaccount},#{customerid},#{rechargetype},#{documentid})
+    </insert>
 
 </mapper>
