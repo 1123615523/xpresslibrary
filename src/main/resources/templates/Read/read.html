@@ -19,7 +19,7 @@
                    <p style="text-align: center; font-size: 14px;"><b></b><span><b style="color: #ff0000" th:text="${documentation.getSellingprice()}"></b> 积分</span></p>
                    <p style="text-align: center; font-size: 14px;">
                        <input type="hidden" name="did" th:value="${documentation.getDid()}">
-                       <a id="online_preview" class="ui-bz-btn-senior banner-download" @click="hui()" style="background-color: #4095CE;color: #fff; padding: 5px 35px; text-decoration: none">
+                       <a id="online_preview" href="JavaScript:" class="ui-bz-btn-senior banner-download" @click="hui()" style="background-color: #4095CE;color: #fff; padding: 5px 35px; text-decoration: none">
                            下载文档
                        </a>
 
@@ -34,7 +34,8 @@
                </div>
         </div>
     </div>
-
+    <span id="cus" th:text="${session.cus!=null?session.cus.customerid:''}" hidden></span>
+    <span id="cusid" th:text="${cusid}" hidden></span>
     <script src="/static/vue/vue.js"></script>
     <script src="/static/vue/axios.min.js"></script>
     <script src="/static/vue/jquery-3.1.1.js"></script>
@@ -53,6 +54,14 @@
             },
             methods: {
                 "hui":function () {
+                    if($("#cus").html() == ''){
+                        layer.alert("请先登录再下载！");
+                        return;
+                    }
+                    if($("#cus").html() == $("#cusid").html()){
+                        layer.alert("您不能购买自己的文档！");
+                        return;
+                    }
                     var did = $("[name=did]").val();
                     window.sessionStorage.setItem("did",did);
                     var index = parent.layer.getFrameIndex(window.name);
