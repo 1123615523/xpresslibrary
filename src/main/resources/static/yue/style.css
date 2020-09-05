@@ -291,7 +291,7 @@ a.s_btn:hover {
 }
 
 .ico {
-    background: url(../../images/ico_png24.png) no-repeat
+    background: url(/static/yue/ico_png24.png) no-repeat
 }
 
 .nipic-stat {

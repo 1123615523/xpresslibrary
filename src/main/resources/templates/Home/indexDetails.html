@@ -31,6 +31,9 @@
     <meta name="copyright" content="https://www.wenku365.com">
     <meta name="applicable-device" content="pc">
 
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+
     <!--[if lte IE 8]>
     <script src="https://static.wenku365.com/js/jquery1.9.0.min.js"></script>
     <![endif]-->
@@ -516,22 +519,22 @@
                                             <span class="right-arrow">&gt;</span>
                                         </dt>
                                         <dd>
-                                            <a href="/c-0001200007.html" rel="nofollow">
+                                            <a href="JavaScript:" rel="nofollow">
                                                 <nobr>毕业论文</nobr>
                                             </a>
-                                            <a href="/c-0001200024.html" rel="nofollow">
+                                            <a href="JavaScript:" rel="nofollow">
                                                 <nobr>毕业设计</nobr>
                                             </a>
-                                            <a href="/c-0001200015.html" rel="nofollow">
+                                            <a href="JavaScript:" rel="nofollow">
                                                 <nobr>临时分类</nobr>
                                             </a>
                                         </dd>
                                     </dl>
                                     <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
-                                        <dt><a href="/c-00012.html">学术论文</a></dt>
+                                        <dt><a href="JavaScript:">学术论文</a></dt>
                                         <dd>
                                     <span v-for="chid in res.resourcesdetails">
-                                        <a href="" rel="nofollow">
+                                        <a :href="ResurceInfo(chid.did)" rel="nofollow">
                                             <nobr>{{chid.dname}}</nobr>
                                         </a>
                                     </span>
@@ -553,6 +556,9 @@
                                     this.find();
                                 },
                                 methods: {
+                                    "ResurceInfo": function (did) {
+                                        return '/Home/ResourceDetails?did=' + did;
+                                    },
                                     "find": function () {
                                         var url = "/Resource/findResource";
                                         var that = this;
@@ -569,7 +575,7 @@
                 </div>
                 <div class="j_menu">
                     <li class="">
-                        <a href="https://www.wenku365.com" target="_self">
+                        <a href="/Home/index" target="_self">
                             首页</a></li>
                     <li class=""><a href="/c-00012.html">学术论文</a></li>
                     <li class=""><a href="/c-00015.html">应用文档</a></li>
@@ -602,30 +608,10 @@
                                 <div class="tb">
                                     <table width="100%">
                                         <tbody>
-                                        <tr>
+                                        <tr v-for="k in newInfo">
                                             <td>
-                                                <img class="doc" src="/static/details/s.gif"
-                                                     style="margin-top: 2px; margin-right: 2px;" alt="教研活动总结.doc">
-                                                <a href="https://www.wenku365.com/s-57933732.html" title="教研活动总结.doc"
-                                                >教研活动总结.doc</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img class="ppt" src="/static/details/s.gif"
-                                                     style="margin-top: 2px; margin-right: 2px;"
-                                                     alt="光学电流传感头内线性双折射.ppt">
-                                                <a href="https://www.wenku365.com/s-57933731.html"
-                                                   title="光学电流传感头内线性双折射.ppt"
-                                                >光学电流传感头内线性双折射.ppt</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <img class="ppt" src="/static/details/s.gif"
-                                                     style="margin-top: 2px; margin-right: 2px;" alt="光影魔术手课件.ppt">
-                                                <a href="https://www.wenku365.com/s-57933730.html" title="光影魔术手课件.ppt"
-                                                >光影魔术手课件.ppt</a>
+                                                <img :class="k.documentformat" src="/static/details/s.gif" style="margin-top: 2px; margin-right: 2px;" :alt="k.title">
+                                                <a href="JavaScript:" @click="bydocument(k.did)" :title="k.title">{{k.title}}.{{k.documentformat}}</a>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -639,7 +625,7 @@
                         <div class="camTitle">
                             <div class="camNavA" style="position: relative;">
                                 <h1><a class="selected">
-                                    毕业论文资源</a></h1>
+                                    {{resource.dname}}资源</a></h1>
                             </div>
 
                         </div>
@@ -649,146 +635,40 @@
                                 <dl class="fareas">
                                     <dt>资源分类：</dt>
                                     <dd>
-                                        <a href="JavaScript:" class="selected">学术论文</a>
+                                        <a href="JavaScript:" class="selected">{{resource.resourcesinfos.name}}</a>
                                     </dd>
                                 </dl>
 
                                 <dl class="fareas">
                                     <dt>二级分类：</dt>
                                     <dd>
-                                        <a href="https://www.wenku365.com/c-0001200007.html" class="selected">毕业论文</a>
+                                        <a href="https://www.wenku365.com/c-0001200007.html" class="selected">{{resource.dname}}</a>
                                     </dd>
                                 </dl>
                             </div>
 
                             <div class="zt_list_ls_f">
                                 <div class="view" style="margin-left:0px;">
-                                    <ul id="content" class="masonry" style="position: relative; height: 1240px;">
-                                        <li class="post masonry-brick"
-                                            style="position: absolute; top: 930px; left: 184px;">
+                                    <ul class="masonry" style="position: relative;">
+                                        <li class="post" v-for="res in document">
                                             <p class="img">
-                                                <a href="https://www.wenku365.com/s-57573711.html"
-                                                   title="的是简简单单2344rfdfsdf.doc">
-                                                    <img alt="/s-57573711.html" src="/static/details/pic1(16).gif"></a>
+                                                <a href="JavaScript:" @click="bydocument(res.did)" :title="res.title">
+                                                    <img alt="/s-57536461.html" :src="res.filepath"></a>
                                             </p>
                                             <p></p>
                                             <p class="txtx">
-                                                <a href="https://www.wenku365.com/s-57573711.html"
-                                                   title="的是简简单单2344rfdfsdf.doc">的是简简单单2344rfdfsdf.doc</a></p>
-                                            <p></p>
-                                            <p class="sm">时间:<span>2020-08-27</span> <a
-                                                    href="https://www.wenku365.com/d-57573711.html"></a>
-                                            </p>
-                                        </li>
-                                        <li class="post masonry-brick"
-                                            style="position: absolute; top: 930px; left: 368px;">
-                                            <p class="img">
-                                                <a href="https://www.wenku365.com/s-57755514.html"
-                                                   title="基于php的手机商城的设计与实现-开题报告.doc">
-                                                    <img alt="/s-57755514.html" src="/static/details/pic1(17).gif"></a>
+                                                <a href="JavaScript:" @click="bydocument(res.did)" :title="res.title">{{res.title}}.{{res.documentformat}}</a>
                                             </p>
                                             <p></p>
-                                            <p class="txtx">
-                                                <a href="https://www.wenku365.com/s-57755514.html"
-                                                   title="基于php的手机商城的设计与实现-开题报告.doc">基于php的手机商城的设计与实现-开题报告.doc</a></p>
-                                            <p>
-                                            </p>
-                                            <p class="sm">时间:<span>2020-09-02</span> <a
-                                                    href="https://www.wenku365.com/d-57755514.html"></a>
+                                            <p class="sm">
+                                                时间:<span>2020-08-27</span>
+                                                <a href="JavaScript:" @click="pay(res.did)"></a>
                                             </p>
                                         </li>
-                                        <li class="post masonry-brick"
-                                            style="position: absolute; top: 930px; left: 552px;">
-                                            <p class="img"><a href="https://www.wenku365.com/s-57755515.html"
 
-                                                              title="基于JSP的医药管理系统的设计与实现-开题报告.doc">
-                                                <img alt="/s-57755515.html"
-
-                                                     src="/static/details/pic1(18).gif"></a></p>
-                                            <p>
-                                            </p>
-                                            <p class="txtx">
-                                                <a href="https://www.wenku365.com/s-57755515.html"
-                                                   title="基于JSP的医药管理系统的设计与实现-开题报告.doc">基于JSP的医药管理系统的设计与实现-开题报告.doc</a>
-                                            </p>
-                                            <p>
-                                            </p>
-                                            <p class="sm">时间:<span>2020-09-02</span> <a
-                                                    href="https://www.wenku365.com/d-57755515.html"></a>
-                                            </p>
-                                        </li>
-                                        <li class="post masonry-brick"
-                                            style="position: absolute; top: 930px; left: 736px;">
-                                            <p class="img"><a href="https://www.wenku365.com/s-57755516.html"
-
-                                                              title="基于JavaScript的男装售卖网站的设计与实现-开题报告.doc">
-                                                <img alt="/s-57755516.html"
-
-                                                     src="/static/details/pic1(19).gif"></a></p>
-                                            <p>
-                                            </p>
-                                            <p class="txtx">
-                                                <a href="https://www.wenku365.com/s-57755516.html"
-                                                   title="基于JavaScript的男装售卖网站的设计与实现-开题报告.doc">基于JavaScript的男装售卖网站的设计与实现-开题报告.doc</a>
-                                            </p>
-                                            <p>
-                                            </p>
-                                            <p class="sm">时间:<span>2020-09-02</span> <a
-                                                    href="https://www.wenku365.com/d-57755516.html"></a>
-                                            </p>
-                                        </li>
-                                        <li class="post masonry-brick"
-                                            style="position: absolute; top: 930px; left: 736px;">
-                                            <p class="img"><a href="https://www.wenku365.com/s-57755516.html"
-
-                                                              title="基于JavaScript的男装售卖网站的设计与实现-开题报告.doc">
-                                                <img alt="/s-57755516.html"
-
-                                                     src="/static/details/pic1(19).gif"></a></p>
-                                            <p>
-                                            </p>
-                                            <p class="txtx">
-                                                <a href="https://www.wenku365.com/s-57755516.html"
-                                                   title="基于JavaScript的男装售卖网站的设计与实现-开题报告.doc">基于JavaScript的男装售卖网站的设计与实现-开题报告.doc</a>
-                                            </p>
-                                            <p>
-                                            </p>
-                                            <p class="sm">时间:<span>2020-09-02</span> <a
-                                                    href="https://www.wenku365.com/d-57755516.html"></a>
-                                            </p>
-                                        </li>
-                                        <li class="post masonry-brick"
-                                            style="position: absolute; top: 930px; left: 736px;">
-                                            <p class="img"><a href="https://www.wenku365.com/s-57755516.html"
-
-                                                              title="基于JavaScript的男装售卖网站的设计与实现-开题报告.doc">
-                                                <img alt="/s-57755516.html"
-
-                                                     src="/static/details/pic1(19).gif"></a></p>
-                                            <p>
-                                            </p>
-                                            <p class="txtx">
-                                                <a href="https://www.wenku365.com/s-57755516.html"
-                                                   title="基于JavaScript的男装售卖网站的设计与实现-开题报告.doc">基于JavaScript的男装售卖网站的设计与实现-开题报告.doc</a>
-                                            </p>
-                                            <p>
-                                            </p>
-                                            <p class="sm">时间:<span>2020-09-02</span> <a
-                                                    href="https://www.wenku365.com/d-57755516.html"></a>
-                                            </p>
-                                        </li>
                                     </ul>
                                 </div>
                                 <div class="blank15"></div>
-                                <script type="text/javascript">
-                                    var $container = $('#content');
-                                    $container.imagesLoaded(function () {
-                                        $container.masonry({
-                                            itemSelector: '.post',
-                                            columnWidth: 0,
-                                        });
-                                    });
-                                </script>
                                 <div>
                                     <div class="AspNetPager">
                                         <table border="0" cellpadding="5" cellspacing="1" width="100%">
@@ -797,10 +677,11 @@
                                                 <td style="padding-left: 0px; font-size: 14px; text-align: center;">
                                                     <div id="Content_AspNetPager1" class="paginator"
                                                          showmorebuttons="false" style="font-size:14px;">
-                                                        <a href="javascript:;" class="paginator previous disabled"
+                                                        <a href="JavaScript:" @click="fenye('pre')"
+                                                           class="paginator previous disabled"
                                                            style="margin-right:5px;">上一页</a>
-                                                        <span class="cpb" style="margin-right:5px;">1....10</span>
-                                                        <a href="https://www.wenku365.com/c-0001200007-2.html"
+                                                        <span class="cpb" style="margin-right:5px;">{{sizeinfo}}...{{pagination.lastPage}}</span>
+                                                        <a href="JavaScript:" @click="fenye('next')"
                                                            class="paginator next" style="margin-right:5px;">下一页</a>
                                                     </div>
                                                 </td>
@@ -818,26 +699,68 @@
         </div>
     </div>
     <span id="resid" th:text="${did}" hidden></span>
+    <span id="cus" th:text="${session.cus}" hidden></span>
     <script src="/static/vue/axios.min.js"></script>
     <script src="/static/vue/vue.js"></script>
     <script src="/static/vue/jquery-3.1.1.js"></script>
     <script>
         var v = new Vue({
-            el:'#resource',
-            data:{
-
+            el: '#resource',
+            data: {
+                resource: {},
+                document: [],
+                pagination: {},
+                sizeinfo: 1,
+                newInfo: []
             },
-            created:function () {
-
+            created: function () {
+                this.find(1);
             },
-            methods:{
-                "find":function () {
+            methods: {
+                "pay": function (did) {
+                    var cus = $("#cus").html();
+                    if(cus == ''){
+                        layer.alert("登录后才能下载！");
+                        return;
+                    }
+                    window.sessionStorage.setItem("did",did);
+                    location.href = "/Home/payInfo";
+                },
+                "bydocument": function (did) {
+                    window.sessionStorage.setItem("did", did);
+                    location.href = "/Home/read";
+                },
+                "fenye": function (page) {
+                    if (page === 'pre') {
+                        var res = this.sizeinfo - 1;
+                        if (res >= 1) {
+                            this.find(res);
+                        }
+                    } else if (page === 'next' && this.pagination.currentPage < this.pagination.lastPage) {
+                        var res = this.pagination.currentPage + 1;
+                        this.find(res);
+                    }
+                },
+                "find": function (size) {
                     var did = $("#resid").html();
-                    var url = "";
-                    axios.get(url).then(function (resps) {
+                    var that = this;
 
+                    var url1 = "/Resource/findResurceDetails?did=" + did;
+                    axios.get(url1).then(function (resp) {
+                        that.resource = resp.data;
                     });
 
+                    var url2 = "/documentation/findDocumentByResorce?keyWord=" + did + "&currentPage=" + size + "&pageSize=10";
+                    axios.get(url2).then(function (resp) {
+                        that.document = resp.data.rows;
+                        that.pagination = resp.data;
+                        that.sizeinfo = resp.data.currentPage;
+                    });
+
+                    var url3 = "/documentation/findNewDocument?did=" + did;
+                    axios.get(url3).then(function (resp) {
+                        that.newInfo = resp.data;
+                    })
                 }
             }
         })
