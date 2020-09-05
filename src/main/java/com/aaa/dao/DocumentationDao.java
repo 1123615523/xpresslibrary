@@ -37,4 +37,8 @@ public interface DocumentationDao {
     //查询最新更新的资源
     List<Documentation> findNewDocument(Integer did);
 
+
+    /**根据文档id查询当前文档信息和作者详细信息*/
+    Map<String,Object> findbydidcid(Integer did);
+
 }
