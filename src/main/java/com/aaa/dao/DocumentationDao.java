@@ -30,4 +30,8 @@ public interface DocumentationDao {
 
     /**根据用户个人上传的文档数量查询牛人榜*/
     List<Map<String,Object>> findbull();
+
+    /**根据文档id查询当前文档信息和作者详细信息*/
+    Map<String,Object> findbydidcid(Integer did);
+
 }
