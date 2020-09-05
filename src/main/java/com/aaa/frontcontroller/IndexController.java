@@ -153,6 +153,12 @@ public class IndexController {
         return "Login/index";
     }
 
+    /**进入订单页面*/
+    @RequestMapping("orderInfo")
+     public String orderInfo(){
+        return "Order/orderInfo";
+    }
+
     //进入个人中心
     @RequestMapping("user")
     public String user(){
