@@ -14,4 +14,7 @@ public interface ResourceService {
     //根据资源ID查询资源详情
     List<Resourcesdetails> findResourceById(Integer resid);
 
+    //查询资源以及详情说明
+    Resourcesdetails findResurceDetails(Integer did);
+
 }

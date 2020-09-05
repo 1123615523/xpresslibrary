@@ -18,4 +18,18 @@
         select * from resourcesdetails where resourcesid = #{value}
     </select>
 
+    <resultMap id="map" type="com.aaa.entity.Resourcesdetails" autoMapping="true">
+        <id column="did" property="did"></id>
+        <association property="resourcesinfos" javaType="com.aaa.entity.Resourcesinfo" autoMapping="true">
+            <id column="id" property="id"></id>
+        </association>
+    </resultMap>
+
+    <select id="findResurceDetails" resultMap="map">
+        select r.dname,s.name from resourcesdetails r
+        LEFT JOIN resourcesinfo s
+        on r.resourcesid = s.id
+        where r.did = #{value}
+    </select>
+
 </mapper>

@@ -17,4 +17,6 @@ public class Resourcesdetails{
     
     private Integer resourcesid;
 
+    private Resourcesinfo resourcesinfos;
+
 }

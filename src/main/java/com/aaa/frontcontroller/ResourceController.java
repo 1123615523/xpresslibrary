@@ -15,6 +15,12 @@ public class ResourceController {
     @Resource
     ResourceService resourceService;
 
+    @RequestMapping("findResurceDetails")
+    @ResponseBody
+    public Object findResurceDetails(Integer did){
+        return resourceService.findResurceDetails(did);
+    }
+
     @RequestMapping("findResource")
     @ResponseBody
     public Object findResource(){
