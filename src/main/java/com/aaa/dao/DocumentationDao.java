@@ -30,4 +30,11 @@ public interface DocumentationDao {
 
     /**根据用户个人上传的文档数量查询牛人榜*/
     List<Map<String,Object>> findbull();
+
+    //根据资源ID查询资源
+    List<Documentation> findDocumentByDetaisid(Integer detaisid);
+
+    //查询最新更新的资源
+    List<Documentation> findNewDocument(Integer did);
+
 }
