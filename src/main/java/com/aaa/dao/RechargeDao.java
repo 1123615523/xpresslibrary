@@ -26,4 +26,7 @@ public interface RechargeDao {
     //录入消费信息
     Integer addRecharge(Recharge recharge);
 
+    /**购买文档时创建消费记录*/
+    Integer recording(Recharge recharge);
+
 }
