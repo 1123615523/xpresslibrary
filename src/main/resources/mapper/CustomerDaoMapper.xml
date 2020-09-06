@@ -49,9 +49,19 @@
     <select id="updLogin" resultType="com.aaa.entity.Customerinfo">
         select * from  customerinfo where customerid = #{value}
     </select>
-    
+
+    <!--根据用户id获取用户信息-->
+    <select id="findbycid" resultType="com.aaa.entity.Customerinfo">
+        select * from customerinfo where customerid = #{customerid}
+    </select>
+
     <update id="editFile" parameterType="com.aaa.entity.Customerinfo">
         update customerinfo set customerpic=#{customerpic}  where  customerid = #{customerid}
+    </update>
+
+    <!--关注操作时，对关注量进行修改-->
+    <update id="updateattention">
+        update customerinfo set customerfence = #{param1} where customerid = #{param2}
     </update>
 
 </mapper>

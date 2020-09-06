@@ -1,0 +1,23 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--接口全路径-->
+<mapper namespace="com.aaa.dao.AttentioninfoDo">
+
+    <!--添加关注-->
+    <insert id="addAttention" useGeneratedKeys="true" keyProperty="aid">
+        insert into attentioninfo values(#{aid}, #{attentiontime}, #{youid}, #{myid})
+    </insert>
+
+    <!--取消关注-->
+    <delete id="delYM">
+        delete from attentioninfo where youid = #{param1} and myid = #{param2}
+    </delete>
+
+    <!--查询当前作者是否被关注-->
+    <select id="selectbyYM" resultType="java.lang.Integer">
+        select count(*) acount from attentioninfo where youid = #{param1} and myid = #{param2}
+    </select>
+
+
+</mapper>
