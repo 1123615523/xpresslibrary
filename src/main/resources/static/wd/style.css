@@ -9040,7 +9040,7 @@ a.imga:hover img {
 }
 
 .zt_list_ls .view li p.sm a {
-    background: url(../../img/down.png) no-repeat;
+    background: url(/static/js/down.png) no-repeat;
     width: 14px;
     position: absolute;
     right: 5px;

@@ -19,10 +19,12 @@ public class Orders  {
     
     private Date ordertime;
     
-    private Integer orderintegral;
+    private Double orderintegral;
     
     private Integer customerid;
     
     private Integer documented;
+
+    private Documentation documentations;
 
 }

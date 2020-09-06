@@ -1,5 +1,8 @@
 package com.aaa.service;
 
+import com.aaa.entity.Orders;
+import com.aaa.utils.PageModel;
+
 import javax.servlet.http.HttpSession;
 
 public interface OrdersService {
@@ -7,4 +10,11 @@ public interface OrdersService {
 
     /**购买方法*/
     public Integer documentbuy(Integer did, HttpSession session);
+
+    //查询我的订单
+    PageModel<Orders> findOrderInfo(PageModel<Orders> pm);
+
+    //录入订单明细
+    Integer addOrder(Orders orders);
+
 }

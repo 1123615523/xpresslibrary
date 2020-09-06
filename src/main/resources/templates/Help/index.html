@@ -468,29 +468,28 @@
                             <li v-for="res in result">
                                 <dl class="category-title ">
                                     <dt>
-                                        <a href="/c-00012.html">{{res.name}}<b class="li-aw n-ic"></b></a>
+                                        <a href="JavaScript:">{{res.name}}<b class="li-aw n-ic"></b></a>
                                         <span class="right-arrow">&gt;</span>
                                     </dt>
                                     <dd>
-                                        <a href="/c-0001200007.html" rel="nofollow">
+                                        <a href="JavaScript:" rel="nofollow">
                                             <nobr>毕业论文</nobr>
                                         </a>
-                                        <a href="/c-0001200024.html" rel="nofollow">
+                                        <a href="JavaScript:" rel="nofollow">
                                             <nobr>毕业设计</nobr>
                                         </a>
-                                        <a href="/c-0001200015.html" rel="nofollow">
+                                        <a href="JavaScript:" rel="nofollow">
                                             <nobr>临时分类</nobr>
                                         </a>
                                     </dd>
                                 </dl>
                                 <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
-                                    <dt><a href="/c-00012.html">学术论文</a></dt>
                                     <dd>
-                                    <span v-for="chid in res.resourcesdetails">
-                                        <a href="" rel="nofollow">
-                                            <nobr>{{chid.dname}}</nobr>
-                                        </a>
-                                    </span>
+                                            <span v-for="chid in res.resourcesdetails">
+                                                <a :href="ResurceInfo(chid.did)" rel="nofollow">
+                                                    <nobr>{{chid.dname}}</nobr>
+                                                </a>
+                                            </span>
                                     </dd>
                                 </dl>
                             </li>
@@ -498,6 +497,7 @@
                     </div>
                     <script src="/static/vue/vue.js"></script>
                     <script src="/static/vue/axios.min.js"></script>
+                    <!--qwe挂载点vue实例-->
                     <script>
                         var v = new Vue({
                             el: '#qwe',
@@ -508,6 +508,9 @@
                                 this.find();
                             },
                             methods: {
+                                "ResurceInfo":function (did) {
+                                    return '/Home/ResourceDetails?did='+did;
+                                },
                                 "find": function () {
                                     var url = "/Resource/findResource";
                                     var that = this;
@@ -644,9 +647,8 @@
                                         <td valign="top" style="width:55px;">
                                             <!--/static/wd/avatar_small-->
                                             <a href=""></a>
-                                            <a class="img" href="#" target="_blank">
-                                                <img class="userCardID" alt="个人中心有" width="32" height="32"
-                                                     :src="r.customerinfos.customerpic">
+                                            <a class="img" href="JavaScript:" @click="userinfo(r.customerinfos.customerid)">
+                                                <img class="userCardID" alt="个人中心有" width="32" height="32" :src="r.customerinfos.customerpic">
                                             </a>
                                         </td>
                                         <td valign="top">
@@ -710,6 +712,9 @@
                             this.find(1);
                         },
                         methods: {
+                            "userinfo":function (cid) {
+                                location.href = "/Home/UserInfoPerson?cid="+cid;
+                            },
                             "zou":function (id) {
                                 var cus = $("#testinfo").html();
                                 if('' === cus){

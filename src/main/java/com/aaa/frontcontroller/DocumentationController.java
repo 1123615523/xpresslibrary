@@ -22,6 +22,12 @@ public class DocumentationController {
     @Resource
     DocumentationService documentationService;
 
+    @RequestMapping("findType")
+    public Object findType(){
+        System.out.println("asdassad");
+        return documentationService.findType();
+    }
+
     @RequestMapping("findNewDocument")
     public Object findNewDocument(Integer did){
         return documentationService.findNewDocument(did);

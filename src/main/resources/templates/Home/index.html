@@ -30,6 +30,10 @@
     <script type="text/javascript" src="/static/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript" src="/static/js/Prototype.js"></script>
     <link href="/static/js/slides.css" rel="stylesheet" type="text/css">
+
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+
     <meta name="copyright" content="https://www.wenku365.com">
     <meta name="applicable-device" content="pc">
     <!--[if lte IE 8]>
@@ -383,8 +387,7 @@
                 </script>
             </div>
             <div class="topr">
-                <a class="block upload-link" href="JavaScript:"
-                   rel="nofollow"><span></span>上传我的文档</a>
+                <a class="block upload-link" href="JavaScript:" onclick="chuan()" rel="nofollow">上传我的文档</a>
             </div>
         </div>
 
@@ -392,8 +395,9 @@
         <script>
             function chuan() {
                 var test = $("#testcus").html();
-                if ('' === test) {
-                    window.location = '/Home/loginUser';
+                if (test == '') {
+                    layer.alert("请先登录再上传！");
+                    return;
                 } else {
                     window.location = "/Home/user";
                 }
@@ -454,8 +458,8 @@
                                     this.find();
                                 },
                                 methods: {
-                                    "ResurceInfo":function (did) {
-                                        return '/Home/ResourceDetails?did='+did;
+                                    "ResurceInfo": function (did) {
+                                        return '/Home/ResourceDetails?did=' + did;
                                     },
                                     "find": function () {
                                         var url = "/Resource/findResource";
@@ -550,51 +554,76 @@
 
 
         <!--热门专题-->
-        <div class="home_rmz">
-            <div class="rmz_title">
-                <h1><font color="#ff6333">热门</font>专题</h1>
-                <span class="more"><a href="JavaScript:">更多&gt;&gt;</a></span>
+        <div id="haha">
+            <div class="home_rmz">
+                <div class="rmz_title">
+                    <h1><font color="#ff6333">热门</font>专题</h1>
+                    <span class="more"><a href="JavaScript:">更多&gt;&gt;</a></span>
+                </div>
+                <div class="rmz_view">
+                    <dt>
+                        <a href="JavaScript:" @click="dianwo()" title="国际大酒店空调工程设计 暖通空调毕业设计全套含图纸">
+                            <img data-original="" src="/static/images/ert.gif" width="217" height="150">
+                        </a>
+                    </dt>
+                    <dd>
+                        <a href="JavaScript:" @click="latdocument(2)" title="">S3分班考试机试题</a>
+                    </dd>
+                    <dd>
+                        <a href="JavaScript:" @click="latdocument(3)" title="">查询15题</a>
+                    </dd>
+                    <dd>
+                        <a href="JavaScript:" @click="latdocument(8)" title="">男装售卖网站的设计与实现</a>
+                    </dd>
+                    <dd>
+                        <a href="JavaScript:" @click="latdocument(9)" title="">屋面经久耐用，这防水步骤不能马虎</a>
+                    </dd>
+                    <dd>
+                        <a href="JavaScript:" @click="latdocument(10)" title="">2019年合规风险考试题库</a>
+                    </dd>
+                    <dd>
+                        <a href="JavaScript:" @click="latdocument(11)" title="">WES-600B型数显液压万能试验机操作规程</a>
+                    </dd>
+                    <dd>
+                        <a href="JavaScript:" @click="latdocument(13)" title="">上海办公楼装修清凉一夏的妙招</a>
+                    </dd>
+                </div>
             </div>
-            <div class="rmz_view">
-                <dt>
-                    <a href="/g-16.html" title="国际大酒店空调工程设计 暖通空调毕业设计全套含图纸">
-                    <img data-original="" width="217" height="150">
-                </a>
-                </dt>
-                <dd><a href="/g-15.html" title="公文写作范文">公文写作范文</a>
-                </dd>
-            </div>
-        </div>
-        <div class="center_line"></div>
-        <!--最新上传资源-->
-        <div class="home_zx" id="lat">
-            <div class="zx_title">
-                <a class="flou1"></a>
-                <h1><a href="JavaScript:" title="最新在线资源"><font color="#ff6333">最新</font>上传资源</a></h1>
-                <div class="zx_r more"><a href="JavaScript:" title="最新在线资源">更多&gt;&gt;</a></div>
-            </div>
-            <div class="zx_view">
-                <li v-for="b in latest">
-                    <a @click="latdocument(b.did)">
-                        <img :src="b.filepath">
-                        <span :class="b.documentformat"></span>
-                    </a>
-                    <a @click="latdocument(b.did)" class="text">{{b.title}}.{{b.documentformat}}</a>
-                </li>
+            <div class="center_line"></div>
+            <!--最新上传资源-->
+            <div class="home_zx" id="lat">
+                <div class="zx_title">
+                    <a class="flou1"></a>
+                    <h1><a href="JavaScript:" title="最新在线资源"><font color="#ff6333">最新</font>上传资源</a></h1>
+                    <div class="zx_r more"><a href="JavaScript:" title="最新在线资源">更多&gt;&gt;</a></div>
+                </div>
+                <div class="zx_view">
+                    <li v-for="b in latest">
+                        <a @click="latdocument(b.did)">
+                            <img :src="b.filepath">
+                            <span :class="b.documentformat"></span>
+                        </a>
+                        <a @click="latdocument(b.did)" class="text">{{b.title}}.{{b.documentformat}}</a>
+                    </li>
+                </div>
             </div>
         </div>
         <script>
             new Vue({
-                el:"#lat",
+                el: "#haha",
                 data: {
                     latest: {},
-                    src:null
+                    src: null
                 },
                 created: function () {
                     this.findlatDocument()
                 },
                 methods: {
-                    "findlatDocument":function () {
+                    "dianwo": function () {
+                        layer.alert("别点我，没结果，除非.....");
+                        return;
+                    },
+                    "findlatDocument": function () {
                         var _this = this;
                         axios.post("/documentation/documentationlatest").then(function (value) {
                             _this.latest = value.data;
@@ -602,80 +631,94 @@
                             console.log(reason)
                         })
                     },
-                    "latdocument":function (did) {
-                        window.sessionStorage.setItem("did",did);
+                    "latdocument": function (did) {
+                        window.sessionStorage.setItem("did", did);
                         location.href = "/Home/read";
                     }
                 }
             })
         </script>
 
-        <div class="center_line"></div>
-        <div class="blank17"></div>
-        <!--最新精品推荐-->
-        <div class="home_tj">
-            <div class="ttop">
-                <a class="flou2"></a>
-                <div class="title"><font color="#ff6333">最新</font>精品推荐</div>
-                <div class="tuijtag">
-                    <li class="sd02" id="tj01"><h2><a href="/c-00012.html" title="行业资料资源">学术论文</a></h2></li>
-                    <span class="line">|</span>
-                    <li class="sd02" id="tj02"><h2><a href="/c-00015.html" title="行业资料资源">应用文档</a></h2></li>
-                    <span class="line">|</span>
-                    <li class="sd02" id="tj03"><h2><a href="/c-00017.html" title="行业资料资源">行业资料</a></h2></li>
-                    <span class="line">|</span>
-                    <li class="sd02" id="tj04"><h2><a href="/c-00016.html" title="行业资料资源">教育资源</a></h2></li>
+        <div id="findType">
+            <div class="center_line"></div>
+            <div class="blank17"></div>
+            <!--最新精品推荐-->
+            <div class="home_tj">
+                <div class="ttop">
+                    <a class="flou2"></a>
+                    <div class="title"><font color="#ff6333">最新</font>精品推荐</div>
+                    <div class="tuijtag">
+                        <li class="sd02" id="tj01"><h2><a href="JavaScript:" title="行业资料资源">学术论文</a></h2></li>
+                        <span class="line">|</span>
+                        <li class="sd02" id="tj02"><h2><a href="JavaScript:" title="行业资料资源">应用文档</a></h2></li>
+                        <span class="line">|</span>
+                        <li class="sd02" id="tj03"><h2><a href="JavaScript:" title="行业资料资源">行业资料</a></h2></li>
+                        <span class="line">|</span>
+                        <li class="sd02" id="tj04"><h2><a href="JavaScript:" title="行业资料资源">教育资源</a></h2></li>
+                    </div>
+                </div>
+                <div class="tj_view " id="tj001" 581>
+                    <ul>
+                        <li v-for="r in res.one">
+                            <a href="JavaScript:">
+                                <img :src="r.filepath"><span :class="r.documentformat"></span></a>
+                            <a :title="r.title" href="JavaScript:" class="text">{{r.title}}.{{r.documentformat}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tj_view hidden" id="tj002" 574>
+                    <ul>
+                        <li v-for="r in res.two">
+                            <a href="JavaScript:">
+                                <img :src="r.filepath"><span :class="r.documentformat"></span></a>
+                            <a :title="r.title" href="JavaScript:" class="text">{{r.title}}.{{r.documentformat}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tj_view hidden" id="tj003" 787>
+                    <ul>
+                        <li v-for="r in res.there">
+                            <a href="JavaScript:">
+                                <img :src="r.filepath"><span :class="r.documentformat"></span></a>
+                            <a :title="r.title" href="JavaScript:" class="text">{{r.title}}.{{r.documentformat}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tj_view hidden" id="tj004" 784>
+                    <ul>
+                        <li v-for="r in res.four">
+                            <a href="JavaScript:">
+                                <img :src="r.filepath"><span :class="r.documentformat"></span></a>
+                            <a :title="r.title" href="JavaScript:" class="text">{{r.title}}.{{r.documentformat}}</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="tj_view " id="tj001" 581>
-                <ul>
-                    <li><a href="/s-56089086.html">
-                        <img alt="论文写作步骤及建议.doc"
-                             src="/static/js/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="论文写作步骤及建议.doc" href="/s-56089086.html" class="text">论文写作步骤及建议.doc</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="tj_view hidden" id="tj002" 574>
-                <ul>
-                    <li><a href="/s-57397402.html">
-                        <img
-                                alt="中医基础理论-四诊课件资料：藏象学说.ppt"
-                                src="/static/js/pic1.gif">
-                        <span class="ppt"></span></a>
-                        <a title="中医基础理论-四诊课件资料：藏象学说.ppt" href="/s-57397402.html"
-                           class="text">中医基础理论-四诊课件资料：藏象学说.ppt</a>
-                    </li>
-
-                </ul>
-            </div>
-            <div class="tj_view hidden" id="tj003" 787>
-                <ul>
-                    <li><a href="/s-57394785.html">
-                        <img
-                                alt="成都市某立交桥工程施工组织设计方案.pdf"
-                                src="/static/js/pic1.gif">
-                        <span class="pdf"></span></a>
-                        <a title="成都市某立交桥工程施工组织设计方案.pdf" href="/s-57394785.html" class="text">成都市某立交桥工程施工组织设计方案.pdf</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="tj_view hidden" id="tj004" 784>
-                <ul>
-                    <li><a href="/s-57397701.html">
-                        <img alt="中考化学知识点复习宝典.doc"
-                             data-original="http://f5.wenku365.com/2020-08/15/a7aa8854c677295f554a9be67a1bc60a/pic1.gif">
-                        <span class="doc"></span></a>
-                        <a title="中考化学知识点复习宝典.doc" href="/s-57397701.html" class="text">中考化学知识点复习宝典.doc</a>
-                    </li>
-
-                </ul>
-                `
-            </div>
+            <div class="center_line"></div>
+            <div class="blank17"></div>
         </div>
-        <div class="center_line"></div>
-        <div class="blank17"></div>
+
+        <script>
+            new Vue({
+                el: '#findType',
+                data: {
+                    res: []
+                },
+                created: function () {
+                    //this.find();
+                },
+                methods: {
+                    "find": function () {
+                        var that = this;
+                        axios.get("/documentation/findType").then(function (resp) {
+                            that.res = resp.data;
+                            console.info(JSON.stringify(resp.data));
+                        })
+                    }
+                }
+            })
+        </script>
+
 
         <!--今日更新ppt-->
         <div class="home_jp" id="ppt">
@@ -695,16 +738,16 @@
         </div>
         <script>
             new Vue({
-                el:"#ppt",
+                el: "#ppt",
                 data: {
                     ppts: {},
-                    src:null
+                    src: null
                 },
                 created: function () {
                     this.findpptDocument()
                 },
                 methods: {
-                    "findpptDocument":function () {
+                    "findpptDocument": function () {
                         var _this = this;
                         axios.post("/documentation/documentationppt").then(function (value) {
                             _this.ppts = value.data;
@@ -712,8 +755,8 @@
                             console.log(reason)
                         })
                     },
-                    "pptdocument":function (did) {
-                        window.sessionStorage.setItem("did",did);
+                    "pptdocument": function (did) {
+                        window.sessionStorage.setItem("did", did);
                         location.href = "/Home/read";
                     }
                 }
@@ -756,62 +799,60 @@
         </style>
 
 
-
-
         <!--牛人榜-->
         <div class="home_lr">
-        <div class="lr_title">
-            <a class="flou4"></a>
-            <h1><font color="#ff6333">牛</font>人榜</h1>
-            <div class="lr_r more"><a href="JavaScript:" rel="nofollow">更多&gt;&gt;</a></div>
-        </div>
-        <div class="zr_view" style="height: 480px" id="bull">
-            <ul>
-                <li v-for="hui in bulls">
-                    <a @click="customer(hui.customerid)" rel="nofollow">
-                        <img  :src="hui.customerpic" style="display: inline;">
-                    </a>
-                    <p class="xm">
+            <div class="lr_title">
+                <a class="flou4"></a>
+                <h1><font color="#ff6333">牛</font>人榜</h1>
+                <div class="lr_r more"><a href="JavaScript:" rel="nofollow">更多&gt;&gt;</a></div>
+            </div>
+            <div class="zr_view" style="height: 480px" id="bull">
+                <ul>
+                    <li v-for="hui in bulls">
+                        <a @click="customer(hui.customerid)" href="JavaScript:" rel="nofollow">
+                            <img :src="hui.customerpic" style="display: inline;">
+                        </a>
+                        <p class="xm">
                         <span class="name">
-                            <a @click="customer(hui.customerid)">{{hui.customername}}</a>
+                            <a @click="customer(hui.customerid)" href="JavaScript:">{{hui.customername}}</a>
                         </span>
-                    </p>
-                    <div style="font-size: 12px;margin-left: 10px">
-                        简介:{{hui.customermeno}}
-                    </div>
-                    <br>
-                    <p></p>
-                </li>
-            </ul>
-        </div>
-        <script>
-            new Vue({
-                el:"#bull",
-                data: {
-                    bulls: {},
-                    src:null
-                },
-                created: function () {
-                    this.findbull()
-                },
-                methods: {
-                    "findbull":function () {
-                        var _this = this;
-                        axios.post("/documentation/findbull").then(function (value) {
-                            _this.bulls = value.data;
-                            console.log(_this.bulls);
-                        }).catch(function (reason) {
-                            console.log(reason)
-                        })
+                        </p>
+                        <div style="font-size: 12px;margin-left: 10px">
+                            简介:{{hui.customermeno}}
+                        </div>
+                        <br>
+                        <p></p>
+                    </li>
+                </ul>
+            </div>
+            <script>
+                new Vue({
+                    el: "#bull",
+                    data: {
+                        bulls: {},
+                        src: null
                     },
-                    "customer":function (customerid) {
-                        console.log(customerid);
+                    created: function () {
+                        this.findbull()
+                    },
+                    methods: {
+                        "findbull": function () {
+                            var _this = this;
+                            axios.post("/documentation/findbull").then(function (value) {
+                                _this.bulls = value.data;
+                                console.log(_this.bulls);
+                            }).catch(function (reason) {
+                                console.log(reason)
+                            })
+                        },
+                        "customer": function (customerid) {
+                            location.href = "/Home/UserInfoPerson?cid=" + customerid;
+                        }
                     }
-                }
-            })
+                })
 
-        </script>
-    </div>
+            </script>
+        </div>
     </div>
 
 
@@ -913,7 +954,7 @@
     <!--控制图片转圈-->
     <script type="text/javascript" charset="utf-8">
         $("img").lazyload({
-            placeholder: "https://static.wenku365.com/images/loading_d1.gif",
+            placeholder: "/static/images/bg.gif",
             effect: "fadeIn",
             threshold: 180
         });

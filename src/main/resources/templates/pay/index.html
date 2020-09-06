@@ -684,7 +684,7 @@
                                                             src="/static/pay/alipay.gif"
                                                             class="sel0" alt="支付宝支付"
                                                             id="zhifu005"
-                                                            onclick="selectzhifu2(&#39;alipay&#39;)"
+                                                            @click="payDocument(documentation.did,documentation.sellingprice)"
                                                             height="35"><br><br>
                                                     </td>
                                                 </tr>
@@ -696,7 +696,7 @@
                                                            hidefocus="true">直接购买</a>
                                                     </td>
                                                     <td>
-                                                        <a href="https://www.wenku365.com/ucenter/finance/amount/recharge"
+                                                        <a href="/Home/recharge"
                                                            class="btn_118_40 fl " target="_blank" style="display: block"
                                                            hidefocus="true">充值后购买</a>
                                                     </td>
@@ -747,6 +747,9 @@
                             this.findbydid();
                         },
                         methods: {
+                            "payDocument":function (documenid, money) {
+                                location.href = "/alipay/pay?money="+money+"&documentd="+documenid;
+                            },
                             "findbydid": function () {
                                 var _this = this;
                                 var url = "/documentation/bydid?did=" + this.did;

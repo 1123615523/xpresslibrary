@@ -255,7 +255,8 @@
             <div class="col-sm-4 invoice-col">
                 <div>
                     <strong>可用积分</strong>
-                    <div style="font-size: 65px" th:text="${session.cus.customermoney}">
+                    <div style="font-size: 65px">
+                        {{customer.customermoney}}
                     </div>
                 </div>
                 <div style="padding-top: 20px">
@@ -328,6 +329,7 @@
                             <span v-else-if="r.rechargetype===4">购买文档</span>
                             <span v-else-if="r.rechargetype===5">发布悬赏</span>
                             <span v-else-if="r.rechargetype===6">悬赏奖励</span>
+                            <span v-else-if="r.rechargetype===7">文档收入</span>
                             <span v-else>未知积分</span>
                         </td>
                         <td>{{r.documentations==null?'':r.documentations.title}}</td>
@@ -371,7 +373,8 @@
         var v = new Vue({
             el:'#app',
             data:{
-                res:[]
+                res:[],
+                customer:{}
             },
             created:function () {
                 this.find();
@@ -382,7 +385,11 @@
                     var that = this;
                     axios.get(url).then(function (value) {
                         that.res = value.data;
-                    })
+                    });
+                    var url2 = "/recharge/findCustomerInfo?cusid="+$("#cusid").html();
+                    axios.get(url2).then(function (resp) {
+                        that.customer = resp.data;
+                    });
                 }
             }
         })

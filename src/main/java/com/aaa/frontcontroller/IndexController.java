@@ -34,7 +34,8 @@ public class IndexController {
 
     //进入个人信息主页
     @RequestMapping("UserInfoPerson")
-    public String UserInfoPerson(){
+    public String UserInfoPerson(Integer cid,Model model){
+        model.addAttribute("customerid",cid);
         return "User/index";
     }
 

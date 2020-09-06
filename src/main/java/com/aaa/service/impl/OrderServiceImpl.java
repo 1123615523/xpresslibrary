@@ -8,12 +8,16 @@ import com.aaa.entity.Customerinfo;
 import com.aaa.entity.Orders;
 import com.aaa.entity.Recharge;
 import com.aaa.service.OrdersService;
+import com.aaa.utils.PageModel;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -31,6 +35,26 @@ public class OrderServiceImpl implements OrdersService {
 
     @Resource
     CustomerDao customerDao;
+
+    @Override
+    public Integer addOrder(Orders orders) {
+        return orderDao.documentbuy(orders);
+    }
+
+    @Override
+    public PageModel<Orders> findOrderInfo(PageModel<Orders> pm) {
+        PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
+        String string = pm.getKeyWord().toString();
+        int cusid = Integer.parseInt(string);
+        List<Orders> orderInfo = orderDao.findOrderInfo(cusid);
+        pm.setRows(orderInfo);
+        PageInfo<Orders> pageInfo = new PageInfo<>(orderInfo);
+        int pages = pageInfo.getPages();
+        long total = pageInfo.getTotal();
+        pm.setTotal(total);
+        pm.setLastPage(pages);
+        return pm;
+    }
 
     /**购买方法
      * 该方法中进行消费记录，赚取记录，订单生成等信息
@@ -51,6 +75,7 @@ public class OrderServiceImpl implements OrdersService {
         Double producermoney = (Double) findbydidcid.get("customermoney");
         //获取文档积分
         int sellingprice = (int) findbydidcid.get("sellingprice");
+        double res = (double) sellingprice;
         //获取账号
         String customertel = (String) findbydidcid.get("customertel");
         Integer producerid = (Integer) findbydidcid.get("customerid");
@@ -89,7 +114,7 @@ public class OrderServiceImpl implements OrdersService {
         Orders order = new Orders();
         order.setOrdered(orderId);
         order.setOrdertime(new Date());
-        order.setOrderintegral(sellingprice);
+        order.setOrderintegral(res);
         order.setCustomerid(customerid);
         order.setDocumented(did);
         Integer five = orderDao.documentbuy(order);

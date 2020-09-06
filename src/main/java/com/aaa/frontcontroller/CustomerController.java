@@ -25,6 +25,13 @@ public class CustomerController {
     CustomerService customerService;
 
     @ResponseBody
+    @RequestMapping("findUserPerson")
+    public Object findUserPerson(@RequestParam Integer cusid)
+    {
+        return customerService.findUserInfo(cusid);
+    }
+
+    @ResponseBody
     @RequestMapping("updPassword")
     public Integer updPassword(Integer id,String pwd,HttpSession session){
         Integer res = customerService.updPassword(id, pwd);

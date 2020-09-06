@@ -14,5 +14,8 @@ public interface RechargeService {
     //录入用户充钱明细
     Integer addRecharge(Recharge recharge);
 
+    //录入解锁文档明细
+    Integer recording(Recharge recharge);
+
 
 }

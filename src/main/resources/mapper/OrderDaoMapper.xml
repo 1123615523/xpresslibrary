@@ -8,4 +8,19 @@
         insert into orders values(#{id},#{ordered},#{ordertime},#{orderintegral},#{customerid},#{documented})
     </insert>
 
+    <resultMap id="MyResulMap" type="com.aaa.entity.Orders" autoMapping="true">
+        <id column="id" property="id"></id>
+        <association property="documentations" javaType="com.aaa.entity.Documentation" autoMapping="true">
+            <id column="did" property="did"></id>
+        </association>
+    </resultMap>
+
+    <select id="findOrderInfo" resultMap="MyResulMap">
+        select * from orders d
+        LEFT JOIN documentation dc
+        on d.documented = dc.did
+        where customerid = #{value}
+        order by d.id desc
+    </select>
+
 </mapper>

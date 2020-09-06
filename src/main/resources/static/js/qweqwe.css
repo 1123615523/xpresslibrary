@@ -7669,7 +7669,7 @@ a.blank {
     position: relative;
     height: 364px;
     overflow: hidden;
-    background: url(../../img/lim.png) no-repeat 20px 0
+    background: url(/static/js/lim.png) no-repeat 20px 0
 }
 
 .home_jrm .home_rmz .rmz_view dt {

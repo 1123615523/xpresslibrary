@@ -23,6 +23,11 @@ public class RechargeServiceImpl implements RechargeService {
     RechargeDao rechargeDao;
 
     @Override
+    public Integer recording(Recharge recharge) {
+        return rechargeDao.recording(recharge);
+    }
+
+    @Override
     public Integer addRecharge(Recharge recharge) {
         return rechargeDao.addRecharge(recharge);
     }

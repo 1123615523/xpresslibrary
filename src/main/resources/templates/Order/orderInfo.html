@@ -245,16 +245,16 @@
                 <small>My ReWard</small>
             </h1>
         </section>
-            <section class="content">
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="box box-primary">
-                            <div id="app">
+        <section class="content">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box box-primary">
+                        <div id="app">
                             <div class="box-header with-border">
                                 <form class="form-horizontal actionPanel">
                                     <div class="row">
                                         <div class="form-group col-xs-4">
-                                            <label class="col-sm-3 control-label">标题</label>
+                                            <label class="col-sm-3 control-label">订单</label>
                                             <div class="col-sm-9">
                                                 <input type="text" v-model.trim="keyword" class="form-control">
                                             </div>
@@ -270,10 +270,9 @@
                                 <table class="table table-striped">
                                     <tbody>
                                     <tr>
-                                        <th style="text-align: center">文档名称</th>
-                                        <th style="text-align: center">文档单价</th>
-                                        <th style="text-align: center">购买时间</th>
-                                        <th style="text-align: center">文档类型</th>
+                                        <th style="text-align: center">商品</th>
+                                        <th style="text-align: center">日期</th>
+                                        <th style="text-align: center">单价</th>
                                         <th style="text-align: center">操作</th>
                                     </tr>
                                     <tr v-for="r in res">
@@ -281,29 +280,24 @@
                                             <div class="box box-dashboard" style="margin-bottom: 0px">
                                                 <div class="box-header with-border">
                                                     <div class="col-lg-10">
-                                                        发布日期：{{r.helptime}}
-                                                        悬赏金额：<span style="padding-right: 20px">{{r.helpintegral}}</span>
-                                                        悬赏状态：
-                                                        <span v-show="r.helpstatus===1">已解决</span>
-                                                        <span style="padding-right: 20px;color: red" v-show="r.helpstatus===0">未解决</span>
+                                                        订单号：{{r.ordered}}
+                                                        总金额：<span style="padding-right: 20px">{{r.orderintegral}}</span>
+                                                    </div>
+                                                    <div class="col-lg-2" style="text-align: right">
+                                                        <h3 class="box-title">
+                                                            <!--<a href="JavaScript:">详情</a>-->
+                                                        </h3>
                                                     </div>
                                                 </div>
-
                                                 <div class="box-body no-padding">
                                                     <table class="table table-striped">
                                                         <tbody>
                                                         <tr>
+                                                            <td style="width: 20%;text-align: center"><a href="JavaScript:" @click="details(r.documented)">{{r.documentations.filename}}.{{r.documentations.documentformat}}</a></td>
+                                                            <td style="width: 20%;text-align: center">{{r.ordertime}}</td>
+                                                            <td style="width: 20%;text-align: center">{{r.orderintegral}}</td>
                                                             <td style="width: 20%;text-align: center">
-                                                                <a :href="HelpInfo(r.id)">{{r.helptitle}}</a>
-                                                            </td>
-                                                            <td style="width: 20%;text-align: center">{{r.helpcomment}}</td>
-                                                            <td style="width: 20%;text-align: center">{{r.helpintegral}}</td>
-                                                            <td style="width: 20%;text-align: center">
-                                                                {{r.helptime}}
-                                                            </td>
-                                                            <td style="width: 20%;text-align: center;margin-left: 50px">
-                                                                <button type="button" class="btn btn-primary btn-xs" @click="zou(r.id)">去页面</button>
-                                                                <button type="button" class="btn btn-primary btn-xs" @click="details(r.id,r.helpstatus,r.helpintegral)">查看详情</button>
+                                                                <a href="JavaScript:" @click="download(r.documentations.did)" class="btn btn-success btn-flat"> 点击下载文件 </a>
                                                             </td>
                                                         </tr>
                                                         </tbody>
@@ -317,77 +311,79 @@
                                 <div class="col-sm-12">
                                     <ul class="pagination pull-right">
                                         <li class="paginate_button previous ">
-                                            <a href="javascript:;" @click="fenye('pre')">上一页</a>
+                                            <a href="javascript:" @click="fenye('pre')">上一页</a>
                                         </li>
                                         <li class="paginate_button active">
-                                            <a href="javascript:;">{{sizeinfo}}...{{pagination.lastPage}}</a>
+                                            <a href="javascript:">{{sizeinfo}}...{{pagination.lastPage}}</a>
                                         </li>
                                         <li class="paginate_button next ">
-                                            <a href="javascript:;" @click="fenye('next')">下一页</a>
+                                            <a href="javascript:" @click="fenye('next')">下一页</a>
                                         </li>
                                     </ul>
                                 </div>
                             </div>
-                            </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
         <span id="resid" th:text="${session.cus.customerid}" hidden></span>
         <script src="/static/vue/axios.min.js"></script>
         <script src="/static/vue/vue.js"></script>
         <script src="/static/vue/jquery-3.1.1.js"></script>
         <script>
             var v = new Vue({
-                el:'#app',
-                data:{
-                    res:[],
-                    newRes:[],
-                    keyword:'',
-                    pagination:{},
-                    sizeinfo:1
+                el: '#app',
+                data: {
+                    res: [],
+                    newRes: [],
+                    keyword: '',
+                    pagination: {},
+                    sizeinfo: 1
                 },
-                created:function () {
+                created: function () {
                     this.find(1);
                 },
-                methods:{
-                    "details":function (id,status,money) {
-                        xadmin.open('评论详情','/Home/HelpDetails?id='+id+'&status='+status+"&money="+money,700,400);
+                methods: {
+                    "download":function (did) {
+                        //文档的ID：did
                     },
-                    "HelpInfo":function (id) {
-                        return '/Home/helpInfo?id='+id;
+                    "details":function (id) {
+                        window.sessionStorage.setItem("did", id);
+                        location.href = "/Home/read";
                     },
-                    "fenye":function (page) {
-                        if(page === 'pre'){
+                    "orderInfo": function (id) {
+                        return '/Home/helpInfo?id=' + id;
+                    },
+                    "fenye": function (page) {
+                        if (page === 'pre') {
                             var res = this.sizeinfo - 1;
                             if (res >= 1) {
                                 this.find(res);
                             }
-                        }else if(page === 'next' && this.pagination.currentPage < this.pagination.lastPage){
+                        } else if (page === 'next' && this.pagination.currentPage < this.pagination.lastPage) {
                             var res = this.pagination.currentPage + 1;
                             this.find(res);
                         }
                     },
-                    "bian":function () {
+                    "bian": function () {
                         this.newRes = [];
-                        for(var i=0;i <= this.res.length-1;i++){
-                            if(this.res[i].helptitle.indexOf(this.keyword) >= 0){
+                        for (var i = 0; i <= this.res.length - 1; i++) {
+                            if (this.res[i].documentations.filename.indexOf(this.keyword) >= 0) {
                                 this.newRes.push(this.res[i]);
                             }
                         }
                         this.res = this.newRes;
                     },
-                    "find":function (size) {
-                        var url = "/Help/findUserHelp?keyWord="+$("#resid").html()+"&currentPage="+size;
+                    "find": function (size) {
+                        console.info(size);
+                        var url = "/order/findOrderInfo?keyWord=" + $("#resid").html() + "&currentPage=" + size;
                         var that = this;
                         axios.get(url).then(function (resp) {
                             that.res = resp.data.rows;
                             that.pagination = resp.data;
                             that.sizeinfo = resp.data.currentPage;
                         });
-                    },
-                    "zou":function (id) {
-                        window.location = "/Home/helpInfo?id="+id;
                     }
                 }
             })
