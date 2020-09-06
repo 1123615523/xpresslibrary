@@ -41,4 +41,7 @@ public interface DocumentationDao {
     /**根据文档id查询当前文档信息和作者详细信息*/
     Map<String,Object> findbydidcid(Integer did);
 
+    //拿四个类型下的文档
+    List<Documentation> findType(Integer typeid);
+
 }
