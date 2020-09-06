@@ -53,6 +53,11 @@
        insert into documentation values(#{did},#{filename},#{title},#{essentialcode},#{detaisid},#{introduction},#{previewpage},#{pages},#{allowdownload},#{original},#{sellingprice},#{releasetime},#{downloads},#{pageviews},#{favorites},#{documentpath},#{documentsize},#{documentformat},#{documentstatus},#{filepath},#{imgsname},#{authored})
     </insert>
 
+    <!--收藏操作时，对收藏量进行修改-->
+    <update id="updatefavorites">
+        update documentation set  favorites=#{param1}  where did = #{param2};
+    </update>
+
     <!--今日特别推荐查询-->
     <select id="documentationespecially" resultType="com.aaa.entity.Documentation">
         select  * from documentation order by rand() limit 10
