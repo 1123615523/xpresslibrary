@@ -41,4 +41,6 @@ public interface DocumentationDao {
     /**根据文档id查询当前文档信息和作者详细信息*/
     Map<String,Object> findbydidcid(Integer did);
 
+    /**收藏操作时，对收藏量进行修改*/
+    Integer updatefavorites(Integer favorites,Integer did);
 }
