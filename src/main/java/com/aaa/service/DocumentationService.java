@@ -41,4 +41,11 @@ public interface DocumentationService {
 
     //查询最新更新的资源
     List<Documentation> findNewDocument(Integer did);
+
+    /**收藏操作时，对收藏量进行修改*/
+    Integer updatefavorites(Integer favorites,Integer did);
+
+    //查询四个类别
+    Map<String, Object> findType();
+
 }

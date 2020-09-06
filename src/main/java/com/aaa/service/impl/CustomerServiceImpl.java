@@ -1,12 +1,17 @@
 package com.aaa.service.impl;
 
 import com.aaa.dao.CustomerDao;
+import com.aaa.dao.DocumentationDao;
 import com.aaa.entity.Customerinfo;
+import com.aaa.entity.Documentation;
 import com.aaa.service.CustomerService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -14,6 +19,32 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Resource
     CustomerDao customerDao;
+
+    @Resource
+    DocumentationDao documentationDao;
+
+    /**根据用户id获取用户信息*/
+    @Override
+    public Customerinfo findbycid(Integer customerid) {
+        return customerDao.findbycid(customerid);
+    }
+
+
+    /**关注操作时，对关注量进行修改*/
+    @Override
+    public Integer updateattention(Integer customerfence, Integer youid) {
+        return customerDao.updateattention(customerfence,youid);
+    }
+
+    @Override
+    public Map<String, Object> findUserInfo(Integer cusid) {
+        HashMap<String, Object> map = new HashMap<>();
+        Customerinfo customerinfo = customerDao.updLogin(cusid);
+        map.put("customerinfo",customerinfo);
+        List<Documentation> documentations = documentationDao.findbyid(cusid);
+        map.put("documentations",documentations);
+        return map;
+    }
 
     @Override
     public Integer updMoney(Integer cusid, Double money) {

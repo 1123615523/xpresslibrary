@@ -22,6 +22,7 @@ import javax.servlet.http.HttpSession;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +35,27 @@ public class DocumentationServiceImpl implements DocumentationService {
 
     @Resource
     DocumentConverter documentConverter;
+
+    /**收藏操作时，对收藏量进行修改*/
+    @Override
+    public Integer updatefavorites( Integer favorites,Integer did) {
+        return documentationDao.updatefavorites(favorites,did);
+    }
+
+    @Override
+    public Map<String, Object> findType() {
+        HashMap<String, Object> map = new HashMap<>();
+        List<Documentation> one = documentationDao.findType(1);
+        List<Documentation> two = documentationDao.findType(2);
+        List<Documentation> there = documentationDao.findType(3);
+        List<Documentation> four = documentationDao.findType(4);
+        map.put("one",one);
+        map.put("two",two);
+        map.put("there",there);
+        map.put("four",four);
+        System.out.println(map);
+        return map;
+    }
 
     @Override
     public List<Documentation> findNewDocument(Integer did) {
