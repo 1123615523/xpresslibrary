@@ -227,18 +227,18 @@
 <div class="hr-wrap" style="min-width: 1200px;">
     <div class="h-list-box clearfix">
         <ul class="h-list clearfix">
-            <li class=""><a href="https://www.wenku365.com/" target="_self">首页 </a></li>
-            <li id="conAll0" class="an"><a href="https://www.wenku365.com/list.html" target="_self"> 文档分类</a>
+            <li class=""><a href="/Home/index">首页 </a></li>
+            <li id="conAll0" class="an"><a href="JavaScript:"> 文档分类</a>
                 <ul id="conAll2" style="display: none; z-index: 9999999;">
                     <div id="qwe">
-                    <li v-for="res in result">
+                        <li v-for="res in result">
                         <span>
-                            <a href="https://www.wenku365.com/c-00012.html" title="学术论文" target="_blank">{{res.name}}</a>
+                            <a href="JavaScript:" title="学术论文">{{res.name}}</a>
                         </span>
-                        <dl v-for="chid in res.resourcesdetails">
-                            <a href="https://www.wenku365.com/c-0001200007.html" target="_blank">{{chid.dname}}</a>
-                        </dl>
-                    </li>
+                            <dl v-for="chid in res.resourcesdetails">
+                                <a :href="tiao(chid.did)">{{chid.dname}}</a>
+                            </dl>
+                        </li>
                     </div>
                 </ul>
             </li>
@@ -255,6 +255,9 @@
                         this.find();
                     },
                     methods: {
+                        "tiao": function (did) {
+                            return '/Home/ResourceDetails?did=' + did;
+                        },
                         "find": function () {
                             var url = "/Resource/findResource";
                             var that = this;
@@ -267,10 +270,10 @@
                     }
                 });
             </script>
-            <li class=""><a href="/c-00012.html">学术论文</a></li>
-            <li class=""><a href="/c-00015.html">应用文档</a></li>
-            <li class=""><a href="/c-00017.html">行业资料</a></li>
-            <li class=""><a href="/c-00016.html">教育资源</a></li>
+            <li class=""><a href="JavaScript:">学术论文</a></li>
+            <li class=""><a href="JavaScript:">应用文档</a></li>
+            <li class=""><a href="JavaScript:">行业资料</a></li>
+            <li class=""><a href="JavaScript:">教育资源</a></li>
             <li class=""><a href="/Home/help">互动求助</a></li>
         </ul>
         <div class="usershop">
@@ -285,7 +288,7 @@
                     </form>
                 </li>
                 <li class="shop1"><a class="searchbtn0" style="width: 40px;" title="上传我的文档"
-                                     href="https://www.wenku365.com/ucenter/wenku/bookUpload"
+                                     href="JavaScript:"
                                      rel="nofollow"><span></span></a></li>
             </ul>
         </div>
@@ -297,7 +300,7 @@
             </div>
             <div style="float: left;" th:if="${session.cus==null}">
                 <a href="/Home/registered">[免费注册]</a>
-                | <a  href="/Home/login">[登录]</a>
+                | <a href="/Home/login">[登录]</a>
             </div>
         </div>
     </div>
@@ -351,24 +354,24 @@
                         </form>
                     </ul>
                     <ul class="shop4" v-show="documentation.allowdownload == 1">
-                        <li class="btns"><span style="color: #666">下载费用：</span> <span style="color: #ff1100;"> <b
+                        <li class="btns"><span style="color: #666">购买费用：</span> <span style="color: #ff1100;"> <b
                                 style="font-size: 14px;">{{documentation.sellingprice}}</b>积分 </span> &nbsp; <input
                                 type="button"
                                 class="btndown1"
                                 onclick=""
-                                value="下载资源"></li>
+                                value="购买资源"></li>
                     </ul>
                 </div>
             </div>
             <!--分类提示信息-->
             <div class="nav_uis" style="margin: 10px auto 0px auto;">
-                <a href="https://www.wenku365.com/">
+                <a href="/Home/index">
                     <img src="/static/yue/home.gif" width="16" height="16" align="absmiddle" alt="首页">&nbsp;&nbsp;随心文库
                 </a>
                 <span>&nbsp;&gt;&nbsp;</span>
-                <a href="https://www.wenku365.com/c-00015.html">{{documentation.dname}}</a>
+                <a href="JavaScript:">{{documentation.dname}}</a>
                 <span>&nbsp;&gt;&nbsp;</span>
-                <a href="https://www.wenku365.com/c-0001500003.html">{{documentation.name}}</a>
+                <a href="JavaScript:">{{documentation.name}}</a>
                 <span>&nbsp;&gt;&nbsp;</span>
             </div>
 
@@ -396,11 +399,16 @@
                         </div>
 
                         <!--阅读文档 以及 下载文档-->
-                        <div id="outer_page_more" style="margin-bottom: 20px; background-color: #FFF; overflow: hidden;">
-                            <div class="inner_page_more" id="page_more" style="width: 920px; overflow: hidden; border: solid 1px #ccc; box-shadow: 0 1px 5px #ccc; height: 200px; line-height: 30px;">
-                                <div id="html-reader-go-more" class="banner-wrap more-btn-banner" style="padding-top: 40px; width: 920px; position: relative;">
-                                    <p style="text-align: center; font-size: 18px;"><span id="ftip">本资源提供点击预览，点击阅读文档即可进行预览,如果喜欢文档就下载吧，使用更方便哦！</span></p>
-                                    <p style="text-align: center; font-size: 14px;" v-show="documentation.allowdownload == 1">
+                        <div id="outer_page_more"
+                             style="margin-bottom: 20px; background-color: #FFF; overflow: hidden;">
+                            <div class="inner_page_more" id="page_more"
+                                 style="width: 920px; overflow: hidden; border: solid 1px #ccc; box-shadow: 0 1px 5px #ccc; height: 200px; line-height: 30px;">
+                                <div id="html-reader-go-more" class="banner-wrap more-btn-banner"
+                                     style="padding-top: 40px; width: 920px; position: relative;">
+                                    <p style="text-align: center; font-size: 18px;"><span id="ftip">本资源提供点击预览，点击阅读文档即可进行预览,如果喜欢文档就下载吧，使用更方便哦！</span>
+                                    </p>
+                                    <p style="text-align: center; font-size: 14px;"
+                                       v-show="documentation.allowdownload == 1">
                                         <b></b>
                                         <span>
                                             <b style="color: #ff0000"> {{documentation.sellingprice}}</b> 积分
@@ -415,14 +423,16 @@
                                         <tr>
                                             <td>
                                                 <a id="online_preview" class="ui-bz-btn-senior banner-download"
-                                                   onclick="read()"
+                                                   @click="read(documentation.customerid)"
                                                    style="background-color: #4095CE; padding: 5px 35px; font-size: 15px; text-decoration: none">
                                                     <b style="color: #fff">阅读文档</b>
                                                 </a>
                                             </td>
                                             <td>
                                                 <span v-show="documentation.allowdownload == 1">
-                                                    <a href="https://www.wenku365.com/d-19068135.html" class="ui-bz-btn-senior banner-download" style="padding: 5px 35px; font-size: 15px; text-decoration: none">
+                                                    <a href="JavaScript:" @click="download(documentation.customerid)"
+                                                       class="ui-bz-btn-senior banner-download"
+                                                       style="padding: 5px 35px; font-size: 15px; text-decoration: none">
                                                         <b style="color: #fff">下载文档</b>
                                                     </a>
                                                 </span>
@@ -437,7 +447,7 @@
                         </div>
 
                         <div class="works-manage-box shenshu">
-                            <a class="Textcenter"
+                            <a class="Textcenter" href="JavaScript:"
                                style="display: block; padding-top: 17px; padding-left: 20px; font-size: 14px;">word格式文档无特别注明外均可编辑修改；预览文档经过压缩，下载后原文更清晰！ </a>
                         </div>
                         <br>
@@ -458,7 +468,7 @@
                             <div id="related-pic-list" class="related-pic-list cl"
                                  style="padding-left:12px; padding-right:0px;">
                                 <ul>
-                                    <li><h3><a href="https://www.wenku365.com/p-19068118.html" target="_parent"
+                                    <li><h3><a href="JavaScript:"
                                                title="原创地税工作报告书"> <img
                                             data-original="http://f13.wenku365.com/fileroot2/2018-8/27/c6ce5e9b-9cc5-4cd5-a322-525b92b991af/pic1.gif"
                                             alt="原创地税工作报告书"
@@ -487,14 +497,13 @@
                                             <td>
                                                 <dt class="author-avatar-box fl"><a class="author-avatar"
                                                                                     title="作者头像"
-                                                                                    href="https://www.wenku365.com/u-5097.html">
-                                                    <img :src="documentation.customerpic"> </a>
-                                                </dt>
+                                                                                    :href="userinfo(documentation.customerid)">
+                                                    <img :src="documentation.customerpic"> </a></dt>
                                             </td>
                                             <td>
                                                 <div class="author-name fl w100 ellipsis"><a
-                                                        href="https://www.wenku365.com/u-5097.html"
-                                                        target="_blank">{{documentation.customername}}</a>
+                                                        :href="userinfo(documentation.customerid)"
+                                                        >{{documentation.customername}}</a>
                                                     <img style="height: 15px; width: 20px; overflow: hidden; margin-right: 10px;  display: none"
                                                          src="/static/yue/s.gif"></div>
                                                 <div class="author-level-bar"><span
@@ -517,14 +526,15 @@
                                     <div class="fl keywords-ico mr5 ml13 ico"></div>
                                     <h2 class="fl font-normal font16 font-yahei"
                                         style="font-size: 16px; font-weight: 100; margin-left: 0px; margin-top: 3px; font-family: 微软雅黑">
-                                        作者资源 </h2></div>
+                                        作者资源
+                                    </h2>
+
+                                </div>
                                 <div id="author-works-list" class="author-works-list bgF"
                                      style="height: 314px; overflow: auto">
                                     <li v-for="customer in customerinfo">
                                         <h2>
-                                            <span></span>
-                                            <a @click="cyh(customer.did)"
-                                               :title="customer.filename">
+                                            <a href="JavaScript:" @click="cyh(customer.did)" :title="customer.filename">
                                                 <span style="display:block;width: 230px; overflow: hidden;text-overflow:ellipsis;white-space: nowrap;">{{customer.filename}}.{{customer.documentformat}}</span>
                                             </a>
                                         </h2>
@@ -538,7 +548,8 @@
                 </div>
             </div>
             <div style="display: none" id="Div3">
-                <iframe src="/static/yue/bookRead.html" frameborder="0" style="width: 0px; height: 0px" rel="nofollow"></iframe>
+                <iframe src="/static/yue/bookRead.html" frameborder="0" style="width: 0px; height: 0px"
+                        rel="nofollow"></iframe>
             </div>
         </div>
     </div>
@@ -547,15 +558,15 @@
 </div>
 <!--底部黑框内容-->
 <div class="bg_100 foot_nav_bg" style=" min-width:1200px;">
-    <div class="foot_nav"><a href="https://www.wenku365.com/h-33.html" target="_blank" rel="nofollow">关于我们</a> -
-        <a href="https://www.wenku365.com/h-34.html" target="_blank" rel="nofollow">网站声明</a> -
-        <a href="https://www.wenku365.com/h-35.html" target="_blank" rel="nofollow"> 网站地图</a> -
-        <a href="https://www.wenku365.com/sitemap.html" target="_blank" rel="nofollow"> 资源地图</a> -
-        <a href="javascript:void(0)" target="_blank" rel="nofollow">友情链接</a> -
-        <a target="_blank" href="https://wpa.qq.com/msgrd?v=3&amp;uin=1290478887&amp;site=qq&amp;menu=yes"
+    <div class="foot_nav"><a href="JavaScript:"  rel="nofollow">关于我们</a> -
+        <a href="JavaScript:"  rel="nofollow">网站声明</a> -
+        <a href="JavaScript:"  rel="nofollow"> 网站地图</a> -
+        <a href="JavaScript:"  rel="nofollow"> 资源地图</a> -
+        <a href="JavaScript:"  rel="nofollow">友情链接</a> -
+        <a  href="JavaScript:"
            rel="nofollow"> 网站客服
             <img border="0" src="/static/yue/pa" alt="点击这里,给天天文库发消息,QQ:1290478887" title="点击这里,给天天文库发消息,QQ:1290478887"></a>-
-        <a href="https://www.wenku365.com/h-38.html" target="_blank" rel="nofollow">联系我们</a>
+        <a href="JavaScript:"  rel="nofollow">联系我们</a>
     </div>
 </div>
 <!--底部说明-->
@@ -577,7 +588,7 @@
         <p style="text-align: center; line-height: 1.75em;">
             <span style="font-size: 14px;">
                 <span style="text-align: center; color: rgb(102, 102, 102); line-height: 20px; font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 14px;">
-                    <a rel="nofollow" href="http://www.beian.miit.gov.cn/">粤ICP备19057495号</a>&nbsp;
+                    <a rel="nofollow" href="JavaScript:">粤ICP备19057495号</a>&nbsp;
                 </span>
             </span>
         </p>
@@ -638,12 +649,27 @@
             this.bydid();
         },
         methods: {
-            "download":function () {
+            "userinfo":function (customerid) {
+                return "/Home/UserInfoPerson?cid="+customerid;
+            },
+            "read": function (cusid) {
+                var did = $("[name=did]").val();
+                console.log(did);
+                xadmin.open("文档阅读", "/Home/reads?did=" + did+"&cusid="+cusid, "750", "800");
+            },
+            "download": function (id) {
                 var cus = $("#cus").html();
-                if(cus === ''){
-                    layer.alert("请先登录！");
+                if (cus == '') {
+                    layer.alert("请先登录再下载！");
                     return;
                 }
+                if (cus == id) {
+                    layer.alert("您不能购买自己的文档！")
+                    return;
+                }
+                var did = $("[name=did]").val();
+                window.sessionStorage.setItem("did", did);
+                location.href = "/Home/payInfo";
             },
             "bydid": function () {
                 var _this = this;
@@ -765,14 +791,15 @@
         }
     })
 </script>
+<span id="customerinfo" th:text="${session.cus}" hidden></span>
 <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
 <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
 <script>
-    function read() {
-        var did = $("[name=did]").val();
-        console.log(did);
-        xadmin.open("文档阅读", "/Home/reads?did=" + did, "750", "800");
-    }
+    // function read() {
+    //     var did = $("[name=did]").val();
+    //     console.log(did);
+    //     xadmin.open("文档阅读", "/Home/reads?did=" + did, "750", "800");
+    // }
 </script>
 <script>
     function showOnlinePreview() {
