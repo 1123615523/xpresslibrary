@@ -43,4 +43,8 @@ public interface DocumentationDao {
 
     /**收藏操作时，对收藏量进行修改*/
     Integer updatefavorites(Integer favorites,Integer did);
+
+    //拿四个类型下的文档
+    List<Documentation> findType(Integer typeid);
+
 }
