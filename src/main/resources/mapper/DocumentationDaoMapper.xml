@@ -6,7 +6,7 @@
 
     <resultMap id="huiMap" type="java.util.Map">
         <id column="did" jdbcType="NUMERIC" property="did"></id>
-        <result column="sellingprice" jdbcType="VARCHAR" property="sellingprice"></result>
+        <result column="sellingprice" jdbcType="NUMERIC" property="sellingprice"></result>
         <result column="customerid" jdbcType="NUMERIC" property="customerid"></result>
         <result column="customermoney" jdbcType="NUMERIC" property="customermoney"></result>
         <result column="customertel" jdbcType="VARCHAR" property="customertel"></result>
@@ -104,5 +104,14 @@
 
     <select id="findbydidcid" resultMap="huiMap">
         select d.did,d.sellingprice,c.customerid,c.customermoney,c.customertel from documentation d left join customerinfo c on d.authored = c.customerid where d.did = #{did}
+    </select>
+
+    <select id="findType" resultType="com.aaa.entity.Documentation">
+        select d.* from documentation d
+        LEFT JOIN resourcesdetails r
+        on d.detaisid = r.did
+        LEFT JOIN resourcesinfo rs
+        on r.resourcesid = rs.id
+        where rs.id = #{value}
     </select>
 </mapper>
