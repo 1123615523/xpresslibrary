@@ -42,4 +42,6 @@ public class Customerinfo  {
     private String customeraddr;
 
     private String customertruename;
+
+    private Integer customerfence;
 }

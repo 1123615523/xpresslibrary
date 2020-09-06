@@ -30,4 +30,10 @@ public interface CustomerDao {
     /**修改头像*/
     Integer editFile(Customerinfo customerinfo);
 
+    /**根据用户id获取用户信息*/
+    Customerinfo findbycid(Integer customerid);
+
+    /**关注操作时，对关注量进行修改*/
+    Integer updateattention(Integer customerfence,Integer youid);
+
 }
