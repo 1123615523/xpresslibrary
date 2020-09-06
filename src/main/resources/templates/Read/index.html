@@ -487,12 +487,12 @@
                                             <td>
                                                 <dt class="author-avatar-box fl"><a class="author-avatar"
                                                                                     title="作者头像"
-                                                                                    href="https://www.wenku365.com/u-5097.html">
+                                                                                    :href="userinfo(documentation.customerid)">
                                                     <img :src="documentation.customerpic"> </a></dt>
                                             </td>
                                             <td>
                                                 <div class="author-name fl w100 ellipsis"><a
-                                                        href="https://www.wenku365.com/u-5097.html"
+                                                        :href="userinfo(documentation.customerid)"
                                                         >{{documentation.customername}}</a>
                                                     <img style="height: 15px; width: 20px; overflow: hidden; margin-right: 10px;  display: none"
                                                          src="/static/yue/s.gif"></div>
@@ -632,6 +632,9 @@
             this.bydid();
         },
         methods: {
+            "userinfo":function (customerid) {
+                return "/Home/UserInfoPerson?cid="+customerid;
+            },
             "read": function (cusid) {
                 var did = $("[name=did]").val();
                 console.log(did);
