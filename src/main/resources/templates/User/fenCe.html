@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>粉丝列表</title>
+</head>
+<body>
+
+<center>
+    <div id="app">
+        <h1>展示该用户的粉丝列表</h1>
+    </div>
+
+    <span id="cusid" th:text="${cusid}" hidden></span>
+
+    <script src="/static/vue/axios.min.js"></script>
+    <script src="/static/vue/vue.js"></script>
+    <script src="/static/vue/jquery-3.1.1.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                res:[]
+            },
+            created:function () {
+                //this.find();
+            },
+            methods:{
+                "find":function () {
+                    var cusid = $("#cusid").html();
+                    var url = "/attention/findFenceInfo?cusid="+cusid;
+                    var that = this;
+                    axios.get(url).then(function (resp) {
+                        that.res = resp.data;
+                        alert(that.res);
+                    })
+                }
+            }
+        })
+    </script>
+
+
+</center>
+
+</body>
+</html>
