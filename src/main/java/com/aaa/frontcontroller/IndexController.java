@@ -18,6 +18,13 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IndexController {
 
+    //打开粉丝信息的窗体
+    @RequestMapping("findFence")
+    public String fenFence(Integer cusid,Model model){
+        model.addAttribute("cusid",cusid);
+        return "User/fenCe";
+    }
+
     //进入支付成功订单详情页面
     @RequestMapping("OrderInfo")
     public String OrderInfo(Model model){
