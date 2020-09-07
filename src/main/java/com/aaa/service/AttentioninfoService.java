@@ -1,6 +1,9 @@
 package com.aaa.service;
 
 import com.aaa.entity.Attentioninfo;
+import com.aaa.entity.Customerinfo;
+
+import java.util.List;
 
 public interface AttentioninfoService {
 
@@ -12,4 +15,8 @@ public interface AttentioninfoService {
 
     /**取消关注*/
     Integer delYM(Integer youid,Integer myid);
+
+    //查询该作者被那些人关注了
+    List<Customerinfo> findFenceCount(Integer cusid);
+
 }

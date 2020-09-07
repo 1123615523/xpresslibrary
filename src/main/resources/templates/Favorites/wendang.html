@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="/static/js/skin-black-light.min.css">
     <link rel="stylesheet" href="/static/js/qidongucenter.css">
 
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+
     <script>
         var qidong = {
             cpath: ''
@@ -94,7 +97,7 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
                         <a th:href="@{/Home/UserInfoPerson(cid=${session.cus.customerid})}">
-                            <img th:src="${session.cus.customerpic}" class="user-image">
+                            <img th:src="${session.cus!=null?session.cus.customerpic:''}" class="user-image">
                             <span class="hidden-xs">您好 <span
                                     th:text="${session.cus!=null?session.cus.customertel:''}"></span> , 欢迎回来</span>
                         </a>
@@ -102,7 +105,7 @@
 
 
                     <li class="dropdown messages-menu" style="border-left: 1px solid #ccc;">
-                        <a href="http://upload.wenku365.com:18889/ucenter/wenku/bookUpload#" class="dropdown-toggle"
+                        <a href="JavaScript:" class="dropdown-toggle"
                            data-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-fw fa-shopping-cart"></i>
                         </a>
@@ -112,7 +115,7 @@
                                 <ul class="menu" style="background-color: #f7f7f7">
                                 </ul>
                             </li>
-                            <li class="footer"><a href="http://upload.wenku365.com:18889/ucenter/cart"
+                            <li class="footer"><a href="JavaScript:"
                                                   style="color: #3c8dbc !important;" target="_blank">查看全部</a></li>
                         </ul>
                     </li>
@@ -138,7 +141,7 @@
             <ul class="sidebar-menu tree" data-widget="tree" id="sidebar-menu">
                 <li class="block"></li>
                 <li class="link">
-                    <a href="http://upload.wenku365.com:18889/ucenter/index">
+                    <a href="http://localhost:8888/Home/index">
                         <i class="fa fa-fw fa-home"></i>
                         <span>首页</span></a>
                 </li>
@@ -213,125 +216,121 @@
                         <i class="fa fa-fw fa-key"></i>
                         <span>账号密码</span></a>
                 </li>
-
-
             </ul>
         </section>
         <!-- /.sidebar -->
     </aside>
-    <div class="content-wrapper" id="app">
+    <div class="content-wrapper">
         <section class="content-header">
             <h1>
-                修改密码
-                <small>My Password</small>
+                我的文档
+                <small>My Orders</small>
             </h1>
         </section>
         <section class="content">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box box-primary">
-                        <div class="box-header ">
-                            <h3 class="box-title"></h3>
+                        <div class="box-header with-border">
+                            <form class="form-horizontal actionPanel">
+                                <div class="row">
+                                    <div class="form-group col-xs-4">
+                                        <label class="col-sm-3 control-label">商品</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-4">
+                                        <label class="col-sm-3 control-label">订单号</label>
+                                        <div class="col-sm-9">
+                                            <input class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-xs-4">
+                                        <button type="submit" class="btn btn-primary ">查询</button>
+                                        <button type="reset" class="btn btn-default">重置</button>
+                                        <a class="btn"> 更多<i class="fa fa-fw fa-angle-down"></i> </a>
+                                    </div>
+                                </div>
+
+                            </form>
                         </div>
-                        <form class="form-horizontal" autocomplete="off" id="form" action="#">
-                            <div class="box-body ">
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">旧密码</label>
-                                    <div class="col-sm-7">
-                                        <input type="password" v-model="one" class="form-control" placeholder="请输入之前的密码" name="oldPwd">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">新密码</label>
-                                    <div class="col-sm-7">
-                                        <input type="password" v-model="two" class="form-control" placeholder="新的密码" name="newPwd">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="col-sm-2 control-label">确认密码</label>
-                                    <div class="col-sm-7">
-                                        <input type="password" v-model="there" class="form-control" placeholder="及确认密码" name="confirmPwd">
-                                    </div>
+
+                        <div class="box-body ">
+                            <table class="table table-striped">
+                                <tbody>
+                                <tr>
+                                    <th style="text-align: center">商品</th>
+                                    <th style="text-align: center">数量</th>
+                                    <th style="text-align: center">单价</th>
+                                    <th style="text-align: center">总价</th>
+                                    <th style="text-align: center">操作</th>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="5" bgcolor="#fff">
+                                        <div class="box box-dashboard" style="margin-bottom: 0px">
+                                            <div class="box-header with-border">
+                                                <div class="col-lg-10">
+                                                    订单号：497111473626157056
+                                                    总金额：<span style="padding-right: 20px">19.90</span>
+                                                    支付状态：<span style="padding-right: 20px">未支付</span>
+                                                </div>
+                                                <div class="col-lg-2" style="text-align: right">
+                                                    <h3 class="box-title">
+                                                        <a href="/ucenter/checkout/order/130270" target="_blank">
+                                                            去付款
+                                                        </a>
+                                                        <a href="/ucenter/order/detail/130270">详情</a>
+                                                    </h3>
+                                                </div>
+                                            </div>
+
+                                            <div class="box-body no-padding">
+                                                <table class="table table-striped">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td style="width: 20%;text-align: center"><a
+                                                                href="/s-57118558.html">脑梗死的诊疗规范12613.doc</a></td>
+                                                        <td style="width: 20%;text-align: center">1</td>
+                                                        <td style="width: 20%;text-align: center">19.90</td>
+                                                        <td style="width: 20%;text-align: center">19.90</td>
+                                                        <td style="width: 20%;text-align: center">
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="box-footer">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <ul class="pagination pull-right">
+                                        <li class="paginate_button previous disabled">
+                                            <a href="javascript:;">上一页</a>
+                                        </li>
+                                        <li class="paginate_button active">
+                                            <a href="javascript:;">1</a>
+                                        </li>
+                                        <li class="paginate_button next disabled">
+                                            <a href="javascript:;">下一页</a>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="box-footer">
-                                <div class="col-sm-offset-2 col-sm-10 submit-block">
-                                    <div class="box-submit">
-                                        <button type="button" @click="updPassword()" class="btn btn-primary">提交</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
     </div>
-
-    <span th:text="${session.cus.customerid}" hidden id="id"></span>
-    <span th:text="${session.cus.customerpwd}" hidden id="pwd"></span>
-
-    <script src="/static/vue/axios.min.js"></script>
-    <script src="/static/vue/vue.js"></script>
-    <script>
-        var v = new Vue({
-            el:'#app',
-            data:{
-                one:'',
-                two:'',
-                there:''
-            },
-            methods:{
-                "updPassword":function () {
-                    if(this.one === ''){
-                        layer.alert("旧密码不能为空！");
-                        return;
-                    }
-                    if(this.two === ''){
-                        layer.alert("新密码不能为空！");
-                        return;
-                    }
-                    if(this.there === ''){
-                        layer.alert("确认密码不能为空！");
-                        return;
-                    }
-                    if(this.two.length < 6 || this.there.length < 6){
-                        layer.alert("密码长度必须大于6位！");
-                        this.two = '';
-                        this.there = '';
-                        return;
-                    }
-                    if(this.two !== this.there){
-                        layer.alert("前后密码不一致！");
-                        this.two = '';
-                        this.there = '';
-                        return;
-                    }
-                    if(this.one !== $("#pwd").html()){
-                        layer.alert("旧密码验证错误！");
-                        this.one = '';
-                        this.two = '';
-                        this.there = '';
-                        return;
-                    }
-                    var id = $("#id").html();
-                    var pwd = this.there;
-                    var url = "/customer/updPassword?id="+id+"&pwd="+pwd;
-                    axios.get(url).then(function (value) {
-                        if(value.data > 0){
-                            toastr.options.onHidden = function () {
-                                location.href="/Home/login";
-                            };
-                            toastr.success('修改成功！即将跳转到登录页面^_^');
-                        }else{
-                            toastr.error('修改失败！');
-                        }
-                    });
-                }
-            }
-        })
-    </script>
-
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
             version v3.0.0-rc.1
@@ -353,18 +352,5 @@
 <script src="/static/js/qidongucenter.js"></script>
 <script src="/static/js/qidongcommons.js"></script>
 <script src="/static/js/qidongcsrf.js"></script>
-<script>
-    $('#form').on('submit', function () {
-
-        ajaxSubmit('#form', function () {
-            toastr.success('修改成功');
-        });
-
-        return false;
-    });
-</script>
-<script>
-
-</script>
 </body>
 </html>

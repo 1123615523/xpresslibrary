@@ -18,6 +18,24 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IndexController {
 
+    //打开收藏信息窗体
+    @RequestMapping("shoucang")
+    public String fenceInfo(){
+        return "Favorites/shoucang";
+    }
+
+    //打开关注页面
+    @RequestMapping("guanzhu")
+    public String guanzhu(){
+        return "Favorites/guanzhu";
+    }
+
+    //打开我的文档信息
+    @RequestMapping("wendang")
+    public String wendang(){
+        return "Favorites/wendang";
+    }
+
     //打开粉丝信息的窗体
     @RequestMapping("findFence")
     public String fenFence(Integer cusid,Model model){

@@ -20,6 +20,11 @@ public class AttentioninfoController {
     @Resource
     CustomerService customerService;
 
+    @RequestMapping("findFenceInfo")
+    public Object findFenceInfo(Integer cusid){
+        return attentioninfoService.findFenceCount(cusid);
+    }
+
     /**添加关注*/
     @RequestMapping("addAttention")
     public Object addAttention(Integer youid, Integer myid){

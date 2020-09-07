@@ -19,5 +19,12 @@
         select count(*) acount from attentioninfo where youid = #{param1} and myid = #{param2}
     </select>
 
+    <select id="findFenceCount" resultType="com.aaa.entity.Customerinfo">
+        select c.* from attentioninfo a
+        LEFT JOIN customerinfo c
+        on a.youid = c.customerid
+        where a.myid = #{value}
+    </select>
+
 
 </mapper>
