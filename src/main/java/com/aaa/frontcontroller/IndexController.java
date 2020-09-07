@@ -18,6 +18,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IndexController {
 
+    //打开提现页面
+    @RequestMapping("tixian")
+    public String tixian(){
+        return "pay/tixian";
+    }
+
     //打开收藏信息窗体
     @RequestMapping("shoucang")
     public String fenceInfo(){
