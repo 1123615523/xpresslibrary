@@ -55,6 +55,10 @@
         select * from customerinfo where customerid = #{customerid}
     </select>
 
+    <select id="findFensiCount" resultType="com.aaa.entity.Customerinfo">
+        select * from customerinfo order by customerinfo.customerfence desc
+    </select>
+
     <update id="editFile" parameterType="com.aaa.entity.Customerinfo">
         update customerinfo set customerpic=#{customerpic}  where  customerid = #{customerid}
     </update>

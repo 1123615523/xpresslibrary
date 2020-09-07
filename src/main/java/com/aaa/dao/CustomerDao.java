@@ -2,6 +2,8 @@ package com.aaa.dao;
 
 import com.aaa.entity.Customerinfo;
 
+import java.util.List;
+
 public interface CustomerDao {
     /**注册*/
     Integer add(Customerinfo customerinfo);
@@ -35,5 +37,8 @@ public interface CustomerDao {
 
     /**关注操作时，对关注量进行修改*/
     Integer updateattention(Integer customerfence,Integer youid);
+
+    //查询个人粉丝数量倒叙显示
+    List<Customerinfo> findFensiCount();
 
 }

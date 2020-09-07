@@ -23,6 +23,11 @@ public class CustomerServiceImpl implements CustomerService {
     @Resource
     DocumentationDao documentationDao;
 
+    @Override
+    public List<Customerinfo> findFensiCount() {
+        return customerDao.findFensiCount();
+    }
+
     /**根据用户id获取用户信息*/
     @Override
     public Customerinfo findbycid(Integer customerid) {

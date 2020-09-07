@@ -48,4 +48,7 @@ public interface DocumentationService {
     //查询四个类别
     Map<String, Object> findType();
 
+    //测试单个类型返回
+    List<Documentation> findTest();
+
 }

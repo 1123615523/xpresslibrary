@@ -2,6 +2,7 @@ package com.aaa.service;
 
 import com.aaa.entity.Customerinfo;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,5 +46,8 @@ public interface CustomerService {
 
     //查询个人信息主页以及个人资源
     Map<String,Object> findUserInfo(Integer cusid);
+
+    //查询个人粉丝数量倒叙显示
+    List<Customerinfo> findFensiCount();
 
 }

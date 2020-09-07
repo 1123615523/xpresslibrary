@@ -562,8 +562,8 @@
                 </div>
                 <div class="rmz_view">
                     <dt>
-                        <a href="JavaScript:" @click="dianwo()" title="国际大酒店空调工程设计 暖通空调毕业设计全套含图纸">
-                            <img data-original="" src="/static/images/ert.gif" width="217" height="150">
+                        <a href="JavaScript:" @click="dianwo()" title="我是气氛组">
+                            <img data-original="" src="/static/images/wer.gif" width="217" height="150">
                         </a>
                     </dt>
                     <dd>
@@ -659,66 +659,71 @@
                 </div>
                 <div class="tj_view " id="tj001" 581>
                     <ul>
-                        <li v-for="r in res.one">
-                            <a href="JavaScript:">
-                                <img :src="r.filepath"><span :class="r.documentformat"></span></a>
-                            <a :title="r.title" href="JavaScript:" class="text">{{r.title}}.{{r.documentformat}}</a>
+                        <li>
+                            <a href="JavaScript:" >
+                            <img alt="赫茨伯格的双因素激励理论.doc" src="/static/images/ert.gif" style="display: inline;">
+                            <span class="doc"></span></a>
+                            <a title="赫茨伯格的双因素激励理论.doc" href="JavaScript:" class="text">赫茨伯格的双因素激励理论.doc</a>
                         </li>
                     </ul>
                 </div>
                 <div class="tj_view hidden" id="tj002" 574>
                     <ul>
-                        <li v-for="r in res.two">
-                            <a href="JavaScript:">
-                                <img :src="r.filepath"><span :class="r.documentformat"></span></a>
-                            <a :title="r.title" href="JavaScript:" class="text">{{r.title}}.{{r.documentformat}}</a>
+                        <li><a href="JavaScript:" >
+                            <img alt="赫茨伯格的双因素激励理论.doc" src="/static/images/ert.gif"
+                                 style="display: inline;">
+                            <span class="doc"></span></a>
+                            <a title="赫茨伯格的双因素激励理论.doc" href="JavaScript:" class="text">赫茨伯格的双因素激励理论.doc</a>
                         </li>
                     </ul>
                 </div>
                 <div class="tj_view hidden" id="tj003" 787>
                     <ul>
-                        <li v-for="r in res.there">
-                            <a href="JavaScript:">
-                                <img :src="r.filepath"><span :class="r.documentformat"></span></a>
-                            <a :title="r.title" href="JavaScript:" class="text">{{r.title}}.{{r.documentformat}}</a>
+                        <li><a href="JavaScript:" >
+                            <img alt="赫茨伯格的双因素激励理论.doc" src="/static/images/ert.gif"
+                                 style="display: inline;">
+                            <span class="doc"></span></a>
+                            <a title="赫茨伯格的双因素激励理论.doc" href="JavaScript:" class="text">赫茨伯格的双因素激励理论.doc</a>
                         </li>
                     </ul>
                 </div>
                 <div class="tj_view hidden" id="tj004" 784>
                     <ul>
-                        <li v-for="r in res.four">
-                            <a href="JavaScript:">
-                                <img :src="r.filepath"><span :class="r.documentformat"></span></a>
-                            <a :title="r.title" href="JavaScript:" class="text">{{r.title}}.{{r.documentformat}}</a>
+                        <li><a href="JavaScript:" >
+                            <img alt="赫茨伯格的双因素激励理论.doc" src="/static/images/ert.gif"
+                                 style="display: inline;">
+                            <span class="doc"></span></a>
+                            <a title="赫茨伯格的双因素激励理论.doc" href="JavaScript:" class="text">赫茨伯格的双因素激励理论.doc</a>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="center_line"></div>
             <div class="blank17"></div>
+            <!--/documentation/findType-->
         </div>
-
+        <script src="/static/vue/axios.min.js"></script>
+        <script src="/static/vue/vue.js"></script>
+        <script src="/static/vue/jquery-3.1.1.js"></script>
         <script>
-            new Vue({
-                el: '#findType',
-                data: {
-                    res: []
+            var v = new Vue({
+                el:'#findType',
+                data:{
+                    info:[]
                 },
-                created: function () {
-                    //this.find();
+                created:function () {
+                    this.findInfo();
                 },
-                methods: {
-                    "find": function () {
+                methods:{
+                    "findInfo":function () {
                         var that = this;
-                        axios.get("/documentation/findType").then(function (resp) {
-                            that.res = resp.data;
-                            console.info(JSON.stringify(resp.data));
-                        })
+                        axios.get("/documentation/findDocument").then(function (resp) {
+                            that.info = resp.data;
+                        });
                     }
                 }
             })
         </script>
-
 
         <!--今日更新ppt-->
         <div class="home_jp" id="ppt">

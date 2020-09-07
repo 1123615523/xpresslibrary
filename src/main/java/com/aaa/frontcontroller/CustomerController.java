@@ -25,6 +25,12 @@ public class CustomerController {
     CustomerService customerService;
 
     @ResponseBody
+    @RequestMapping("findFensiCount")
+    public Object findFensiCount(){
+        return customerService.findFensiCount();
+    }
+
+    @ResponseBody
     @RequestMapping("findUserPerson")
     public Object findUserPerson(@RequestParam Integer cusid)
     {

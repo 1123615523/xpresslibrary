@@ -96,7 +96,7 @@
             <div class="navbar-custom-menu">
                 <ul class="nav navbar-nav">
                     <li class="dropdown user user-menu">
-                        <a href="JavaScript:">
+                        <a th:href="@{/Home/UserInfoPerson(cid=${session.cus.customerid})}">
                             <img th:src="${session.cus!=null?session.cus.customerpic:''}" class="user-image">
                             <span class="hidden-xs">您好 <span
                                     th:text="${session.cus!=null?session.cus.customertel:''}"></span> , 欢迎回来</span>
@@ -346,7 +346,7 @@
                 },
                 methods: {
                     "download":function (did) {
-                        //文档的ID：did
+                        window.location.href = "/documentation/download?did="+did;
                     },
                     "details":function (id) {
                         window.sessionStorage.setItem("did", id);

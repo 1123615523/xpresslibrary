@@ -409,8 +409,8 @@
                 <div class="border">
                     <form>
                         <input id="keywordfix" type="text" value="" name="q" placeholder="在这里搜索">
-                        <input type="submit" name="searchBtn" value="" title="点击搜索"
-                               onclick="searchWord($(&#39;#keywordfix&#39;).val()); return false;">
+                        <input type="button" name="searchBtn" value="" title="点击搜索"
+                               onclick="">
                     </form>
                 </div>
                 <a class="block upload-link" style="position: absolute; right: 0px;top:0px;"
@@ -541,8 +541,8 @@
                     </div>
 
                     <div class="user_ziliao_5" style="margin-top: 0px;">
-                        <a href=""><span class="f20 cf90 font-yahei">{{customer.customerfence}}</span></a> 粉丝 /
-                        <a href=""><span class="f20 cf90 font-yahei">0</span></a> 关注
+                        <a href="JavaScript:" @click="showFence(customer.customerid)"><span class="f20 cf90 font-yahei">{{customer.customerfence}}</span></a> 粉丝 /
+                        <a href="JavaScript:"><span class="f20 cf90 font-yahei">0</span></a> 关注
 
                     </div>
                 </div>
@@ -660,6 +660,9 @@
                 this.find();
             },
             methods: {
+                "showFence":function (cid) {
+                    xadmin.open('粉丝列表','',700,400);
+                },
                 "sixin":function (author) {
                     layer.prompt({title:'发送私信给'+author,formType: 2},function(pass,index){
                         layer.alert("虽然你发了私信，但是人家收不到。");

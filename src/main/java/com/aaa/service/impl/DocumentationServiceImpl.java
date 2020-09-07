@@ -36,6 +36,12 @@ public class DocumentationServiceImpl implements DocumentationService {
     @Resource
     DocumentConverter documentConverter;
 
+    @Override
+    public List<Documentation> findTest() {
+        System.out.println(documentationDao.findType(1));
+        return documentationDao.findType(1);
+    }
+
     /**收藏操作时，对收藏量进行修改*/
     @Override
     public Integer updatefavorites( Integer favorites,Integer did) {
@@ -53,7 +59,6 @@ public class DocumentationServiceImpl implements DocumentationService {
         map.put("two",two);
         map.put("there",there);
         map.put("four",four);
-        System.out.println(map);
         return map;
     }
 

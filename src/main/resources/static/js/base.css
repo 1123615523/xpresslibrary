@@ -4293,7 +4293,7 @@ a.upload-link:hover {
     height: 150px;
     border: 1px solid #ddd;
     margin: 10px auto;
-    background: #fffbea url(../../images/helpbg.png) no-repeat 160px bottom;
+    background: #fffbea url(/static/js/helpbg.png) no-repeat 160px bottom;
     position: relative
 }
 
