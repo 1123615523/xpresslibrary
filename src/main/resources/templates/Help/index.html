@@ -14,6 +14,10 @@
     <script type="text/javascript" src="/static/wd/Prototype.js"></script>
     <script type="text/javascript" src="/static/wd/slides.banner.js"></script>
     <link href="/static/wd/slides.css" rel="stylesheet" type="text/css">
+
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+
     <meta name="copyright" content="www.renrendoc.com">
     <meta name="applicable-device" content="pc">
     <!--IE8只能支持jQuery1.9-->
@@ -338,42 +342,15 @@
                  style="border: 0; "></a></h1>
         <div class="cmn_search_box">
             <div class="border">
-                <form>
-                    <input id="keyword" type="text" value="" name="q" placeholder="在这里搜索">
-                    <input type="submit" name="searchBtn" value="" title="点击搜索"
-                           onclick="searchWord($(&#39;#keyword&#39;).val()); return false;">
+                <form action="/Home/findMohuQuery" method="post">
+                    <input id="keyword" type="text" name="keyword"  placeholder="在这里搜索">
+                    <input type="submit" name="searchBtn" value=""  title="点击搜索">
                 </form>
             </div>
-
-            <script>
-                function getcheckedKeyword(s) {
-                    if (!s) return "";
-                    var pattern = new RegExp("[`~%!@#$^&*()=|{}';',\\[\\]<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
-                    var rs = "";
-                    for (var i = 0; i < s.length; i++) {
-                        rs = rs + s.substr(i, 1).replace(pattern, '');
-                    }
-                    return rs;
-                }
-
-                function searchWord(keyword, aElement) {
-                    keyword = getcheckedKeyword(keyword);
-                    if (keyword == "在这里搜索") keyword = "";
-                    var url = "https://www.renrendoc.com/search.html?q=" + encodeURIComponent(keyword);
-
-                    if (!aElement) {
-                        location.href = url;
-                    } else {
-                        aElement.href = url;
-                        return true;
-                    }
-                }
-            </script>
         </div>
 
         <div class="topr">
-            <a class="block upload-link" href="JavaScript:"
-               rel="nofollow" onclick="chuan()">上传我的文档</a>
+            <a class="block upload-link" href="JavaScript:" rel="nofollow" onclick="chuan()">上传我的文档</a>
         </div>
     </div>
 
@@ -382,7 +359,7 @@
         function chuan() {
             var test = $("#testcus").html();
             if ('' === test) {
-                window.location = '/Home/loginUser';
+                layer.alert("请先登录！");
             } else {
                 window.location = "/Home/user";
             }
@@ -506,10 +483,10 @@
                 <li class="">
                     <a href="/Home/index" target="_self">
                         首页</a></li>
-                <li class=""><a href="JavaScript:">学术论文</a></li>
-                <li class=""><a href="JavaScript:">应用文档</a></li>
-                <li class=""><a href="JavaScript:">行业资料</a></li>
-                <li class=""><a href="JavaScript:">教育资源</a></li>
+                <li class=""><a href="/Home/resource?did=1">学术论文</a></li>
+                <li class=""><a href="/Home/resource?did=2">应用文档</a></li>
+                <li class=""><a href="/Home/resource?did=3">行业资料</a></li>
+                <li class=""><a href="/Home/resource?did=4">教育资源</a></li>
                 <li class=""><a href="/Home/help">互动求助</a></li>
             </div>
         </div>
@@ -549,7 +526,7 @@
                                     function ti() {
                                         var s = $("#res").html();
                                         if (s === '') {
-                                            alert("请先登录或注册！");
+                                            layer.alert("请先登录或注册！");
                                         } else {
                                             location.href = "/Home/addHelp";
                                         }
@@ -740,8 +717,8 @@
             <div id="fensi">
                 <div class="gp-rwrap">
                     <div class="helpBox">
-                        <span class="dib">还有<em class="red f18">117</em>个小伙伴的提问没收到答复，快来帮助他们吧！！！</span>
-                        <a href="JavaScript:" class="help-btn" title="帮助解答">帮助解答</a>
+                        <span class="dib">还很多小伙伴的提问没收到答复，快来帮助他们吧！！！</span>
+                        <a href="JavaScript:" class="help-btn" title="认真一点">认真一点</a>
                     </div>
 
                     <div class="wd-list-box clearfix" style="margin-bottom:10px;">

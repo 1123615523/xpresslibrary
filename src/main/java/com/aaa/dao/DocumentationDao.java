@@ -1,6 +1,7 @@
 package com.aaa.dao;
 
 import com.aaa.entity.Documentation;
+import com.aaa.entity.Resourcesinfo;
 
 import java.util.List;
 import java.util.Map;
@@ -52,5 +53,15 @@ public interface DocumentationDao {
 
     /**修改文档的*/
     Integer editprice(Integer sellingprice,Integer did);
+
+    //根据资源ID查询资源
+    List<Documentation> findMoDetails(Integer did);
+
+    //查询一级文档信息
+    Resourcesinfo showTypeInfo(Integer did);
+
+    //模糊搜索
+    List<Documentation> mohuQuery(String keyWord);
+
 
 }

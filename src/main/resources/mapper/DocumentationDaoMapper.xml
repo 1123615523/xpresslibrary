@@ -124,4 +124,27 @@
     <select id="findrand" resultType="com.aaa.entity.Documentation">
         select  * from documentation order by rand() limit 16
     </select>
+
+    <select id="findMoDetails" resultType="com.aaa.entity.Documentation">
+        select d.* from documentation d
+        LEFT JOIN resourcesdetails r
+        on d.detaisid = r.did
+        LEFT JOIN resourcesinfo rs
+        on r.resourcesid = rs.id
+        where rs.id = #{value}
+        ORDER BY d.did desc
+    </select>
+
+    <select id="showTypeInfo" resultType="com.aaa.entity.Resourcesinfo">
+        select * from resourcesinfo where id = #{value}
+    </select>
+
+    <select id="mohuQuery" resultType="com.aaa.entity.Documentation">
+        select * from documentation where
+        essentialcode LIKE concat('%',#{value},'%')
+        or title like concat('%',#{value},'%')
+        or filename like concat('%',#{value},'%')
+    </select>
+
+
 </mapper>

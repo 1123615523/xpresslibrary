@@ -18,6 +18,25 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class IndexController {
 
+    @RequestMapping("findGuanZhu")
+    public String guanZhu(Integer cusid,Model model){
+        model.addAttribute("customerid",cusid);
+        return "User/guanzhu";
+    }
+
+    @RequestMapping("findMohuQuery")
+    public String findMohuQuery(String keyword,Model model){
+        model.addAttribute("keyword",keyword);
+        return "Home/blurryInfo";
+    }
+
+    //根据一级分类查询类型下的信息
+    @RequestMapping("resource")
+    public String resource(Integer did,Model model){
+        model.addAttribute("did",did);
+        return "Home/mohuInfo";
+    }
+
     //打开提现页面
     @RequestMapping("tixian")
     public String tixian(){

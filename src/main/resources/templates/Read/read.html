@@ -62,11 +62,19 @@
                         layer.alert("您不能购买自己的文档！");
                         return;
                     }
+                    var cusid = $("#cus").html();
                     var did = $("[name=did]").val();
-                    window.sessionStorage.setItem("did",did);
-                    var index = parent.layer.getFrameIndex(window.name);
-                    parent.layer.close(index);
-                    parent.location = "/Home/payInfo";
+                    var url = "/order/findOrderCount?did="+did+"&cusid="+cusid;
+                    axios.get(url).then(function (resp) {
+                        if(resp.data != 0){
+                            layer.alert("您已购买了此文档，请前往我的购买直接下载！");
+                        }else{
+                            window.sessionStorage.setItem("did",did);
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.layer.close(index);
+                            parent.location = "/Home/payInfo";
+                        }
+                    });
                 }
             }
         });

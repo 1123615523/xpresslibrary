@@ -577,15 +577,19 @@
                         <div class="mod1" style="margin-bottom: 10px;">
                             <div class="inner">
                                 <div class="hd">
-                                    最近更新
+                                    热门搜索
                                 </div>
                                 <div class="tb">
                                     <table width="100%">
                                         <tbody>
-                                        <tr v-for="k in newInfo">
+                                        <tr>
                                             <td>
-                                                <img :class="k.documentformat" src="/static/details/s.gif" style="margin-top: 2px; margin-right: 2px;" :alt="k.title">
-                                                <a href="JavaScript:" @click="bydocument(k.did)" :title="k.title">{{k.title}}.{{k.documentformat}}</a>
+                                                &nbsp;&nbsp;<a href="JavaScript:">疫情防疫手册</a><br>
+                                                &nbsp;&nbsp;<a href="JavaScript:">疫情防疫手册</a><br>
+                                                &nbsp;&nbsp;<a href="JavaScript:">疫情防疫手册</a><br>
+                                                &nbsp;&nbsp;<a href="JavaScript:">疫情防疫手册</a><br>
+                                                &nbsp;&nbsp;<a href="JavaScript:">疫情防疫手册</a><br>
+                                                &nbsp;&nbsp;<a href="JavaScript:">疫情防疫手册</a><br>
                                             </td>
                                         </tr>
                                         </tbody>
@@ -599,28 +603,11 @@
                         <div class="camTitle">
                             <div class="camNavA" style="position: relative;">
                                 <h1><a class="selected">
-                                    {{resource.dname}}资源</a></h1>
+                                    为您找到</a></h1>
                             </div>
 
                         </div>
                         <div class="list_m" style="background:none;">
-                            <div class="mods"
-                                 style="border: 0px; border-bottom: solid 1px #e7e6e3; padding-bottom: 10px;">
-                                <dl class="fareas">
-                                    <dt>资源分类：</dt>
-                                    <dd>
-                                        <a href="JavaScript:" class="selected">{{resource.resourcesinfos.name}}</a>
-                                    </dd>
-                                </dl>
-
-                                <dl class="fareas">
-                                    <dt>二级分类：</dt>
-                                    <dd>
-                                        <a href="https://www.wenku365.com/c-0001200007.html" class="selected">{{resource.dname}}</a>
-                                    </dd>
-                                </dl>
-                            </div>
-
                             <div class="zt_list_ls_f">
                                 <div class="view" style="margin-left:0px;">
                                     <ul class="masonry" style="position: relative;">
@@ -672,7 +659,7 @@
             </div>
         </div>
     </div>
-    <span id="resid" th:text="${did}" hidden></span>
+    <span id="resid" th:text="${keyword}" hidden></span>
     <span id="cus" th:text="${session.cus}" hidden></span>
     <script src="/static/vue/axios.min.js"></script>
     <script src="/static/vue/vue.js"></script>
@@ -681,25 +668,14 @@
         var v = new Vue({
             el: '#resource',
             data: {
-                resource: {},
                 document: [],
                 pagination: {},
-                sizeinfo: 1,
-                newInfo: []
+                sizeinfo: 1
             },
             created: function () {
                 this.find(1);
             },
             methods: {
-                "pay": function (did) {
-                    var cus = $("#cus").html();
-                    if(cus == ''){
-                        layer.alert("登录后才能下载！");
-                        return;
-                    }
-                    window.sessionStorage.setItem("did",did);
-                    location.href = "/Home/payInfo";
-                },
                 "bydocument": function (did) {
                     window.sessionStorage.setItem("did", did);
                     location.href = "/Home/read";
@@ -719,22 +695,12 @@
                     var did = $("#resid").html();
                     var that = this;
 
-                    var url1 = "/Resource/findResurceDetails?did=" + did;
-                    axios.get(url1).then(function (resp) {
-                        that.resource = resp.data;
-                    });
-
-                    var url2 = "/documentation/findDocumentByResorce?keyWord=" + did + "&currentPage=" + size + "&pageSize=10";
+                    var url2 = "/documentation/mohuQuery?keyWord=" + did + "&currentPage=" + size + "&pageSize=10";
                     axios.get(url2).then(function (resp) {
                         that.document = resp.data.rows;
                         that.pagination = resp.data;
                         that.sizeinfo = resp.data.currentPage;
                     });
-
-                    var url3 = "/documentation/findNewDocument?did=" + did;
-                    axios.get(url3).then(function (resp) {
-                        that.newInfo = resp.data;
-                    })
                 }
             }
         })

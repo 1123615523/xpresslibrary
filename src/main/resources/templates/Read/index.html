@@ -662,9 +662,18 @@
                     layer.alert("您不能购买自己的文档！")
                     return;
                 }
-                var did = $("[name=did]").val();
-                window.sessionStorage.setItem("did", did);
-                location.href = "/Home/payInfo";
+                var did = window.sessionStorage.getItem("did");
+                var url = "/order/findOrderCount?did="+did+"&cusid="+qwe;
+                axios.get(url).then(function (resp) {
+                    if(resp.data != 0){
+                        layer.alert("您已购买了此文档，请前往我的购买直接下载！");
+                    }else{
+                        var did = $("[name=did]").val();
+                        window.sessionStorage.setItem("did", did);
+                        location.href = "/Home/payInfo";
+                    }
+                });
+
             },
             "bydid": function () {
                 var _this = this;

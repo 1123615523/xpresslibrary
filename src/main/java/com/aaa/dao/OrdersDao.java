@@ -11,4 +11,7 @@ public interface OrdersDao {
     //查询自己的订单信息
     List<Orders> findOrderInfo(Integer cusid);
 
+    //查询此人是否已经下载了此文档
+    Integer findOrderCount(Integer cusid,Integer did);
+
 }

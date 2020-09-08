@@ -37,6 +37,11 @@ public class OrderServiceImpl implements OrdersService {
     CustomerDao customerDao;
 
     @Override
+    public Integer findOrderCount(Integer cusid, Integer did) {
+        return orderDao.findOrderCount(cusid,did);
+    }
+
+    @Override
     public Integer addOrder(Orders orders) {
         return orderDao.documentbuy(orders);
     }

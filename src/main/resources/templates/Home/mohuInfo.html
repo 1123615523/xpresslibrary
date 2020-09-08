@@ -599,28 +599,11 @@
                         <div class="camTitle">
                             <div class="camNavA" style="position: relative;">
                                 <h1><a class="selected">
-                                    {{resource.dname}}资源</a></h1>
+                                    {{resource.name}}资源</a></h1>
                             </div>
 
                         </div>
                         <div class="list_m" style="background:none;">
-                            <div class="mods"
-                                 style="border: 0px; border-bottom: solid 1px #e7e6e3; padding-bottom: 10px;">
-                                <dl class="fareas">
-                                    <dt>资源分类：</dt>
-                                    <dd>
-                                        <a href="JavaScript:" class="selected">{{resource.resourcesinfos.name}}</a>
-                                    </dd>
-                                </dl>
-
-                                <dl class="fareas">
-                                    <dt>二级分类：</dt>
-                                    <dd>
-                                        <a href="https://www.wenku365.com/c-0001200007.html" class="selected">{{resource.dname}}</a>
-                                    </dd>
-                                </dl>
-                            </div>
-
                             <div class="zt_list_ls_f">
                                 <div class="view" style="margin-left:0px;">
                                     <ul class="masonry" style="position: relative;">
@@ -691,15 +674,6 @@
                 this.find(1);
             },
             methods: {
-                "pay": function (did) {
-                    var cus = $("#cus").html();
-                    if(cus == ''){
-                        layer.alert("登录后才能下载！");
-                        return;
-                    }
-                    window.sessionStorage.setItem("did",did);
-                    location.href = "/Home/payInfo";
-                },
                 "bydocument": function (did) {
                     window.sessionStorage.setItem("did", did);
                     location.href = "/Home/read";
@@ -719,19 +693,19 @@
                     var did = $("#resid").html();
                     var that = this;
 
-                    var url1 = "/Resource/findResurceDetails?did=" + did;
+                    var url1 = "/documentation/showTypeInfo?did=" + did;
                     axios.get(url1).then(function (resp) {
                         that.resource = resp.data;
                     });
 
-                    var url2 = "/documentation/findDocumentByResorce?keyWord=" + did + "&currentPage=" + size + "&pageSize=10";
+                    var url2 = "/documentation/findMoDetails?keyWord=" + did + "&currentPage=" + size + "&pageSize=10";
                     axios.get(url2).then(function (resp) {
                         that.document = resp.data.rows;
                         that.pagination = resp.data;
                         that.sizeinfo = resp.data.currentPage;
                     });
 
-                    var url3 = "/documentation/findNewDocument?did=" + did;
+                    var url3 = "/documentation/showNewInfo?did=" + did;
                     axios.get(url3).then(function (resp) {
                         that.newInfo = resp.data;
                     })

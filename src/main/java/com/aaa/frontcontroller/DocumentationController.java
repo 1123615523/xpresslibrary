@@ -43,6 +43,28 @@ public class DocumentationController {
         return pm;
     }
 
+    @RequestMapping("findMoDetails")
+    public Object findMoDetails(PageModel<Documentation> pm){
+        pm = documentationService.findMoDetails(pm);
+        return pm;
+    }
+
+    @RequestMapping("mohuQuery")
+    public Object mohuQuery(PageModel<Documentation> pm){
+        pm = documentationService.mohuQuery(pm);
+        return pm;
+    }
+
+    @RequestMapping("showNewInfo")
+    public Object showNewInfo(Integer did){
+        return documentationService.showNewInfo(did);
+    }
+
+    @RequestMapping("showTypeInfo")
+    public Object showTypeInfo(Integer did){
+        return documentationService.showTypeInfo(did);
+    }
+
 
     @RequestMapping("upload")
     public String upload(@RequestParam("file") MultipartFile file, HttpSession session, String title, String essentialcode, Integer detaisid, String introduction, Integer previewpage, Integer allowdownload, Integer original, Integer sellingprice) throws IOException {

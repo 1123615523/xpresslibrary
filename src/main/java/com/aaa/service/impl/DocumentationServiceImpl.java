@@ -3,6 +3,7 @@ package com.aaa.service.impl;
 import com.aaa.dao.DocumentationDao;
 import com.aaa.entity.Customerinfo;
 import com.aaa.entity.Documentation;
+import com.aaa.entity.Resourcesinfo;
 import com.aaa.service.DocumentationService;
 import com.aaa.utils.PageModel;
 import com.github.pagehelper.PageHelper;
@@ -77,6 +78,44 @@ public class DocumentationServiceImpl implements DocumentationService {
     @Override
     public List<Documentation> findNewDocument(Integer did) {
         return documentationDao.findNewDocument(did);
+    }
+
+    @Override
+    public List<Documentation> showNewInfo(Integer did) {
+        return documentationDao.findMoDetails(did);
+    }
+
+    @Override
+    public Resourcesinfo showTypeInfo(Integer did) {
+        return documentationDao.showTypeInfo(did);
+    }
+
+    @Override
+    public PageModel<Documentation> mohuQuery(PageModel pm) {
+        PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
+        String keyWord = pm.getKeyWord().toString();
+        List<Documentation> documentInfo = documentationDao.mohuQuery(keyWord);
+        pm.setRows(documentInfo);
+        PageInfo<Documentation> pageInfo = new PageInfo<>(documentInfo);
+        int pages = pageInfo.getPages();
+        long total = pageInfo.getTotal();
+        pm.setTotal(total);
+        pm.setLastPage(pages);
+        return pm;
+    }
+
+    @Override
+    public PageModel<Documentation> findMoDetails(PageModel pm) {
+        PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
+        String detasid = pm.getKeyWord().toString();
+        List<Documentation> documentInfo = documentationDao.findMoDetails(Integer.parseInt(detasid));
+        pm.setRows(documentInfo);
+        PageInfo<Documentation> pageInfo = new PageInfo<>(documentInfo);
+        int pages = pageInfo.getPages();
+        long total = pageInfo.getTotal();
+        pm.setTotal(total);
+        pm.setLastPage(pages);
+        return pm;
     }
 
     @Override

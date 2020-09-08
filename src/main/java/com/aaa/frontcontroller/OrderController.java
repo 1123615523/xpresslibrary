@@ -17,6 +17,12 @@ public class OrderController {
     @Resource
     OrdersService orderService;
 
+    @ResponseBody
+    @RequestMapping("findOrderCount")
+    public Integer findOrderCount(Integer did,Integer cusid){
+        return orderService.findOrderCount(cusid,did);
+    }
+
     @RequestMapping("findOrderInfo")
     @ResponseBody
     public Object findOrderInfo(PageModel<Orders> pm){

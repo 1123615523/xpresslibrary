@@ -23,4 +23,8 @@
         order by d.id desc
     </select>
 
+    <select id="findOrderCount" resultType="java.lang.Integer">
+        select count(*) from orders where customerid = #{param1} and documented = #{param2}
+    </select>
+
 </mapper>

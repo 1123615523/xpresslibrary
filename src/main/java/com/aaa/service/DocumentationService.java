@@ -1,6 +1,7 @@
 package com.aaa.service;
 
 import com.aaa.entity.Documentation;
+import com.aaa.entity.Resourcesinfo;
 import com.aaa.utils.PageModel;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -56,4 +57,17 @@ public interface DocumentationService {
 
     /**修改文档的*/
     Integer editprice(Integer sellingprice,Integer did);
+
+    //查询第一级文档
+    PageModel<Documentation> findMoDetails(PageModel pm);
+
+    //查询一级文档下的所有最新资源
+    List<Documentation> showNewInfo(Integer did);
+
+    //查询一级分类名称
+    Resourcesinfo showTypeInfo(Integer did);
+
+    //模糊搜索
+    PageModel<Documentation> mohuQuery(PageModel pm);
+
 }

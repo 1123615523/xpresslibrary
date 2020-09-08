@@ -17,4 +17,7 @@ public interface OrdersService {
     //录入订单明细
     Integer addOrder(Orders orders);
 
+    //查询此人是否已经下载了此文档
+    Integer findOrderCount(Integer cusid,Integer did);
+
 }
