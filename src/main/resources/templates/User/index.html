@@ -365,7 +365,8 @@
         function chuan() {
             var test = $("#testcus").html();
             if ('' === test) {
-                window.location = '/Home/loginUser';
+                layer.alert("请先登录！");
+                return;
             } else {
                 window.location = "/Home/user";
             }
