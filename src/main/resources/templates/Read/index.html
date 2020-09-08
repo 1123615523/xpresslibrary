@@ -279,19 +279,37 @@
         <div class="usershop">
             <ul>
                 <li class="shop1">
-                    <form id="forms" enctype="multipart/form-data">
+                    <form action="/Home/findMohuQuery" method="post">
                         <div class="bigsearch">
-                            <input type="text" placeholder=" 在这里搜索..." class="stext" id="keyword"
-                                   style="width: 150px; font-size: 14px;" value="">
+                            <input type="text" placeholder=" 在这里搜索..." class="stext" name="keyword" style="width: 150px; font-size: 14px;" value="">
                             <input type="submit" class="sbtncss" value="" onclick="">
                         </div>
                     </form>
+
+
+
                 </li>
-                <li class="shop1"><a class="searchbtn0" style="width: 40px;" title="上传我的文档"
-                                     href="JavaScript:"
-                                     rel="nofollow"><span></span></a></li>
+                <li class="shop1">
+                    <a class="searchbtn0" style="width: 40px;" onclick="chuan()" title="上传我的文档" href="JavaScript:" rel="nofollow">
+                        <span></span>
+                    </a>
+                </li>
             </ul>
         </div>
+
+        <span id="testcus" th:text="${session.cus!=null?session.cus:''}" hidden></span>
+        <script>
+            function chuan() {
+                var test = $("#testcus").html();
+                if (test == '') {
+                    layer.alert("请先登录再上传！");
+                    return;
+                } else {
+                    window.location = "/Home/user";
+                }
+            }
+        </script>
+
         <div class="h-login-type">
             <div style="float: left;" th:if="${session.cus!=null}">
                 <a style="color: #eb0064" href="/Home/userinfo">（<span
@@ -345,10 +363,10 @@
                         <li></li>
                     </ul>
                     <ul class="shop2" style="padding: 0px 10px;">
-                        <form id="form0" enctype="multipart/form-data">
+                        <form id="form0" action="/Home/findMohuQuery" method="post">
                             <div class="bigsearch"
                                  style="margin-top: 0px; border: solid 1px #ff7800; border-radius: 5px 5px;">
-                                <input type="text" placeholder=" 在这里搜索..." class="stext"
+                                <input type="text" name="keyword" placeholder=" 在这里搜索..." class="stext"
                                        style="width: 250px; font-size: 14px;" value="">
                                 <input type="submit" class="sbtncss" value="" onclick=""></div>
                         </form>
