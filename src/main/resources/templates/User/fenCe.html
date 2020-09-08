@@ -1,46 +1,831 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>粉丝列表</title>
+<head id="Head1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>
+        关注列表-随心文库网
+    </title>
+    <link href="/static/wd/5dede93f-e1a9-4d5b-88af-fa62a70587ff.ico"
+          rel="shortcut icon" type="image/x-icon">
+    <link href="/static/js/base.css" rel="stylesheet" type="text/css">
+    <link href="/static/wd/style.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" async="" src="/static/wd/auto_dup"></script>
+    <script type="text/javascript" src="/static/wd/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/static/wd/Prototype.js"></script>
+    <script type="text/javascript" src="/static/wd/slides.banner.js"></script>
+    <link href="/static/wd/slides.css" rel="stylesheet" type="text/css">
+
+    <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+
+    <meta name="copyright" content="www.renrendoc.com">
+    <meta name="applicable-device" content="pc">
+    <!--IE8只能支持jQuery1.9-->
+    <!--[if lte IE 8]>
+    <script src="https://www.renrendoc.com/JS/jquery1.9.0.min.js"></script>
+    <![endif]-->
+    <style>
+        a {
+            color: #06a;
+            text-decoration: none;
+        }
+
+        a:focus {
+            outline: 0 none;
+        }
+
+        a:hover, a:active {
+            outline: 0
+        }
+
+        a:hover {
+            text-decoration: underline
+        }
+
+        a.line, .tdu {
+            text-decoration: underline
+        }
+
+        a.unline, .tdn {
+            text-decoration: none
+        }
+
+        body, .main, .main_bg {
+            background-color: #fff;
+        }
+
+        .gp-wrap {
+            width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 40px;
+        }
+
+        .gp-lwrap {
+            float: left;
+            width: 930px;
+        }
+
+        .gp-list-tp {
+            width: 840px;
+        }
+
+        .gp-dsc-mod {
+            width: 900px;
+        }
+
+        .dsc-ul li .title {
+            width: 840px;
+        }
+
+        .dsc-ul li .title div {
+            width: 840px;
+        }
+
+        .search_700 {
+            width: 920px
+        }
+
+        .lt-cont-add {
+            width: 930px;
+        }
+
+        .lt-cont .ad img {
+            width: 890px;
+        }
+
+        .lt-cont-add .ad, .lt-cont-add .ad img {
+            width: 930px;
+        }
+
+        .ad-brief {
+            max-width: 800px;
+        }
+
+        .xxxk_top img {
+            height: 65px;
+            margin-left: 20px;
+        }
+
+        .btn_guanzhu2 {
+            background-color: #ee5634;
+            cursor: pointer;
+            border: 0;
+            height: 21px;
+            line-height: 21px;
+            width: 46px;
+            padding: 0px 0px;
+            text-align: center;
+            color: #fff;
+        }
+    </style>
+
+    <link href="/static/wd/misc.css" rel="stylesheet" type="text/css">
+    <link href="/static/wd/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style>
+        body, .main, .main_bg {
+            background-color: #fff;
+        }
+
+        .camNavA a {
+            padding: 0px 15px;
+        }
+    </style>
+    <style>.xxxk_top img {
+        height: 55px;
+        margin-top: 10px;
+    }
+
+    .cmn_search_box {
+        margin-left: 130px;
+        margin-top: 10px;
+    }
+
+    .cmn_search_box .border {
+        border: 1px solid #00a2ca;
+        border-radius: 0px;
+    }
+
+    .cmn_search_box .border input[type='submit'] {
+        background-color: #00a2ca;
+    }
+
+    .cmn_search_box .border input[type='submit']:hover {
+        background-color: #00a2ca;
+    }
+
+    .hr-wrap {
+        border-bottom: 1px solid #00a2ca;
+        background: #00a2ca;
+    }
+
+    .home_menu {
+        border-bottom: 2px solid #00a2ca;
+    }
+
+    .home_menu .feilei {
+        font-size: 16px;
+        background-color: #00a2ca;
+        color: #fff;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .nav_bg, .nav li.over a, .nav li a, .nav #conAll0.over a {
+        background: #00a2ca;
+    }
+
+    .nav li a {
+        display: block;
+        padding: 0px 40px;
+    }
+
+    .j_menu .hottip {
+        right: -3px;
+        top: 5px;
+    }
+
+    .hottip {
+        right: 16px;
+        top: 5px;
+    }
+
+    .nav li a:Hover, .nav li.over a, .nav #conAll0:hover a:hover, .nav #conz0:hover a:hover {
+        background-color: #00a2ca;
+        color: #ff4400
+    }
+
+    .nav #conAll0 a span {
+        right: 12px;
+        top: 14px;
+    }
+
+    .home_menu .j_menu li.home a {
+        color: #ff4400
+    }
+
+    .nav #conAll0.over a, .nav #conz0.over a, .nav #conAll0:hover a, .nav #conz0:hover a {
+        background-color: #00a2ca;;
+        color: #ff4400
+    }
+
+    .cmn_top_r .inner a.upload {
+    }
+
+    .camTitle {
+        background-color: #f9f9f9;
+    }
+
+    .camNavA a {
+        font-size: 14px;
+        color: #00a2ca
+    }
+
+    .camNavA a.selected {
+        background: #fff;
+        border-top: 3px solid #00a2ca;
+        font-weight: bold;
+        border-left: 1px solid #e5e5e5;
+        border-right: 1px solid #e5e5e5
+    }
+
+    .camTitles {
+        background-color: #f5f5f5;
+    }
+
+    .camNavAs a {
+        font-size: 16px;
+        color: #00a2ca
+    }
+
+    .camNavAs a.selected {
+        font-weight: bold;
+        border-top: 3px solid #00a2ca;
+        background: #fff;
+    }
+
+    .cate {
+        background: #5c5c5c;
+        border-top: solid 1px #3b3b3b;
+    }
+
+    .cate li:hover .category-title {
+        background: #fff
+    }
+
+    .cate li:hover .category-title a {
+        color: #ff6600
+    }
+
+    .cate .category-sub {
+        border-color: #3b3b3b;
+        filter: alpha(opacity=100); /*IE滤镜，透明度50%*/
+        -moz-opacity: 1; /*Firefox私有，透明度50%*/
+        opacity: 1; /*其他，透明度50%*/
+    }
+
+    .shop1 a.searchbtn0 {
+        background-color: #ff491f;
+    }
+
+    .shop1 a.searchbtn0:hover {
+        background-color: #e5411c;
+    }
+
+    .main-contact .txt {
+        width: auto;
+        background: url() no-repeat -35px 0px;
+        float: none;
+        margin-top: 0px;
+    }
+
+    footer, .foot_nav_bg {
+        background: #111111;
+    }
+
+    .camZpSmall .camZpBox dd span, .camZpSmall .camZpBox dd a.selected, .camZpBox dd span, .camZpBox dd a.selected, .farea dd span, .farea dd a.selected, .fareas dd span, .fareas dd a.selected {
+        color: #fff;
+        background-color: #3b3b3b;
+    }
+
+    .farea dt, .fareas dt {
+        color: #666
+    }
+
+    .h-list #conAll, .h-list #conAll2, .dorpmenu2 {
+        border: 1px solid #3b3b3b;
+        border-radius: 0px 0px 0px 0px;
+    }
+
+    .catesBox a:hover, .catesBox a.cur {
+        background: #00a2ca;
+        border: 1px solid #00a2ca;
+    }
+
+    .bannerbox .searchbox .searchbtn1 {
+        background-color: #189ae5;
+    }
+
+    .bannerbox .searchbox .searchbtn1:hover {
+        background-color: #0B8DD6;
+    }
+
+    .home_link {
+        height: auto;
+        margin-bottom: 20px;
+    }
+
+    .home_link .link_con {
+        height: auto;
+        min-height: 100px;
+    }</style>
 </head>
 <body>
+<div id="BAIDU_DUP_fp_wrapper"
+     style="position: absolute; left: -1px; bottom: -1px; z-index: 0; width: 0px; height: 0px; overflow: hidden; visibility: hidden; display: none;">
+    <iframe id="BAIDU_DUP_fp_iframe" src="/static/wd/o.html"
+            style="width: 0px; height: 0px; visibility: hidden; display: none;"></iframe>
+</div>
+<script type="text/javascript" src="/static/wd/www2m.js"></script>
+<script type="text/javascript">
+    browserRedirect("https://m.renrendoc.com", "https://www.renrendoc.com");
+</script>
 
-<center>
-    <div id="app">
-        <h1>展示该用户的粉丝列表</h1>
+<!--head-->
+<div id="headerplace" style="height: 39px; background-color:#fff; overflow: hidden; width: 100%; min-width:1200px;">
+    <div class="bg_100 top_bg">
+        <div class="top">
+        <span>
+           <span style="float:left; color:#666;">欢迎来到随心文库！</span>
+<span style="float:left; color:#F70830;">上传客服QQ1123615523</span>
+            <span th:if="${session.cus!=null}">
+        |<a th:href="@{/Home/user}" style="color: #eb0064">[个人中心]</a>|
+        <a th:href="@{/Home/logout}">安全退出</a>|
+    </span>
+    <span th:if="${session.cus==null}">
+         |<a th:href="@{/Home/login}">[登录]</a>|
+         <a th:href="@{/Home/registered}">免费注册</a>|
+    </span>
+</span>
+        </div>
+    </div>
+</div>
+
+<div style="background-color:#fff; z-index:10; position:relative; min-width:1200px;">
+
+    <div class="xxxk_top cf">
+
+        <h1><a title="随心文库网" class="fl" href="/Home/index" style="height:81px; position:relative; ">
+            <img src="/static/js/1123615523.png"
+                 title="随心文库-上传文档赚钱的网站" alt="随心文库-上传文档赚钱的网站" style="border: 0; "></a></h1>
+        <div class="cmn_search_box">
+            <div class="border">
+                <form>
+                    <input id="keyword" type="text" value="" name="q" placeholder="在这里搜索">
+                    <input type="submit" name="searchBtn" value="" title="点击搜索"
+                           onclick="searchWord($(&#39;#keyword&#39;).val()); return false;">
+                </form>
+            </div>
+
+            <script>
+                function getcheckedKeyword(s) {
+                    if (!s) return "";
+                    var pattern = new RegExp("[`~%!@#$^&*()=|{}';',\\[\\]<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
+                    var rs = "";
+                    for (var i = 0; i < s.length; i++) {
+                        rs = rs + s.substr(i, 1).replace(pattern, '');
+                    }
+                    return rs;
+                }
+
+                function searchWord(keyword, aElement) {
+                    keyword = getcheckedKeyword(keyword);
+                    if (keyword == "在这里搜索") keyword = "";
+                    var url = "https://www.renrendoc.com/search.html?q=" + encodeURIComponent(keyword);
+
+                    if (!aElement) {
+                        location.href = url;
+                    } else {
+                        aElement.href = url;
+                        return true;
+                    }
+                }
+            </script>
+        </div>
+
+        <div class="topr">
+            <a class="block upload-link" href="JavaScript:"
+               rel="nofollow" onclick="chuan()">上传我的文档</a>
+        </div>
     </div>
 
-    <span id="cusid" th:text="${cusid}" hidden></span>
+    <span id="testcus" th:text="${session.cus!=null?session.cus:''}" hidden></span>
+    <script>
+        function chuan() {
+            var test = $("#testcus").html();
+            if ('' === test) {
+                window.location = '/Home/loginUser';
+            } else {
+                window.location = "/Home/user";
+            }
+        }
+    </script>
+
+    <div class="xxxk_top searchfix"
+         style="height: 75px; background: rgb(255, 255, 255); box-shadow: rgb(221, 221, 221) 0px 0px 5px; left: 0px; top: 0px; width: 100%; position: relative; z-index: 1; display: none;">
+        <div class="searchbox box2" style=" width: 1200px;   margin-top: 0px;
+     left: 0px;  margin: 0px auto; position:relative;">
+            <a title="随心文库网" class="fl" href="https://www.renrendoc.com/" style="height:81px;">
+                <img src="/static/js/1123615523.png" title="随心文库网" alt="随心文库网"
+                     style="border: 0; height:47px; width:auto; "></a>
+            <div class="cmn_search_box" style="width:800px;">
+                <div class="border">
+                    <form>
+                        <input id="keywordfix" type="text" value="" name="q" placeholder="在这里搜索">
+                        <input type="button" name="searchBtn" value="" title="点击搜索"
+                               onclick="">
+                    </form>
+                </div>
+                <a class="block upload-link" style="position: absolute; right: 0px;top:0px;"
+                   href="JavaScript:" rel="nofollow">上传我的文档</a>
+            </div>
+        </div>
+    </div>
+
+    <!--div head-->
+    <div class="home_menu">
+        <div class="mcenter">
+            <div class="feilei">
+                <a href="https://www.wenku365.com/list.html" class="fen">
+                    <div class="h3">全部分类<span></span></div>
+                </a>
+
+                <div class="home_cate hide" id="menuhomecate">
+                    <div class="cate" id="wk-all-cate" style="top:0px; *top:0px;height: 351px;">
+                        <div id="qwe">
+                            <li v-for="res in result">
+                                <dl class="category-title ">
+                                    <dt>
+                                        <a href="JavaScript:">{{res.name}}<b class="li-aw n-ic"></b></a>
+                                        <span class="right-arrow">&gt;</span>
+                                    </dt>
+                                    <dd>
+                                        <a href="JavaScript:" rel="nofollow">
+                                            <nobr>毕业论文</nobr>
+                                        </a>
+                                        <a href="JavaScript:" rel="nofollow">
+                                            <nobr>毕业设计</nobr>
+                                        </a>
+                                        <a href="JavaScript:" rel="nofollow">
+                                            <nobr>临时分类</nobr>
+                                        </a>
+                                    </dd>
+                                </dl>
+                                <dl class="category-sub" style="top:-1px; *top:-1px;height: 319px;">
+                                    <dd>
+                                            <span v-for="chid in res.resourcesdetails">
+                                                <a :href="ResurceInfo(chid.did)" rel="nofollow">
+                                                    <nobr>{{chid.dname}}</nobr>
+                                                </a>
+                                            </span>
+                                    </dd>
+                                </dl>
+                            </li>
+                        </div>
+                    </div>
+                    <script src="/static/vue/vue.js"></script>
+                    <script src="/static/vue/axios.min.js"></script>
+                    <!--qwe挂载点vue实例-->
+                    <script>
+                        var v = new Vue({
+                            el: '#qwe',
+                            data: {
+                                result: []
+                            },
+                            created: function () {
+                                this.find();
+                            },
+                            methods: {
+                                "ResurceInfo": function (did) {
+                                    return '/Home/ResourceDetails?did=' + did;
+                                },
+                                "find": function () {
+                                    var url = "/Resource/findResource";
+                                    var that = this;
+                                    axios.get(url).then(function (value) {
+                                        that.result = value.data;
+                                    }).catch(function (reason) {
+                                        layer.alert("出错了");
+                                    });
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
+            <div class="j_menu">
+                <li class="">
+                    <a href="/Home/index" target="_self">
+                        首页</a></li>
+                <li class=""><a href="JavaScript:">学术论文</a></li>
+                <li class=""><a href="JavaScript:">应用文档</a></li>
+                <li class=""><a href="JavaScript:">行业资料</a></li>
+                <li class=""><a href="JavaScript:">教育资源</a></li>
+                <li class=""><a href="/Home/help">互动求助</a></li>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="wdk">
+    <form method="post" action="#" id="form1">
+        <div class="user_banner_wrap" style="margin-top: 0px; min-width:1200px;">
+            <div class="user_banner">
+                <div class="user_pic">
+                    <img :src="customer.customerpic" style="border:0; border-radius:100px 100px;" width="100" height="100">
+                    <div style="padding-top:10px; text-align:center;">
+                        <a href="javascript:"
+                           style="color:#ff1100; font-size:14px;">
+                            <img src="/static/user/posticon_reply.gif" style="margin-bottom:2px;" align="absmiddle"
+                                 alt="给TA发私信">给TA发私信</a>
+                    </div>
+                </div>
+                <div class="user_ziliao">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="user_ziliao_1">
+                                    <div class="username">
+                                        {{customer.customername}}
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="user_ziliao_3" style="width:auto;">
+                                    免费会员
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="user_ziliao_2">
+                        {{customer.customermeno}}
+                    </div>
+
+                    <div class="user_ziliao_5" style="margin-top: 0px;">
+                        <a href="JavaScript:"><span class="f20 cf90 font-yahei">{{customer.customerfence}}</span></a>
+                        粉丝 /
+                        <a href="JavaScript:"><span class="f20 cf90 font-yahei">0</span></a> 关注
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--main-->
+        <div class="main1200 mb20">
+            <div class="nav_ui" style="display: none">
+                <a href="https://www.renrendoc.com/">
+                    <img src="/Images/home.gif" width="16" height="16" align="absmiddle" alt="首页"/>
+                    人人文库网</a><span>&nbsp;&gt;&nbsp;</span><a
+                    href="https://www.renrendoc.com/usercenter.html">用户广场</a><span>&nbsp;&gt;&nbsp;闯荡</div>
+            <!--个人主页 top end-->
+            <div id="Content_UpdatePanel2">
+
+                <input name="ctl00$Content$hiddenLevel1" type="hidden" id="Content_hiddenLevel1" value="11"/>
+                <input name="ctl00$Content$hiddenLevel2" type="hidden" id="Content_hiddenLevel2"/>
+                <input name="ctl00$Content$hiddenLevel3" type="hidden" id="Content_hiddenLevel3" value="0"/>
+                <input name="ctl00$Content$hiddenUserGroup" type="hidden" id="Content_hiddenUserGroup" value="0"/>
+                <input name="ctl00$Content$hiddenUserGroup2" type="hidden" id="Content_hiddenUserGroup2" value="0"/>
+                <input name="ctl00$Content$hiddenViewType" type="hidden" id="Content_hiddenViewType" value="1"/>
+                <!--资源首页-->
+                <div class="longbox mt10 clearfix">
+                    <a name="guanzhu"></a><span style="display: none">
+                    <a id="Content_linkbuttonView"
+                       href="javascript:__doPostBack(&#39;ctl00$Content$linkbuttonView&#39;,&#39;&#39;)"
+                       style="font-size:15px;">给TA留言</a>
+                    <a id="Content_linkbuttonLiuyan"
+                       href="javascript:__doPostBack(&#39;ctl00$Content$linkbuttonLiuyan&#39;,&#39;&#39;)"
+                       style="font-size:15px;">给TA留言</a></span>
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="uc">
+                        <tr>
+                            <td align="left" valign="top">
+                                <a id="titleMaoDian" name="titleMaoDian"></a>
+                                <div class="camTitle">
+                                    <div class="camNavC" style=" position:relative;">
+                                        <a onclick="SetLevel1(0);" id="Content_linkbuttonZiyuan"
+                                           href="javascript:__doPostBack(&#39;ctl00$Content$linkbuttonZiyuan&#39;,&#39;&#39;)"
+                                           style="font-size:15px;">资源</a>
+                                    </div>
+                                </div>
+                                <div style="display: none">
+                                    <input name="ctl00$Content$BtnJs" type="button" id="Content_BtnJs"
+                                           value="CallServerJs" onclick="dis()"/>
+                                </div>
+                                <div style="background: #fff;  border-left: 1px solid #e5e5e5; border-right: 1px solid #e5e5e5;"
+                                     class="camZpSmall personHome borderTop">
+                                    <table width="100%">
+                                        <tbody>
+                                        <tr>
+                                            <td>
+
+                                                <div style="padding: 10px 0px 10px 20px; color: #000; line-height: 20px; font-weight: bold;
+                                                    font-size: 16px">
+                                                    关注ta的人
+                                                </div>
+
+                                            </td>
+
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="longConCam p10  pl20 pr20">
+                                    <input name="ctl00$Content$hiddenGuanzhu" type="hidden" id="Content_hiddenGuanzhu"
+                                           value=";1304335;"/>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <table id="Content_DataList9" cellspacing="0"
+                                               style="width:100%;border-collapse:collapse;">
+                                            <tr>
+                                                <td valign="top">
+                                                    <div class="udetail2">
+                                                        <table width="100%" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td valign="top"
+                                                                    style="text-align: left; line-height: 22px; width: 60px;">
+                                                                    <div style="padding-bottom: 5px;">
+                                                                        <a href="JavaScript:">
+                                                                            <img src='/static/images/wdk.png' width="50" height="50" alt=""/>
+                                                                        </a><br/>
+                                                                    </div>
+                                                                </td>
+                                                                <td valign="top">
+                                                                    <div class="utitleg">
+                                                                        <table width="100%" height="50" cellpadding="0"
+                                                                               cellspacing="0">
+                                                                            <tr>
+                                                                                <td valign="top">
+                                                                                    <a class="bold" href="JavaScript:">🦄****🌟</a>
+                                                                                </td>
+                                                                                <td align="right" valign="top">
+                                                                                    <span style='display: inline;'>
+                                                                                        <input type="button" value="关注" class="btn_guanzhu2">
+                                                                                    </span>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td valign="bottom" colspan="2">
+                                                                                    <div class="share" style="padding: 0px 0px">
+                                                                                        这里写一些粉丝自己的个性签名
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </td>
+
+
+                            <td style="padding-left: 15px; padding-top: 0px;  width: 250px" valign="top">
+
+                                <!--最近来访-->
+
+                                <div class="   ulist11" style="font-size: 16px">
+                                    <b>最近来访</b>
+                                </div>
+                                <br>
+                                <span>---------------------------------------</span>
+                                <div>
+                                    <ul class="layout lastVisited clearfix">
+                                        <li><a href="https://www.renrendoc.com/u-1304335.html">
+                                            <img width="48" height="48"
+                                                 style="border-radius:48px 48px;" title="as;lkd****sdalf"
+                                                 src="/static/user/100"
+                                                 alt="as;lkd****sdalf"></a>
+                                            <p class="mt5 mb10">
+                                                <a href="https://www.renrendoc.com/u-1304335.html"
+                                                   title="as;lkd****sdalf" class="c009cff">
+                                                    as;lkd****sdalf</a><br>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+        </div>
+        <span id="LabelScript"></span>
+        <script language="javascript"></script>
+    </form>
+
+    <!--访问用户的ID-->
+    <span id="customerid" th:text="${customerid}" hidden></span>
+    <!--当前登录人的ID-->
+    <span id="cus" th:text="${session.cus!=null?session.cus.customerid:''}" hidden></span>
 
     <script src="/static/vue/axios.min.js"></script>
-    <script src="/static/vue/vue.js"></script>
     <script src="/static/vue/jquery-3.1.1.js"></script>
+    <script src="/static/vue/vue.js"></script>
     <script>
-        new Vue({
-            el:'#app',
+        var v = new Vue({
+            el:'#wdk',
             data:{
-                res:[]
+                //当前作者的信息
+                customer:{}
             },
             created:function () {
-                //this.find();
+                this.find();
             },
             methods:{
                 "find":function () {
-                    var cusid = $("#cusid").html();
-                    var url = "/attention/findFenceInfo?cusid="+cusid;
+                    //拿到个人主页的信息
+                    var customerid = $("#customerid").html();
+                    var url = "/customer/findUserPerson?cusid=" + customerid;
                     var that = this;
-                    axios.get(url).then(function (resp) {
-                        that.res = resp.data;
-                        alert(that.res);
-                    })
+                    axios.post(url,customerid).then(function (resp) {
+                        that.customer = resp.data.customerinfo;
+                    });
+
                 }
             }
-        })
+        });
     </script>
 
 
-</center>
+</div>
+<script>function popLogin() {
+    window.location.href = '/login.aspx?returl=https%3a%2f%2fwww.renrendoc.com%2fUser.aspx%3fid%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335';
+    return;
+}</script>
 
+<!--foot-->
+<div class="bg_100 foot_nav_bg" style=" min-width:1200px;">
+    <div class="foot_nav">
+
+        <a href="JavaScript:" rel="nofollow">关于我们</a> - <a
+            href="JavaScript:" rel="nofollow">网站声明</a> - <a
+            href="JavaScript:" rel="nofollow">
+        网站地图</a> - <a href="JavaScript:" rel="nofollow">
+        资源地图</a>
+        - <a href="JavaScript:" rel="nofollow">友情链接</a> -
+        <a href="JavaScript:" rel="nofollow">网站客服</a>
+
+        - <a href="JavaScript:" rel="nofollow">联系我们</a>
+
+    </div>
+</div>
+
+<div class="bg_100 siteInner_bg" style=" min-width:1200px;">
+    <div class="siteInner">
+        <p style="margin-top: 0px; padding: 0px; color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 12px; text-align: center; white-space: normal; background-color: rgb(243, 243, 243); line-height: 1.75em;">
+            <span style="font-size: 14px;"><span style="line-height: 20px;">网站客服QQ：766697812&nbsp; &nbsp;微信号：renrenwenkuwang&nbsp; &nbsp;人人文档上传用户QQ群：460291265&nbsp; &nbsp;</span></span><br>
+        </p>
+        <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 12px; text-align: center; white-space: normal; background-color: rgb(243, 243, 243); line-height: 1.75em;">
+            <span style="font-size: 14px;"><span style="line-height: 20px;">copyright@ 2020-2023&nbsp; renrendoc.com 人人文库<span
+                    style="color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 14px; text-align: center; background-color: rgb(243, 243, 243);">版权所有</span>&nbsp; &nbsp;联系电话：0512-65154990</span></span>
+        </p>
+        <p style="margin-top: 0px; margin-bottom: 0px; padding: 0px; color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 12px; text-align: center; white-space: normal; background-color: rgb(243, 243, 243); line-height: 1.75em;">
+            <a href="JavaScript:"
+               title="备案号:苏ICP备12009002号-5"><span style="font-size: 14px;"><span
+                    style="line-height: 20px;">备案号:苏ICP备12009002号-5</span></span></a><span
+                style="font-size: 14px;"><span style="line-height: 20px;">&nbsp;&nbsp;</span></span><span
+                style="font-size: 14px; line-height: 20px;">经营许可证:苏B2-20200052&nbsp; <a
+                href="JavaScript:"><img
+                src="/static/user/6372245331453261982974848_1.png"
+                title="6370907065681635766032491.png">苏公网安备<span
+                style="color: rgb(102, 102, 102); font-family: 微软雅黑, Arial, &quot;Times New Roman&quot;; font-size: 14px; text-align: center; background-color: rgb(243, 243, 243);">:</span><span
+                style="color: rgb(102, 102, 102); font-family: Roboto-Regular, 微软雅黑, 宋体, Arial, sans-serif; font-size: 14px; background-color: rgb(245, 245, 245);"><span
+                style="color: rgb(102, 102, 102); font-family: Roboto-Regular, 微软雅黑, 宋体, Arial, sans-serif; font-size: 14px; background-color: rgb(245, 245, 245);">32050602011097号</span></span></a></span>
+        </p>
+        <table style="text-align: center; margin: 10px auto;">
+            <tbody>
+            <tr class="firstRow">
+                <td>
+                    <a target="cyxyv"
+                       href="JavaScript:">
+                        <img src="/static/user/label_sm_90020.png"></a>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                </td>
+                <td style="padding-left:10px;">
+                    <!--可信网站LOGO安装开始-->
+                    <script id="kXScript" type="text/javascript"
+                            src="/static/user/seallogo.dll"></script>
+                    <span style="position: relative !important;display: inline-block !important;width:131px !important;height:47px !important;"><a
+                            href="JavaScript:"
+                            oncontextmenu="return false;"
+                            style="display:inline-block !important;width:131px !important;height:47px !important;"
+                    >            <img id="7cjmv9q9fqkelec8d1" class="" height="47px" alt="可信网站"
+                                      style="opacity: 0; display: block !important; width: 131px !important; height: 47px !important; position: absolute !important; top: 0px !important; left: 0px !important; border: none !important;"
+                                      src="/static/user/star4.png">            <img
+                            id="h5x7ftcpzpkelec8d1" class="act" height="47px" alt="可信网站"
+                            style="opacity: 1; display: block !important; width: 131px !important; height: 47px !important; position: absolute !important; top: 0px !important; left: 0px !important; border: none !important;"
+                            src="/static/user/140.png">            </a></span>
+                    <!--可信网站LOGO安装结束-->
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <p>
+            本站为文档C2C交易模式，即用户上传的文档直接被用户下载，本站只是中间服务平台，本站所有文档下载所得的收益归上传人(含作者)所有。人人文库网仅提供信息存储空间，仅对用户上传内容的表现方式做保护处理，对上载内容本身不做任何修改或编辑。若文档所含内容侵犯了您的版权或隐私，请立即通知人人文库网，我们立即给予删除！
+        </p>
+
+    </div>
+</div>
+<!--foot end-->
 </body>
 </html>

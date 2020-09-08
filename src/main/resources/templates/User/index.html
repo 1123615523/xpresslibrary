@@ -661,7 +661,7 @@
             },
             methods: {
                 "showFence":function (cid) {
-                    xadmin.open('粉丝列表','/Home/findFence?cusid='+cid,700,400);
+                    location.href = "/Home/findFence?cusid="+cid;
                 },
                 "sixin":function (author) {
                     layer.prompt({title:'发送私信给'+author,formType: 2},function(pass,index){
