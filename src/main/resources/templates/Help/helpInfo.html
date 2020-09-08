@@ -378,37 +378,27 @@
                      style="border: 0; height:47px; width:auto; "></a>
             <div class="cmn_search_box" style="width:800px;">
                 <div class="border">
-                    <form>
-                        <input id="keywordfix" type="text" value="" name="q" placeholder="在这里搜索">
-                        <input type="submit" name="searchBtn" value="" title="点击搜索"
-                               onclick="searchWord($(&#39;#keywordfix&#39;).val()); return false;">
+                    <form action="/Home/findMohuQuery" method="post">
+                        <input id="keyword" type="text" name="keyword"  placeholder="在这里搜索">
+                        <input type="submit" name="searchBtn" value=""  title="点击搜索">
                     </form>
                 </div>
                 <a class="block upload-link" style="position: absolute; right: 0px;top:0px;"
-                   href="https://www.renrendoc.com/flexpaper/add.aspx" rel="nofollow"><span></span>上传我的文档</a>
+                   href="JavaScript:" onclick="chuan()" rel="nofollow"><span></span>上传我的文档</a>
             </div>
         </div>
     </div>
+
+    <span id="testcus" th:text="${session.cus!=null?session.cus:''}" hidden></span>
     <script>
-        $(window).bind("scroll", function (event) {
-            var Y = $(this).scrollTop();
-            if (Y > 140 && $('.searchfix').css("position") != "fixed") {
-                $('.searchfix').css({
-                    position: "fixed",
-                    left: "0",
-                    top: "0",
-                    width: "100%",
-                    zIndex: "999999",
-                    display: ""
-                });
-            } else if (Y <= 140 && $('.searchfix').css("position") == "fixed") {
-                $('.searchfix').css({
-                    position: "relative",
-                    zIndex: "1",
-                    display: "none"
-                });
+        function chuan() {
+            var test = $("#testcus").html();
+            if ('' === test) {
+                layer.alert("请先登录！");
+            } else {
+                window.location = "/Home/user";
             }
-        });
+        }
     </script>
 
     <!--div head-->
