@@ -752,10 +752,11 @@
                 }
                 var customerid = $("#hah").text();
                 var did = this.did;
+                var that = this;
                 var url = "/favoritesinfo/addFavorites?customerid="+customerid+"&documentationid="+did;
                 axios.post(url).then(function (value) {
                     if (value.data == 1){
-                     location.reload();
+                        that.selectcount();
                     }
                 });
             },
@@ -767,10 +768,11 @@
                     return;
                 }
                 var customerid = $("#hah").text();
+                var that = this;
                 var url = "/favoritesinfo/delbyCD?customerid="+customerid+"&documentationid="+did;
                 axios.post(url).then(function (value) {
                     if (value.data == 1){
-                        location.reload();
+                        that.selectcount();
                     }
                 });
         },
@@ -788,10 +790,11 @@
                     layer.alert("请先登录！");
                     return;
                 }
+                var that = this;
                 var url = "/attention/addAttention?youid="+youid+"&myid="+myid;
                 axios.get(url).then(function (value) {
                     if (value.data == 1){
-                        location.reload();
+                        that.selectcount();
                     }
                 });
             },
@@ -803,10 +806,11 @@
                     layer.alert("请先登录！");
                     return;
                 }
+                var that = this;
                 var url = "/attention/delYM?youid="+youid+"&myid="+myid;
                 axios.get(url).then(function (value) {
                     if (value.data == 1){
-                        location.reload();
+                        that.selectcount();
                     }
                 });
             },

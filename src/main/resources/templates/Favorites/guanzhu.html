@@ -326,10 +326,11 @@
                         },
                         "attentionb":function (youid) {
                             var myid = $("#cid").text();
+                            var that = this;
                             var url = "/attention/delYM?youid="+youid+"&myid="+myid;
                             axios.get(url).then(function (value) {
                                 if (value.data == 1){
-                                    location.reload();
+                                    that.MyAttention();
                                 }
                             });
                         }

@@ -326,10 +326,11 @@
                         },
                         "favoritesb": function (did) {
                             var customerid = $("#cid").text();
+                            var that = this;
                             var url = "/favoritesinfo/delbyCD?customerid=" + customerid + "&documentationid=" + did;
                             axios.post(url).then(function (value) {
                                 if (value.data == 1) {
-                                    location.reload();
+                                    that.MyFavorites();
                                 }
                             });
                         }
