@@ -353,14 +353,6 @@
                                 <input type="submit" class="sbtncss" value="" onclick=""></div>
                         </form>
                     </ul>
-                    <ul class="shop4" v-show="documentation.allowdownload == 1">
-                        <li class="btns"><span style="color: #666">购买费用：</span> <span style="color: #ff1100;"> <b
-                                style="font-size: 14px;">{{documentation.sellingprice}}</b>积分 </span> &nbsp; <input
-                                type="button"
-                                class="btndown1"
-                                onclick=""
-                                value="购买资源"></li>
-                    </ul>
                 </div>
             </div>
             <!--分类提示信息-->
@@ -468,13 +460,13 @@
                             <div id="related-pic-list" class="related-pic-list cl"
                                  style="padding-left:12px; padding-right:0px;">
                                 <ul>
-                                    <li><h3><a href="JavaScript:"
-                                               title="原创地税工作报告书"> <img
-                                            data-original="http://f13.wenku365.com/fileroot2/2018-8/27/c6ce5e9b-9cc5-4cd5-a322-525b92b991af/pic1.gif"
-                                            alt="原创地税工作报告书"
-
-                                            src="/static/yue/pic1.gif" style="display: block;">
-                                        原创地税工作报告书 </a></h3></li>
+                                    <li v-for="r in rands">
+                                        <h3>
+                                            <a @click="randclick(r.did)">
+                                                <img :src="r.filepath"><a @click="randclick(r.did)">{{r.title}}</a>
+                                            </a>
+                                        </h3>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -642,11 +634,13 @@
             customerinfo: {},
             favoritescount:{},
             attentioncount:{},
-            youid:""
+            youid:"",
+            rands:{}
         },
         created: function () {
             this.did = window.sessionStorage.getItem("did");
             this.bydid();
+            this.findrand();
         },
         methods: {
             "userinfo":function (customerid) {
@@ -787,6 +781,16 @@
                         location.reload();
                     }
                 });
+            },
+            "findrand":function () {
+                var _this = this;
+                axios.post("/documentation/findrand").then(function (value) {
+                    _this.rands = value.data
+                });
+            },
+            "randclick":function (did) {
+                window.sessionStorage.setItem("did", did);
+                location.href = "/Home/read";
             }
         }
     })
