@@ -45,7 +45,7 @@ public class IndexController {
     //打开粉丝信息的窗体
     @RequestMapping("findFence")
     public String fenFence(Integer cusid,Model model){
-        model.addAttribute("cusid",cusid);
+        model.addAttribute("customerid",cusid);
         return "User/fenCe";
     }
 
