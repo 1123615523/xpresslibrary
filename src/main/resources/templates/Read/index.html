@@ -756,6 +756,7 @@
                 var url = "/favoritesinfo/addFavorites?customerid="+customerid+"&documentationid="+did;
                 axios.post(url).then(function (value) {
                     if (value.data == 1){
+                        layer.alert("收藏成功！");
                         that.selectcount();
                     }
                 });
@@ -772,6 +773,7 @@
                 var url = "/favoritesinfo/delbyCD?customerid="+customerid+"&documentationid="+did;
                 axios.post(url).then(function (value) {
                     if (value.data == 1){
+                        layer.alert("已取消收藏！");
                         that.selectcount();
                     }
                 });
@@ -794,6 +796,7 @@
                 var url = "/attention/addAttention?youid="+youid+"&myid="+myid;
                 axios.get(url).then(function (value) {
                     if (value.data == 1){
+                        layer.alert("关注成功！");
                         that.selectcount();
                     }
                 });
@@ -810,6 +813,7 @@
                 var url = "/attention/delYM?youid="+youid+"&myid="+myid;
                 axios.get(url).then(function (value) {
                     if (value.data == 1){
+                        layer.alert("取关成功！");
                         that.selectcount();
                     }
                 });
