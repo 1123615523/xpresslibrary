@@ -224,24 +224,18 @@
         <section class="content-header">
             <h1>
                 我的文档
-                <small>My Orders</small>
+                <small>My Documentation</small>
             </h1>
         </section>
         <section class="content">
-            <div class="row">
+            <div class="row" id="tion">
                 <div class="col-xs-12">
                     <div class="box box-primary">
                         <div class="box-header with-border">
                             <form class="form-horizontal actionPanel">
                                 <div class="row">
                                     <div class="form-group col-xs-4">
-                                        <label class="col-sm-3 control-label">商品</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-xs-4">
-                                        <label class="col-sm-3 control-label">订单号</label>
+                                        <label class="col-sm-3 control-label">文档名</label>
                                         <div class="col-sm-9">
                                             <input class="form-control">
                                         </div>
@@ -249,7 +243,6 @@
                                     <div class="form-group col-xs-4">
                                         <button type="submit" class="btn btn-primary ">查询</button>
                                         <button type="reset" class="btn btn-default">重置</button>
-                                        <a class="btn"> 更多<i class="fa fa-fw fa-angle-down"></i> </a>
                                     </div>
                                 </div>
 
@@ -260,42 +253,25 @@
                             <table class="table table-striped">
                                 <tbody>
                                 <tr>
-                                    <th style="text-align: center">商品</th>
-                                    <th style="text-align: center">数量</th>
-                                    <th style="text-align: center">单价</th>
-                                    <th style="text-align: center">总价</th>
+                                    <th style="text-align: center">文档名</th>
+                                    <th style="text-align: center">格式</th>
+                                    <th style="text-align: center">售价</th>
                                     <th style="text-align: center">操作</th>
                                 </tr>
-
-                                <tr>
+                                <tr v-for="d in mydocumentation">
                                     <td colspan="5" bgcolor="#fff">
                                         <div class="box box-dashboard" style="margin-bottom: 0px">
-                                            <div class="box-header with-border">
-                                                <div class="col-lg-10">
-                                                    订单号：497111473626157056
-                                                    总金额：<span style="padding-right: 20px">19.90</span>
-                                                    支付状态：<span style="padding-right: 20px">未支付</span>
-                                                </div>
-                                                <div class="col-lg-2" style="text-align: right">
-                                                    <h3 class="box-title">
-                                                        <a href="/ucenter/checkout/order/130270" target="_blank">
-                                                            去付款
-                                                        </a>
-                                                        <a href="/ucenter/order/detail/130270">详情</a>
-                                                    </h3>
-                                                </div>
-                                            </div>
-
                                             <div class="box-body no-padding">
                                                 <table class="table table-striped">
                                                     <tbody>
                                                     <tr>
-                                                        <td style="width: 20%;text-align: center"><a
-                                                                href="/s-57118558.html">脑梗死的诊疗规范12613.doc</a></td>
-                                                        <td style="width: 20%;text-align: center">1</td>
-                                                        <td style="width: 20%;text-align: center">19.90</td>
-                                                        <td style="width: 20%;text-align: center">19.90</td>
+                                                        <td style="width: 20%;text-align: center"><a href="JavaScript:" @click="youclick(d.did)">{{d.filename}}</a ></td>
+                                                        <td style="width: 20%;text-align: center">{{d.documentformat}}</td>
                                                         <td style="width: 20%;text-align: center">
+                                                            <input type="text" :value="d.sellingprice" id="price">
+                                                        </td>
+                                                        <td style="width: 20%;text-align: center">
+                                                            <a href="JavaScript:" @click="updateprice(d.did)"  class="btn btn-success btn-flat"> 修改售价 </a>
                                                         </td>
                                                     </tr>
                                                     </tbody>
@@ -308,35 +284,69 @@
                             </table>
                         </div>
 
-                        <div class="box-footer">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <ul class="pagination pull-right">
-                                        <li class="paginate_button previous disabled">
-                                            <a href="javascript:;">上一页</a>
-                                        </li>
-                                        <li class="paginate_button active">
-                                            <a href="javascript:;">1</a>
-                                        </li>
-                                        <li class="paginate_button next disabled">
-                                            <a href="javascript:;">下一页</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
             </div>
+            <span th:text="${session.cus.customerid}" id="cid" hidden></span>
+            <script src="/static/ShowModel/lib/layui/layui.js" charset="utf-8"></script>
+            <script type="text/javascript" src="/static/ShowModel/js/xadmin.js"></script>
+            <script src="/static/vue/axios.min.js"></script>
+            <script src="/static/vue/vue.js"></script>
+            <script src="/static/vue/jquery-3.1.1.js"></script>
+            <script>
+                new Vue({
+                    el:"#tion",
+                    data:{
+                        mydocumentation:{}
+                    },
+                    created: function () {
+                        this.MyDocumentation();
+                    },
+                    methods: {
+                        "MyDocumentation": function () {
+                            var _this = this;
+                            var cid = $("#cid").text();
+                            var url = "/documentation/findbyid?authored=" + cid;
+                            axios.get(url).then(function (value) {
+                                console.log(value.data);
+                                _this.mydocumentation = value.data;
+                            });
+                        },
+                        "youclick": function (did) {
+                            window.sessionStorage.setItem("did", did);
+                            location.href = "/Home/read";
+                        },
+                        "updateprice":function (did) {
+                            var price = $("#price").val();
+                            if (price < 0 || price > 500){
+                                layer.alert("售价金额 0 - 500 ");
+                                return;
+                            }
+                            if (price === '' || price === null){
+                                layer.alert("售价不能为空");
+                                return;
+                            }
+                            var url = "/documentation/editprice?sellingprice="+price+"&did="+did;
+                            layer.confirm('确认修改售价吗？', {icon: 3, title:'提示'}, function(index){
+                                axios.get(url).then(function (resp) {
+                                    if(resp.data > 0){
+                                        layer.msg('成功！',{icon:1,time:1000},function(){
+                                            parent.layer.close(index);
+                                            window.location.reload();
+                                        });
+                                    }else{
+                                        layer.alert("修改失败！");
+                                    }
+                                });
+                            });
+                        }
+                    }
+                })
+            </script>
         </section>
     </div>
     <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            version v3.0.0-rc.1
-        </div>
-        Copyright &copy; 2016-2020 Qidong Studio. All rights
-        reserved.
     </footer>
 </div>
 <script src="/static/js/jquery.min.js"></script>

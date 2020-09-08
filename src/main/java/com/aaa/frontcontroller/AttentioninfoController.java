@@ -65,4 +65,10 @@ public class AttentioninfoController {
         customerService.updateattention(count,youid);
         return attentioninfoService.delYM(youid,myid);
     }
+
+    /**我的关注*/
+    @RequestMapping("MyAttention")
+    public Object MyAttention(Integer myid){
+        return attentioninfoService.MyAttention(myid);
+    }
 }

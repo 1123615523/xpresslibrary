@@ -42,6 +42,18 @@ public class DocumentationServiceImpl implements DocumentationService {
         return documentationDao.findType(1);
     }
 
+    /**随机查询14条文档信息*/
+    @Override
+    public List<Documentation> findrand() {
+        return documentationDao.findrand();
+    }
+
+    /**修改文档的*/
+    @Override
+    public Integer editprice(Integer sellingprice, Integer did) {
+        return documentationDao.editprice(sellingprice,did);
+    }
+
     /**收藏操作时，对收藏量进行修改*/
     @Override
     public Integer updatefavorites( Integer favorites,Integer did) {

@@ -2,6 +2,9 @@ package com.aaa.dao;
 
 import com.aaa.entity.Favoritesinfo;
 
+import java.util.List;
+import java.util.Map;
+
 public interface FavoritesinfoDao {
 
     /**添加收藏*/
@@ -12,5 +15,8 @@ public interface FavoritesinfoDao {
 
      /**取消收藏*/
      Integer delbyCD(Integer customerid,Integer documentationid);
+
+     /**我的收藏*/
+    List<Map<String,Object>> MyFavorites(Integer customerid);
 
 }

@@ -4,6 +4,7 @@ import com.aaa.entity.Attentioninfo;
 import com.aaa.entity.Customerinfo;
 
 import java.util.List;
+import java.util.Map;
 
 public interface AttentioninfoService {
 
@@ -18,5 +19,8 @@ public interface AttentioninfoService {
 
     //查询该作者被那些人关注了
     List<Customerinfo> findFenceCount(Integer cusid);
+
+    /**我的关注*/
+    List<Map<String,Object>> MyAttention(Integer myid);
 
 }

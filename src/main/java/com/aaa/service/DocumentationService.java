@@ -51,4 +51,9 @@ public interface DocumentationService {
     //测试单个类型返回
     List<Documentation> findTest();
 
+    /**随机查询14条文档信息*/
+    List<Documentation> findrand();
+
+    /**修改文档的*/
+    Integer editprice(Integer sellingprice,Integer did);
 }

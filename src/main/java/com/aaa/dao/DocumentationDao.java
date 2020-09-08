@@ -47,4 +47,10 @@ public interface DocumentationDao {
     //拿四个类型下的文档
     List<Documentation> findType(Integer typeid);
 
+    /**随机查询14条文档信息*/
+    List<Documentation> findrand();
+
+    /**修改文档的*/
+    Integer editprice(Integer sellingprice,Integer did);
+
 }

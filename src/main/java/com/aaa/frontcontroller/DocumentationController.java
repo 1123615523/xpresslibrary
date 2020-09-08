@@ -118,4 +118,17 @@ public class DocumentationController {
     public Object findbydid(Integer did){
         return documentationService.findbydid(did);
     }
+
+    /**随机查询14条文档信息*/
+    @RequestMapping("findrand")
+    public Object findrand(){
+        return documentationService.findrand();
+    }
+
+
+    /**修改文档的*/
+    @RequestMapping("editprice")
+    public Object editprice(Integer sellingprice,Integer did){
+        return documentationService.editprice(sellingprice,did);
+    }
 }

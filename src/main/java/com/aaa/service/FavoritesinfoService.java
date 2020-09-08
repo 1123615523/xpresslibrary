@@ -2,6 +2,9 @@ package com.aaa.service;
 
 import com.aaa.entity.Favoritesinfo;
 
+import java.util.List;
+import java.util.Map;
+
 public interface FavoritesinfoService {
 
     /**添加收藏*/
@@ -13,4 +16,6 @@ public interface FavoritesinfoService {
     /**取消收藏*/
     Integer delbyCD(Integer customerid,Integer documentationid);
 
+    /**我的收藏*/
+    List<Map<String,Object>> MyFavorites(Integer customerid);
 }

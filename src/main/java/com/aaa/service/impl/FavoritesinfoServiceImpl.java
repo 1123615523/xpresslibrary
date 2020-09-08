@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -32,6 +34,12 @@ public class FavoritesinfoServiceImpl implements FavoritesinfoService {
     @Override
     public Integer delbyCD(Integer customerid, Integer documentationid) {
         return favoritesinfoDao.delbyCD(customerid,documentationid);
+    }
+
+    /**我的收藏*/
+    @Override
+    public List<Map<String, Object>> MyFavorites(Integer customerid) {
+        return favoritesinfoDao.MyFavorites(customerid);
     }
 
 

@@ -37,15 +37,15 @@ public class codeController {
             code+=str.charAt(index);
         }
 
-//        String testContent = "【随心文库】您的验证码是"+code+",５分钟内有效。若非本人操作请忽略此消息。";
-//        String httpUrl = "http://api.smsbao.com/sms";
-//        StringBuffer httpArg = new StringBuffer();
-//        httpArg.append("u=").append(testUsername).append("&");
-//        httpArg.append("p=").append(md5(testPassword)).append("&");
-//        httpArg.append("m=").append(testPhone).append("&");
-//        httpArg.append("c=").append(encodeUrlString(testContent, "UTF-8"));
-//        String result = request(httpUrl, httpArg.toString());
-//        System.out.println(result);
+        String testContent = "【随心文库】您的验证码是"+code+",５分钟内有效。若非本人操作请忽略此消息。";
+        String httpUrl = "http://api.smsbao.com/sms";
+        StringBuffer httpArg = new StringBuffer();
+        httpArg.append("u=").append(testUsername).append("&");
+        httpArg.append("p=").append(md5(testPassword)).append("&");
+        httpArg.append("m=").append(testPhone).append("&");
+        httpArg.append("c=").append(encodeUrlString(testContent, "UTF-8"));
+        String result = request(httpUrl, httpArg.toString());
+        System.out.println(result);
         return code;
     }
 

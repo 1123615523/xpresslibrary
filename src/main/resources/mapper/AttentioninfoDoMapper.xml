@@ -26,5 +26,10 @@
         where a.myid = #{value}
     </select>
 
+    <!--我的关注-->
+    <select id="MyAttention" resultType="java.util.Map">
+        select c.customername,c.customermeno,a.attentiontime,a.youid from attentioninfo a left join customerinfo c on a.youid = c.customerid where myid = #{myid}
+    </select>
+
 
 </mapper>

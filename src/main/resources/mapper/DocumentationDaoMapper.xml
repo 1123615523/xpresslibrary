@@ -58,6 +58,11 @@
         update documentation set  favorites=#{param1}  where did = #{param2};
     </update>
 
+    <!--修改文档的-->
+    <update id="editprice">
+        update documentation set sellingprice = #{param1} where did = #{param2}
+    </update>
+
     <!--今日特别推荐查询-->
     <select id="documentationespecially" resultType="com.aaa.entity.Documentation">
         select  * from documentation order by rand() limit 10
@@ -113,5 +118,10 @@
         LEFT JOIN resourcesinfo rs
         on r.resourcesid = rs.id
         where rs.id = #{value}
+    </select>
+
+    <!--随机查询14条文档信息-->
+    <select id="findrand" resultType="com.aaa.entity.Documentation">
+        select  * from documentation order by rand() limit 16
     </select>
 </mapper>

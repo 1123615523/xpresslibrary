@@ -56,5 +56,9 @@ public class FavoritesinfoController {
         return favoritesinfoService.delbyCD(customerid,documentationid);
     }
 
-
+    /**w我的收藏*/
+    @RequestMapping("MyFavorites")
+    public Object MyFavorites(Integer customerid){
+        return favoritesinfoService.MyFavorites(customerid);
+    }
 }

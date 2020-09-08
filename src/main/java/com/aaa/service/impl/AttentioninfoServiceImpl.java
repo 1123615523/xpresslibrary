@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -20,6 +21,12 @@ public class AttentioninfoServiceImpl implements AttentioninfoService {
     @Override
     public List<Customerinfo> findFenceCount(Integer cusid) {
         return attentioninfoDo.findFenceCount(cusid);
+    }
+
+    /**我的关注*/
+    @Override
+    public List<Map<String, Object>> MyAttention(Integer myid) {
+        return attentioninfoDo.MyAttention(myid);
     }
 
     /**添加关注*/
