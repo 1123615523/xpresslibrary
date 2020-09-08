@@ -342,49 +342,11 @@
                  style="border: 0; "></a></h1>
         <div class="cmn_search_box">
             <div class="border">
-                <form>
-                    <input id="keyword" type="text" value="" name="q" placeholder="在这里搜索">
-                    <input type="submit" name="searchBtn" value="" title="点击搜索"
-                           onclick="searchWord($(&#39;#keyword&#39;).val()); return false;">
+                <form action="/Home/findMohuQuery" method="post">
+                    <input id="keyword" type="text" name="keyword"  placeholder="在这里搜索">
+                    <input type="submit" name="searchBtn" value=""  title="点击搜索">
                 </form>
             </div>
-            <p class="hot">
-                <span>热门搜索：</span>
-
-                <a href="javascript:void(0);" onclick="searchWord(&#39;直缝焊接机&#39;)" title="直缝焊接机">直缝焊接机</a>
-
-                <a href="javascript:void(0);" onclick="searchWord(&#39;矿井提升机&#39;)" title="矿井提升机">矿井提升机</a>
-
-                <a href="javascript:void(0);" onclick="searchWord(&#39;循环球式转向器图纸&#39;)" title="循环球式转向器图纸">循环球式转向器图纸</a>
-
-                <a href="javascript:void(0);" onclick="searchWord(&#39;机器人手爪发展史&#39;)" title="机器人手爪发展史">机器人手爪发展史</a>
-
-                <a href="javascript:void(0);" onclick="searchWord(&#39;管道机器人dwg&#39;)" title="管道机器人dwg">管道机器人dwg</a>
-            </p>
-            <script>
-                function getcheckedKeyword(s) {
-                    if (!s) return "";
-                    var pattern = new RegExp("[`~%!@#$^&*()=|{}';',\\[\\]<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
-                    var rs = "";
-                    for (var i = 0; i < s.length; i++) {
-                        rs = rs + s.substr(i, 1).replace(pattern, '');
-                    }
-                    return rs;
-                }
-
-                function searchWord(keyword, aElement) {
-                    keyword = getcheckedKeyword(keyword);
-                    if (keyword == "在这里搜索") keyword = "";
-                    var url = "https://www.renrendoc.com/search.html?q=" + encodeURIComponent(keyword);
-
-                    if (!aElement) {
-                        location.href = url;
-                    } else {
-                        aElement.href = url;
-                        return true;
-                    }
-                }
-            </script>
         </div>
 
         <div class="topr">
@@ -398,7 +360,7 @@
             function chuan() {
                 var test = $("#wdk").html();
                 if ('' === test) {
-                    alert("请先登录后再上传！");
+                    layer.alert("请先登录后再上传！");
                     return;
                 }
                 window.location = "/Home/user";
@@ -521,10 +483,10 @@
                 <li class="">
                     <a href="/Home/index" target="_self">
                         首页</a></li>
-                <li class=""><a href="/c-00012.html">学术论文</a></li>
-                <li class=""><a href="/c-00015.html">应用文档</a></li>
-                <li class=""><a href="/c-00017.html">行业资料</a></li>
-                <li class=""><a href="/c-00016.html">教育资源</a></li>
+                <li class=""><a href="/Home/resource?did=1">学术论文</a></li>
+                <li class=""><a href="/Home/resource?did=2">应用文档</a></li>
+                <li class=""><a href="/Home/resource?did=3">行业资料</a></li>
+                <li class=""><a href="/Home/resource?did=4">教育资源</a></li>
                 <li class=""><a href="/Home/help">互动求助</a></li>
             </div>
         </div>
