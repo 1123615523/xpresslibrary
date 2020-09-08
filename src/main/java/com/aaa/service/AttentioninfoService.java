@@ -23,4 +23,7 @@ public interface AttentioninfoService {
     /**我的关注*/
     List<Map<String,Object>> MyAttention(Integer myid);
 
+    /**用户的粉丝列表*/
+    List<Map<String,Object>> Myfence(Integer youid);
+
 }

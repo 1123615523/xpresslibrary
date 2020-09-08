@@ -28,7 +28,11 @@
 
     <!--我的关注-->
     <select id="MyAttention" resultType="java.util.Map">
-        select c.customername,c.customermeno,a.attentiontime,a.youid from attentioninfo a left join customerinfo c on a.youid = c.customerid where myid = #{myid}
+        select c.customername,c.customerpic,c.customermeno,c.customermeno,a.attentiontime,a.youid from attentioninfo a left join customerinfo c on a.youid = c.customerid where myid = #{myid}
+    </select>
+
+    <select id="Myfence" resultType="java.util.Map">
+        select c.customerpic,c.customername,c.customermeno,c.customerid from attentioninfo a left join customerinfo c on a.myid = c.customerid where youid = #{youid}
     </select>
 
 

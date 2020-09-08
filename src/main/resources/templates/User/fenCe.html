@@ -493,6 +493,7 @@
                                     var that = this;
                                     axios.get(url).then(function (value) {
                                         that.result = value.data;
+                                        console.log(that.resource);
                                     }).catch(function (reason) {
                                         layer.alert("出错了");
                                     });
@@ -540,11 +541,7 @@
                                     </div>
                                 </div>
                             </td>
-                            <td>
-                                <div class="user_ziliao_3" style="width:auto;">
-                                    免费会员
-                                </div>
-                            </td>
+
                         </tr>
                         </tbody>
                     </table>
@@ -594,9 +591,8 @@
                                 <a id="titleMaoDian" name="titleMaoDian"></a>
                                 <div class="camTitle">
                                     <div class="camNavC" style=" position:relative;">
-                                        <a onclick="SetLevel1(0);" id="Content_linkbuttonZiyuan"
-                                           href="javascript:__doPostBack(&#39;ctl00$Content$linkbuttonZiyuan&#39;,&#39;&#39;)"
-                                           style="font-size:15px;">资源</a>
+                                        <a href="JavaScript:" id="Content_linkbuttonZiyuan"
+                                           style="font-size:15px;">关注列表</a>
                                     </div>
                                 </div>
                                 <div style="display: none">
@@ -628,7 +624,7 @@
                                     <div style="margin-bottom: 20px;">
                                         <table id="Content_DataList9" cellspacing="0"
                                                style="width:100%;border-collapse:collapse;">
-                                            <tr>
+                                            <tr v-for="f in fences">
                                                 <td valign="top">
                                                     <div class="udetail2">
                                                         <table width="100%" cellpadding="0" cellspacing="0">
@@ -637,7 +633,7 @@
                                                                     style="text-align: left; line-height: 22px; width: 60px;">
                                                                     <div style="padding-bottom: 5px;">
                                                                         <a href="JavaScript:">
-                                                                            <img src='/static/images/wdk.png' width="50" height="50" alt=""/>
+                                                                            <img :src="f.customerpic" width="50" height="50" alt=""/>
                                                                         </a><br/>
                                                                     </div>
                                                                 </td>
@@ -647,24 +643,20 @@
                                                                                cellspacing="0">
                                                                             <tr>
                                                                                 <td valign="top">
-                                                                                    <a class="bold" href="JavaScript:">🦄****🌟</a>
-                                                                                </td>
-                                                                                <td align="right" valign="top">
-                                                                                    <span style='display: inline;'>
-                                                                                        <input type="button" value="关注" class="btn_guanzhu2">
-                                                                                    </span>
+                                                                                    <a class="bold">{{f.customername}}</a>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <td valign="bottom" colspan="2">
                                                                                     <div class="share" style="padding: 0px 0px">
-                                                                                        这里写一些粉丝自己的个性签名
+                                                                                        {{f.customermeno}}
                                                                                     </div>
                                                                                 </td>
                                                                             </tr>
                                                                         </table>
                                                                     </div>
                                                                 </td>
+                                                                <br>
                                                             </tr>
                                                         </table>
                                                     </div>
@@ -675,32 +667,6 @@
 
                                 </div>
                             </td>
-
-
-                            <td style="padding-left: 15px; padding-top: 0px;  width: 250px" valign="top">
-
-                                <!--最近来访-->
-
-                                <div class="   ulist11" style="font-size: 16px">
-                                    <b>最近来访</b>
-                                </div>
-                                <br>
-                                <span>---------------------------------------</span>
-                                <div>
-                                    <ul class="layout lastVisited clearfix">
-                                        <li><a href="https://www.renrendoc.com/u-1304335.html">
-                                            <img width="48" height="48"
-                                                 style="border-radius:48px 48px;" title="as;lkd****sdalf"
-                                                 src="/static/user/100"
-                                                 alt="as;lkd****sdalf"></a>
-                                            <p class="mt5 mb10">
-                                                <a href="https://www.renrendoc.com/u-1304335.html"
-                                                   title="as;lkd****sdalf" class="c009cff">
-                                                    as;lkd****sdalf</a><br>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -709,9 +675,8 @@
             </div>
 
         </div>
-        <span id="LabelScript"></span>
-        <script language="javascript"></script>
     </form>
+</div>
 
     <!--访问用户的ID-->
     <span id="customerid" th:text="${customerid}" hidden></span>
@@ -726,10 +691,12 @@
             el:'#wdk',
             data:{
                 //当前作者的信息
-                customer:{}
+                customer:{},
+                fences:{}
             },
             created:function () {
                 this.find();
+                this.findfence();
             },
             methods:{
                 "find":function () {
@@ -740,13 +707,20 @@
                     axios.post(url,customerid).then(function (resp) {
                         that.customer = resp.data.customerinfo;
                     });
-
+                },
+                "findfence":function () {
+                    var _this = this;
+                    var customerid = $("#customerid").html();
+                    console.log(customerid);
+                    var url = "/attention/Myfence?youid="+customerid;
+                    axios.get(url).then(function (value) {
+                        console.log(value.data);
+                        _this.fences = value.data;
+                    })
                 }
             }
         });
     </script>
-
-
 </div>
 <script>function popLogin() {
     window.location.href = '/login.aspx?returl=https%3a%2f%2fwww.renrendoc.com%2fUser.aspx%3fid%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335';

@@ -29,6 +29,12 @@ public class AttentioninfoServiceImpl implements AttentioninfoService {
         return attentioninfoDo.MyAttention(myid);
     }
 
+    /**用户的粉丝列表*/
+    @Override
+    public List<Map<String, Object>> Myfence(Integer youid) {
+        return attentioninfoDo.Myfence(youid);
+    }
+
     /**添加关注*/
     @Override
     public Integer addAttention(Attentioninfo attentioninfo) {

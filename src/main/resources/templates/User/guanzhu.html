@@ -3,7 +3,7 @@
 <head id="Head1">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>
-        用户信息-随心文库网
+        关注列表-随心文库网
     </title>
     <link href="/static/wd/5dede93f-e1a9-4d5b-88af-fa62a70587ff.ico"
           rel="shortcut icon" type="image/x-icon">
@@ -105,6 +105,18 @@
         .xxxk_top img {
             height: 65px;
             margin-left: 20px;
+        }
+
+        .btn_guanzhu2 {
+            background-color: #ee5634;
+            cursor: pointer;
+            border: 0;
+            height: 21px;
+            line-height: 21px;
+            width: 46px;
+            padding: 0px 0px;
+            text-align: center;
+            color: #fff;
         }
     </style>
 
@@ -261,7 +273,7 @@
 
     .main-contact .txt {
         width: auto;
-        background: url(/images/s.gif) no-repeat -35px 0px;
+        background: url() no-repeat -35px 0px;
         float: none;
         margin-top: 0px;
     }
@@ -481,6 +493,7 @@
                                     var that = this;
                                     axios.get(url).then(function (value) {
                                         that.result = value.data;
+                                        console.log(that.resource);
                                     }).catch(function (reason) {
                                         layer.alert("出错了");
                                     });
@@ -509,10 +522,9 @@
         <div class="user_banner_wrap" style="margin-top: 0px; min-width:1200px;">
             <div class="user_banner">
                 <div class="user_pic">
-                    <img :src="customer.customerpic" style="border:0; border-radius:100px 100px;" width="100"
-                         height="100">
+                    <img :src="customer.customerpic" style="border:0; border-radius:100px 100px;" width="100" height="100">
                     <div style="padding-top:10px; text-align:center;">
-                        <a href="javascript:" @click="sixin(customer.customername)"
+                        <a href="javascript:"
                            style="color:#ff1100; font-size:14px;">
                             <img src="/static/user/posticon_reply.gif" style="margin-bottom:2px;" align="absmiddle"
                                  alt="给TA发私信">给TA发私信</a>
@@ -529,6 +541,7 @@
                                     </div>
                                 </div>
                             </td>
+
                         </tr>
                         </tbody>
                     </table>
@@ -537,9 +550,10 @@
                     </div>
 
                     <div class="user_ziliao_5" style="margin-top: 0px;">
-                        <a href="JavaScript:" @click="showFence(customer.customerid)"><span class="f20 cf90 font-yahei">{{customer.customerfence}}</span></a>
-                        个粉丝 /
-                        <a href="JavaScript:" @click="showGuanzhu(customer.customerid)"><span class="f20 cf90 font-yahei">{{gcount}}</span></a> 个关注
+                        <a href="JavaScript:"><span class="f20 cf90 font-yahei">{{customer.customerfence}}</span></a>
+                        粉丝 /
+                        <a href="JavaScript:"><span class="f20 cf90 font-yahei">0</span></a> 关注
+
                     </div>
                 </div>
             </div>
@@ -550,58 +564,107 @@
         <div class="main1200 mb20">
             <div class="nav_ui" style="display: none">
                 <a href="https://www.renrendoc.com/">
-                    <img src="/static/user/home.gif" width="16" height="16" align="absmiddle" alt="首页">
+                    <img src="/Images/home.gif" width="16" height="16" align="absmiddle" alt="首页"/>
                     人人文库网</a><span>&nbsp;&gt;&nbsp;</span><a
-                    href="https://www.renrendoc.com/usercenter.html">用户广场</a><span>&nbsp;&gt;&nbsp;as;lkd****sdalf</span>
-            </div>
+                    href="https://www.renrendoc.com/usercenter.html">用户广场</a><span>&nbsp;&gt;&nbsp;闯荡</div>
             <!--个人主页 top end-->
             <div id="Content_UpdatePanel2">
+
+                <input name="ctl00$Content$hiddenLevel1" type="hidden" id="Content_hiddenLevel1" value="11"/>
+                <input name="ctl00$Content$hiddenLevel2" type="hidden" id="Content_hiddenLevel2"/>
+                <input name="ctl00$Content$hiddenLevel3" type="hidden" id="Content_hiddenLevel3" value="0"/>
+                <input name="ctl00$Content$hiddenUserGroup" type="hidden" id="Content_hiddenUserGroup" value="0"/>
+                <input name="ctl00$Content$hiddenUserGroup2" type="hidden" id="Content_hiddenUserGroup2" value="0"/>
+                <input name="ctl00$Content$hiddenViewType" type="hidden" id="Content_hiddenViewType" value="1"/>
                 <!--资源首页-->
                 <div class="longbox mt10 clearfix">
+                    <a name="guanzhu"></a><span style="display: none">
+                    <a id="Content_linkbuttonView"
+                       href="javascript:__doPostBack(&#39;ctl00$Content$linkbuttonView&#39;,&#39;&#39;)"
+                       style="font-size:15px;">给TA留言</a>
+                    <a id="Content_linkbuttonLiuyan"
+                       href="javascript:__doPostBack(&#39;ctl00$Content$linkbuttonLiuyan&#39;,&#39;&#39;)"
+                       style="font-size:15px;">给TA留言</a></span>
                     <table border="0" cellpadding="0" cellspacing="0" width="100%" class="uc">
-                        <tbody>
                         <tr>
                             <td align="left" valign="top">
                                 <a id="titleMaoDian" name="titleMaoDian"></a>
                                 <div class="camTitle">
                                     <div class="camNavC" style=" position:relative;">
-                                        <a onclick="" id="Content_linkbuttonZiyuan" class="selected" href="javascript:"
-                                           style="font-size:15px;">资源</a>
-
+                                        <a href="JavaScript:" id="Content_linkbuttonZiyuan"
+                                           style="font-size:15px;">关注列表</a>
                                     </div>
                                 </div>
                                 <div style="display: none">
                                     <input name="ctl00$Content$BtnJs" type="button" id="Content_BtnJs"
-                                           value="CallServerJs"
-                                           onclick="dis()"/>
+                                           value="CallServerJs" onclick="dis()"/>
                                 </div>
-                                <div class="longConCam p10 ">
-                                    <div class="zt_list_ls">
-                                        <div class="view">
-                                            <ul id="content" class="masonry" style="position: relative; height: 495px;">
+                                <div style="background: #fff;  border-left: 1px solid #e5e5e5; border-right: 1px solid #e5e5e5;"
+                                     class="camZpSmall personHome borderTop">
+                                    <table width="100%">
+                                        <tbody>
+                                        <tr>
+                                            <td>
 
-                                                <li class="post masonry-brick" v-for="res in result">
-                                                    <p class="img">
-                                                        <!--:href="userinfo(documentation.customerid)"-->
-                                                        <a href="JavaScript:" @click="findDetails(res.did)"
-                                                           :title="res.title">
-                                                            <img :alt="res.filename" :src="res.filepath">
-                                                        </a>
-                                                    </p>
-                                                    <p class="txtx">
-                                                        <a href="JavaScript:" @click="findDetails(res.did)"
-                                                           title="res.title">{{res.title}}.{{res.documentformat}} </a>
-                                                    </p>
-                                                    <p class="sm">
-                                                        价格:<span>{{res.sellingprice}}</span>积分
-                                                        <a href="JavaScript:" @click="down(res.did)"></a>
-                                                    </p>
-                                                </li>
+                                                <div style="padding: 10px 0px 10px 20px; color: #000; line-height: 20px; font-weight: bold;
+                                                    font-size: 16px">
+                                                    ta关注的人
+                                                </div>
 
-                                            </ul>
-                                        </div>
+                                            </td>
 
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="longConCam p10  pl20 pr20">
+                                    <input name="ctl00$Content$hiddenGuanzhu" type="hidden" id="Content_hiddenGuanzhu"
+                                           value=";1304335;"/>
+
+                                    <div style="margin-bottom: 20px;">
+                                        <table id="Content_DataList9" cellspacing="0"
+                                               style="width:100%;border-collapse:collapse;">
+                                            <tr v-for="f in guanzhus">
+                                                <td valign="top">
+                                                    <div class="udetail2">
+                                                        <table width="100%" cellpadding="0" cellspacing="0">
+                                                            <tr>
+                                                                <td valign="top"
+                                                                    style="text-align: left; line-height: 22px; width: 60px;">
+                                                                    <div style="padding-bottom: 5px;">
+                                                                        <a href="JavaScript:">
+                                                                            <img :src="f.customerpic" width="50" height="50" alt=""/>
+                                                                        </a><br/>
+                                                                    </div>
+                                                                </td>
+                                                                <td valign="top">
+                                                                    <div class="utitleg">
+                                                                        <table width="100%" height="50" cellpadding="0"
+                                                                               cellspacing="0">
+                                                                            <tr>
+                                                                                <td valign="top">
+                                                                                    <a class="bold">{{f.customername}}</a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td valign="bottom" colspan="2">
+                                                                                    <div class="share" style="padding: 0px 0px">
+                                                                                        {{f.customermeno}}
+                                                                                    </div>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </div>
+                                                                </td>
+                                                                <br>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
                                     </div>
+
                                 </div>
                             </td>
                         </tr>
@@ -614,78 +677,52 @@
         </div>
     </form>
 </div>
-<span id="customerid" th:text="${customerid}" hidden></span>
-<span id="cus" th:text="${session.cus!=null?session.cus.customerid:''}" hidden></span>
 
+    <!--访问用户的ID-->
+    <span id="customerid" th:text="${customerid}" hidden></span>
+    <!--当前登录人的ID-->
+    <span id="cus" th:text="${session.cus!=null?session.cus.customerid:''}" hidden></span>
 
-</div>
-<script src="/static/vue/axios.min.js"></script>
-<script src="/static/vue/jquery-3.1.1.js"></script>
-<script src="/static/vue/vue.js"></script>
-<script>
-    var v = new Vue({
-        el: '#wdk',
-        data: {
-            customer: {},
-            result: [],
-            gcount:""
-        },
-        created: function () {
-            this.find();
-        },
-        methods: {
-            "showFence": function (cid) {
-                location.href = "/Home/findFence?cusid=" + cid;
+    <script src="/static/vue/axios.min.js"></script>
+    <script src="/static/vue/jquery-3.1.1.js"></script>
+    <script src="/static/vue/vue.js"></script>
+    <script>
+        var v = new Vue({
+            el:'#wdk',
+            data:{
+                //当前作者的信息
+                customer:{},
+                guanzhus:{}
             },
-            "showGuanzhu": function (cid) {
-                location.href = "/Home/findGuanZhu?cusid=" + cid;
+            created:function () {
+                this.find();
+                this.findguanzhu();
             },
-            "sixin": function (author) {
-                layer.prompt({title: '发送私信给' + author, formType: 2}, function (pass, index) {
-                    layer.alert("虽然你发了私信，但是人家收不到。");
-                    parent.layer.close(index);
-                });
-            },
-            "down": function (did) {
-                var customerid = $("#customerid").html();
-                var cusid = $("#cus").html();
-                if (cusid == '') {
-                    layer.alert("请先登录再下载！");
-                    return;
+            methods:{
+                "find":function () {
+                    //拿到个人主页的信息
+                    var customerid = $("#customerid").html();
+                    var url = "/customer/findUserPerson?cusid=" + customerid;
+                    var that = this;
+                    axios.post(url,customerid).then(function (resp) {
+                        console.log(resp);
+                        that.customer = resp.data.customerinfo;
+                    });
+                },
+                "findguanzhu":function () {
+                    var _this = this;
+                    var customerid = $("#customerid").html();
+                    console.log(customerid);
+                    var url = "/attention/MyAttention?myid="+customerid;
+                    axios.get(url).then(function (value) {
+                        console.log(value.data);
+                        _this.guanzhus = value.data;
+                    })
                 }
-                if (customerid == cusid) {
-                    layer.alert("您不能购买自己的文档！");
-                    return;
-                }
-                window.sessionStorage.setItem("did", did);
-                location.href = "/Home/payInfo";
-            },
-            "findDetails": function (did) {
-                window.sessionStorage.setItem("did", did);
-                location.href = "/Home/read";
-            },
-            "find": function () {
-                var customerid = $("#customerid").html();
-                var url = "/customer/findUserPerson?cusid=" + customerid;
-                var that = this;
-                axios.post(url, customerid).then(function (resp) {
-                    that.result = resp.data.documentations;
-                    that.customer = resp.data.customerinfo;
-                });
-                that.myguanzhu();
-            },
-            "myguanzhu":function () {
-                var customerid = $("#customerid").html();
-                var _this = this;
-                var url = "/attention/gcount?myid="+customerid;
-                axios.get(url).then(function (value) {
-                    console.log(value.data);
-                    _this.gcount = value.data;
-                })
             }
-        }
-    })
-</script>
+        });
+    </script>
+</div>
 <script>function popLogin() {
     window.location.href = '/login.aspx?returl=https%3a%2f%2fwww.renrendoc.com%2fUser.aspx%3fid%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335%26id%3d1304335';
     return;

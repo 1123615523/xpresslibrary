@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("attention")
@@ -70,5 +72,19 @@ public class AttentioninfoController {
     @RequestMapping("MyAttention")
     public Object MyAttention(Integer myid){
         return attentioninfoService.MyAttention(myid);
+    }
+
+    /**我的关注数量*/
+    @RequestMapping("gcount")
+    public Object gcount(Integer myid){
+        List<Map<String, Object>> list = attentioninfoService.MyAttention(myid);
+        int count = list.size();
+        return count;
+    }
+
+    /**用户的粉丝列表*/
+    @RequestMapping("Myfence")
+    public Object Myfence(Integer youid){
+        return attentioninfoService.Myfence(youid);
     }
 }
