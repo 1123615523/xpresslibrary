@@ -359,37 +359,11 @@
                  title="随心文库-上传文档赚钱的网站" alt="随心文库-上传文档赚钱的网站" style="border: 0; "></a></h1>
         <div class="cmn_search_box">
             <div class="border">
-                <form>
-                    <input id="keyword" type="text" value="" name="q" placeholder="在这里搜索">
-                    <input type="submit" name="searchBtn" value="" title="点击搜索"
-                           onclick="searchWord($(&#39;#keyword&#39;).val()); return false;">
+                <form action="/Home/findMohuQuery" method="post">
+                    <input id="keyword" type="text" name="keyword"  placeholder="在这里搜索">
+                    <input type="submit" name="searchBtn" value=""  title="点击搜索">
                 </form>
             </div>
-
-            <script>
-                function getcheckedKeyword(s) {
-                    if (!s) return "";
-                    var pattern = new RegExp("[`~%!@#$^&*()=|{}';',\\[\\]<>/?~！@#￥……&*（）——|{}【】‘；：”“'。，、？]");
-                    var rs = "";
-                    for (var i = 0; i < s.length; i++) {
-                        rs = rs + s.substr(i, 1).replace(pattern, '');
-                    }
-                    return rs;
-                }
-
-                function searchWord(keyword, aElement) {
-                    keyword = getcheckedKeyword(keyword);
-                    if (keyword == "在这里搜索") keyword = "";
-                    var url = "https://www.renrendoc.com/search.html?q=" + encodeURIComponent(keyword);
-
-                    if (!aElement) {
-                        location.href = url;
-                    } else {
-                        aElement.href = url;
-                        return true;
-                    }
-                }
-            </script>
         </div>
 
         <div class="topr">
@@ -403,7 +377,8 @@
         function chuan() {
             var test = $("#testcus").html();
             if ('' === test) {
-                window.location = '/Home/loginUser';
+                layer.alert("请先登录！");
+                return;
             } else {
                 window.location = "/Home/user";
             }

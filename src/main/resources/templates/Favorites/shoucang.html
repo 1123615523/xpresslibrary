@@ -237,12 +237,12 @@
                                     <div class="form-group col-xs-4">
                                         <label class="col-sm-3 control-label">名称</label>
                                         <div class="col-sm-9">
-                                            <input class="form-control">
+                                            <input v-model.trim="keyword" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group col-xs-4">
-                                        <button type="submit" class="btn btn-primary ">查询</button>
-                                        <button type="reset" class="btn btn-default">重置</button>
+                                        <button type="button" class="btn btn-primary" @click="bian()">查询</button>
+                                        <button type="button" class="btn btn-default" @click="MyFavorites()">重置</button>
                                     </div>
                                 </div>
 
@@ -294,12 +294,23 @@
                 new Vue({
                     el:"#tion",
                     data:{
-                        myfavorites:{}
+                        myfavorites:{},
+                        newRes:{},
+                        keyword:''
                     },
                     created: function () {
                         this.MyFavorites();
                     },
                     methods: {
+                        "bian":function () {
+                            this.newRes = [];
+                            for (var i = 0; i <= this.myfavorites.length - 1; i++) {
+                                if (this.myfavorites[i].filename.indexOf(this.keyword) >= 0) {
+                                    this.newRes.push(this.myfavorites[i]);
+                                }
+                            }
+                            this.myfavorites = this.newRes;
+                        },
                         "MyFavorites": function () {
                             var _this = this;
                             var cid = $("#cid").text();
