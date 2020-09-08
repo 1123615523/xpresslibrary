@@ -2,8 +2,6 @@ package com.aaa.frontcontroller;/*
  */
 
 import com.aaa.entity.Customerinfo;
-import com.aaa.entity.Documentation;
-import com.aaa.entity.Orders;
 import com.aaa.entity.Recharge;
 import com.aaa.service.CustomerService;
 import com.aaa.service.DocumentationService;
@@ -44,14 +42,11 @@ public class alipayController {
     DocumentationService documentationService;
 
     @RequestMapping(value = "pay")
-    public void pay(Double money, Integer documentd,HttpServletRequest req, ModelAndView modelAndView, HttpServletResponse rep, HttpSession session) throws AlipayApiException, IOException {
+    public void pay(Double money,HttpServletRequest req, ModelAndView modelAndView, HttpServletResponse rep, HttpSession session) throws AlipayApiException, IOException {
         //获得初始化的AlipayClient
         AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key, "json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
         //充值金额存到session
         session.setAttribute("money",money);
-        if(null != documentd){
-            session.setAttribute("documentid",documentd);
-        }
         //设置请求参数
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
         alipayRequest.setReturnUrl(AlipayConfig.return_url);
@@ -97,83 +92,34 @@ public class alipayController {
         Double money = (Double) session.getAttribute("money");
         //登录用户信息
         Customerinfo cus = (Customerinfo) session.getAttribute("cus");
-        //购买文档ID
-        Integer documentid = (Integer) session.getAttribute("documentid");
-        if(null == documentid){ //是自定义充值支付
-            //数据库用户信息
-            Customerinfo customerinfo = customerService.updLogin(cus.getCustomerid());
-            //用户原本的钱
-            Double customermoney = customerinfo.getCustomermoney();
-            double newMoney = customermoney + money;
-            //修改新的金额
-            Integer integer = customerService.updMoney(cus.getCustomerid(), newMoney);
-            if(integer > 0){
-                Recharge recharge = new Recharge();
-                recharge.setRechargetime(new Date());
-                recharge.setRechargemoney(money);
-                recharge.setPaytype(1);
-                recharge.setRechargeaccount(customerinfo.getCustomertel());
-                recharge.setCustomerid(customerinfo.getCustomerid());
-                recharge.setRechargetype(2);
-                Integer integer1 = rechargeService.addRecharge(recharge);
-                if(integer1 > 0){
-                    session.removeAttribute("money");
-                    session.removeAttribute("documentid");
-                    Customerinfo updLogin = customerService.updLogin(customerinfo.getCustomerid());
-                    //刷新用户的session信息
-                    session.removeAttribute("cus");
-                    session.setAttribute("cus",updLogin);
-                    return "Person/blance";
-                }
-            }
-        }else{
-            //录入购买者消费信息
+
+        //数据库用户信息
+        Customerinfo customerinfo = customerService.updLogin(cus.getCustomerid());
+        //用户原本的钱
+        Double customermoney = customerinfo.getCustomermoney();
+        double newMoney = customermoney + money;
+        //修改新的金额
+        Integer integer = customerService.updMoney(cus.getCustomerid(), newMoney);
+        if(integer > 0){
             Recharge recharge = new Recharge();
             recharge.setRechargetime(new Date());
             recharge.setRechargemoney(money);
-            recharge.setPaytype(0);
-            recharge.setRechargeaccount(cus.getCustomertel());
-            recharge.setCustomerid(cus.getCustomerid());
-            recharge.setRechargetype(4);
-            recharge.setDocumentid(documentid);
-            Integer one = rechargeService.recording(recharge);
-            //录入订单表
-            long time = new Date().getTime();
-            String orderId = String.valueOf(time);
-            Orders order = new Orders();
-            order.setOrdered(orderId);
-            order.setOrdertime(new Date());
-            order.setOrderintegral(money);
-            order.setCustomerid(cus.getCustomerid());
-            order.setDocumented(documentid);
-            Integer two = ordersService.addOrder(order);
-            //修改作者的的收入
-            Documentation documentation = documentationService.findbydid(documentid);
-            Integer cusid = documentation.getAuthored();
-            Customerinfo customerinfo = customerService.updLogin(cusid);
-            double d = customerinfo.getCustomermoney() + money;
-            Integer there = customerService.updMoney(cusid, d);
-            //录入作者的消费记录
-            Recharge author = new Recharge();
-            author.setRechargetime(new Date());
-            author.setRechargemoney(money);
-            author.setPaytype(1);
-            author.setRechargeaccount(customerinfo.getCustomertel());
-            author.setCustomerid(customerinfo.getCustomerid());
-            author.setRechargetype(7);
-            author.setDocumentid(documentid);
-            Integer four = rechargeService.recording(author);
-            session.removeAttribute("money");
-            session.removeAttribute("documentid");
-            if(one >0 && two >0 && there >0 && four >0){
-//                Customerinfo updLogin = customerService.updLogin(cus.getCustomerid());
-//                //刷新用户的session信息
-//                session.removeAttribute("cus");
-//                session.setAttribute("cus",updLogin);
-                return "pay/order";
+            recharge.setPaytype(1);
+            recharge.setRechargeaccount(customerinfo.getCustomertel());
+            recharge.setCustomerid(customerinfo.getCustomerid());
+            recharge.setRechargetype(2);
+            Integer integer1 = rechargeService.addRecharge(recharge);
+            if(integer1 > 0){
+                session.removeAttribute("money");
+                session.removeAttribute("documentid");
+                Customerinfo updLogin = customerService.updLogin(customerinfo.getCustomerid());
+                //刷新用户的session信息
+                session.removeAttribute("cus");
+                session.setAttribute("cus",updLogin);
+                return "Person/blance";
             }
-            return "error";
         }
+
         session.removeAttribute("money");
         session.removeAttribute("documentid");
         return "error";
