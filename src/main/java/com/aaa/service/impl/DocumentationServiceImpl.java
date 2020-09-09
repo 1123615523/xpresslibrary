@@ -91,6 +91,19 @@ public class DocumentationServiceImpl implements DocumentationService {
     }
 
     @Override
+    public PageModel<Documentation> houFindDocument(PageModel<Documentation> pm) {
+        PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
+        List<Documentation> documentInfo = documentationDao.houFindDocument();
+        pm.setRows(documentInfo);
+        PageInfo<Documentation> pageInfo = new PageInfo<>(documentInfo);
+        int pages = pageInfo.getPages();
+        long total = pageInfo.getTotal();
+        pm.setTotal(total);
+        pm.setLastPage(pages);
+        return pm;
+    }
+
+    @Override
     public PageModel<Documentation> mohuQuery(PageModel pm) {
         PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
         String keyWord = pm.getKeyWord().toString();

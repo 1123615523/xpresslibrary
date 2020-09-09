@@ -54,4 +54,10 @@ public interface CustomerService {
     //查询个人主页的信息
     Customerinfo findCustomerInfo(Integer cusid);
 
+
+    //--------------------------------后台方法分界线------------------------------------
+
+    //后台查询注册的用户信息
+    PageModel<Customerinfo> houCustomerInfo(PageModel<Customerinfo> pm);
+
 }

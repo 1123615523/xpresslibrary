@@ -57,4 +57,7 @@ public class Documentation  {
 
     private Integer authored;
 
+    //文档作者
+    private Customerinfo customerinfos;
+
 }

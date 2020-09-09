@@ -34,4 +34,7 @@ public class Recharge{
     //相关文档
     private Documentation documentations;
 
+    //充值人
+    private Customerinfo customerinfos;
+
 }

@@ -2,6 +2,7 @@ package com.aaa.service;/*
  */
 
 import com.aaa.entity.Recharge;
+import com.aaa.utils.PageModel;
 
 import java.util.Map;
 
@@ -16,6 +17,16 @@ public interface RechargeService {
 
     //录入解锁文档明细
     Integer recording(Recharge recharge);
+
+    //----------------------后台方法分割线--------------------------
+
+    //用户充值记录
+    PageModel<Recharge> houFindRecharge(PageModel<Recharge> pm);
+
+    //用户购买文档记录
+    PageModel<Recharge> houFindDocuemnt(PageModel<Recharge> pm);
+
+
 
 
 }

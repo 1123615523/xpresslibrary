@@ -30,6 +30,19 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public PageModel<Customerinfo> houCustomerInfo(PageModel<Customerinfo> pm) {
+        PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
+        List<Customerinfo> documentInfo = customerDao.houCustomerInfo();
+        pm.setRows(documentInfo);
+        PageInfo<Customerinfo> pageInfo = new PageInfo<>(documentInfo);
+        int pages = pageInfo.getPages();
+        long total = pageInfo.getTotal();
+        pm.setTotal(total);
+        pm.setLastPage(pages);
+        return pm;
+    }
+
+    @Override
     public PageModel<Documentation> findUserInfo(PageModel pm) {
         PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
         String keyWord = pm.getKeyWord().toString();

@@ -59,6 +59,10 @@
         select * from customerinfo order by customerinfo.customerfence desc
     </select>
 
+    <select id="houCustomerInfo" resultType="com.aaa.entity.Customerinfo">
+        select * from customerinfo ORDER BY customerid desc
+    </select>
+
     <update id="editFile" parameterType="com.aaa.entity.Customerinfo">
         update customerinfo set customerpic=#{customerpic}  where  customerid = #{customerid}
     </update>

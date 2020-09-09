@@ -40,9 +40,46 @@
         and rechargetype = 3
     </select>
 
+
     <insert id="recording">
         insert into recharge(id,rechargetime,rechargemoney,paytype,rechargeaccount,customerid,rechargetype,documentid)
         value(null,#{rechargetime},#{rechargemoney},#{paytype},#{rechargeaccount},#{customerid},#{rechargetype},#{documentid})
     </insert>
+
+    <resultMap id="income" type="com.aaa.entity.Recharge" autoMapping="true">
+        <id column="id" property="id"></id>
+        <association property="customerinfos" javaType="com.aaa.entity.Customerinfo" autoMapping="true">
+            <id column="customerid" property="customerid"></id>
+        </association>
+    </resultMap>
+
+    <select id="houFindRecharge" resultMap="income">
+        select r.*,c.customername from recharge r
+        LEFT JOIN customerinfo c
+        on r.customerid = c.customerid
+        where r.rechargetype = 2
+        ORDER BY r.id desc
+    </select>
+
+    <resultMap id="res" type="com.aaa.entity.Recharge" autoMapping="true">
+        <id column="id" property="id"></id>
+        <association property="customerinfos" javaType="com.aaa.entity.Customerinfo" autoMapping="true">
+            <id column="customerid" property="customerid"></id>
+        </association>
+        <association property="documentations" javaType="com.aaa.entity.Documentation" autoMapping="true">
+            <id column="did" property="did"></id>
+        </association>
+    </resultMap>
+
+    <select id="houFindDocuemnt" resultMap="res">
+        select r.*,c.customername,d.filename from recharge r
+        LEFT JOIN customerinfo c
+        on r.customerid = c.customerid
+        LEFT JOIN documentation d
+        on r.documentid = d.did
+        where r.rechargetype = 4
+        ORDER BY r.id desc
+    </select>
+
 
 </mapper>

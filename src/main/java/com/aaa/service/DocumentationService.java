@@ -70,4 +70,9 @@ public interface DocumentationService {
     //模糊搜索
     PageModel<Documentation> mohuQuery(PageModel pm);
 
+    //----------------------后台方法分割线--------------------------
+
+    //用户充值记录
+    PageModel<Documentation> houFindDocument(PageModel<Documentation> pm);
+
 }

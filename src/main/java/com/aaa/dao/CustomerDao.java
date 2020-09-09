@@ -41,4 +41,8 @@ public interface CustomerDao {
     //查询个人粉丝数量倒叙显示
     List<Customerinfo> findFensiCount();
 
+    //---------------------------后台接口分界线-------------------------------
+
+    List<Customerinfo> houCustomerInfo();
+
 }

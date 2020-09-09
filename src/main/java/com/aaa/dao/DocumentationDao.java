@@ -63,5 +63,9 @@ public interface DocumentationDao {
     //模糊搜索
     List<Documentation> mohuQuery(String keyWord);
 
+    //-----------------------------后台方法----------------------------------
+
+    List<Documentation> houFindDocument();
+
 
 }

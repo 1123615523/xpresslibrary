@@ -146,5 +146,19 @@
         or filename like concat('%',#{value},'%')
     </select>
 
+    <resultMap id="resmap" type="com.aaa.entity.Documentation" autoMapping="true">
+        <id column="did" property="did"></id>
+        <association property="customerinfos" javaType="com.aaa.entity.Customerinfo" autoMapping="true">
+            <id column="customerid" property="customerid"></id>
+        </association>
+    </resultMap>
+
+    <select id="houFindDocument" resultMap="resmap">
+        select * from documentation d
+        LEFT JOIN customerinfo c
+        on d.authored = c.customerid
+        ORDER BY d.did desc
+    </select>
+
 
 </mapper>

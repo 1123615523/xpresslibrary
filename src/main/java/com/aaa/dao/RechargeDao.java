@@ -29,4 +29,12 @@ public interface RechargeDao {
     /**购买文档时创建消费记录*/
     Integer recording(Recharge recharge);
 
+    //----------------------后台方法接口分割线----------------------------
+
+    //后台查询充值
+    List<Recharge> houFindRecharge();
+
+    //后台查询文档购买
+    List<Recharge> houFindDocuemnt();
+
 }
