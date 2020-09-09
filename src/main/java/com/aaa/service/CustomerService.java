@@ -1,9 +1,10 @@
 package com.aaa.service;
 
 import com.aaa.entity.Customerinfo;
+import com.aaa.entity.Documentation;
+import com.aaa.utils.PageModel;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author 程亚辉
@@ -44,10 +45,13 @@ public interface CustomerService {
     /**关注操作时，对关注量进行修改*/
     Integer updateattention(Integer customerfence,Integer youid);
 
-    //查询个人信息主页以及个人资源
-    Map<String,Object> findUserInfo(Integer cusid);
+    //查询个人信息主页的文档信息
+    PageModel<Documentation> findUserInfo(PageModel pm);
 
     //查询个人粉丝数量倒叙显示
     List<Customerinfo> findFensiCount();
+
+    //查询个人主页的信息
+    Customerinfo findCustomerInfo(Integer cusid);
 
 }

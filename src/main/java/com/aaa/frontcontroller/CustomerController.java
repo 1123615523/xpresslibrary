@@ -1,7 +1,9 @@
 package com.aaa.frontcontroller;
 
 import com.aaa.entity.Customerinfo;
+import com.aaa.entity.Documentation;
 import com.aaa.service.CustomerService;
+import com.aaa.utils.PageModel;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
@@ -32,9 +34,17 @@ public class CustomerController {
 
     @ResponseBody
     @RequestMapping("findUserPerson")
-    public Object findUserPerson(@RequestParam Integer cusid)
+    public Object findUserPerson(PageModel<Documentation> pm)
     {
-        return customerService.findUserInfo(cusid);
+        pm = customerService.findUserInfo(pm);
+        return pm;
+    }
+
+    @ResponseBody
+    @RequestMapping("findCustomerInfo")
+    public Object findCustomerInfo(Integer cusid){
+
+        return customerService.findCustomerInfo(cusid);
     }
 
     @ResponseBody

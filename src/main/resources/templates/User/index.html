@@ -572,12 +572,31 @@
                                                         <a href="JavaScript:" @click="down(res.did)"></a>
                                                     </p>
                                                 </li>
-
                                             </ul>
                                         </div>
 
                                     </div>
                                 </div>
+
+                                <div class="blank15"></div>
+                                <div>
+                                    <div class="AspNetPager">
+                                        <table border="0" cellpadding="5" cellspacing="1" width="100%">
+                                            <tbody>
+                                            <tr>
+                                                <td style="padding-left: 0px; font-size: 14px; text-align: center;">
+                                                    <div id="Content_AspNetPager1" class="paginator" showmorebuttons="false" style="font-size:14px;">
+                                                        <a href="JavaScript:" class="paginator previous" style="margin-right:5px;" @click="fenye('pre')">上一页</a>
+                                                        <span class="cpb" style="margin-right:5px;">{{sizeinfo}}.....{{pagination.lastPage}}</span>
+                                                        <a href="JavaScript:" class="paginator next" style="margin-right:5px;" @click="fenye('next')">下一页</a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
                             </td>
                         </tr>
                         </tbody>
@@ -603,10 +622,12 @@
         data: {
             customer: {},
             result: [],
-            gcount:""
+            gcount:"",
+            pagination: {},
+            sizeinfo: 1
         },
         created: function () {
-            this.find();
+            this.find(1);
         },
         methods: {
             "showFence": function (cid) {
@@ -639,14 +660,21 @@
                 window.sessionStorage.setItem("did", did);
                 location.href = "/Home/read";
             },
-            "find": function () {
+            "find": function (size) {
                 var customerid = $("#customerid").html();
-                var url = "/customer/findUserPerson?cusid=" + customerid;
+                var url = "/customer/findUserPerson?keyWord=" + customerid + "&currentPage=" + size + "&pageSize=10";
                 var that = this;
-                axios.post(url, customerid).then(function (resp) {
-                    that.result = resp.data.documentations;
-                    that.customer = resp.data.customerinfo;
+                axios.get(url).then(function (resp) {
+                    that.result = resp.data.rows;
+                    that.pagination = resp.data;
+                    that.sizeinfo = resp.data.currentPage;
                 });
+
+                var url2 = "/customer/findCustomerInfo?cusid="+customerid;
+                axios.get(url2).then(function (resp) {
+                    that.customer = resp.data;
+                });
+
                 that.myguanzhu();
             },
             "myguanzhu":function () {
@@ -657,6 +685,17 @@
                     console.log(value.data);
                     _this.gcount = value.data;
                 })
+            },
+            "fenye": function (page) {
+                if (page === 'pre') {
+                    var res = this.sizeinfo - 1;
+                    if (res >= 1) {
+                        this.find(res);
+                    }
+                } else if (page === 'next' && this.pagination.currentPage < this.pagination.lastPage) {
+                    var res = this.pagination.currentPage + 1;
+                    this.find(res);
+                }
             }
         }
     })

@@ -5,13 +5,14 @@ import com.aaa.dao.DocumentationDao;
 import com.aaa.entity.Customerinfo;
 import com.aaa.entity.Documentation;
 import com.aaa.service.CustomerService;
+import com.aaa.utils.PageModel;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @Transactional
@@ -28,6 +29,20 @@ public class CustomerServiceImpl implements CustomerService {
         return customerDao.findFensiCount();
     }
 
+    @Override
+    public PageModel<Documentation> findUserInfo(PageModel pm) {
+        PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
+        String keyWord = pm.getKeyWord().toString();
+        List<Documentation> documentInfo = documentationDao.findbyid(Integer.parseInt(keyWord));
+        pm.setRows(documentInfo);
+        PageInfo<Documentation> pageInfo = new PageInfo<>(documentInfo);
+        int pages = pageInfo.getPages();
+        long total = pageInfo.getTotal();
+        pm.setTotal(total);
+        pm.setLastPage(pages);
+        return pm;
+    }
+
     /**根据用户id获取用户信息*/
     @Override
     public Customerinfo findbycid(Integer customerid) {
@@ -42,13 +57,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public Map<String, Object> findUserInfo(Integer cusid) {
-        HashMap<String, Object> map = new HashMap<>();
-        Customerinfo customerinfo = customerDao.updLogin(cusid);
-        map.put("customerinfo",customerinfo);
-        List<Documentation> documentations = documentationDao.findbyid(cusid);
-        map.put("documentations",documentations);
-        return map;
+    public Customerinfo findCustomerInfo(Integer cusid) {
+        return customerDao.updLogin(cusid);
     }
 
     @Override
