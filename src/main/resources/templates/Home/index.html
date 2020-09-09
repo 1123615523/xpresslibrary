@@ -614,91 +614,10 @@
             })
         </script>
 
-        <div id="findType">
-            <div class="center_line"></div>
-            <div class="blank17"></div>
-            <!--最新精品推荐-->
-            <div class="home_tj">
-                <div class="ttop">
-                    <a class="flou2"></a>
-                    <div class="title"><font color="#ff6333">最新</font>精品推荐</div>
-                    <div class="tuijtag">
-                        <li class="sd02" id="tj01"><h2><a href="JavaScript:" title="行业资料资源">学术论文</a></h2></li>
-                        <span class="line">|</span>
-                        <li class="sd02" id="tj02"><h2><a href="JavaScript:" title="行业资料资源">应用文档</a></h2></li>
-                        <span class="line">|</span>
-                        <li class="sd02" id="tj03"><h2><a href="JavaScript:" title="行业资料资源">行业资料</a></h2></li>
-                        <span class="line">|</span>
-                        <li class="sd02" id="tj04"><h2><a href="JavaScript:" title="行业资料资源">教育资源</a></h2></li>
-                    </div>
-                </div>
-                <div class="tj_view " id="tj001" 581>
-                    <ul>
-                        <li>
-                            <a href="JavaScript:" >
-                            <img alt="赫茨伯格的双因素激励理论.doc" src="/static/images/ert.gif" style="display: inline;">
-                            <span class="doc"></span></a>
-                            <a title="赫茨伯格的双因素激励理论.doc" href="JavaScript:" class="text">赫茨伯格的双因素激励理论.doc</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tj_view hidden" id="tj002" 574>
-                    <ul>
-                        <li><a href="JavaScript:" >
-                            <img alt="赫茨伯格的双因素激励理论.doc" src="/static/images/ert.gif"
-                                 style="display: inline;">
-                            <span class="doc"></span></a>
-                            <a title="赫茨伯格的双因素激励理论.doc" href="JavaScript:" class="text">赫茨伯格的双因素激励理论.doc</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tj_view hidden" id="tj003" 787>
-                    <ul>
-                        <li><a href="JavaScript:" >
-                            <img alt="赫茨伯格的双因素激励理论.doc" src="/static/images/ert.gif"
-                                 style="display: inline;">
-                            <span class="doc"></span></a>
-                            <a title="赫茨伯格的双因素激励理论.doc" href="JavaScript:" class="text">赫茨伯格的双因素激励理论.doc</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="tj_view hidden" id="tj004" 784>
-                    <ul>
-                        <li><a href="JavaScript:" >
-                            <img alt="赫茨伯格的双因素激励理论.doc" src="/static/images/ert.gif"
-                                 style="display: inline;">
-                            <span class="doc"></span></a>
-                            <a title="赫茨伯格的双因素激励理论.doc" href="JavaScript:" class="text">赫茨伯格的双因素激励理论.doc</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="center_line"></div>
-            <div class="blank17"></div>
-            <!--/documentation/findType-->
-        </div>
         <script src="/static/vue/axios.min.js"></script>
         <script src="/static/vue/vue.js"></script>
         <script src="/static/vue/jquery-3.1.1.js"></script>
-        <script>
-            var v = new Vue({
-                el:'#findType',
-                data:{
-                    info:[]
-                },
-                created:function () {
-                    this.findInfo();
-                },
-                methods:{
-                    "findInfo":function () {
-                        var that = this;
-                        axios.get("/documentation/findDocument").then(function (resp) {
-                            that.info = resp.data;
-                        });
-                    }
-                }
-            })
-        </script>
+
 
         <!--今日更新ppt-->
         <div class="home_jp" id="ppt">
@@ -842,34 +761,6 @@
     </script>
     <script type="text/javascript" src="/static/js/Prototype.js"></script>
     <script type="text/javascript" src="/static/js/index.js"></script>
-    <!--控制各种文档现实的位置的代码-->
-    <script language="javascript" type="text/javascript">
-        window.onload = function () {
-            try {
-                var scrollup = new ScrollText("listcontent");
-                scrollup.LineHeight = 28;
-                scrollup.Amount = 1;
-                scrollup.Start();
-            } catch (e) {
-            }
-            var SDmodel = new scrollDoor();
-            try {
-                SDmodel.sd(["m01", "m02", "m03"], ["c01", "c02", "c03"], "sd01", "sd02");
-            } catch (e) {
-            }
-            try {
-                SDmodel.sd(["db01", "db02"], ["db001", "db002"], "sd01", "sd02");
-            } catch (e) {
-            }
-            try {
-                SDmodel.sd(["s01", "s02"], ["x01", "x02"], "sd01", "sd02");
-            } catch (e) {
-            }
-            SDmodel.sd(["tj01", "tj02", "tj03", "tj04"],
-                ["tj001", "tj002", "tj003", "tj004"], "sd01", "sd02");
-        }
-        document.getElementById("menuhomecate").setAttribute("class", "home_cate");
-    </script>
     <!--尾部黑色部分链接-->
     <div class="bg_100 foot_nav_bg" style=" min-width:1200px;">
         <div class="foot_nav">
