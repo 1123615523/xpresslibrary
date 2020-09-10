@@ -677,11 +677,10 @@
                 "find":function () {
                     //拿到个人主页的信息
                     var customerid = $("#customerid").html();
-                    var url = "/customer/findUserPerson?cusid=" + customerid;
+                    var url = "/customer/findCustomerInfo?cusid=" + customerid;
                     var that = this;
-                    axios.post(url,customerid).then(function (resp) {
-                        console.log(resp);
-                        that.customer = resp.data.customerinfo;
+                    axios.get(url).then(function (resp) {
+                        that.customer = resp.data;
                     });
                 },
                 "findguanzhu":function () {
