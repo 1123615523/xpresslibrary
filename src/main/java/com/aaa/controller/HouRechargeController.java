@@ -16,6 +16,11 @@ public class HouRechargeController {
     @Resource
     RechargeService rechargeService;
 
+    @RequestMapping("baobiao")
+    public Object baobiao(){
+        return rechargeService.baobiao();
+    }
+
     @RequestMapping("houFindRecharge")
     public Object houFindRecharge(PageModel<Recharge> pm){
         pm = rechargeService.houFindRecharge(pm);

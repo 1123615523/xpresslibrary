@@ -81,5 +81,13 @@
         ORDER BY r.id desc
     </select>
 
+    <select id="houFindCustomer" resultType="com.aaa.entity.Customerinfo">
+        select * from customerinfo
+    </select>
+
+    <select id="houBaoBiao" resultType="java.util.Map">
+        select year(rechargetime) nian,month(rechargetime) yue,sum(rechargemoney) zong from recharge where rechargetype = 2 and year(rechargetime) = 2020
+        group by year(rechargetime) asc,month(rechargetime) asc
+    </select>
 
 </mapper>

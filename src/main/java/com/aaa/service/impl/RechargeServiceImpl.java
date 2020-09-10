@@ -27,6 +27,11 @@ public class RechargeServiceImpl implements RechargeService {
     RechargeDao rechargeDao;
 
     @Override
+    public List<Map<String, Object>> baobiao() {
+        return rechargeDao.houBaoBiao();
+    }
+
+    @Override
     public PageModel<Recharge> houFindDocuemnt(PageModel<Recharge> pm) {
         PageHelper.startPage(pm.getCurrentPage(),pm.getPageSize());
         List<Recharge> documentInfo = rechargeDao.houFindDocuemnt();

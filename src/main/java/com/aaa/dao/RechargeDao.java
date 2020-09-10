@@ -1,9 +1,11 @@
 package com.aaa.dao;/*
  */
 
+import com.aaa.entity.Customerinfo;
 import com.aaa.entity.Recharge;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 王登科
@@ -36,5 +38,11 @@ public interface RechargeDao {
 
     //后台查询文档购买
     List<Recharge> houFindDocuemnt();
+
+    //查询用户的ID
+    List<Customerinfo> houFindCustomer();
+
+    //报表查询
+    List<Map<String,Object>> houBaoBiao();
 
 }

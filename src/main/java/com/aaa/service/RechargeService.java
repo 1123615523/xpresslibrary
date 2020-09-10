@@ -4,6 +4,7 @@ package com.aaa.service;/*
 import com.aaa.entity.Recharge;
 import com.aaa.utils.PageModel;
 
+import java.util.List;
 import java.util.Map;
 
 public interface RechargeService {
@@ -26,7 +27,7 @@ public interface RechargeService {
     //用户购买文档记录
     PageModel<Recharge> houFindDocuemnt(PageModel<Recharge> pm);
 
-
-
+    //报表信息
+    List<Map<String,Object>> baobiao();
 
 }
